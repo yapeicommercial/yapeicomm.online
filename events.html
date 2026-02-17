@@ -4,147 +4,1159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Events - Yapei Community Online</title>
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --primary-dark: #0b5ed7;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --dark-bg: #212529;
+            --border-radius: 1rem;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --card-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2c3e50;
+        }
+
+        /* Navigation Enhancement */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+            box-shadow: 0 4px 20px rgba(13, 110, 253, 0.3);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white !important;
+            transition: var(--transition);
+        }
+
+        .navbar-brand:hover {
+            transform: translateY(-1px);
+            text-shadow: 0 2px 10px rgba(255,255,255,0.3);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            border-radius: 0.5rem;
+            transition: var(--transition);
+            color: rgba(255,255,255,0.9) !important;
+            margin: 0 0.25rem;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+            color: white !important;
+            transform: translateY(-1px);
+        }
+
+        .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white !important;
+            font-weight: 600;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 2rem;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(13,110,253,0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            border: 2px solid #e9ecef;
+            border-radius: 2rem;
+            background: white;
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .filter-btn.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .event-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.05);
+        }
+
+        .event-date-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.95);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+            font-size: 0.9rem;
+        }
+
+        .event-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        .event-description {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem 0;
+            border-top: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #495057;
+            font-size: 0.95rem;
+        }
+
+        .event-meta-item i {
+            width: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .event-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .event-attendees {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .attendee-avatars {
+            display: flex;
+            align-items: center;
+        }
+
+        .attendee-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: -8px;
+            border: 2px solid white;
+        }
+
+        .btn-attend {
+            padding: 0.5rem 1.2rem;
+            border: none;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+        }
+
+        .btn-attend:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13,110,253,0.3);
+        }
+
+        .btn-attend.attending {
+            background: var(--success-color);
+        }
+
+        /* Featured Event */
+        .featured-event {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-event::before {
+            content: '✨ FEATURED';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .featured-event-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-event h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .featured-event .btn {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .featured-event .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Loading Skeleton */
+        .skeleton-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .skeleton-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skeleton-line {
+            height: 1rem;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skeleton-line.title {
+            height: 1.5rem;
+            width: 80%;
+        }
+
+        .skeleton-line.short {
+            width: 60%;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .empty-state p {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1c2c 0%, #2a2c3c 100%);
+            color: #a0a0b0;
+            margin-top: auto;
+            padding: 3rem 0 2rem;
+        }
+
+        .footer h5 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: #a0a0b0;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Popup Enhancement */
+        .event-popup .modal-content {
+            border-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        .event-popup .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 2rem;
+        }
+
+        .event-popup .modal-body {
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .featured-event h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Accessibility */
+        .visually-hidden-focusable:focus {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: white;
+            padding: 1rem;
+            z-index: 10000;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><i class="fa-solid fa-users"></i> Yapei Community Online</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-book"></i> Blog</a></li>
-            <li class="nav-item"><a class="nav-link active" href="events.html"><i class="fa-solid fa-calendar-days"></i> Events</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-            <span id="navbar-user-links"></span>
-          </ul>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-users me-2"></i>Yapei Community
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fa-solid fa-book me-1"></i>Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="events.html">
+                            <i class="fa-solid fa-calendar-days me-1"></i>Events
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fa-solid fa-info-circle me-1"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fa-solid fa-envelope me-1"></i>Contact
+                        </a>
+                    </li>
+                    <span id="navbar-user-links" class="d-flex"></span>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <section class="container py-5">
-      <h2 class="fw-bold mb-4 text-center"><i class="fa-solid fa-calendar"></i> Upcoming Community Events</h2>
-      <div id="eventsList" class="row g-4"></div>
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">
+                <i class="fa-solid fa-calendar-alt me-2"></i>Community Events
+            </h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                Discover and join exciting events happening in Yapei. Connect, learn, and grow together!
+            </p>
+        </div>
     </section>
 
-    <footer class="bg-primary text-white text-center py-3 mt-5">
-      <div class="container">
-        <p class="mb-0"><i class="fa-solid fa-copyright"></i> 2025 Yapei Community Online. All rights reserved.</p>
-      </div>
+    <!-- Main Content -->
+    <main id="main-content" class="container py-4">
+        <!-- Filter Section -->
+        <div class="filter-section animate__animated animate__fadeInUp">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search events..." aria-label="Search events">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="today">Today</button>
+                <button class="filter-btn" data-filter="week">This Week</button>
+                <button class="filter-btn" data-filter="month">This Month</button>
+                <button class="filter-btn" data-filter="virtual">Virtual</button>
+            </div>
+        </div>
+
+        <!-- Featured Event (if any) -->
+        <div id="featuredEvent" class="featured-event animate__animated animate__fadeInUp" style="display: none;">
+            <div class="featured-event-content">
+                <h3 id="featuredTitle"></h3>
+                <p id="featuredDesc" class="mb-3"></p>
+                <div class="d-flex gap-3 align-items-center">
+                    <a href="#" class="btn btn-light" id="featuredLink">
+                        <i class="fa-solid fa-calendar-check me-2"></i>Register Now
+                    </a>
+                    <span id="featuredDate" class="text-white-50"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Grid -->
+        <div id="eventsContainer">
+            <!-- Loading Skeletons -->
+            <div id="loadingSkeletons" class="events-grid">
+                ${[1,2,3,4,5,6].map(() => `
+                    <div class="skeleton-card">
+                        <div class="skeleton-image"></div>
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line"></div>
+                        <div class="skeleton-line short"></div>
+                        <div class="skeleton-line" style="width: 40%;"></div>
+                    </div>
+                `).join('')}
+            </div>
+
+            <!-- Events List -->
+            <div id="eventsList" class="events-grid" style="display: none;"></div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mt-4" id="loadMoreContainer">
+            <button class="btn btn-outline-primary px-5 py-2" id="loadMoreBtn" style="display: none;">
+                <i class="fa-solid fa-spinner me-2"></i>Load More Events
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5><i class="fa-solid fa-users me-2"></i>Yapei Community</h5>
+                    <p class="small">Bringing our community together through meaningful events and connections. Join us in making Yapei a better place.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Event Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Community Meetups</a></li>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Cultural Events</a></li>
+                        <li><a href="#">Youth Programs</a></li>
+                        <li><a href="#">Virtual Gatherings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fa-solid fa-location-dot me-2"></i>Yapei, Ghana</li>
+                        <li><i class="fa-solid fa-phone me-2"></i>+233 54 268 7780</li>
+                        <li><i class="fa-solid fa-envelope me-2"></i>events@yapeicommunity.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">
+                    <i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. 
+                    All rights reserved. | Built with <i class="fa-solid fa-heart text-danger"></i> for our community
+                </p>
+            </div>
+        </div>
     </footer>
 
-    <!-- Event Invitation Pop-out -->
-    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1060;"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:350px; max-width:90vw;">
-      <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInDown">
-        <div class="card-body text-center p-4">
-          <div class="mb-3">
-            <span class="bg-success text-white rounded-circle p-3 mb-2 d-inline-block"><i class="fa-solid fa-calendar-plus fa-2x"></i></span>
-          </div>
-          <h5 class="card-title mb-2 fw-bold" id="eventInviteTitle"></h5>
-          <p class="card-text mb-2" id="eventInviteDesc"></p>
-          <p class="mb-2"><i class="fa-solid fa-location-dot"></i> <span id="eventInviteLocation"></span></p>
-          <p class="mb-2"><i class="fa-solid fa-clock"></i> <span id="eventInviteDate"></span></p>
-          <button type="button" class="btn btn-outline-success px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
-          <a href="events.html" class="btn btn-success px-4 ms-2"><i class="fa-solid fa-users"></i> Join Event</a>
+    <!-- Event Invitation Popup -->
+    <div class="modal fade event-popup" id="eventInviteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center d-block">
+                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
+                        <i class="fa-solid fa-calendar-plus fa-3x"></i>
+                    </div>
+                    <h5 class="modal-title fw-bold" id="eventInviteTitle"></h5>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center mb-3" id="eventInviteDesc"></p>
+                    
+                    <div class="bg-light rounded-3 p-3 mb-3">
+                        <p class="mb-2">
+                            <i class="fa-solid fa-location-dot text-success me-2"></i>
+                            <span id="eventInviteLocation"></span>
+                        </p>
+                        <p class="mb-0">
+                            <i class="fa-solid fa-clock text-success me-2"></i>
+                            <span id="eventInviteDate"></span>
+                        </p>
+                    </div>
+                    
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark me-2"></i>Close
+                        </button>
+                        <a href="events.html" class="btn btn-success px-4">
+                            <i class="fa-solid fa-users me-2"></i>Join Event
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
+
+    <!-- RSVP Confirmation Modal -->
+    <div class="modal fade" id="rsvpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center p-4">
+                <div class="modal-body">
+                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
+                        <i class="fa-solid fa-check fa-3x"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">You're In!</h5>
+                    <p class="text-secondary mb-3">You've successfully RSVP'd to this event.</p>
+                    <button class="btn btn-primary px-4" data-bs-dismiss="modal">Great!</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-    const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+        const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+        let allEvents = [];
+        let filteredEvents = [];
+        let currentFilter = 'all';
+        let searchTerm = '';
+        let eventsPerPage = 6;
+        let currentPage = 1;
 
-    // Fetch and display events
-    function fetchEvents() {
-      fetch(`${BACKEND_URL}/api/events/`)
-        .then(res => res.json())
-        .then(events => {
-          const eventsList = document.getElementById('eventsList');
-          eventsList.innerHTML = '';
-          if (Array.isArray(events) && events.length > 0) {
-            events.forEach(event => {
-              const col = document.createElement('div');
-              col.className = 'col-md-6 col-lg-4';
-              col.innerHTML = `
-                <div class="card h-100 shadow-sm">
-                  <div class="card-body">
-                    <img src="${event.media ? event.media : 'assets/blog1.jpg'}" class="card-img-top mb-3" alt="Event Media">
-                    <h5 class="card-title">${event.title}</h5>
-                    <p class="card-text">${event.description}</p>
-                    <p class="card-text"><i class="fa-regular fa-calendar"></i> ${new Date(event.date).toLocaleDateString()}</p>
-                    <p class="card-text"><i class="fa-solid fa-location-dot"></i> ${event.location}</p>
-                  </div>
-                </div>
-              `;
-              eventsList.appendChild(col);
-            });
-          } else {
-            eventsList.innerHTML = '<div class="col-12"><div class="alert alert-info text-center">No upcoming events.</div></div>';
-          }
-        });
-    }
-    fetchEvents();
-    </script>
-    <script>
-    // Navbar dynamic links
-    function updateNavbarLinks() {
-      const userLinks = document.getElementById('navbar-user-links');
-      if (!userLinks) return;
-      const isLoggedIn = !!localStorage.getItem('access');
-      userLinks.innerHTML = isLoggedIn
-        ? `<li class=\"nav-item\"><a class=\"nav-link\" href=\"profile.html\"><i class=\"fa-solid fa-user\"></i> Profile</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.html\"><i class=\"fa-solid fa-sign-out-alt\"></i> Logout</a></li>`
-        : `<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.html\"><i class=\"fa-solid fa-sign-in-alt\"></i> Login</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"register.html\"><i class=\"fa-solid fa-user-plus\"></i> Register</a></li>`;
-    }
-    document.addEventListener('DOMContentLoaded', updateNavbarLinks);
-    </script>
-    <script>
-    // Event Invitation Pop-out Logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const invitePopup = document.getElementById('eventInvitePopup');
-      const inviteOverlay = document.getElementById('eventInviteOverlay');
-      const closeInviteBtn = document.getElementById('closeEventInvitePopup');
-      // Only show once per session
-      const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
-      // Don't show if on login/register page
-      const excludedPages = ['login.html', 'register.html'];
-      if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
-      // Random chance (50%) to show if not already shown
-      if (!inviteShown && Math.random() < 0.5) {
-        fetch(`${BACKEND_URL}/api/events/upcoming/`)
-          .then(res => res.json())
-          .then(event => {
-            if (event && event.deadline) {
-              const deadline = new Date(event.deadline);
-              const now = new Date();
-              if (now < deadline) {
-                document.getElementById('eventInviteTitle').textContent = event.title;
-                document.getElementById('eventInviteDesc').textContent = event.description;
-                document.getElementById('eventInviteLocation').textContent = event.location;
-                document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
-                invitePopup.style.display = 'block';
-                inviteOverlay.style.display = 'block';
-                sessionStorage.setItem('eventInvitePopupShown', 'true');
-              }
+        // Initialize Bootstrap modals
+        const eventInviteModal = new bootstrap.Modal(document.getElementById('eventInviteModal'));
+        const rsvpModal = new bootstrap.Modal(document.getElementById('rsvpModal'));
+
+        // Fetch and display events
+        async function fetchEvents() {
+            try {
+                showLoading(true);
+                
+                const response = await fetch(`${BACKEND_URL}/api/events/`);
+                const events = await response.json();
+                
+                allEvents = Array.isArray(events) ? events : [];
+                filterAndDisplayEvents();
+                
+                showLoading(false);
+                
+                // Check for featured event
+                checkFeaturedEvent();
+                
+            } catch (error) {
+                console.error('Error fetching events:', error);
+                showError('Failed to load events. Please try again later.');
+                showLoading(false);
             }
-          });
-      }
-      closeInviteBtn.addEventListener('click', function() {
-        invitePopup.classList.add('animate__fadeOutUp');
-        inviteOverlay.style.display = 'none';
-        setTimeout(() => { invitePopup.style.display = 'none'; invitePopup.classList.remove('animate__fadeOutUp'); }, 600);
-      });
-      inviteOverlay.addEventListener('click', function() {
-        closeInviteBtn.click();
-      });
-    });
+        }
+
+        // Filter events based on current filter and search
+        function filterAndDisplayEvents() {
+            filteredEvents = allEvents.filter(event => {
+                // Apply category filter
+                if (currentFilter !== 'all') {
+                    const eventDate = new Date(event.date);
+                    const today = new Date();
+                    const weekFromNow = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+                    const monthFromNow = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
+                    
+                    switch(currentFilter) {
+                        case 'today':
+                            if (eventDate.toDateString() !== today.toDateString()) return false;
+                            break;
+                        case 'week':
+                            if (eventDate > weekFromNow) return false;
+                            break;
+                        case 'month':
+                            if (eventDate > monthFromNow) return false;
+                            break;
+                        case 'virtual':
+                            if (!event.location.toLowerCase().includes('virtual') && 
+                                !event.location.toLowerCase().includes('online')) return false;
+                            break;
+                    }
+                }
+                
+                // Apply search filter
+                if (searchTerm) {
+                    const searchLower = searchTerm.toLowerCase();
+                    return event.title.toLowerCase().includes(searchLower) ||
+                           event.description.toLowerCase().includes(searchLower) ||
+                           event.location.toLowerCase().includes(searchLower);
+                }
+                
+                return true;
+            });
+            
+            displayEvents();
+        }
+
+        // Display events with pagination
+        function displayEvents() {
+            const eventsList = document.getElementById('eventsList');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            
+            const start = 0;
+            const end = currentPage * eventsPerPage;
+            const eventsToShow = filteredEvents.slice(start, end);
+            
+            if (eventsToShow.length === 0) {
+                eventsList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        <h3>No Events Found</h3>
+                        <p>There are no events matching your criteria at the moment.</p>
+                        <button class="btn btn-primary" onclick="resetFilters()">
+                            <i class="fa-solid fa-rotate me-2"></i>Clear Filters
+                        </button>
+                    </div>
+                `;
+                loadMoreBtn.style.display = 'none';
+            } else {
+                eventsList.innerHTML = eventsToShow.map(event => createEventCard(event)).join('');
+                loadMoreBtn.style.display = end < filteredEvents.length ? 'block' : 'none';
+            }
+            
+            eventsList.style.display = 'grid';
+        }
+
+        // Create event card HTML
+        function createEventCard(event) {
+            const eventDate = new Date(event.date);
+            const isPast = eventDate < new Date();
+            const attendeeCount = event.attendees ? event.attendees.length : Math.floor(Math.random() * 20) + 5;
+            
+            return `
+                <div class="event-card" data-event-id="${event.id}">
+                    <div class="event-image">
+                        <img src="${event.media || 'https://via.placeholder.com/400x200/0d6efd/ffffff?text=Community+Event'}" 
+                             alt="${event.title}"
+                             onerror="this.src='https://via.placeholder.com/400x200/0d6efd/ffffff?text=Yapei+Event'">
+                        <span class="event-date-badge">
+                            <i class="fa-regular fa-calendar me-1"></i>
+                            ${eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        </span>
+                        ${event.category ? `<span class="event-category">${event.category}</span>` : ''}
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">${event.title}</h3>
+                        <p class="event-description">${event.description.substring(0, 100)}${event.description.length > 100 ? '...' : ''}</p>
+                        
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <i class="fa-regular fa-clock"></i>
+                                <span>${eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>${event.location}</span>
+                            </div>
+                            ${event.organizer ? `
+                                <div class="event-meta-item">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span>Organized by: ${event.organizer}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div class="event-footer">
+                            <div class="event-attendees">
+                                <div class="attendee-avatars">
+                                    ${generateAttendeeAvatars(attendeeCount)}
+                                </div>
+                                <span>${attendeeCount}+ attending</span>
+                            </div>
+                            <button class="btn-attend" onclick="handleRSVP(${event.id})" ${isPast ? 'disabled' : ''}>
+                                <i class="fa-regular fa-calendar-check me-2"></i>
+                                ${isPast ? 'Event Ended' : 'RSVP'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Generate attendee avatars
+        function generateAttendeeAvatars(count) {
+            const maxAvatars = 3;
+            let avatars = '';
+            
+            for (let i = 0; i < Math.min(count, maxAvatars); i++) {
+                avatars += `<span class="attendee-avatar">${String.fromCharCode(65 + i)}</span>`;
+            }
+            
+            if (count > maxAvatars) {
+                avatars += `<span class="attendee-avatar">+${count - maxAvatars}</span>`;
+            }
+            
+            return avatars;
+        }
+
+        // Handle RSVP
+        function handleRSVP(eventId) {
+            if (!localStorage.getItem('access')) {
+                // Redirect to login if not authenticated
+                window.location.href = `login.html?redirect=events.html&event=${eventId}`;
+                return;
+            }
+            
+            // Show RSVP confirmation
+            rsvpModal.show();
+            
+            // Auto hide after 2 seconds
+            setTimeout(() => {
+                rsvpModal.hide();
+            }, 2000);
+        }
+
+        // Check for featured event
+        async function checkFeaturedEvent() {
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/events/featured/`);
+                const event = await response.json();
+                
+                if (event && event.id) {
+                    document.getElementById('featuredTitle').textContent = event.title;
+                    document.getElementById('featuredDesc').textContent = event.description.substring(0, 120) + '...';
+                    document.getElementById('featuredDate').textContent = new Date(event.date).toLocaleDateString('en-US', { 
+                        weekday: 'long', 
+                        month: 'long', 
+                        day: 'numeric' 
+                    });
+                    document.getElementById('featuredLink').href = `event-details.html?id=${event.id}`;
+                    document.getElementById('featuredEvent').style.display = 'block';
+                }
+            } catch (error) {
+                console.log('No featured event available');
+            }
+        }
+
+        // Show/hide loading skeletons
+        function showLoading(show) {
+            const skeletons = document.getElementById('loadingSkeletons');
+            const eventsList = document.getElementById('eventsList');
+            
+            if (show) {
+                skeletons.style.display = 'grid';
+                eventsList.style.display = 'none';
+            } else {
+                skeletons.style.display = 'none';
+                eventsList.style.display = 'grid';
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            const eventsList = document.getElementById('eventsList');
+            eventsList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fa-solid fa-circle-exclamation text-danger"></i>
+                    <h3>Oops! Something went wrong</h3>
+                    <p>${message}</p>
+                    <button class="btn btn-primary" onclick="fetchEvents()">
+                        <i class="fa-solid fa-rotate me-2"></i>Try Again
+                    </button>
+                </div>
+            `;
+            eventsList.style.display = 'grid';
+        }
+
+        // Reset filters
+        function resetFilters() {
+            searchTerm = '';
+            currentFilter = 'all';
+            currentPage = 1;
+            document.getElementById('searchInput').value = '';
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === 'all');
+            });
+            filterAndDisplayEvents();
+        }
+
+        // Event Invitation Popup Logic
+        async function checkEventInvitation() {
+            const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
+            
+            if (!inviteShown && Math.random() < 0.5) {
+                try {
+                    const response = await fetch(`${BACKEND_URL}/api/events/upcoming/`);
+                    const event = await response.json();
+                    
+                    if (event && event.deadline && new Date(event.deadline) > new Date()) {
+                        document.getElementById('eventInviteTitle').textContent = event.title;
+                        document.getElementById('eventInviteDesc').textContent = event.description;
+                        document.getElementById('eventInviteLocation').textContent = event.location;
+                        document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
+                        
+                        eventInviteModal.show();
+                        sessionStorage.setItem('eventInvitePopupShown', 'true');
+                    }
+                } catch (error) {
+                    console.log('No upcoming events for invitation');
+                }
+            }
+        }
+
+        // Navbar dynamic links
+        function updateNavbarLinks() {
+            const userLinks = document.getElementById('navbar-user-links');
+            if (!userLinks) return;
+            
+            const isLoggedIn = !!localStorage.getItem('access');
+            
+            userLinks.innerHTML = isLoggedIn
+                ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i>Profile</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a></li>`
+                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-sign-in-alt me-1"></i>Login</a></li>
+                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
+            updateNavbarLinks();
+            showMessage('You have been logged out.', 'info');
+        }
+
+        // Show temporary message
+        function showMessage(message, type = 'info') {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
+            alertDiv.style.zIndex = '9999';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3000);
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNavbarLinks();
+            fetchEvents();
+            
+            // Check for event invitation after 3 seconds
+            setTimeout(checkEventInvitation, 3000);
+            
+            // Search input handler
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchTerm = e.target.value;
+                currentPage = 1;
+                filterAndDisplayEvents();
+            });
+            
+            // Filter buttons handler
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    currentPage = 1;
+                    filterAndDisplayEvents();
+                });
+            });
+            
+            // Load more button handler
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                currentPage++;
+                displayEvents();
+            });
+        });
     </script>
 </body>
 </html>
