@@ -4,288 +4,508 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile - Yapei Community Online</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <title>My Profile · Yapei Community</title>
+    <!-- Bootstrap + Icons + Animate.css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --primary-deep: #0b4b7a;
+            --primary-soft: #e2f0fd;
+            --accent-gold: #f9b84a;
+            --card-radius: 28px;
+        }
+        body {
+            background: #f4f9ff;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        /* Navbar same as other pages */
+        .navbar {
+            background: linear-gradient(135deg, #0b4b7a 0%, #1f6ca3 100%) !important;
+            box-shadow: 0 10px 25px -10px #0a3d61;
+        }
+        .navbar-brand i {
+            color: var(--accent-gold);
+            margin-right: 8px;
+        }
+        .nav-link {
+            border-radius: 40px;
+            margin: 0 6px;
+            padding: 0.5rem 1.2rem !important;
+            font-weight: 500;
+        }
+        .nav-link.active, .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        /* profile card styling */
+        .profile-card {
+            background: white;
+            border-radius: var(--card-radius);
+            box-shadow: 0 20px 35px -10px rgba(11,75,122,0.2);
+            padding: 2rem;
+            border: none;
+        }
+        .avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 12px 22px -8px var(--primary-deep);
+            background: #b0d2ee;
+        }
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            background: linear-gradient(145deg, #1c6ea9, #0b4b7a);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            font-weight: bold;
+            border: 4px solid white;
+            box-shadow: 0 12px 22px -8px var(--primary-deep);
+        }
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-deep);
+        }
+        .section-title i {
+            background: var(--primary-soft);
+            padding: 10px;
+            border-radius: 50%;
+            color: var(--primary-deep);
+        }
+        .form-control, .form-select {
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid rgba(11,75,122,0.2);
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(249,184,74,0.3);
+            border-color: var(--accent-gold);
+        }
+        .btn-primary-custom {
+            background: var(--primary-deep);
+            border: none;
+            border-radius: 60px;
+            padding: 0.7rem 2.2rem;
+            font-weight: 600;
+            box-shadow: 0 8px 16px -6px #0a4d8c80;
+            color: white;
+        }
+        .btn-primary-custom:hover {
+            background: #135f94;
+            transform: scale(1.02);
+        }
+        .btn-outline-custom {
+            border-radius: 60px;
+            border: 2px solid var(--primary-deep);
+            color: var(--primary-deep);
+            font-weight: 600;
+            padding: 0.6rem 2rem;
+        }
+        .btn-outline-custom:hover {
+            background: var(--primary-deep);
+            color: white;
+        }
+        .btn-warning-custom {
+            background: #ffc107;
+            border: none;
+            border-radius: 60px;
+            padding: 0.7rem 2rem;
+            font-weight: 600;
+            color: #1e2f3e;
+        }
+        .info-badge {
+            background: var(--primary-soft);
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            color: var(--primary-deep);
+            font-weight: 600;
+            display: inline-block;
+        }
+        #currentAvatar img {
+            border-radius: 30px;
+            border: 3px solid white;
+            box-shadow: 0 8px 14px rgba(0,0,0,0.1);
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: cover;
+        }
+        .popup-card {
+            border-radius: 42px !important;
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.98) !important;
+            border: 1px solid rgba(255,215,120,0.5);
+        }
+        .popup-icon-bg {
+            background: linear-gradient(145deg, #23995e, #1b7e4b);
+            width: 80px;
+            height: 80px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+        }
+        .modern-footer {
+            background: #0b4b7a;
+            color: white;
+            padding: 2.5rem 0 1.2rem;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><i class="fa-solid fa-users"></i> Yapei Community Online</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto" id="navbar-links">
-            <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-book"></i> Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-            <span id="navbar-user-links"></span>
-          </ul>
+    <!-- Navbar (consistent) -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-semibold fs-3" href="index.html"><i class="fa-solid fa-people-group"></i> Yapei Community</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center" id="navbar-links">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
+                    <span id="navbar-user-links" class="d-flex gap-1"></span>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
+
+    <!-- Main Profile Section -->
     <div class="container py-5">
         <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <h2 class="mb-4"><i class="fa-solid fa-user"></i> User Profile</h2>
-                <div id="userInfo" class="mb-4"></div>
-                <a href="logout.html" class="btn btn-danger"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <form id="profileEditForm" enctype="multipart/form-data" class="mb-4">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
+            <div class="col-lg-8">
+                <!-- Profile header card with avatar -->
+                <div class="profile-card mb-4 animate__animated animate__fadeInDown">
+                    <div class="row align-items-center g-4">
+                        <div class="col-md-3 text-center">
+                            <div id="avatarDisplay" class="d-flex justify-content-center">
+                                <!-- will be filled by js: either placeholder or image -->
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <h2 class="fw-bold mb-1" id="displayName">Community Member</h2>
+                            <p class="text-muted mb-2" id="displayEmail"><i class="fa-regular fa-envelope me-2"></i>email@example.com</p>
+                            <span class="info-badge" id="memberSince"><i class="fa-regular fa-calendar-check me-2"></i>member</span>
+                            <div class="mt-3">
+                                <a href="logout.html" class="btn btn-outline-custom btn-sm me-2"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a>
+                                <a href="index.html" class="btn btn-outline-secondary rounded-pill btn-sm"><i class="fa-solid fa-arrow-left me-1"></i>Home</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="bio" class="form-label">Bio</label>
-                        <textarea class="form-control" id="bio" name="bio" rows="2"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="avatar" class="form-label">Avatar</label>
-                        <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
-                        <div id="currentAvatar" class="mt-2"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Update Profile</button>
-                </form>
-                <form id="passwordChangeForm" class="mb-4">
-                    <h5>Change Password</h5>
-                    <div class="mb-3">
-                        <label for="current_password" class="form-label">Current Password</label>
-                        <input type="password" class="form-control" id="current_password" name="current_password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="new_password" class="form-label">New Password</label>
-                        <input type="password" class="form-control" id="new_password" name="new_password" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirm_new_password" class="form-label">Confirm New Password</label>
-                        <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
-                    </div>
-                    <button type="submit" class="btn btn-warning">Change Password</button>
-                </form>
-                <a href="index.html" class="btn btn-outline-primary mb-3"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+                </div>
+
+                <!-- Alert / notification area -->
+                <div id="userInfo" class="mb-3"></div>
+
+                <!-- Edit Profile Form (card style) -->
+                <div class="profile-card mb-4">
+                    <h4 class="section-title"><i class="fa-regular fa-pen-to-square"></i> Edit profile</h4>
+                    <form id="profileEditForm" enctype="multipart/form-data">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="username" class="form-label fw-semibold">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label fw-semibold">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="first_name" class="form-label fw-semibold">First name</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="last_name" class="form-label fw-semibold">Last name</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name">
+                            </div>
+                            <div class="col-12">
+                                <label for="bio" class="form-label fw-semibold">Bio</label>
+                                <textarea class="form-control" id="bio" name="bio" rows="2" placeholder="Tell the community about yourself..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label for="avatar" class="form-label fw-semibold"><i class="fa-regular fa-image me-1"></i>Avatar</label>
+                                <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
+                                <div id="currentAvatar" class="mt-3"></div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary-custom px-5"><i class="fa-regular fa-floppy-disk me-2"></i>Update Profile</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Change Password Card -->
+                <div class="profile-card">
+                    <h4 class="section-title"><i class="fa-solid fa-lock"></i> Change password</h4>
+                    <form id="passwordChangeForm">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="current_password" class="form-label fw-semibold">Current password</label>
+                                <input type="password" class="form-control" id="current_password" name="current_password" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="new_password" class="form-label fw-semibold">New password</label>
+                                <input type="password" class="form-control" id="new_password" name="new_password" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="confirm_new_password" class="form-label fw-semibold">Confirm new</label>
+                                <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-warning-custom"><i class="fa-solid fa-key me-2"></i>Change Password</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Event Invitation Pop-out -->
-    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1060;"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:350px; max-width:90vw;">
-      <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInDown">
-        <div class="card-body text-center p-4">
-          <div class="mb-3">
-            <span class="bg-success text-white rounded-circle p-3 mb-2 d-inline-block"><i class="fa-solid fa-calendar-plus fa-2x"></i></span>
-          </div>
-          <h5 class="card-title mb-2 fw-bold" id="eventInviteTitle"></h5>
-          <p class="card-text mb-2" id="eventInviteDesc"></p>
-          <p class="mb-2"><i class="fa-solid fa-location-dot"></i> <span id="eventInviteLocation"></span></p>
-          <p class="mb-2"><i class="fa-solid fa-clock"></i> <span id="eventInviteDate"></span></p>
-          <button type="button" class="btn btn-outline-success px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
-          <a href="events.html" class="btn btn-success px-4 ms-2"><i class="fa-solid fa-users"></i> Join Event</a>
+    <!-- Event Invitation Pop-out (unified) -->
+    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(10,50,80,0.4); backdrop-filter:blur(3px); z-index:1060;"></div>
+    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:360px; max-width:90vw;">
+        <div class="card popup-card shadow-lg border-0 animate__animated animate__fadeInDown">
+            <div class="card-body text-center p-4 p-lg-5">
+                <div class="popup-icon-bg">
+                    <i class="fa-solid fa-calendar-check fa-3x text-white"></i>
+                </div>
+                <h4 class="fw-bold mb-2" id="eventInviteTitle">🌾 Harvest Gathering</h4>
+                <p class="text-muted mb-3" id="eventInviteDesc">Join us for stories and feasting</p>
+                <p class="mb-2"><i class="fa-solid fa-location-dot text-success me-1"></i> <span id="eventInviteLocation">Yapei riverside</span></p>
+                <p class="mb-3"><i class="fa-regular fa-clock text-success me-1"></i> <span id="eventInviteDate">Sat, 19 Nov · 4:00pm</span></p>
+                <div class="d-flex justify-content-center gap-2">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
+                    <a href="events.html" class="btn btn-success rounded-pill px-4 shadow"><i class="fa-solid fa-users me-1"></i>Join Event</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <footer class="footer bg-light py-4">
+    <!-- Enhanced Footer -->
+    <footer class="modern-footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-info-circle"></i> About Us</h5>
-                    <p>Yapei Community Online is a platform for Yapei residents to connect, share information, and support one another.</p>
+                <div class="col-md-4">
+                    <h5><i class="fa-regular fa-compass me-2"></i>Yapei Community</h5>
+                    <p class="small opacity-75">Connecting residents, sharing stories, building together.</p>
                 </div>
-                <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-link"></i> Quick Links</h5>
+                <div class="col-md-4">
+                    <h5><i class="fa-regular fa-link"></i> Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-decoration-none"><i class="fa-solid fa-home"></i> Home</a></li>                                             
-                        <li><a href="about.html" class="text-decoration-none"><i class="fa-solid fa-info-circle"></i> About Us</a></li>
-                        <li><a href="blog.html" class="text-decoration-none"><i class="fa-solid fa-book"></i> Blog</a></li>                                                
+                        <li><a href="index.html" class="text-white text-decoration-none opacity-75"><i class="fa-solid fa-home me-2"></i>Home</a></li>
+                        <li><a href="about.html" class="text-white text-decoration-none opacity-75"><i class="fa-solid fa-circle-info me-2"></i>About</a></li>
+                        <li><a href="blog.html" class="text-white text-decoration-none opacity-75"><i class="fa-solid fa-newspaper me-2"></i>Blog</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-share-nodes"></i> Follow Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none"><i class="fab fa-facebook"></i> Facebook</a></li>
-                        <li><a href="#" class="text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>                                                                               
-                        <li><a href="#" class="text-decoration-none"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    </ul>
+                <div class="col-md-4">
+                    <h5><i class="fa-regular fa-message"></i> Connect</h5>
+                    <a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3 fs-5"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <p>&copy; 2025 Yapei Community Online. All rights reserved.</p>
-            </div>
+            <hr class="opacity-25 mt-4">
+            <p class="text-center small mb-0 opacity-75"><i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. All voices matter.</p>
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script>
-
-    const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-
-    // Protect route: redirect to login if not authenticated
-    const access = localStorage.getItem('access');
-    if (!access) {
-        window.location.href = 'login.html';
-    }
-    // Show user info (from token payload)
-    function parseJwt(token) {
-        try {
-            return JSON.parse(atob(token.split('.')[1]));
-        } catch (e) {
-            return null;
+        // ========== CONFIG ==========
+        const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+        const access = localStorage.getItem('access');
+        if (!access) {
+            window.location.href = 'login.html';
         }
-    }
-    const payload = parseJwt(access);
-    const userInfo = document.getElementById('userInfo');
-    if (payload) {
-        userInfo.innerHTML = `<div class="card p-3"><h4><i class="fa-solid fa-user"></i> ${payload.username || payload.user_id}</h4><p><i class="fa-solid fa-envelope"></i> ${payload.email || ''}</p></div>`;
-    } else {
-        userInfo.innerHTML = '<div class="alert alert-warning">Unable to load user info.</div>';
-    }
 
-    // Fetch and populate profile info
-    fetch(`${BACKEND_URL}/api/profile/`, {
-        headers: { 'Authorization': `Bearer ${access}` }
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.username) document.getElementById('username').value = data.username;
-        if (data.first_name) document.getElementById('first_name').value = data.first_name;
-        if (data.last_name) document.getElementById('last_name').value = data.last_name;
-        if (data.email) document.getElementById('email').value = data.email;
-        if (data.bio) document.getElementById('bio').value = data.bio;
-        if (data.avatar) {
-            document.getElementById('currentAvatar').innerHTML = `<img src="${data.avatar}" alt="Avatar" class="img-thumbnail" style="max-width:100px;">`;
+        // Helper: parse JWT
+        function parseJwt(token) {
+            try { return JSON.parse(atob(token.split('.')[1])); } catch { return null; }
         }
-    });
+        const payload = parseJwt(access);
 
-    // Handle profile update
-    document.getElementById('profileEditForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const formData = new FormData(form);
+        // DOM elements
+        const userInfoDiv = document.getElementById('userInfo');
+        const displayNameSpan = document.getElementById('displayName');
+        const displayEmailSpan = document.getElementById('displayEmail');
+        const memberSinceSpan = document.getElementById('memberSince');
+        const avatarDisplay = document.getElementById('avatarDisplay');
+        const currentAvatarDiv = document.getElementById('currentAvatar');
+
+        // Show quick user info from token
+        if (payload) {
+            displayNameSpan.textContent = payload.username || payload.user_id || 'Community member';
+            displayEmailSpan.innerHTML = `<i class="fa-regular fa-envelope me-2"></i>${payload.email || 'no email'}`;
+        } else {
+            userInfoDiv.innerHTML = '<div class="alert alert-warning">Session expired? Please <a href="login.html">login</a> again.</div>';
+        }
+
+        // ========== FETCH PROFILE AND POPULATE ==========
         fetch(`${BACKEND_URL}/api/profile/`, {
-            method: 'PATCH',
-            headers: { 'Authorization': `Bearer ${access}` },
-            body: formData
+            headers: { 'Authorization': `Bearer ${access}` }
         })
         .then(res => res.json())
         .then(data => {
-            if (data.username) {
-                userInfo.innerHTML = `<div class="alert alert-success">Profile updated!</div>`;
-                if (data.avatar) {
-                    document.getElementById('currentAvatar').innerHTML = `<img src="${data.avatar}" alt="Avatar" class="img-thumbnail" style="max-width:100px;">`;
+            // fill form fields
+            if (data.username) document.getElementById('username').value = data.username;
+            if (data.first_name) document.getElementById('first_name').value = data.first_name;
+            if (data.last_name) document.getElementById('last_name').value = data.last_name;
+            if (data.email) document.getElementById('email').value = data.email;
+            if (data.bio) document.getElementById('bio').value = data.bio;
+
+            // update display area
+            displayNameSpan.textContent = data.first_name 
+                ? `${data.first_name} ${data.last_name || ''}`.trim() 
+                : (data.username || 'Member');
+            displayEmailSpan.innerHTML = `<i class="fa-regular fa-envelope me-2"></i>${data.email || ''}`;
+            if (data.date_joined) {
+                const joined = new Date(data.date_joined).toLocaleDateString('en-US', { year:'numeric', month:'short' });
+                memberSinceSpan.innerHTML = `<i class="fa-regular fa-calendar-check me-2"></i>since ${joined}`;
+            }
+
+            // avatar display
+            avatarDisplay.innerHTML = ''; // clear
+            if (data.avatar) {
+                avatarDisplay.innerHTML = `<img src="${data.avatar}" class="avatar-large" alt="avatar">`;
+                currentAvatarDiv.innerHTML = `<img src="${data.avatar}" alt="Current avatar" class="img-thumbnail" style="max-width:100px;">`;
+            } else {
+                // placeholder with initial
+                const initial = (data.first_name ? data.first_name[0] : (data.username ? data.username[0] : '👤')).toUpperCase();
+                avatarDisplay.innerHTML = `<div class="avatar-placeholder">${initial}</div>`;
+                currentAvatarDiv.innerHTML = '<p class="text-muted small">No avatar yet.</p>';
+            }
+        })
+        .catch(() => {
+            userInfoDiv.innerHTML = '<div class="alert alert-danger">Could not load profile. Try refreshing.</div>';
+        });
+
+        // ========== PROFILE UPDATE ==========
+        document.getElementById('profileEditForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(`${BACKEND_URL}/api/profile/`, {
+                method: 'PATCH',
+                headers: { 'Authorization': `Bearer ${access}` },
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.username) {
+                    userInfoDiv.innerHTML = `<div class="alert alert-success animate__animated animate__fadeIn">✅ Profile updated successfully!</div>`;
+                    // refresh displayed avatar if changed
+                    if (data.avatar) {
+                        avatarDisplay.innerHTML = `<img src="${data.avatar}" class="avatar-large" alt="avatar">`;
+                        currentAvatarDiv.innerHTML = `<img src="${data.avatar}" alt="Avatar" class="img-thumbnail" style="max-width:100px;">`;
+                    }
+                    // update name display
+                    displayNameSpan.textContent = data.first_name 
+                        ? `${data.first_name} ${data.last_name || ''}`.trim() 
+                        : (data.username || 'Member');
+                } else {
+                    userInfoDiv.innerHTML = `<div class="alert alert-danger">${JSON.stringify(data)}</div>`;
                 }
-            } else {
-                userInfo.innerHTML = `<div class="alert alert-danger">${JSON.stringify(data)}</div>`;
-            }
-        })
-        .catch(() => {
-            userInfo.innerHTML = '<div class="alert alert-danger">Update failed.</div>';
+                setTimeout(() => { userInfoDiv.innerHTML = ''; }, 4000);
+            })
+            .catch(() => {
+                userInfoDiv.innerHTML = '<div class="alert alert-danger">Update failed. Check connection.</div>';
+            });
         });
-    });
 
-    // Handle password change
-    document.getElementById('passwordChangeForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const current_password = document.getElementById('current_password').value;
-        const new_password = document.getElementById('new_password').value;
-        const confirm_new_password = document.getElementById('confirm_new_password').value;
-        if (new_password !== confirm_new_password) {
-            userInfo.innerHTML = '<div class="alert alert-danger">New passwords do not match.</div>';
-            return;
+        // ========== PASSWORD CHANGE ==========
+        document.getElementById('passwordChangeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const current_password = document.getElementById('current_password').value;
+            const new_password = document.getElementById('new_password').value;
+            const confirm = document.getElementById('confirm_new_password').value;
+
+            if (new_password !== confirm) {
+                userInfoDiv.innerHTML = '<div class="alert alert-danger">❌ New passwords do not match.</div>';
+                return;
+            }
+
+            fetch(`${BACKEND_URL}/api/change-password/`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${access}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ current_password, new_password })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.detail) {
+                    userInfoDiv.innerHTML = `<div class="alert alert-success">✅ ${data.detail}</div>`;
+                    document.getElementById('passwordChangeForm').reset();
+                } else {
+                    userInfoDiv.innerHTML = `<div class="alert alert-danger">${JSON.stringify(data)}</div>`;
+                }
+                setTimeout(() => { userInfoDiv.innerHTML = ''; }, 4000);
+            })
+            .catch(() => {
+                userInfoDiv.innerHTML = '<div class="alert alert-danger">Password change failed.</div>';
+            });
+        });
+
+        // ========== DYNAMIC NAVBAR ==========
+        function updateNavbarLinks() {
+            const userLinks = document.getElementById('navbar-user-links');
+            if (!userLinks) return;
+            const isLoggedIn = !!localStorage.getItem('access');
+            userLinks.innerHTML = isLoggedIn
+                ? `<li class="nav-item"><a class="nav-link active" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
+                   <li class="nav-item"><a class="nav-link" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
+                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
+                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
         }
-        fetch(`${BACKEND_URL}/api/change-password/`, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${access}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ current_password, new_password })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.detail) {
-                userInfo.innerHTML = `<div class="alert alert-success">${data.detail}</div>`;
-                document.getElementById('passwordChangeForm').reset();
-            } else {
-                userInfo.innerHTML = `<div class="alert alert-danger">${JSON.stringify(data)}</div>`;
+        updateNavbarLinks();
+
+        // ========== EVENT INVITATION POPUP ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            const invitePopup = document.getElementById('eventInvitePopup');
+            const overlay = document.getElementById('eventInviteOverlay');
+            const closeBtn = document.getElementById('closeEventInvitePopup');
+            if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
+            const excluded = ['login.html', 'register.html'];
+            if (excluded.some(p => window.location.pathname.endsWith(p))) return;
+            if (Math.random() < 0.5) {
+                fetch(`${BACKEND_URL}/api/events/upcoming/`)
+                    .then(res => res.json())
+                    .then(event => {
+                        if (event && event.deadline && new Date(event.deadline) > new Date()) {
+                            document.getElementById('eventInviteTitle').textContent = event.title || 'Community Event';
+                            document.getElementById('eventInviteDesc').textContent = event.description || 'Join us!';
+                            document.getElementById('eventInviteLocation').textContent = event.location || 'Yapei';
+                            document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString() : 'Soon';
+                            invitePopup.style.display = 'block';
+                            overlay.style.display = 'block';
+                            sessionStorage.setItem('eventInvitePopupShown', 'true');
+                        }
+                    })
+                    .catch(() => {});
             }
-        })
-        .catch(() => {
-            userInfo.innerHTML = '<div class="alert alert-danger">Password change failed.</div>';
+            closeBtn.addEventListener('click', function() {
+                overlay.style.display = 'none';
+                invitePopup.style.display = 'none';
+            });
+            overlay.addEventListener('click', () => closeBtn.click());
         });
-    });
-
-    // Navbar dynamic links
-function updateNavbarLinks() {
-  const userLinks = document.getElementById('navbar-user-links');
-  if (!userLinks) return;
-  const isLoggedIn = !!localStorage.getItem('access');
-  userLinks.innerHTML = isLoggedIn
-    ? `<li class=\"nav-item\"><a class=\"nav-link\" href=\"profile.html\"><i class=\"fa-solid fa-user\"></i> Profile</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.html\"><i class=\"fa-solid fa-sign-out-alt\"></i> Logout</a></li>`
-    : `<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.html\"><i class=\"fa-solid fa-sign-in-alt\"></i> Login</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"register.html\"><i class=\"fa-solid fa-user-plus\"></i> Register</a></li>`;
-}
-document.addEventListener('DOMContentLoaded', updateNavbarLinks);
-
-    // Event Invitation Pop-out Logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const invitePopup = document.getElementById('eventInvitePopup');
-      const inviteOverlay = document.getElementById('eventInviteOverlay');
-      const closeInviteBtn = document.getElementById('closeEventInvitePopup');
-      // Only show once per session
-      const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
-      // Don't show if on login/register page
-      const excludedPages = ['login.html', 'register.html'];
-      if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
-      // Random chance (50%) to show if not already shown
-      if (!inviteShown && Math.random() < 0.5) {
-        fetch(`${BACKEND_URL}/api/events/upcoming/`)
-          .then(res => res.json())
-          .then(event => {
-            if (event && event.deadline) {
-              const deadline = new Date(event.deadline);
-              const now = new Date();
-              if (now < deadline) {
-                document.getElementById('eventInviteTitle').textContent = event.title;
-                document.getElementById('eventInviteDesc').textContent = event.description;
-                document.getElementById('eventInviteLocation').textContent = event.location;
-                document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
-                invitePopup.style.display = 'block';
-                inviteOverlay.style.display = 'block';
-                sessionStorage.setItem('eventInvitePopupShown', 'true');
-              }
-            }
-          });
-      }
-      closeInviteBtn.addEventListener('click', function() {
-        invitePopup.classList.add('animate__fadeOutUp');
-        inviteOverlay.style.display = 'none';
-        setTimeout(() => { invitePopup.style.display = 'none'; invitePopup.classList.remove('animate__fadeOutUp'); }, 600);
-      });
-      inviteOverlay.addEventListener('click', function() {
-        closeInviteBtn.click();
-      });
-    });
     </script>
 </body>
 </html>
