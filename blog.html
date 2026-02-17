@@ -3,229 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yapei Community Online Blog</title>
+    <title>Yapei Stories · Community Blog</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" >
+    <!-- Bootstrap 5 + Font Awesome + Animate.css + nice fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- custom enhancements: fresh blog styling, card hover, refined search/pagination -->
+    <style>
+        :root {
+            --primary-deep: #0b4b7a;
+            --primary-soft: #e2f0fd;
+            --accent-gold: #f9b84a;
+            --card-round: 28px;
+        }
+        body {
+            background: #f4f9ff;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #0b4b7a 0%, #1f6ca3 100%) !important;
+            box-shadow: 0 10px 25px -10px #0a3d61;
+        }
+        .navbar-brand i {
+            color: var(--accent-gold);
+            margin-right: 8px;
+        }
+        .nav-link {
+            border-radius: 40px;
+            margin: 0 6px;
+            padding: 0.5rem 1.2rem !important;
+            font-weight: 500;
+        }
+        .nav-link.active, .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        /* blog header with a subtle pattern */
+        .blog-header {
+            background: #fef6e9;
+            border-bottom: 2px solid rgba(249,184,74,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-header::after {
+            content: "✍️📖";
+            font-size: 140px;
+            position: absolute;
+            right: 20px;
+            bottom: -30px;
+            opacity: 0.1;
+            transform: rotate(5deg);
+            pointer-events: none;
+        }
+        /* search bar */
+        .search-wrapper {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+        }
+        .search-wrapper i {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            color: var(--primary-deep);
+            font-size: 1.2rem;
+        }
+        .search-input {
+            border: none;
+            background: white;
+            border-radius: 60px;
+            padding: 0.9rem 1rem 0.9rem 3.2rem;
+            box-shadow: 0 12px 22px -12px rgba(0,70,120,0.2);
+            width: 100%;
+            font-size: 1.1rem;
+            transition: box-shadow 0.2s;
+        }
+        .search-input:focus {
+            outline: 2px solid var(--accent-gold);
+            box-shadow: 0 18px 28px -12px #0b4b7a;
+        }
+        /* blog cards – modern & airy */
+        .blog-card {
+            border: none;
+            border-radius: var(--card-round);
+            overflow: hidden;
+            background: white;
+            transition: all 0.25s ease;
+            box-shadow: 0 14px 26px -8px rgba(11,75,122,0.12);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 45px -14px #0b4b7acc;
+        }
+        .blog-card-img {
+            height: 220px;
+            object-fit: cover;
+            background: #aecfeb;
+            transition: transform 0.5s;
+        }
+        .blog-card:hover .blog-card-img {
+            transform: scale(1.02);
+        }
+        .blog-card .card-body {
+            padding: 1.6rem 1.4rem;
+            flex: 1;
+        }
+        .blog-card .card-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 0.8rem;
+        }
+        .blog-card .card-text {
+            color: #2c4056;
+            opacity: 0.85;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card .author-row {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0 0.8rem;
+        }
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(145deg, #1c6ea9, #0b4b7a);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+        .btn-blog {
+            background: transparent;
+            border: 2px solid var(--primary-deep);
+            border-radius: 50px;
+            padding: 0.45rem 1.8rem;
+            font-weight: 600;
+            color: var(--primary-deep);
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-blog:hover {
+            background: var(--primary-deep);
+            color: white;
+        }
+        .card-footer {
+            background: transparent;
+            border-top: 1px solid rgba(11,75,122,0.1);
+            padding: 1rem 1.4rem;
+            font-size: 0.95rem;
+            color: #3f5569;
+        }
+        /* pagination */
+        .pagination-custom {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .page-link-custom {
+            display: block;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            background: white;
+            color: var(--primary-deep);
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(11,75,122,0.2);
+            transition: all 0.15s;
+        }
+        .page-link-custom.active {
+            background: var(--primary-deep);
+            color: white;
+            border-color: var(--primary-deep);
+        }
+        .page-link-custom:hover {
+            background: #eef4fa;
+            border-color: var(--primary-deep);
+        }
+        /* event popup polished */
+        .popup-card {
+            border-radius: 42px !important;
+            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.95) !important;
+            border: 1px solid rgba(255,215,120,0.5);
+            box-shadow: 0 40px 70px -12px #0a3d61;
+        }
+        .popup-icon {
+            background: linear-gradient(145deg, #23995e, #1b7e4b);
+            width: 80px;
+            height: 80px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+        }
+        /* footer upgrade */
+        .modern-footer {
+            background: #0b4b7a;
+            color: white;
+            padding: 2rem 0 1.2rem;
+            margin-top: 3rem;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.9);
+            margin: 0 12px;
+            transition: opacity 0.2s;
+            font-size: 1.2rem;
+        }
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+        hr.light {
+            background: rgba(255,255,255,0.2);
+            height: 1px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><i class="fa-solid fa-users"></i> Yapei Community Online</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto" id="navbar-links">
-            <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link active" href="blog.html"><i class="fa-solid fa-book"></i> Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-            <span id="navbar-user-links"></span>
-          </ul>
+    <!-- Enhanced Navbar (active state on blog) -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-semibold fs-3" href="index.html"><i class="fa-solid fa-people-group"></i> Yapei Community</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center" id="navbar-links">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
+                    <span id="navbar-user-links" class="d-flex gap-1"></span>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <!-- Blog Header -->
-    <header class="py-5 bg-light text-center">
-      <div class="container">
-        <h2 class="fw-bold">Community Blog</h2>
-        <p class="lead">Latest stories, news, and updates from Yapei Community members.</p>
-      </div>
+    <!-- Blog header (warmer) -->
+    <header class="blog-header py-5 text-center">
+        <div class="container">
+            <span class="badge bg-warning bg-opacity-25 text-dark px-4 py-2 rounded-pill mb-3"><i class="fa-regular fa-pen-to-square me-2"></i>Voices of Yapei</span>
+            <h1 class="display-5 fw-bold mb-3">📚 Community Blog</h1>
+            <p class="lead fs-4 mx-auto" style="max-width: 700px;">Latest stories, news, and updates from Yapei Community members — rooted in tradition, shared with heart.</p>
+        </div>
     </header>
 
-    <!-- Blog Cards -->
-    <section class="container py-5">
-      <div class="row g-4"><!-- Blog posts will be loaded here by JS --></div>
-      <!-- Pagination -->
-      <nav class="mt-5">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-      </nav>
+    <!-- Search bar integrated -->
+    <div class="container mt-4">
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="search-input" id="blogSearch" placeholder="Search by title, author or words..." autocomplete="off">
+        </div>
+    </div>
+
+    <!-- Blog Cards Grid (dynamic) -->
+    <section class="container py-2">
+        <div class="row g-4" id="blogGrid"><!-- Blog posts will be loaded here by JS --></div>
+        <!-- Pagination container (custom) -->
+        <div id="blogPagination" class="pagination-custom mt-5"></div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-primary text-white text-center py-3 mt-5">
-      <div class="container">
-        <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
-        <div class="mt-2">
-          <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-          <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
-          <a href="#" class="text-white"><i class="fab fa-instagram fa-lg"></i></a>
+    <!-- Event Invitation Pop-out (elegant, matching blog style) -->
+    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(10,50,80,0.4); backdrop-filter:blur(3px); z-index:1060;"></div>
+    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:360px; max-width:90vw;">
+        <div class="card popup-card shadow-lg border-0 animate__animated animate__fadeInDown">
+            <div class="card-body text-center p-4 p-lg-5">
+                <div class="popup-icon">
+                    <i class="fa-solid fa-calendar-check fa-3x text-white"></i>
+                </div>
+                <h4 class="fw-bold mb-2" id="eventInviteTitle">🌾 Harvest Gathering</h4>
+                <p class="text-muted mb-3" id="eventInviteDesc">Join us for stories and feasting</p>
+                <p class="mb-2"><i class="fa-solid fa-location-dot text-success me-1"></i> <span id="eventInviteLocation">Yapei riverside</span></p>
+                <p class="mb-3"><i class="fa-regular fa-clock text-success me-1"></i> <span id="eventInviteDate">Sat, 19 Nov · 4:00pm</span></p>
+                <div class="d-flex justify-content-center gap-2">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
+                    <a href="events.html" class="btn btn-success rounded-pill px-4 shadow"><i class="fa-solid fa-users me-1"></i>Join Event</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </footer>
-
-    <!-- Event Invitation Pop-out -->
-    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1060;"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:350px; max-width:90vw;">
-      <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInDown">
-        <div class="card-body text-center p-4">
-          <div class="mb-3">
-            <span class="bg-success text-white rounded-circle p-3 mb-2 d-inline-block"><i class="fa-solid fa-calendar-plus fa-2x"></i></span>
-          </div>
-          <h5 class="card-title mb-2 fw-bold" id="eventInviteTitle"></h5>
-          <p class="card-text mb-2" id="eventInviteDesc"></p>
-          <p class="mb-2"><i class="fa-solid fa-location-dot"></i> <span id="eventInviteLocation"></span></p>
-          <p class="mb-2"><i class="fa-solid fa-clock"></i> <span id="eventInviteDate"></span></p>
-          <button type="button" class="btn btn-outline-success px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
-          <a href="events.html" class="btn btn-success px-4 ms-2"><i class="fa-solid fa-users"></i> Join Event</a>
-        </div>
-      </div>
     </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0"><i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. All voices matter.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end footer-links">
+                    <a href="#" class="me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="me-3" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <hr class="light mt-3">
+            <p class="small text-center mb-0 opacity-75">Built with <i class="fa-regular fa-heart text-danger"></i> by the community</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+        (function() {
+            const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
 
-    // Navbar dynamic links
-    function updateNavbarLinks() {
-      const userLinks = document.getElementById('navbar-user-links');
-      if (!userLinks) return;
-      const isLoggedIn = !!localStorage.getItem('access');
-      userLinks.innerHTML = isLoggedIn
-        ? `<li class=\"nav-item\"><a class=\"nav-link\" href=\"profile.html\"><i class=\"fa-solid fa-user\"></i> Profile</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.html\"><i class=\"fa-solid fa-sign-out-alt\"></i> Logout</a></li>`
-        : `<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.html\"><i class=\"fa-solid fa-sign-in-alt\"></i> Login</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"register.html\"><i class=\"fa-solid fa-user-plus\"></i> Register</a></li>`;
-    }
-    document.addEventListener('DOMContentLoaded', updateNavbarLinks);
-
-    // Blog posts container
-    const blogRow = document.querySelector('.row.g-4');
-    const searchInput = document.createElement('input');
-    searchInput.className = 'form-control mb-4';
-    searchInput.placeholder = 'Search blog posts...';
-    blogRow.parentNode.insertBefore(searchInput, blogRow);
-
-    let allPosts = [];
-    let currentPage = 1;
-    const pageSize = 6;
-
-    // Fetch posts/messages from backend
-    function fetchPosts() {
-      fetch(`${BACKEND_URL}/api/messages/`)
-        .then(res => res.json())
-        .then(data => {
-          allPosts = data;
-          renderPosts();
-        });
-    }
-
-    // Render posts with pagination and search
-    function renderPosts() {
-      let filtered = allPosts.filter(p => p.content.toLowerCase().includes(searchInput.value.toLowerCase()) || p.user.toLowerCase().includes(searchInput.value.toLowerCase()));
-      const totalPages = Math.ceil(filtered.length / pageSize);
-      currentPage = Math.min(currentPage, totalPages) || 1;
-      const start = (currentPage - 1) * pageSize;
-      const end = start + pageSize;
-      const pagePosts = filtered.slice(start, end);
-      blogRow.innerHTML = '';
-      pagePosts.forEach(post => {
-        const card = document.createElement('div');
-        card.className = 'col-md-6 col-lg-4';
-        card.innerHTML = `
-          <div class="card h-100 shadow-sm">
-            <img src="${post.media ? post.media : 'assets/blog1.jpg'}" class="card-img-top" alt="Blog Post">
-            <div class="card-body">
-              <h5 class="card-title">${post.title ? post.title : (post.content.substring(0, 40) + '...')}</h5>
-              <p class="card-text">${post.content}</p>
-              <div class="d-flex align-items-center mb-2">
-                <img src="${post.author_avatar ? post.author_avatar : 'assets/author1.jpg'}" class="rounded-circle me-2" width="32" height="32" alt="Author">
-                <span class="small text-muted">by ${post.user}</span>
-              </div>
-              <a href="post.html?message_id=${post.id}" class="btn btn-primary btn-sm">Read More</a>
-            </div>
-            <div class="card-footer text-muted small">
-              <i class="fa-regular fa-calendar"></i> ${new Date(post.timestamp).toLocaleDateString()}
-            </div>
-          </div>
-        `;
-        blogRow.appendChild(card);
-      });
-      // Pagination controls
-      let pagination = document.getElementById('blog-pagination');
-      if (!pagination) {
-        pagination = document.createElement('nav');
-        pagination.id = 'blog-pagination';
-        blogRow.parentNode.appendChild(pagination);
-      }
-      pagination.innerHTML = '';
-      if (totalPages > 1) {
-        const ul = document.createElement('ul');
-        ul.className = 'pagination justify-content-center';
-        for (let i = 1; i <= totalPages; i++) {
-          const li = document.createElement('li');
-          li.className = 'page-item' + (i === currentPage ? ' active' : '');
-          const a = document.createElement('a');
-          a.className = 'page-link';
-          a.href = '#';
-          a.textContent = i;
-          a.onclick = (e) => { e.preventDefault(); currentPage = i; renderPosts(); };
-          li.appendChild(a);
-          ul.appendChild(li);
-        }
-        pagination.appendChild(ul);
-      }
-    }
-
-    // Search blog posts
-    searchInput.addEventListener('input', function() {
-      renderPosts();
-    });
-
-    // Live updates (polling every 5 minutes)
-    setInterval(fetchPosts, 500000);
-
-    // Initial load
-    fetchPosts();
-
-    // Event Invitation Pop-out Logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const invitePopup = document.getElementById('eventInvitePopup');
-      const inviteOverlay = document.getElementById('eventInviteOverlay');
-      const closeInviteBtn = document.getElementById('closeEventInvitePopup');
-      // Only show once per session
-      const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
-      // Don't show if on login/register page
-      const excludedPages = ['login.html', 'register.html'];
-      if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
-      // Random chance (50%) to show if not already shown
-      if (!inviteShown && Math.random() < 0.5) {
-        fetch(`${BACKEND_URL}/api/events/upcoming/`)
-          .then(res => res.json())
-          .then(event => {
-            if (event && event.deadline) {
-              const deadline = new Date(event.deadline);
-              const now = new Date();
-              if (now < deadline) {
-                document.getElementById('eventInviteTitle').textContent = event.title;
-                document.getElementById('eventInviteDesc').textContent = event.description;
-                document.getElementById('eventInviteLocation').textContent = event.location;
-                document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
-                invitePopup.style.display = 'block';
-                inviteOverlay.style.display = 'block';
-                sessionStorage.setItem('eventInvitePopupShown', 'true');
-              }
+            // dynamic navbar (login/logout)
+            function updateNavbarLinks() {
+                const userLinks = document.getElementById('navbar-user-links');
+                if (!userLinks) return;
+                const isLoggedIn = !!localStorage.getItem('access');
+                userLinks.innerHTML = isLoggedIn
+                    ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
+                       <li class="nav-item"><a class="nav-link" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
+                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
+                       <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
             }
-          });
-      }
-      closeInviteBtn.addEventListener('click', function() {
-        invitePopup.classList.add('animate__fadeOutUp');
-        inviteOverlay.style.display = 'none';
-        setTimeout(() => { invitePopup.style.display = 'none'; invitePopup.classList.remove('animate__fadeOutUp'); }, 600);
-      });
-      inviteOverlay.addEventListener('click', function() {
-        closeInviteBtn.click();
-      });
-    });
+
+            // DOM elements
+            const blogGrid = document.getElementById('blogGrid');
+            const searchInput = document.getElementById('blogSearch');
+            const paginationDiv = document.getElementById('blogPagination');
+
+            let allPosts = [];
+            let currentPage = 1;
+            const pageSize = 6;
+
+            // fetch posts from backend
+            function fetchPosts() {
+                fetch(`${BACKEND_URL}/api/messages/`)
+                    .then(res => res.json())
+                    .then(data => {
+                        allPosts = Array.isArray(data) ? data : [];
+                        renderPosts();
+                    })
+                    .catch(err => {
+                        blogGrid.innerHTML = `<div class="col-12"><div class="alert alert-warning">⚠️ Could not load posts. Please refresh.</div></div>`;
+                    });
+            }
+
+            // render cards + pagination
+            function renderPosts() {
+                if (!blogGrid) return;
+                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+                let filtered = allPosts.filter(post => 
+                    (post.content && post.content.toLowerCase().includes(searchTerm)) || 
+                    (post.user && post.user.toLowerCase().includes(searchTerm))
+                );
+                // if no content, at least show something
+                if (filtered.length === 0 && allPosts.length > 0 && searchTerm === '') filtered = allPosts; 
+
+                const totalPages = Math.ceil(filtered.length / pageSize);
+                if (currentPage > totalPages) currentPage = totalPages || 1;
+                const start = (currentPage - 1) * pageSize;
+                const end = Math.min(start + pageSize, filtered.length);
+                const pagePosts = filtered.slice(start, end);
+
+                blogGrid.innerHTML = '';
+                if (pagePosts.length === 0) {
+                    blogGrid.innerHTML = '<div class="col-12 text-center py-5"><i class="fa-regular fa-face-frown fa-3x mb-3"></i><h4>No posts match</h4><p class="text-muted">Try different keywords.</p></div>';
+                } else {
+                    pagePosts.forEach(post => {
+                        const col = document.createElement('div');
+                        col.className = 'col-md-6 col-lg-4';
+                        // fallback avatar
+                        const authorInitial = post.user ? post.user.charAt(0).toUpperCase() : 'Y';
+                        const postTitle = post.content ? (post.content.length > 45 ? post.content.substring(0,45)+'…' : post.content) : 'Community story';
+                        const postSnippet = post.content ? (post.content.length > 100 ? post.content.substring(0,100)+'…' : post.content) : 'Read more about this community update.';
+                        const postDate = post.timestamp ? new Date(post.timestamp).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' }) : 'recent';
+                        const imageUrl = post.media && post.media !== '' ? post.media : 'assets/blog-default.jpg'; // fallback if missing
+
+                        col.innerHTML = `
+                            <div class="blog-card animate__animated animate__fadeInUp">
+                                <img src="${imageUrl}" class="blog-card-img" alt="blog image" onerror="this.src='https://placehold.co/600x400/0b4b7a/white?text=Yapei'">
+                                <div class="card-body">
+                                    <h5 class="card-title">${postTitle}</h5>
+                                    <div class="author-row">
+                                        <div class="author-avatar">${authorInitial}</div>
+                                        <span class="fw-semibold">${post.user || 'Elder'}</span>
+                                    </div>
+                                    <p class="card-text">${postSnippet}</p>
+                                    <a href="post.html?message_id=${post.id}" class="btn btn-blog mt-2"><i class="fa-regular fa-book-open me-2"></i>Read more</a>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fa-regular fa-calendar me-1"></i> ${postDate}
+                                </div>
+                            </div>
+                        `;
+                        blogGrid.appendChild(col);
+                    });
+                }
+
+                // pagination controls (custom)
+                paginationDiv.innerHTML = '';
+                if (totalPages > 1) {
+                    for (let i = 1; i <= totalPages; i++) {
+                        const btn = document.createElement('a');
+                        btn.href = '#';
+                        btn.className = `page-link-custom ${i === currentPage ? 'active' : ''}`;
+                        btn.textContent = i;
+                        btn.onclick = (e) => {
+                            e.preventDefault();
+                            if (i !== currentPage) {
+                                currentPage = i;
+                                renderPosts();
+                                window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                            }
+                        };
+                        paginationDiv.appendChild(btn);
+                    }
+                }
+            }
+
+            // search handler
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    currentPage = 1; // reset to first page on search
+                    renderPosts();
+                });
+            }
+
+            // periodic refresh (5 min)
+            setInterval(fetchPosts, 300000); // 300000ms = 5min
+
+            // Event popup (refined)
+            function setupEventPopup() {
+                const invitePopup = document.getElementById('eventInvitePopup');
+                const overlay = document.getElementById('eventInviteOverlay');
+                const closeBtn = document.getElementById('closeEventInvitePopup');
+                if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
+                const excluded = ['login.html', 'register.html'];
+                if (excluded.some(p => window.location.pathname.endsWith(p))) return;
+                // random ~40% chance
+                if (Math.random() > 0.4) return;
+
+                fetch(`${BACKEND_URL}/api/events/upcoming/`)
+                    .then(res => res.json())
+                    .then(event => {
+                        if (event && event.deadline && new Date(event.deadline) > new Date()) {
+                            document.getElementById('eventInviteTitle').innerText = event.title || 'Community meet-up';
+                            document.getElementById('eventInviteDesc').innerText = event.description || 'Share stories & enjoy company';
+                            document.getElementById('eventInviteLocation').innerText = event.location || 'Yapei centre';
+                            document.getElementById('eventInviteDate').innerText = event.date ? new Date(event.date).toLocaleString() : 'This Saturday';
+                            invitePopup.style.display = 'block';
+                            overlay.style.display = 'block';
+                            sessionStorage.setItem('eventInvitePopupShown', 'true');
+                        }
+                    })
+                    .catch(() => {});
+
+                closeBtn.addEventListener('click', () => {
+                    overlay.style.display = 'none';
+                    invitePopup.style.display = 'none';
+                });
+                overlay.addEventListener('click', () => closeBtn.click());
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                updateNavbarLinks();
+                fetchPosts();
+                setupEventPopup();
+            });
+        })();
     </script>
+    <!-- small fix for missing images -->
+    <style>
+        .blog-card-img[src="assets/blog-default.jpg"] { background: #bed9f2; object-fit: cover; }
+    </style>
 </body>
 </html>
-
