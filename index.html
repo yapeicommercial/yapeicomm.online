@@ -4,218 +4,403 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yapei Community Online</title>
+    <title>Yapei Community · home of togetherness</title>
+    <!-- Bootstrap 5 + Icons + Animate.css + refined fonts -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- custom enhancements: fresh palette, smooth cards, floating popups -->
+    <style>
+        :root {
+            --primary-deep: #0b4b7a;
+            --primary-soft: #e2f0fd;
+            --accent-sun: #f9b84a;
+            --card-radius: 32px;
+            --footer-bg: #f0f5fb;
+        }
+        body {
+            background: #f9fcff;
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        }
+        /* navbar polish */
+        .navbar {
+            background: linear-gradient(105deg, var(--primary-deep) 0%, #1c6ea9 100%) !important;
+            box-shadow: 0 12px 20px -12px #0b4b7a80;
+            padding: 0.9rem 1rem;
+        }
+        .navbar-brand i {
+            color: var(--accent-sun);
+            font-size: 1.6rem;
+            margin-right: 10px;
+        }
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            border-radius: 40px;
+            margin: 0 6px;
+            padding: 0.5rem 1.2rem !important;
+            transition: background 0.2s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(3px);
+        }
+        /* hero section with subtle pattern */
+        .hero-section {
+            background: linear-gradient(125deg, #fff5e6 0%, #ffffff 70%);
+            border-bottom: 1px solid rgba(0,70,130,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: "🌾☀️";
+            font-size: 160px;
+            position: absolute;
+            right: 10px;
+            bottom: -20px;
+            opacity: 0.06;
+            pointer-events: none;
+            transform: rotate(10deg);
+        }
+        .hero-section h1 {
+            color: var(--primary-deep);
+            text-shadow: 0 4px 12px rgba(255,200,100,0.3);
+        }
+        .btn-primary-custom {
+            background: var(--primary-deep);
+            border: none;
+            border-radius: 60px;
+            padding: 0.8rem 2.5rem;
+            font-weight: 600;
+            box-shadow: 0 10px 18px -8px #0b4b7a;
+            transition: transform 0.15s ease;
+            color: white;
+        }
+        .btn-primary-custom:hover {
+            background: #135f94;
+            transform: scale(1.02);
+            color: white;
+        }
+        .btn-outline-custom {
+            border-radius: 60px;
+            padding: 0.7rem 2rem;
+            font-weight: 500;
+            border: 2px solid var(--primary-deep);
+            color: var(--primary-deep);
+        }
+        /* feature cards */
+        .feature-card {
+            border: none;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            transition: all 0.25s ease;
+            background: white;
+            box-shadow: 0 12px 28px -12px rgba(0,60,120,0.18);
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 40px -12px #0b4b7a99;
+        }
+        .feature-card img {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .feature-card:hover img {
+            transform: scale(1.02);
+        }
+        .feature-card .card-body {
+            padding: 2rem 1.5rem;
+        }
+        .feature-card .card-title i {
+            color: var(--accent-sun);
+            margin-right: 8px;
+            font-size: 1.7rem;
+            vertical-align: middle;
+        }
+        /* popup cards (login suggestion + event) */
+        .popup-card {
+            border-radius: 42px !important;
+            border: 1px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(14px);
+            background: rgba(255,255,255,0.92) !important;
+            box-shadow: 0 40px 60px -12px #0b3a5b;
+        }
+        .popup-icon-bg {
+            background: linear-gradient(145deg, #1c6ea9, #0b4b7a);
+            width: 80px;
+            height: 80px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            box-shadow: 0 12px 16px -8px #0b4b7a80;
+        }
+        /* footer updated */
+        .modern-footer {
+            background: var(--footer-bg);
+            border-top: 3px solid white;
+            color: #1d2f3f;
+        }
+        .modern-footer a {
+            color: #1d4b6e;
+            font-weight: 500;
+            transition: color 0.1s;
+        }
+        .modern-footer a:hover {
+            color: var(--primary-deep);
+            text-decoration: underline;
+        }
+        .footer-heading i {
+            color: var(--accent-sun);
+            margin-right: 8px;
+        }
+        .list-unstyled li {
+            margin-bottom: 8px;
+        }
+        /* quick link hover effect */
+        .hover-lift {
+            transition: transform 0.15s, box-shadow 0.2s;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fa-solid fa-users"></i> Yapei Community Online</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto" id="navbar-links">
-            <li class="nav-item"><a class="nav-link active" href="#"><i class="fa-solid fa-home"></i> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-book"></i> Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle"></i> About</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-            <span id="navbar-user-links"></span>
-          </ul>
+    <!-- Enhanced Navbar (warmer, with active state) -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-semibold fs-3" href="#"><i class="fa-solid fa-people-group"></i> Yapei Community</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center" id="navbar-links">
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
+                    <span id="navbar-user-links" class="d-flex gap-1"></span>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="py-5 text-center bg-light">
-      <div class="container">
-        <h1 class="display-4 fw-bold"><i class="fa-solid fa-users"></i> Welcome to Yapei Community Online</h1>
-        <p class="lead"><i class="fa-solid fa-comments"></i> Connect, share, and grow with your community. Discover stories, events, and opportunities.</p>
-        <a href="blog.html" class="btn btn-primary btn-lg"><i class="fa-solid fa-book-open"></i> Read Our Blog</a>
-      </div>
+    <!-- Hero section (fresh & welcoming) -->
+    <section class="hero-section py-5 text-center">
+        <div class="container position-relative" style="z-index: 2;">
+            <span class="badge bg-warning bg-opacity-25 text-dark px-4 py-2 rounded-pill mb-3"><i class="fa-regular fa-hand-peace me-2"></i>Elder's greetings · Sankofa</span>
+            <h1 class="display-4 fw-bold mb-3"><i class="fa-solid fa-heart-circle-plus me-3 text-primary" style="color: var(--accent-sun) !important;"></i>Welcome to Yapei Online</h1>
+            <p class="lead fs-3 mx-auto" style="max-width: 750px; color: #174a6b;"><i class="fa-solid fa-quote-left me-2 opacity-50"></i>Connect, share, and grow with your community. Discover stories, events, and opportunities.<i class="fa-solid fa-quote-right ms-2 opacity-50"></i></p>
+            <div class="mt-5 d-flex justify-content-center gap-3">
+                <a href="blog.html" class="btn btn-primary-custom"><i class="fa-solid fa-book-open me-2"></i>Read Our Blog</a>
+                <a href="#featured-cards" class="btn btn-outline-custom bg-white"><i class="fa-regular fa-compass me-2"></i>Explore</a>
+            </div>
+        </div>
     </section>
 
-    <!-- Featured Cards -->
-    <section class="container py-5">
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card shadow-sm h-100">
-            <img src="assets/community1.jpg" class="card-img-top" alt="Community Event">
-            <div class="card-body">
-              <h5 class="card-title"><i class="fa-solid fa-calendar-days"></i> Upcoming Events</h5>
-              <p class="card-text">Stay updated with the latest events and activities in Yapei.</p>
-              <a href="events.html" class="btn btn-outline-primary">Learn More</a>
-            </div>
-          </div>
+    <!-- Featured Cards (now with sleek animation and gradient hover) -->
+    <section class="container py-5" id="featured-cards">
+        <div class="text-center mb-5">
+            <span class="text-uppercase text-primary fw-semibold tracking-wide">community pillars</span>
+            <h2 class="fw-bold display-6">What's happening in Yapei</h2>
         </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm h-100">
-            <img src="assets/blogpage.jpg" class="card-img-top" alt="Blog Post">
-            <div class="card-body">
-              <h5 class="card-title"><i class="fa-solid fa-pen-nib"></i> Community Stories</h5>
-              <p class="card-text">Read inspiring stories and articles from community members.</p>
-              <a href="blog.html" class="btn btn-outline-primary">Read Blog</a>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card card animate__animated animate__fadeInUp" style="animation-delay: 0.05s;">
+                    <img src="assets/community1.jpg" class="card-img-top" alt="Community event" onerror="this.src='https://placehold.co/600x400/0b4b7a/white?text=Yapei+Gathering'">
+                    <div class="card-body">
+                        <h5 class="card-title fs-3"><i class="fa-solid fa-calendar-days"></i> Upcoming Events</h5>
+                        <p class="card-text text-secondary-emphasis">Weekly durbar, health screening, and harvest festival — stay connected.</p>
+                        <a href="events.html" class="btn btn-outline-custom mt-2"><i class="fa-regular fa-eye me-2"></i>Learn More</a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card shadow-sm h-100">
-            <img src="assets/Yapei-contact.jpg" class="card-img-top" alt="Contact">
-            <div class="card-body">
-              <h5 class="card-title"><i class="fa-solid fa-envelope"></i> Get Involved</h5>
-              <p class="card-text">Contact us to join, volunteer, or share your ideas for the community.</p>
-              <a href="contact.html" class="btn btn-outline-primary">Contact Us</a>
+            <div class="col-md-4">
+                <div class="feature-card card animate__animated animate__fadeInUp" style="animation-delay: 0.15s;">
+                    <img src="assets/blogpage.jpg" class="card-img-top" alt="Community stories" onerror="this.src='https://placehold.co/600x400/f9b84a/white?text=Stories+of+Yapei'">
+                    <div class="card-body">
+                        <h5 class="card-title fs-3"><i class="fa-solid fa-pen-nib"></i> Community Stories</h5>
+                        <p class="card-text">Inspiring tales from elders, farmers, and youth – your voice matters.</p>
+                        <a href="blog.html" class="btn btn-outline-custom mt-2"><i class="fa-regular fa-newspaper me-2"></i>Read Blog</a>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="col-md-4">
+                <div class="feature-card card animate__animated animate__fadeInUp" style="animation-delay: 0.25s;">
+                    <img src="assets/Yapei-contact.jpg" class="card-img-top" alt="Get involved" onerror="this.src='https://placehold.co/600x400/0b4b7a/f9b84a?text=Join+Hands'">
+                    <div class="card-body">
+                        <h5 class="card-title fs-3"><i class="fa-solid fa-hand-holding-heart"></i> Get Involved</h5>
+                        <p class="card-text">Volunteer, share ideas, or partner with us to uplift Yapei.</p>
+                        <a href="contact.html" class="btn btn-outline-custom mt-2"><i class="fa-regular fa-hand-peace me-2"></i>Contact Us</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Pop-out Login/Register Suggestion -->
-   <div id="loginRegisterOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:1049;"></div>
-    <div id="loginRegisterPopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1050; display:none; min-width:350px; max-width:90vw;">
-     <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInDown">
-       <div class="card-body text-center p-4">
-          <div class="mb-3">
-            <span class="bg-primary text-white rounded-circle p-3 mb-2 d-inline-block"><i class="fa-solid fa-user-plus fa-2x"></i></span>
-          </div>
-          <h5 class="card-title mb-2 fw-bold">Become a Member of Yapei Community Online</h5>
-          <p class="card-text mb-3">To join the community online group, please <a href="login.html" class="fw-bold text-primary">Login</a> or <a href="register.html" class="fw-bold text-primary">Register</a> an account.</p>
-          <button type="button" class="btn btn-outline-primary px-4" id="closeLoginRegisterPopup"><i class="fa-solid fa-xmark"></i> Close</button>
+    <!-- Pop-out Login/Register Suggestion – more attractive now -->
+    <div id="loginRegisterOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(8,40,65,0.5); backdrop-filter:blur(4px); z-index:1049;"></div>
+    <div id="loginRegisterPopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1050; display:none; min-width:380px; max-width:90vw;">
+        <div class="card popup-card shadow-lg border-0 animate__animated animate__fadeInDown">
+            <div class="card-body text-center p-4 p-lg-5">
+                <div class="popup-icon-bg">
+                    <i class="fa-solid fa-user-plus fa-3x text-white"></i>
+                </div>
+                <h4 class="fw-bold mb-2">Become a Member</h4>
+                <p class="text-muted px-2">Join the Yapei community online group to share stories, get updates, and connect.</p>
+                <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                    <a href="login.html" class="btn btn-primary-custom px-4 py-2"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Login</a>
+                    <a href="register.html" class="btn btn-outline-custom px-4 py-2"><i class="fa-solid fa-user-plus me-2"></i>Register</a>
+                </div>
+                <button type="button" class="btn btn-link text-secondary mt-3" id="closeLoginRegisterPopup" style="text-decoration:none;"><i class="fa-regular fa-circle-xmark me-1"></i>Not now</button>
+            </div>
         </div>
-      </div>
     </div>
 
-
-    <!-- Event Invitation Pop-out -->
-    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:1060;"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:350px; max-width:90vw;">
-      <div class="card shadow-lg border-0 rounded-4 animate__animated animate__fadeInDown">
-        <div class="card-body text-center p-4">
-          <div class="mb-3">
-            <span class="bg-success text-white rounded-circle p-3 mb-2 d-inline-block"><i class="fa-solid fa-user-plus fa-2x"></i></span>
-          </div>
-          <h5 class="card-title mb-2 fw-bold" id="eventInviteTitle"></h5>
-          <p class="card-text mb-2" id="eventInviteDesc"></p>
-          <p class="mb-2"><i class="fa-solid fa-location-dot"></i> <span id="eventInviteLocation"></span></p>
-          <p class="mb-2"><i class="fa-solid fa-clock"></i> <span id="eventInviteDate"></span></p>
-          <button type="button" class="btn btn-outline-success px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
-          <a href="events.html" class="btn btn-success px-4 ms-2"><i class="fa-solid fa-users"></i> Join Event</a>
+    <!-- Event Invitation Pop-out (cohesive style) -->
+    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(8,40,65,0.5); backdrop-filter:blur(4px); z-index:1060;"></div>
+    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:380px; max-width:90vw;">
+        <div class="card popup-card shadow-lg border-0 animate__animated animate__fadeInDown">
+            <div class="card-body text-center p-4 p-lg-5">
+                <div class="popup-icon-bg" style="background: linear-gradient(145deg, #1f9a5a, #14794a);">
+                    <i class="fa-solid fa-calendar-check fa-3x text-white"></i>
+                </div>
+                <h5 class="fw-bold mb-2" id="eventInviteTitle">🌽 Annual Harvest Festival</h5>
+                <p class="card-text text-muted mb-2" id="eventInviteDesc">Food, music, and community awards</p>
+                <p class="mb-1"><i class="fa-solid fa-location-dot text-primary me-1"></i> <span id="eventInviteLocation">Yapei Central Park</span></p>
+                <p class="mb-3"><i class="fa-regular fa-clock text-primary me-1"></i> <span id="eventInviteDate">Sat, 12 Nov · 3:00pm</span></p>
+                <div class="d-flex justify-content-center gap-2">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
+                    <a href="events.html" class="btn btn-success rounded-pill px-4 shadow-sm"><i class="fa-solid fa-users me-1"></i>Join Event</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-    <footer class="footer bg-light py-4">
+
+    <!-- Modern Footer (clean, with deeper links) -->
+    <footer class="modern-footer pt-5 pb-4 mt-5">
         <div class="container">
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-info-circle"></i> About Us</h5>
-                    <p>Yapei Community Online is a platform for Yapei residents to connect, share information, and support one another.</p>
+                    <h5 class="footer-heading fw-bold"><i class="fa-solid fa-people-group"></i> Yapei Community</h5>
+                    <p class="mt-3" style="opacity: 0.9;">A platform for Yapei residents to connect, share information, and support one another — rooted in tradition, reaching for tomorrow.</p>
+                    <div class="mt-4">
+                        <a href="#" class="me-3 fs-5" style="color: #0b4b7a;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3 fs-5" style="color: #0b4b7a;"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="me-3 fs-5" style="color: #0b4b7a;"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="fs-5" style="color: #0b4b7a;"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
                 <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-link"></i> Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-decoration-none"><i class="fa-solid fa-home"></i> Home</a></li>                                             
-                        <li><a href="about.html" class="text-decoration-none"><i class="fa-solid fa-info-circle"></i> About Us</a></li>
-                        <li><a href="blog.html" class="text-decoration-none"><i class="fa-solid fa-book"></i> Blog</a></li>                                                
+                    <h5 class="footer-heading fw-bold"><i class="fa-regular fa-compass"></i> Explore</h5>
+                    <ul class="list-unstyled mt-3">
+                        <li><a href="index.html" class="text-decoration-none"><i class="fa-solid fa-home me-2"></i>Home</a></li>
+                        <li><a href="about.html" class="text-decoration-none"><i class="fa-solid fa-circle-info me-2"></i>About Us</a></li>
+                        <li><a href="blog.html" class="text-decoration-none"><i class="fa-solid fa-book-open me-2"></i>Blog</a></li>
+                        <li><a href="events.html" class="text-decoration-none"><i class="fa-solid fa-calendar me-2"></i>Events</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-share-nodes"></i> Follow Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-decoration-none"><i class="fab fa-facebook"></i> Facebook</a></li>
-                        <li><a href="#" class="text-decoration-none"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>                                                                               
-                        <li><a href="#" class="text-decoration-none"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <h5 class="footer-heading fw-bold"><i class="fa-regular fa-message"></i> Connect</h5>
+                    <ul class="list-unstyled mt-3">
+                        <li><a href="contact.html" class="text-decoration-none"><i class="fa-regular fa-envelope me-2"></i>Contact / volunteer</a></li>
+                        <li><a href="#" class="text-decoration-none"><i class="fa-brands fa-whatsapp me-2"></i>WhatsApp group</a></li>
+                        <li><a href="#" class="text-decoration-none"><i class="fa-regular fa-bell me-2"></i>Announcements</a></li>
+                        <li><a href="privacy.html" class="text-decoration-none"><i class="fa-regular fa-lock me-2"></i>Privacy</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <p>&copy; 2026 Yapei Community Online. All rights reserved.</p>
+            <hr class="opacity-25 mt-4">
+            <div class="text-center pt-3">
+                <p class="mb-0 small">© 2026 Yapei Community Online. All rights reserved. <i class="fa-regular fa-heart text-danger ms-1"></i></p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        (function() {
+            const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
 
-     const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-
-    // Navbar dynamic links
-    function updateNavbarLinks() {
-      const userLinks = document.getElementById('navbar-user-links');
-      if (!userLinks) return;
-      const isLoggedIn = !!localStorage.getItem('access');
-      userLinks.innerHTML = isLoggedIn
-        ? `<li class=\"nav-item\"><a class=\"nav-link\" href=\"profile.html\"><i class=\"fa-solid fa-user\"></i> Profile</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.html\"><i class=\"fa-solid fa-sign-out-alt\"></i> Logout</a></li>`
-        : `<li class=\"nav-item\"><a class=\"nav-link\" href=\"login.html\"><i class=\"fa-solid fa-sign-in-alt\"></i> Login</a></li><li class=\"nav-item\"><a class=\"nav-link\" href=\"register.html\"><i class=\"fa-solid fa-user-plus\"></i> Register</a></li>`;
-    }
-    document.addEventListener('DOMContentLoaded', updateNavbarLinks);
-
-    // Professional Pop-out message for login/register
-   document.addEventListener('DOMContentLoaded', function() {
-     const popup = document.getElementById('loginRegisterPopup');
-     const overlay = document.getElementById('loginRegisterOverlay');
-     const closeBtn = document.getElementById('closeLoginRegisterPopup');
-     const isLoggedIn = !!localStorage.getItem('access');
-     const popupShown = sessionStorage.getItem('loginRegisterPopupShown');
-     if (!isLoggedIn && !popupShown) {
-       popup.style.display = 'block';
-       overlay.style.display = 'block';
-       sessionStorage.setItem('loginRegisterPopupShown', 'true');
-     }
-     closeBtn.addEventListener('click', function() {
-       popup.classList.add('animate__fadeOutUp');
-       overlay.style.display = 'none';
-       setTimeout(() => { popup.style.display = 'none'; popup.classList.remove('animate__fadeOutUp'); }, 600);
-     });
-     overlay.addEventListener('click', function() {
-      closeBtn.click();
-     });
-   });
-
-    // Event Invitation Pop-out Logic
-    document.addEventListener('DOMContentLoaded', function() {
-      const invitePopup = document.getElementById('eventInvitePopup');
-      const inviteOverlay = document.getElementById('eventInviteOverlay');
-      const closeInviteBtn = document.getElementById('closeEventInvitePopup');
-      // Only show once per session
-      const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
-      // Don't show if on login/register page
-      const excludedPages = ['login.html', 'register.html'];
-      if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
-      // Random chance (50%) to show if not already shown
-      if (!inviteShown && Math.random() < 0.5) {
-        fetch(`${BACKEND_URL}/api/events/upcoming/`)
-          .then(res => res.json())
-          .then(event => {
-            if (event && event.deadline) {
-              const deadline = new Date(event.deadline);
-              const now = new Date();
-              if (now < deadline) {
-                document.getElementById('eventInviteTitle').textContent = event.title;
-                document.getElementById('eventInviteDesc').textContent = event.description;
-                document.getElementById('eventInviteLocation').textContent = event.location;
-                document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
-                invitePopup.style.display = 'block';
-                inviteOverlay.style.display = 'block';
-                sessionStorage.setItem('eventInvitePopupShown', 'true');
-              }
+            // dynamic navbar based on login
+            function updateNavbarLinks() {
+                const userLinks = document.getElementById('navbar-user-links');
+                if (!userLinks) return;
+                const isLoggedIn = !!localStorage.getItem('access');
+                userLinks.innerHTML = isLoggedIn
+                    ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
+                       <li class="nav-item"><a class="nav-link" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
+                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
+                       <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
             }
-          });
-      }
-      closeInviteBtn.addEventListener('click', function() {
-        invitePopup.classList.add('animate__fadeOutUp');
-        inviteOverlay.style.display = 'none';
-        setTimeout(() => { invitePopup.style.display = 'none'; invitePopup.classList.remove('animate__fadeOutUp'); }, 600);
-      });
-      inviteOverlay.addEventListener('click', function() {
-        closeInviteBtn.click();
-      });
-    });
+
+            // login/register popup (once per session, if not logged in)
+            function setupLoginPopup() {
+                const popup = document.getElementById('loginRegisterPopup');
+                const overlay = document.getElementById('loginRegisterOverlay');
+                const closeBtn = document.getElementById('closeLoginRegisterPopup');
+                const isLoggedIn = !!localStorage.getItem('access');
+                const popupShown = sessionStorage.getItem('loginRegisterPopupShown');
+                if (!isLoggedIn && !popupShown) {
+                    popup.style.display = 'block';
+                    overlay.style.display = 'block';
+                    sessionStorage.setItem('loginRegisterPopupShown', 'true');
+                }
+                closeBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    popup.classList.add('animate__fadeOutUp');
+                    overlay.style.display = 'none';
+                    setTimeout(() => { popup.style.display = 'none'; popup.classList.remove('animate__fadeOutUp'); }, 400);
+                });
+                overlay.addEventListener('click', () => closeBtn.click());
+            }
+
+            // Event invitation popup (enhanced)
+            function setupEventPopup() {
+                const invitePopup = document.getElementById('eventInvitePopup');
+                const inviteOverlay = document.getElementById('eventInviteOverlay');
+                const closeInviteBtn = document.getElementById('closeEventInvitePopup');
+                const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
+                const excludedPages = ['login.html', 'register.html'];
+                if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
+                // 40% chance to show (dynamic)
+                if (!inviteShown && Math.random() < 0.4) {
+                    fetch(`${BACKEND_URL}/api/events/upcoming/`)
+                        .then(res => res.json())
+                        .then(event => {
+                            if (event && event.deadline && new Date(event.deadline) > new Date()) {
+                                document.getElementById('eventInviteTitle').textContent = event.title || 'Community Gathering';
+                                document.getElementById('eventInviteDesc').textContent = event.description || 'Join us under the Yapei sky.';
+                                document.getElementById('eventInviteLocation').textContent = event.location || 'Riverside pavilion';
+                                document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString() : 'This Saturday';
+                                invitePopup.style.display = 'block';
+                                inviteOverlay.style.display = 'block';
+                                sessionStorage.setItem('eventInvitePopupShown', 'true');
+                            }
+                        })
+                        .catch(() => {});
+                }
+
+                closeInviteBtn.addEventListener('click', function() {
+                    invitePopup.classList.add('animate__fadeOutUp');
+                    inviteOverlay.style.display = 'none';
+                    setTimeout(() => { invitePopup.style.display = 'none'; invitePopup.classList.remove('animate__fadeOutUp'); }, 400);
+                });
+                inviteOverlay.addEventListener('click', () => closeInviteBtn.click());
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                updateNavbarLinks();
+                setupLoginPopup();
+                setupEventPopup();
+            });
+
+        })();
     </script>
+    <!-- tiny fix for missing images - fallback bg -->
+    <style>
+        .card-img-top[src=""], .card-img-top[src*="placehold"] { background: #b0d2ee; }
+        .tracking-wide { letter-spacing: 1px; }
+    </style>
 </body>
 </html>
-
