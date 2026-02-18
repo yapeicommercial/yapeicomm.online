@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Yapei Community Online</title>
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Core Dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --primary-dark: #0b5ed7;
+            --primary-light: #e7f1ff;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --dark-bg: #212529;
+            --border-radius: 1rem;
+            --border-radius-sm: 0.5rem;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --box-shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2c3e50;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
+            box-shadow: 0 4px 20px rgba(13, 110, 253, 0.3);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white !important;
+            transition: var(--transition);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: rgba(255,255,255,0.9) !important;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: rgba(255,255,255,0.2);
+            color: white !important;
+            font-weight: 600;
+        }
+
+        /* Event Header */
+        .event-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .back-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        /* Main Content */
+        .event-details-wrapper {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow-lg);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .event-gallery {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem;
+            color: white;
+        }
+
+        .event-badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .event-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .event-organizer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Event Info Cards */
+        .info-card {
+            background: var(--light-bg);
+            border-radius: var(--border-radius-sm);
+            padding: 1.5rem;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+            background: white;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h4 {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+            border-radius: 3px;
+        }
+
+        /* Attendee List */
+        .attendee-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition);
+        }
+
+        .attendee-item:hover {
+            background: var(--light-bg);
+        }
+
+        .attendee-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .attendee-info {
+            flex: 1;
+        }
+
+        .attendee-name {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .attendee-role {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        /* Similar Events */
+        .similar-event-card {
+            background: white;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .similar-event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .similar-event-image {
+            height: 150px;
+            overflow: hidden;
+        }
+
+        .similar-event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .similar-event-card:hover .similar-event-image img {
+            transform: scale(1.1);
+        }
+
+        .similar-event-content {
+            padding: 1rem;
+        }
+
+        .similar-event-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .similar-event-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Progress Bar */
+        .capacity-progress {
+            height: 8px;
+            border-radius: 4px;
+            background: var(--light-bg);
+            margin: 1rem 0;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+            transition: width 0.3s ease;
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            padding: 1rem 2rem;
+            font-weight: 600;
+            border-radius: 3rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            border: none;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(13,110,253,0.4);
+        }
+
+        .action-btn i {
+            margin-right: 0.5rem;
+        }
+
+        .share-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .share-dropdown-content {
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background: white;
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--box-shadow-lg);
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+            margin-bottom: 0.5rem;
+        }
+
+        .share-dropdown:hover .share-dropdown-content {
+            display: block;
+        }
+
+        .share-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .share-link:hover {
+            background: var(--light-bg);
+            color: var(--primary-color);
+        }
+
+        .share-link i {
+            width: 24px;
+            margin-right: 0.75rem;
+        }
+
+        /* Comments Section */
+        .comment-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .comment-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+        }
+
+        .comment-date {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .comment-text {
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1c2c 0%, #2a2c3c 100%);
+            color: #a0a0b0;
+            margin-top: 4rem;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer h5 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: #a0a0b0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-links a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Loading State */
+        .loading-state {
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--light-bg);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 1.8rem;
+            }
+            
+            .event-gallery {
+                height: 300px;
+            }
+            
+            .event-badges {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-users me-2"></i>Yapei Community
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">
+                            <i class="fa-solid fa-book me-1"></i>Blog
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="events.html">
+                            <i class="fa-solid fa-calendar-days me-1"></i>Events
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fa-solid fa-info-circle me-1"></i>About
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fa-solid fa-envelope me-1"></i>Contact
+                        </a>
+                    </li>
+                    <span id="navbar-user-links" class="d-flex"></span>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Event Header -->
+    <section class="event-header">
+        <div class="container">
+            <a href="events.html" class="back-link">
+                <i class="fa-solid fa-arrow-left me-2"></i>Back to Events
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state">
+            <div class="spinner"></div>
+            <p class="text-secondary">Loading event details...</p>
+        </div>
+
+        <!-- Event Details (Hidden initially) -->
+        <div id="eventDetails" style="display: none;">
+            <div class="event-details-wrapper animate__animated animate__fadeInUp">
+                <!-- Event Gallery -->
+                <div class="event-gallery">
+                    <img src="" alt="Event Banner" id="eventImage">
+                    <div class="event-gallery-overlay">
+                        <div class="event-badges">
+                            <span class="event-badge" id="eventCategory">
+                                <i class="fa-regular fa-calendar me-2"></i>
+                            </span>
+                            <span class="event-badge" id="eventStatus">
+                                <i class="fa-regular fa-clock me-2"></i>
+                            </span>
+                        </div>
+                        <h1 class="event-title" id="eventTitle"></h1>
+                        <div class="event-organizer">
+                            <i class="fa-regular fa-user-circle"></i>
+                            <span>Organized by <strong id="eventOrganizer"></strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Info Cards -->
+                <div class="row g-4 p-4">
+                    <div class="col-md-3 col-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-regular fa-calendar"></i>
+                            </div>
+                            <h4>Date</h4>
+                            <p id="eventDate"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <h4>Time</h4>
+                            <p id="eventTime"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <h4>Location</h4>
+                            <p id="eventLocation"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <h4>Attendees</h4>
+                            <p id="eventAttendees"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="px-4 pb-4">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <button class="btn btn-primary action-btn w-100" onclick="handleRSVP()" id="rsvpBtn">
+                                <i class="fa-regular fa-calendar-check"></i>
+                                RSVP for This Event
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="share-dropdown w-100">
+                                <button class="btn btn-outline-secondary action-btn w-100">
+                                    <i class="fa-regular fa-share-from-square"></i>
+                                    Share
+                                </button>
+                                <div class="share-dropdown-content">
+                                    <a href="#" class="share-link" onclick="shareEvent('facebook')">
+                                        <i class="fab fa-facebook-f text-primary"></i>
+                                        Facebook
+                                    </a>
+                                    <a href="#" class="share-link" onclick="shareEvent('twitter')">
+                                        <i class="fab fa-twitter text-info"></i>
+                                        Twitter
+                                    </a>
+                                    <a href="#" class="share-link" onclick="shareEvent('whatsapp')">
+                                        <i class="fab fa-whatsapp text-success"></i>
+                                        WhatsApp
+                                    </a>
+                                    <a href="#" class="share-link" onclick="shareEvent('email')">
+                                        <i class="fa-regular fa-envelope text-secondary"></i>
+                                        Email
+                                    </a>
+                                    <a href="#" class="share-link" onclick="copyEventLink()">
+                                        <i class="fa-regular fa-copy"></i>
+                                        Copy Link
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar (if capacity data available) -->
+                <div class="px-4 pb-2" id="capacitySection" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-secondary" id="attendeeCount"></span>
+                        <span class="text-secondary" id="capacityInfo"></span>
+                    </div>
+                    <div class="capacity-progress">
+                        <div class="progress-bar-fill" id="capacityProgress" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Description and Details -->
+                <div class="row g-4 p-4">
+                    <div class="col-lg-8">
+                        <!-- Description -->
+                        <div class="mb-5">
+                            <h3 class="section-title">About This Event</h3>
+                            <p class="text-secondary" id="eventDescription" style="line-height: 1.8;"></p>
+                        </div>
+
+                        <!-- Agenda (if available) -->
+                        <div class="mb-5" id="agendaSection" style="display: none;">
+                            <h3 class="section-title">Event Agenda</h3>
+                            <div class="timeline" id="eventAgenda"></div>
+                        </div>
+
+                        <!-- Comments Section (if authenticated) -->
+                        <div class="mb-5" id="commentsSection">
+                            <h3 class="section-title">Discussion</h3>
+                            
+                            <!-- Comment form (visible when logged in) -->
+                            <div class="bg-light rounded-3 p-3 mb-4" id="commentForm" style="display: none;">
+                                <div class="d-flex gap-3">
+                                    <div class="comment-avatar">
+                                        <i class="fa-regular fa-user"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <textarea class="form-control" rows="2" placeholder="Join the discussion..." id="commentText"></textarea>
+                                        <button class="btn btn-primary mt-2" onclick="postComment()">
+                                            <i class="fa-regular fa-paper-plane me-2"></i>Post Comment
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Comments list -->
+                            <div class="comments-list" id="commentsList"></div>
+                            
+                            <!-- Login prompt (if not logged in) -->
+                            <div class="text-center py-4" id="loginPrompt">
+                                <p class="text-secondary mb-3">Please log in to join the discussion</p>
+                                <a href="login.html?redirect=event-details.html?id=" class="btn btn-outline-primary" id="loginLink">
+                                    <i class="fa-solid fa-sign-in-alt me-2"></i>Log In
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Attendees List -->
+                        <div class="bg-light rounded-3 p-4 mb-4">
+                            <h4 class="fw-bold mb-3">
+                                <i class="fa-regular fa-face-smile me-2 text-primary"></i>
+                                Attendees (<span id="attendeeCount">0</span>)
+                            </h4>
+                            <div class="attendee-list" id="attendeesList"></div>
+                            <a href="#" class="btn btn-link text-decoration-none p-0 mt-2" id="viewAllAttendees" style="display: none;">
+                                View all attendees <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+
+                        <!-- Similar Events -->
+                        <div class="bg-light rounded-3 p-4">
+                            <h4 class="fw-bold mb-3">
+                                <i class="fa-regular fa-calendar me-2 text-primary"></i>
+                                Similar Events
+                            </h4>
+                            <div id="similarEventsList"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5><i class="fa-solid fa-users me-2"></i>Yapei Community</h5>
+                    <p class="small opacity-75">Bringing our community together through meaningful events and connections. Join us in making Yapei a better place.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Event Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="events.html?category=meetup">Community Meetups</a></li>
+                        <li><a href="events.html?category=workshop">Workshops</a></li>
+                        <li><a href="events.html?category=cultural">Cultural Events</a></li>
+                        <li><a href="events.html?category=youth">Youth Programs</a></li>
+                        <li><a href="events.html?category=virtual">Virtual Gatherings</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fa-solid fa-location-dot me-2"></i>Yapei, Northern Region, Ghana</li>
+                        <li><i class="fa-solid fa-phone me-2"></i>+233 54 268 7780</li>
+                        <li><i class="fa-solid fa-envelope me-2"></i>events@yapeicommunity.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center mt-5 pt-4 border-top border-secondary">
+                <p class="mb-0">
+                    <i class="fa-regular fa-copyright me-1"></i>2025 Yapei Community Online. 
+                    All rights reserved. | Built with <i class="fa-solid fa-heart text-danger"></i> for our community
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RSVP Modal -->
+    <div class="modal fade" id="rsvpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center d-block">
+                    <div class="icon-wrapper mb-3">
+                        <i class="fa-regular fa-calendar-check fa-4x"></i>
+                    </div>
+                    <h4 class="modal-title fw-bold">RSVP for Event</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center text-secondary mb-4" id="rsvpEventTitle"></p>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Number of guests</label>
+                        <select class="form-select" id="guestCount">
+                            <option value="1">1 (Just me)</option>
+                            <option value="2">2 (Me + 1)</option>
+                            <option value="3">3 (Me + 2)</option>
+                            <option value="4">4 (Me + 3)</option>
+                            <option value="5">5 (Me + 4)</option>
+                        </select>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary py-3" onclick="confirmRSVP()">
+                            <i class="fa-regular fa-circle-check me-2"></i>Confirm RSVP
+                        </button>
+                        <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center p-4">
+                <div class="modal-body p-0">
+                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
+                        <i class="fa-solid fa-check fa-3x"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">RSVP Confirmed!</h5>
+                    <p class="text-secondary mb-3">Thank you for registering. We'll send you a reminder before the event.</p>
+                    <button class="btn btn-primary px-4 rounded-pill" data-bs-dismiss="modal">Great!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+        let currentEvent = null;
+        let eventComments = [];
+
+        // Get event ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('id');
+
+        // Initialize modals
+        const rsvpModal = new bootstrap.Modal(document.getElementById('rsvpModal'));
+        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+
+        // Fetch event details
+        async function fetchEventDetails() {
+            if (!eventId) {
+                showError('No event ID specified');
+                return;
+            }
+
+            try {
+                document.getElementById('loadingState').style.display = 'block';
+                document.getElementById('eventDetails').style.display = 'none';
+                
+                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/`);
+                
+                if (!response.ok) {
+                    throw new Error('Event not found');
+                }
+                
+                const event = await response.json();
+                currentEvent = event;
+                
+                displayEventDetails(event);
+                fetchSimilarEvents(event.category, event.id);
+                fetchComments(eventId);
+                
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('eventDetails').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error fetching event details:', error);
+                document.getElementById('loadingState').innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-solid fa-circle-exclamation text-danger"></i>
+                        <h3>Failed to Load Event</h3>
+                        <p>${error.message || 'Please try again later.'}</p>
+                        <button class="btn btn-primary" onclick="fetchEventDetails()">
+                            <i class="fa-solid fa-rotate me-2"></i>Retry
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Display event details
+        function displayEventDetails(event) {
+            const eventDate = event.date ? new Date(event.date) : new Date();
+            const now = new Date();
+            const isPast = eventDate < now;
+            
+            // Set page title
+            document.title = `${event.title} - Yapei Community Events`;
+            
+            // Set image
+            document.getElementById('eventImage').src = event.image || event.media || 'https://via.placeholder.com/1200x400/0d6efd/ffffff?text=' + encodeURIComponent(event.title);
+            document.getElementById('eventImage').alt = event.title;
+            
+            // Set badges
+            document.getElementById('eventCategory').innerHTML = `<i class="fa-regular fa-calendar me-2"></i>${event.category || 'Event'}`;
+            document.getElementById('eventStatus').innerHTML = `<i class="fa-regular fa-clock me-2"></i>${isPast ? 'Past Event' : 'Upcoming'}`;
+            
+            // Set title and organizer
+            document.getElementById('eventTitle').textContent = event.title || 'Untitled Event';
+            document.getElementById('eventOrganizer').textContent = event.organizer || 'Community Organizer';
+            
+            // Set date and time
+            document.getElementById('eventDate').textContent = eventDate.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                month: 'long', 
+                day: 'numeric',
+                year: 'numeric'
+            });
+            
+            document.getElementById('eventTime').textContent = eventDate.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit' 
+            }) + (event.end_time ? ' - ' + new Date(event.end_time).toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit' 
+            }) : '');
+            
+            // Set location
+            document.getElementById('eventLocation').textContent = event.location || 'Location TBD';
+            
+            // Set attendees count
+            const attendeeCount = event.attendees_count || event.attendees?.length || 0;
+            document.getElementById('eventAttendees').textContent = attendeeCount;
+            
+            // Update all attendee count spans
+            document.querySelectorAll('#attendeeCount').forEach(el => {
+                el.textContent = attendeeCount;
+            });
+            
+            // Set description
+            document.getElementById('eventDescription').textContent = event.description || 'No description available.';
+            
+            // Handle capacity if available
+            if (event.capacity) {
+                document.getElementById('capacitySection').style.display = 'block';
+                const percentage = (attendeeCount / event.capacity) * 100;
+                document.getElementById('capacityProgress').style.width = `${percentage}%`;
+                document.getElementById('capacityInfo').textContent = `${attendeeCount} / ${event.capacity} spots filled`;
+            }
+            
+            // Display agenda if available
+            if (event.agenda && event.agenda.length > 0) {
+                document.getElementById('agendaSection').style.display = 'block';
+                const agendaHtml = event.agenda.map(item => `
+                    <div class="d-flex gap-3 mb-3">
+                        <div class="text-primary fw-bold" style="min-width: 100px;">${item.time}</div>
+                        <div>
+                            <h6 class="fw-bold">${item.title}</h6>
+                            <p class="text-secondary">${item.description}</p>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('eventAgenda').innerHTML = agendaHtml;
+            }
+            
+            // Update RSVP button
+            const rsvpBtn = document.getElementById('rsvpBtn');
+            if (isPast) {
+                rsvpBtn.disabled = true;
+                rsvpBtn.innerHTML = '<i class="fa-regular fa-clock me-2"></i>Event Ended';
+            } else if (!localStorage.getItem('access')) {
+                rsvpBtn.innerHTML = '<i class="fa-regular fa-circle-check me-2"></i>Login to RSVP';
+            }
+            
+            // Update login link
+            document.getElementById('loginLink').href = `login.html?redirect=event-details.html?id=${eventId}`;
+            
+            // Show comment form if logged in
+            if (localStorage.getItem('access')) {
+                document.getElementById('commentForm').style.display = 'block';
+                document.getElementById('loginPrompt').style.display = 'none';
+            }
+            
+            // Display attendees
+            displayAttendees(event.attendees);
+        }
+
+        // Display attendees
+        function displayAttendees(attendees) {
+            const attendeesList = document.getElementById('attendeesList');
+            
+            if (!attendees || attendees.length === 0) {
+                attendeesList.innerHTML = '<p class="text-secondary text-center py-3">No attendees yet. Be the first!</p>';
+                return;
+            }
+            
+            // Show only first 5 attendees
+            const displayAttendees = attendees.slice(0, 5);
+            
+            attendeesList.innerHTML = displayAttendees.map(attendee => `
+                <div class="attendee-item">
+                    <div class="attendee-avatar">${(attendee.name || attendee.username || 'A')[0].toUpperCase()}</div>
+                    <div class="attendee-info">
+                        <div class="attendee-name">${attendee.name || attendee.username || 'Anonymous'}</div>
+                        <div class="attendee-role">${attendee.role || 'Community Member'}</div>
+                    </div>
+                </div>
+            `).join('');
+            
+            if (attendees.length > 5) {
+                document.getElementById('viewAllAttendees').style.display = 'inline-block';
+            }
+        }
+
+        // Fetch similar events
+        async function fetchSimilarEvents(category, currentEventId) {
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/events/?category=${category}&limit=3`);
+                const data = await response.json();
+                
+                const events = Array.isArray(data) ? data : (data.results || []);
+                const similarEvents = events.filter(event => event.id != currentEventId).slice(0, 3);
+                
+                const similarEventsList = document.getElementById('similarEventsList');
+                
+                if (similarEvents.length === 0) {
+                    similarEventsList.innerHTML = '<p class="text-secondary text-center py-3">No similar events found.</p>';
+                    return;
+                }
+                
+                similarEventsList.innerHTML = similarEvents.map(event => {
+                    const eventDate = event.date ? new Date(event.date) : new Date();
+                    return `
+                        <div class="similar-event-card">
+                            <div class="similar-event-image">
+                                <img src="${event.image || event.media || 'https://via.placeholder.com/200x150/0d6efd/ffffff?text=' + encodeURIComponent(event.title)}" 
+                                     alt="${event.title}">
+                            </div>
+                            <div class="similar-event-content">
+                                <h5 class="similar-event-title">${event.title}</h5>
+                                <div class="similar-event-meta">
+                                    <span><i class="fa-regular fa-calendar me-1"></i>${eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                                    <span><i class="fa-regular fa-clock me-1"></i>${eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</span>
+                                </div>
+                                <a href="event-details.html?id=${event.id}" class="btn btn-sm btn-outline-primary w-100">View Details</a>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                console.error('Error fetching similar events:', error);
+                document.getElementById('similarEventsList').innerHTML = '<p class="text-secondary text-center py-3">Unable to load similar events.</p>';
+            }
+        }
+
+        // Fetch comments
+        async function fetchComments(eventId) {
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/comments/`);
+                const comments = await response.json();
+                
+                eventComments = Array.isArray(comments) ? comments : [];
+                displayComments(eventComments);
+                
+            } catch (error) {
+                console.error('Error fetching comments:', error);
+                document.getElementById('commentsList').innerHTML = '<p class="text-secondary text-center py-3">Unable to load comments.</p>';
+            }
+        }
+
+        // Display comments
+        function displayComments(comments) {
+            const commentsList = document.getElementById('commentsList');
+            
+            if (comments.length === 0) {
+                commentsList.innerHTML = '<p class="text-secondary text-center py-3">No comments yet. Start the discussion!</p>';
+                return;
+            }
+            
+            commentsList.innerHTML = comments.map(comment => {
+                const commentDate = comment.created_at ? new Date(comment.created_at) : new Date();
+                return `
+                    <div class="comment-item">
+                        <div class="comment-avatar">${(comment.author_name || comment.author || 'A')[0].toUpperCase()}</div>
+                        <div class="comment-content">
+                            <div class="comment-header">
+                                <span class="comment-author">${comment.author_name || comment.author || 'Anonymous'}</span>
+                                <span class="comment-date">${timeAgo(commentDate)}</span>
+                            </div>
+                            <p class="comment-text">${comment.text || comment.content}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Time ago formatter
+        function timeAgo(date) {
+            const seconds = Math.floor((new Date() - date) / 1000);
+            
+            let interval = seconds / 31536000;
+            if (interval > 1) return Math.floor(interval) + ' years ago';
+            
+            interval = seconds / 2592000;
+            if (interval > 1) return Math.floor(interval) + ' months ago';
+            
+            interval = seconds / 86400;
+            if (interval > 1) return Math.floor(interval) + ' days ago';
+            
+            interval = seconds / 3600;
+            if (interval > 1) return Math.floor(interval) + ' hours ago';
+            
+            interval = seconds / 60;
+            if (interval > 1) return Math.floor(interval) + ' minutes ago';
+            
+            return 'just now';
+        }
+
+        // Post comment
+        async function postComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            
+            if (!commentText) {
+                alert('Please enter a comment');
+                return;
+            }
+            
+            if (!localStorage.getItem('access')) {
+                window.location.href = `login.html?redirect=event-details.html?id=${eventId}`;
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/comments/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('access')}`
+                    },
+                    body: JSON.stringify({
+                        text: commentText
+                    })
+                });
+                
+                if (response.ok) {
+                    document.getElementById('commentText').value = '';
+                    fetchComments(eventId);
+                } else {
+                    alert('Failed to post comment. Please try again.');
+                }
+                
+            } catch (error) {
+                console.error('Error posting comment:', error);
+                alert('Failed to post comment. Please try again.');
+            }
+        }
+
+        // Handle RSVP
+        function handleRSVP() {
+            if (!currentEvent) return;
+            
+            const eventDate = currentEvent.date ? new Date(currentEvent.date) : new Date();
+            if (eventDate < new Date()) {
+                alert('This event has already ended');
+                return;
+            }
+            
+            if (!localStorage.getItem('access')) {
+                window.location.href = `login.html?redirect=event-details.html?id=${eventId}`;
+                return;
+            }
+            
+            document.getElementById('rsvpEventTitle').textContent = currentEvent.title;
+            rsvpModal.show();
+        }
+
+        // Confirm RSVP
+        async function confirmRSVP() {
+            const guests = document.getElementById('guestCount').value;
+            
+            try {
+                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/rsvp/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('access')}`
+                    },
+                    body: JSON.stringify({
+                        guests: parseInt(guests)
+                    })
+                });
+                
+                if (response.ok) {
+                    rsvpModal.hide();
+                    successModal.show();
+                    
+                    // Refresh event details to update attendee count
+                    fetchEventDetails();
+                    
+                    setTimeout(() => {
+                        successModal.hide();
+                    }, 3000);
+                } else {
+                    alert('Failed to RSVP. Please try again.');
+                }
+                
+            } catch (error) {
+                console.error('Error RSVPing:', error);
+                alert('Failed to RSVP. Please try again.');
+            }
+        }
+
+        // Share event
+        function shareEvent(platform) {
+            const url = window.location.href;
+            const title = currentEvent?.title || 'Check out this event';
+            
+            let shareUrl;
+            switch(platform) {
+                case 'facebook':
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    break;
+                case 'twitter':
+                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+                    break;
+                case 'whatsapp':
+                    shareUrl = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
+                    break;
+                case 'email':
+                    shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this event: ' + url)}`;
+                    break;
+            }
+            
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400');
+            }
+        }
+
+        // Copy event link
+        function copyEventLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('Link copied to clipboard!');
+            });
+        }
+
+        // Show error message
+        function showError(message) {
+            document.getElementById('loadingState').innerHTML = `
+                <div class="empty-state">
+                    <i class="fa-solid fa-circle-exclamation text-danger"></i>
+                    <h3>Error</h3>
+                    <p>${message}</p>
+                    <a href="events.html" class="btn btn-primary">
+                        <i class="fa-solid fa-arrow-left me-2"></i>Back to Events
+                    </a>
+                </div>
+            `;
+        }
+
+        // Update navbar based on login status
+        function updateNavbarLinks() {
+            const userLinks = document.getElementById('navbar-user-links');
+            if (!userLinks) return;
+            
+            const isLoggedIn = !!localStorage.getItem('access');
+            
+            userLinks.innerHTML = isLoggedIn
+                ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i>Profile</a></li>
+                   <li class="nav-item"><a class="nav-link" href="#" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a></li>`
+                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-sign-in-alt me-1"></i>Login</a></li>
+                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
+            updateNavbarLinks();
+            
+            // Reload page to update UI
+            window.location.reload();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNavbarLinks();
+            fetchEventDetails();
+        });
+    </script>
+</body>
+  </html>
