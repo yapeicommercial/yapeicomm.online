@@ -13,7 +13,7 @@
     <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <!-- Favicon -->
@@ -23,15 +23,19 @@
         :root {
             --primary-color: #0d6efd;
             --primary-dark: #0b5ed7;
+            --primary-light: #e7f1ff;
             --secondary-color: #6c757d;
             --success-color: #198754;
             --warning-color: #ffc107;
             --danger-color: #dc3545;
+            --info-color: #0dcaf0;
             --light-bg: #f8f9fa;
             --dark-bg: #212529;
             --border-radius: 1rem;
+            --border-radius-sm: 0.5rem;
             --transition: all 0.3s ease;
             --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --box-shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
             --card-shadow: 0 15px 35px rgba(0,0,0,0.08);
         }
 
@@ -58,14 +62,14 @@
         }
 
         .navbar-brand {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.5rem;
             color: white !important;
             transition: var(--transition);
         }
 
         .navbar-brand:hover {
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             text-shadow: 0 2px 10px rgba(255,255,255,0.3);
         }
 
@@ -81,7 +85,7 @@
         .nav-link:hover {
             background: rgba(255,255,255,0.15);
             color: white !important;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .nav-link.active {
@@ -92,9 +96,9 @@
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 4rem 0;
+            padding: 5rem 0 4rem;
             margin-bottom: 3rem;
             text-align: center;
             position: relative;
@@ -110,22 +114,50 @@
             bottom: 0;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
             background-size: cover;
-            opacity: 0.1;
+            opacity: 0.2;
         }
 
         .page-header h1 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
             position: relative;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .page-header p {
             font-size: 1.2rem;
             opacity: 0.95;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             position: relative;
+            font-weight: 300;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            position: relative;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Filter Section */
@@ -133,7 +165,7 @@
             background: white;
             border-radius: var(--border-radius);
             padding: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             box-shadow: var(--box-shadow);
             display: flex;
             flex-wrap: wrap;
@@ -144,7 +176,7 @@
 
         .search-box {
             flex: 1;
-            min-width: 250px;
+            min-width: 280px;
             position: relative;
         }
 
@@ -154,21 +186,23 @@
             top: 50%;
             transform: translateY(-50%);
             color: var(--secondary-color);
+            transition: var(--transition);
         }
 
         .search-box input {
             width: 100%;
-            padding: 0.75rem 1rem 0.75rem 2.8rem;
+            padding: 0.85rem 1rem 0.85rem 2.8rem;
             border: 2px solid #e9ecef;
-            border-radius: 2rem;
-            font-size: 1rem;
+            border-radius: 3rem;
+            font-size: 0.95rem;
             transition: var(--transition);
+            background: white;
         }
 
         .search-box input:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(13,110,253,0.1);
+            box-shadow: 0 0 0 4px rgba(13,110,253,0.15);
         }
 
         .filter-buttons {
@@ -178,32 +212,85 @@
         }
 
         .filter-btn {
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.4rem;
             border: 2px solid #e9ecef;
-            border-radius: 2rem;
+            border-radius: 3rem;
             background: white;
             color: var(--secondary-color);
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 0.9rem;
             transition: var(--transition);
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .filter-btn:hover {
             border-color: var(--primary-color);
             color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .filter-btn.active {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             border-color: var(--primary-color);
             color: white;
+        }
+
+        /* Quick Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #2c3e50;
+        }
+
+        .stat-card p {
+            color: var(--secondary-color);
+            margin-bottom: 0;
+            font-weight: 500;
         }
 
         /* Events Grid */
         .events-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 3rem;
         }
 
@@ -217,15 +304,16 @@
             display: flex;
             flex-direction: column;
             animation: fadeInUp 0.6s ease;
+            position: relative;
         }
 
         .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow-lg);
         }
 
         .event-image {
-            height: 200px;
+            height: 220px;
             position: relative;
             overflow: hidden;
         }
@@ -238,7 +326,7 @@
         }
 
         .event-card:hover .event-image img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .event-date-badge {
@@ -246,29 +334,35 @@
             top: 1rem;
             right: 1rem;
             background: rgba(255,255,255,0.95);
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 2rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-color);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
             font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .event-category {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
-            padding: 0.3rem 1rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 2rem;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(13,110,253,0.3);
         }
 
         .event-content {
-            padding: 1.5rem;
+            padding: 1.8rem 1.5rem 1.5rem;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -280,21 +374,27 @@
             margin-bottom: 0.75rem;
             color: #2c3e50;
             line-height: 1.3;
+            transition: var(--transition);
+        }
+
+        .event-card:hover .event-title {
+            color: var(--primary-color);
         }
 
         .event-description {
             color: var(--secondary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             line-height: 1.6;
             flex: 1;
+            font-size: 0.95rem;
         }
 
         .event-meta {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            padding: 0.75rem 0;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+            padding: 0.9rem 0;
             border-top: 1px solid #e9ecef;
             border-bottom: 1px solid #e9ecef;
         }
@@ -302,28 +402,29 @@
         .event-meta-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             color: #495057;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .event-meta-item i {
             width: 1.5rem;
             color: var(--primary-color);
             font-size: 1rem;
+            text-align: center;
         }
 
         .event-footer {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
 
         .event-attendees {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             color: var(--secondary-color);
             font-size: 0.9rem;
         }
@@ -334,8 +435,8 @@
         }
 
         .attendee-avatar {
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
@@ -346,10 +447,16 @@
             font-weight: 600;
             margin-right: -8px;
             border: 2px solid white;
+            transition: var(--transition);
+        }
+
+        .attendee-avatar:hover {
+            transform: scale(1.1);
+            z-index: 1;
         }
 
         .btn-attend {
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.4rem;
             border: none;
             border-radius: 2rem;
             font-weight: 600;
@@ -357,64 +464,88 @@
             transition: var(--transition);
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
         }
 
         .btn-attend:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(13,110,253,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(13,110,253,0.4);
+            color: white;
         }
 
-        .btn-attend.attending {
-            background: var(--success-color);
+        .btn-attend:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* Featured Event */
         .featured-event {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: var(--border-radius);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             color: white;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--box-shadow-lg);
         }
 
         .featured-event::before {
-            content: '✨ FEATURED';
+            content: '✨ FEATURED EVENT';
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 1.5rem;
+            right: 1.5rem;
             background: rgba(255,255,255,0.2);
-            padding: 0.3rem 1rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 2rem;
             font-size: 0.8rem;
             font-weight: 600;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
         }
 
         .featured-event-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            max-width: 80%;
         }
 
         .featured-event h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             margin-bottom: 1rem;
+        }
+
+        .featured-event p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
         }
 
         .featured-event .btn {
             background: white;
             color: var(--primary-color);
             border: none;
-            padding: 0.75rem 2rem;
+            padding: 0.9rem 2rem;
             border-radius: 2rem;
             font-weight: 600;
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
         }
 
         .featured-event .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            color: var(--primary-color);
         }
 
         /* Loading Skeleton */
@@ -461,7 +592,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -472,35 +603,51 @@
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
         }
 
         .empty-state i {
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--secondary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.5;
         }
 
         .empty-state h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             color: #2c3e50;
+            font-weight: 600;
         }
 
         .empty-state p {
             color: var(--secondary-color);
             margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Footer */
         .footer {
             background: linear-gradient(135deg, #1a1c2c 0%, #2a2c3c 100%);
             color: #a0a0b0;
-            margin-top: auto;
-            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--info-color), var(--success-color));
         }
 
         .footer h5 {
@@ -514,41 +661,77 @@
             text-decoration: none;
             transition: var(--transition);
             display: inline-block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .footer a:hover {
             color: white;
-            transform: translateX(5px);
+            transform: translateX(8px);
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 2rem;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
         }
 
-        /* Popup Enhancement */
-        .event-popup .modal-content {
+        /* Modal Enhancements */
+        .modal-content {
             border-radius: 1.5rem;
+            border: none;
             overflow: hidden;
         }
 
-        .event-popup .modal-header {
+        .modal-header {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             border: none;
             padding: 2rem;
+            position: relative;
         }
 
-        .event-popup .modal-body {
+        .modal-header .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .modal-body {
             padding: 2rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .page-header h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
+            }
+            
+            .header-stats {
+                flex-direction: column;
+                gap: 1rem;
             }
             
             .events-grid {
@@ -560,29 +743,51 @@
                 align-items: stretch;
             }
             
-            .featured-event h3 {
-                font-size: 1.5rem;
+            .featured-event-content {
+                max-width: 100%;
             }
         }
 
-        /* Accessibility */
-        .visually-hidden-focusable:focus {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: white;
-            padding: 1rem;
-            z-index: 10000;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            box-shadow: var(--box-shadow-lg);
+            border: none;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
     <!-- Skip to main content -->
     <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
@@ -635,65 +840,107 @@
                 <i class="fa-solid fa-calendar-alt me-2"></i>Community Events
             </h1>
             <p class="animate__animated animate__fadeInUp animate__delay-1s">
-                Discover and join exciting events happening in Yapei. Connect, learn, and grow together!
+                Discover and join exciting events happening in Yapei. Connect, learn, and grow together with your community!
             </p>
+            <div class="header-stats animate__animated animate__fadeInUp animate__delay-2s" id="headerStats">
+                <!-- Stats will be populated from API -->
+            </div>
         </div>
     </section>
 
     <!-- Main Content -->
     <main id="main-content" class="container py-4">
+        <!-- Quick Stats Cards - Will be populated from API -->
+        <div class="stats-grid mb-4 animate__animated animate__fadeInUp" id="quickStats">
+            <!-- Stats will be populated from API -->
+        </div>
+
         <!-- Filter Section -->
         <div class="filter-section animate__animated animate__fadeInUp">
             <div class="search-box">
                 <i class="fa-solid fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search events..." aria-label="Search events">
+                <input type="text" id="searchInput" placeholder="Search events by name, location, or description..." aria-label="Search events">
             </div>
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Events</button>
-                <button class="filter-btn" data-filter="today">Today</button>
-                <button class="filter-btn" data-filter="week">This Week</button>
-                <button class="filter-btn" data-filter="month">This Month</button>
-                <button class="filter-btn" data-filter="virtual">Virtual</button>
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fa-solid fa-calendar"></i>All Events
+                </button>
+                <button class="filter-btn" data-filter="today">
+                    <i class="fa-solid fa-sun"></i>Today
+                </button>
+                <button class="filter-btn" data-filter="week">
+                    <i class="fa-solid fa-calendar-week"></i>This Week
+                </button>
+                <button class="filter-btn" data-filter="month">
+                    <i class="fa-solid fa-calendar-alt"></i>This Month
+                </button>
+                <button class="filter-btn" data-filter="virtual">
+                    <i class="fa-solid fa-video"></i>Virtual
+                </button>
             </div>
         </div>
 
-        <!-- Featured Event (if any) -->
+        <!-- Featured Event - Will be populated from API -->
         <div id="featuredEvent" class="featured-event animate__animated animate__fadeInUp" style="display: none;">
-            <div class="featured-event-content">
-                <h3 id="featuredTitle"></h3>
-                <p id="featuredDesc" class="mb-3"></p>
-                <div class="d-flex gap-3 align-items-center">
-                    <a href="#" class="btn btn-light" id="featuredLink">
-                        <i class="fa-solid fa-calendar-check me-2"></i>Register Now
-                    </a>
-                    <span id="featuredDate" class="text-white-50"></span>
-                </div>
-            </div>
+            <!-- Featured event will be populated from API -->
         </div>
 
         <!-- Events Grid -->
         <div id="eventsContainer">
             <!-- Loading Skeletons -->
             <div id="loadingSkeletons" class="events-grid">
-                ${[1,2,3,4,5,6].map(() => `
-                    <div class="skeleton-card">
-                        <div class="skeleton-image"></div>
-                        <div class="skeleton-line title"></div>
-                        <div class="skeleton-line"></div>
-                        <div class="skeleton-line short"></div>
-                        <div class="skeleton-line" style="width: 40%;"></div>
-                    </div>
-                `).join('')}
+                <div class="skeleton-card">
+                    <div class="skeleton-image"></div>
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line" style="width: 40%;"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-image"></div>
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line" style="width: 40%;"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-image"></div>
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line" style="width: 40%;"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-image"></div>
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line" style="width: 40%;"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-image"></div>
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line" style="width: 40%;"></div>
+                </div>
+                <div class="skeleton-card">
+                    <div class="skeleton-image"></div>
+                    <div class="skeleton-line title"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line" style="width: 40%;"></div>
+                </div>
             </div>
 
-            <!-- Events List -->
+            <!-- Events List - Will be populated from API -->
             <div id="eventsList" class="events-grid" style="display: none;"></div>
         </div>
 
         <!-- Load More Button -->
-        <div class="text-center mt-4" id="loadMoreContainer">
-            <button class="btn btn-outline-primary px-5 py-2" id="loadMoreBtn" style="display: none;">
-                <i class="fa-solid fa-spinner me-2"></i>Load More Events
+        <div class="text-center mt-5" id="loadMoreContainer">
+            <button class="btn btn-outline-primary px-5 py-2 rounded-pill" id="loadMoreBtn" style="display: none;">
+                <i class="fa-solid fa-arrow-down me-2"></i>Load More Events
             </button>
         </div>
     </main>
@@ -704,12 +951,12 @@
             <div class="row g-4">
                 <div class="col-lg-4">
                     <h5><i class="fa-solid fa-users me-2"></i>Yapei Community</h5>
-                    <p class="small">Bringing our community together through meaningful events and connections. Join us in making Yapei a better place.</p>
+                    <p class="small opacity-75">Bringing our community together through meaningful events and connections. Join us in making Yapei a better place for everyone.</p>
                     <div class="social-links mt-3">
-                        <a href="#" class="me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="me-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="me-3" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -724,25 +971,25 @@
                 <div class="col-lg-3">
                     <h5>Event Categories</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#">Community Meetups</a></li>
-                        <li><a href="#">Workshops</a></li>
-                        <li><a href="#">Cultural Events</a></li>
-                        <li><a href="#">Youth Programs</a></li>
-                        <li><a href="#">Virtual Gatherings</a></li>
+                        <li><a href="#" onclick="filterByCategory('meetup')">Community Meetups</a></li>
+                        <li><a href="#" onclick="filterByCategory('workshop')">Workshops & Training</a></li>
+                        <li><a href="#" onclick="filterByCategory('cultural')">Cultural Events</a></li>
+                        <li><a href="#" onclick="filterByCategory('youth')">Youth Programs</a></li>
+                        <li><a href="#" onclick="filterByCategory('virtual')">Virtual Gatherings</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h5>Contact Info</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fa-solid fa-location-dot me-2"></i>Yapei, Ghana</li>
+                        <li><i class="fa-solid fa-location-dot me-2"></i>Yapei, Northern Region, Ghana</li>
                         <li><i class="fa-solid fa-phone me-2"></i>+233 54 268 7780</li>
                         <li><i class="fa-solid fa-envelope me-2"></i>events@yapeicommunity.com</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom text-center">
+            <div class="footer-bottom">
                 <p class="mb-0">
-                    <i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. 
+                    <i class="fa-regular fa-copyright me-1"></i>2025 Yapei Community Online. 
                     All rights reserved. | Built with <i class="fa-solid fa-heart text-danger"></i> for our community
                 </p>
             </div>
@@ -750,35 +997,29 @@
     </footer>
 
     <!-- Event Invitation Popup -->
-    <div class="modal fade event-popup" id="eventInviteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="eventInviteModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header text-center d-block">
-                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
+                <div class="modal-header text-center d-block border-0">
+                    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="icon-wrapper">
                         <i class="fa-solid fa-calendar-plus fa-3x"></i>
                     </div>
-                    <h5 class="modal-title fw-bold" id="eventInviteTitle"></h5>
+                    <h5 class="modal-title fw-bold fs-4" id="inviteModalTitle">You're Invited!</h5>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center mb-3" id="eventInviteDesc"></p>
+                    <p class="text-center mb-4" id="inviteModalDesc">Join us for an exciting community event</p>
                     
-                    <div class="bg-light rounded-3 p-3 mb-3">
-                        <p class="mb-2">
-                            <i class="fa-solid fa-location-dot text-success me-2"></i>
-                            <span id="eventInviteLocation"></span>
-                        </p>
-                        <p class="mb-0">
-                            <i class="fa-solid fa-clock text-success me-2"></i>
-                            <span id="eventInviteDate"></span>
-                        </p>
+                    <div class="bg-light rounded-4 p-3 mb-4" id="inviteModalDetails">
+                        <!-- Details will be populated from API -->
                     </div>
                     
                     <div class="d-flex gap-2 justify-content-center">
-                        <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">
-                            <i class="fa-solid fa-xmark me-2"></i>Close
+                        <button type="button" class="btn btn-outline-secondary px-4 rounded-pill" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark me-2"></i>Maybe Later
                         </button>
-                        <a href="events.html" class="btn btn-success px-4">
-                            <i class="fa-solid fa-users me-2"></i>Join Event
+                        <a href="#" class="btn btn-primary px-4 rounded-pill" id="inviteModalLink">
+                            <i class="fa-solid fa-check me-2"></i>I'll Join
                         </a>
                     </div>
                 </div>
@@ -790,13 +1031,13 @@
     <div class="modal fade" id="rsvpModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content text-center p-4">
-                <div class="modal-body">
+                <div class="modal-body p-0">
                     <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
                         <i class="fa-solid fa-check fa-3x"></i>
                     </div>
-                    <h5 class="fw-bold mb-2">You're In!</h5>
-                    <p class="text-secondary mb-3">You've successfully RSVP'd to this event.</p>
-                    <button class="btn btn-primary px-4" data-bs-dismiss="modal">Great!</button>
+                    <h5 class="fw-bold mb-2">You're In! 🎉</h5>
+                    <p class="text-secondary mb-3">You've successfully RSVP'd to this event. We'll send you a reminder before it starts.</p>
+                    <button class="btn btn-primary px-4 rounded-pill" data-bs-dismiss="modal">Awesome!</button>
                 </div>
             </div>
         </div>
@@ -817,26 +1058,122 @@
         const eventInviteModal = new bootstrap.Modal(document.getElementById('eventInviteModal'));
         const rsvpModal = new bootstrap.Modal(document.getElementById('rsvpModal'));
 
+        // Scroll to top functionality
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
         // Fetch and display events
         async function fetchEvents() {
             try {
                 showLoading(true);
                 
                 const response = await fetch(`${BACKEND_URL}/api/events/`);
-                const events = await response.json();
+                const data = await response.json();
                 
-                allEvents = Array.isArray(events) ? events : [];
-                filterAndDisplayEvents();
+                // Handle both array and paginated responses
+                allEvents = Array.isArray(data) ? data : (data.results || []);
                 
-                showLoading(false);
+                // Update stats
+                await updateStats();
                 
                 // Check for featured event
-                checkFeaturedEvent();
+                await checkFeaturedEvent();
+                
+                filterAndDisplayEvents();
+                showLoading(false);
+                
+                // Check for event invitation after events are loaded
+                setTimeout(checkEventInvitation, 3000);
                 
             } catch (error) {
                 console.error('Error fetching events:', error);
                 showError('Failed to load events. Please try again later.');
                 showLoading(false);
+            }
+        }
+
+        // Update statistics from real data
+        async function updateStats() {
+            try {
+                // Get total events count
+                document.getElementById('headerStats').innerHTML = `
+                    <div class="stat-item">
+                        <span class="stat-number">${allEvents.length}</span>
+                        <span class="stat-label">Total Events</span>
+                    </div>
+                `;
+
+                // Calculate quick stats
+                const now = new Date();
+                const weekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+                const monthFromNow = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+                const thisWeekEvents = allEvents.filter(event => {
+                    const eventDate = new Date(event.date);
+                    return eventDate >= now && eventDate <= weekFromNow;
+                }).length;
+
+                const thisMonthEvents = allEvents.filter(event => {
+                    const eventDate = new Date(event.date);
+                    return eventDate >= now && eventDate <= monthFromNow;
+                }).length;
+
+                const virtualEvents = allEvents.filter(event => 
+                    event.location?.toLowerCase().includes('virtual') || 
+                    event.location?.toLowerCase().includes('online')
+                ).length;
+
+                const inPersonEvents = allEvents.filter(event => 
+                    event.location && 
+                    !event.location.toLowerCase().includes('virtual') && 
+                    !event.location.toLowerCase().includes('online')
+                ).length;
+
+                document.getElementById('quickStats').innerHTML = `
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-calendar-week"></i>
+                        </div>
+                        <h3>${thisWeekEvents}</h3>
+                        <p>This Week</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-calendar-month"></i>
+                        </div>
+                        <h3>${thisMonthEvents}</h3>
+                        <p>This Month</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                        <h3>${virtualEvents}</h3>
+                        <p>Virtual</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+                        <h3>${inPersonEvents}</h3>
+                        <p>In Person</p>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error updating stats:', error);
             }
         }
 
@@ -855,14 +1192,14 @@
                             if (eventDate.toDateString() !== today.toDateString()) return false;
                             break;
                         case 'week':
-                            if (eventDate > weekFromNow) return false;
+                            if (eventDate > weekFromNow || eventDate < today) return false;
                             break;
                         case 'month':
-                            if (eventDate > monthFromNow) return false;
+                            if (eventDate > monthFromNow || eventDate < today) return false;
                             break;
                         case 'virtual':
-                            if (!event.location.toLowerCase().includes('virtual') && 
-                                !event.location.toLowerCase().includes('online')) return false;
+                            if (!event.location?.toLowerCase().includes('virtual') && 
+                                !event.location?.toLowerCase().includes('online')) return false;
                             break;
                     }
                 }
@@ -870,9 +1207,9 @@
                 // Apply search filter
                 if (searchTerm) {
                     const searchLower = searchTerm.toLowerCase();
-                    return event.title.toLowerCase().includes(searchLower) ||
-                           event.description.toLowerCase().includes(searchLower) ||
-                           event.location.toLowerCase().includes(searchLower);
+                    return (event.title?.toLowerCase().includes(searchLower) ||
+                           event.description?.toLowerCase().includes(searchLower) ||
+                           event.location?.toLowerCase().includes(searchLower));
                 }
                 
                 return true;
@@ -895,8 +1232,8 @@
                     <div class="empty-state">
                         <i class="fa-regular fa-calendar-xmark"></i>
                         <h3>No Events Found</h3>
-                        <p>There are no events matching your criteria at the moment.</p>
-                        <button class="btn btn-primary" onclick="resetFilters()">
+                        <p>There are no events matching your criteria at the moment. Check back later or clear your filters.</p>
+                        <button class="btn btn-primary px-4 rounded-pill" onclick="resetFilters()">
                             <i class="fa-solid fa-rotate me-2"></i>Clear Filters
                         </button>
                     </div>
@@ -910,27 +1247,30 @@
             eventsList.style.display = 'grid';
         }
 
-        // Create event card HTML
+        // Create event card HTML from real data
         function createEventCard(event) {
-            const eventDate = new Date(event.date);
+            const eventDate = event.date ? new Date(event.date) : new Date();
             const isPast = eventDate < new Date();
-            const attendeeCount = event.attendees ? event.attendees.length : Math.floor(Math.random() * 20) + 5;
+            const attendeeCount = event.attendees_count || event.attendees?.length || 0;
+            
+            // Generate avatar letters from attendee names or use placeholders
+            const avatarLetters = ['A', 'B', 'C', 'D', 'E'];
             
             return `
                 <div class="event-card" data-event-id="${event.id}">
                     <div class="event-image">
-                        <img src="${event.media || 'https://via.placeholder.com/400x200/0d6efd/ffffff?text=Community+Event'}" 
-                             alt="${event.title}"
+                        <img src="${event.image || event.media || 'https://via.placeholder.com/400x200/0d6efd/ffffff?text=' + encodeURIComponent(event.title)}" 
+                             alt="${event.title || 'Event'}"
                              onerror="this.src='https://via.placeholder.com/400x200/0d6efd/ffffff?text=Yapei+Event'">
                         <span class="event-date-badge">
                             <i class="fa-regular fa-calendar me-1"></i>
-                            ${eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                            ${eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
                         ${event.category ? `<span class="event-category">${event.category}</span>` : ''}
                     </div>
                     <div class="event-content">
-                        <h3 class="event-title">${event.title}</h3>
-                        <p class="event-description">${event.description.substring(0, 100)}${event.description.length > 100 ? '...' : ''}</p>
+                        <h3 class="event-title">${event.title || 'Untitled Event'}</h3>
+                        <p class="event-description">${(event.description || '').substring(0, 100)}${(event.description || '').length > 100 ? '...' : ''}</p>
                         
                         <div class="event-meta">
                             <div class="event-meta-item">
@@ -939,7 +1279,7 @@
                             </div>
                             <div class="event-meta-item">
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>${event.location}</span>
+                                <span>${event.location || 'Location TBD'}</span>
                             </div>
                             ${event.organizer ? `
                                 <div class="event-meta-item">
@@ -952,72 +1292,98 @@
                         <div class="event-footer">
                             <div class="event-attendees">
                                 <div class="attendee-avatars">
-                                    ${generateAttendeeAvatars(attendeeCount)}
+                                    ${attendeeCount > 0 ? 
+                                        avatarLetters.slice(0, Math.min(3, attendeeCount)).map(letter => 
+                                            `<span class="attendee-avatar">${letter}</span>`
+                                        ).join('') + 
+                                        (attendeeCount > 3 ? `<span class="attendee-avatar">+${attendeeCount - 3}</span>` : '')
+                                        : '<span class="text-secondary">Be the first!</span>'
+                                    }
                                 </div>
-                                <span>${attendeeCount}+ attending</span>
+                                ${attendeeCount > 0 ? `<span>${attendeeCount}+ attending</span>` : ''}
                             </div>
-                            <button class="btn-attend" onclick="handleRSVP(${event.id})" ${isPast ? 'disabled' : ''}>
-                                <i class="fa-regular fa-calendar-check me-2"></i>
-                                ${isPast ? 'Event Ended' : 'RSVP'}
-                            </button>
+                            <a href="event-details.html?id=${event.id}" class="btn-attend" ${isPast ? 'disabled' : ''}>
+                                <i class="fa-regular fa-eye me-2"></i>
+                                View Details
+                            </a>
                         </div>
                     </div>
                 </div>
             `;
         }
 
-        // Generate attendee avatars
-        function generateAttendeeAvatars(count) {
-            const maxAvatars = 3;
-            let avatars = '';
-            
-            for (let i = 0; i < Math.min(count, maxAvatars); i++) {
-                avatars += `<span class="attendee-avatar">${String.fromCharCode(65 + i)}</span>`;
-            }
-            
-            if (count > maxAvatars) {
-                avatars += `<span class="attendee-avatar">+${count - maxAvatars}</span>`;
-            }
-            
-            return avatars;
-        }
-
-        // Handle RSVP
-        function handleRSVP(eventId) {
-            if (!localStorage.getItem('access')) {
-                // Redirect to login if not authenticated
-                window.location.href = `login.html?redirect=events.html&event=${eventId}`;
-                return;
-            }
-            
-            // Show RSVP confirmation
-            rsvpModal.show();
-            
-            // Auto hide after 2 seconds
-            setTimeout(() => {
-                rsvpModal.hide();
-            }, 2000);
-        }
-
-        // Check for featured event
+        // Check for featured event from API
         async function checkFeaturedEvent() {
             try {
                 const response = await fetch(`${BACKEND_URL}/api/events/featured/`);
                 const event = await response.json();
                 
                 if (event && event.id) {
-                    document.getElementById('featuredTitle').textContent = event.title;
-                    document.getElementById('featuredDesc').textContent = event.description.substring(0, 120) + '...';
-                    document.getElementById('featuredDate').textContent = new Date(event.date).toLocaleDateString('en-US', { 
-                        weekday: 'long', 
-                        month: 'long', 
-                        day: 'numeric' 
-                    });
-                    document.getElementById('featuredLink').href = `event-details.html?id=${event.id}`;
-                    document.getElementById('featuredEvent').style.display = 'block';
+                    const featuredDiv = document.getElementById('featuredEvent');
+                    const eventDate = event.date ? new Date(event.date) : new Date();
+                    
+                    featuredDiv.innerHTML = `
+                        <div class="featured-event-content">
+                            <h3>${event.title}</h3>
+                            <p class="mb-3">${(event.description || '').substring(0, 150)}${(event.description || '').length > 150 ? '...' : ''}</p>
+                            <div class="d-flex align-items-center flex-wrap gap-3">
+                                <a href="event-details.html?id=${event.id}" class="btn btn-light">
+                                    <i class="fa-solid fa-calendar-check me-2"></i>Register Now
+                                </a>
+                                <span class="text-white-50">
+                                    <i class="fa-regular fa-clock me-1"></i>
+                                    ${eventDate.toLocaleDateString('en-US', { 
+                                        weekday: 'long', 
+                                        month: 'long', 
+                                        day: 'numeric',
+                                        hour: 'numeric',
+                                        minute: '2-digit'
+                                    })}
+                                </span>
+                            </div>
+                        </div>
+                    `;
+                    featuredDiv.style.display = 'block';
                 }
             } catch (error) {
                 console.log('No featured event available');
+            }
+        }
+
+        // Check for event invitation from API
+        async function checkEventInvitation() {
+            const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
+            
+            if (!inviteShown && allEvents.length > 0) {
+                // Pick a random upcoming event for invitation
+                const upcomingEvents = allEvents.filter(event => {
+                    const eventDate = event.date ? new Date(event.date) : null;
+                    return eventDate && eventDate > new Date();
+                });
+                
+                if (upcomingEvents.length > 0) {
+                    const event = upcomingEvents[Math.floor(Math.random() * upcomingEvents.length)];
+                    const eventDate = event.date ? new Date(event.date) : new Date();
+                    
+                    document.getElementById('inviteModalTitle').textContent = event.title || 'You\'re Invited!';
+                    document.getElementById('inviteModalDesc').textContent = (event.description || '').substring(0, 100) + '...';
+                    
+                    document.getElementById('inviteModalDetails').innerHTML = `
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fa-solid fa-location-dot text-primary me-3 fa-fw"></i>
+                            <span class="small">${event.location || 'Location TBD'}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-clock text-primary me-3 fa-fw"></i>
+                            <span class="small">${eventDate.toLocaleString()}</span>
+                        </div>
+                    `;
+                    
+                    document.getElementById('inviteModalLink').href = `event-details.html?id=${event.id}`;
+                    
+                    eventInviteModal.show();
+                    sessionStorage.setItem('eventInvitePopupShown', 'true');
+                }
             }
         }
 
@@ -1043,7 +1409,7 @@
                     <i class="fa-solid fa-circle-exclamation text-danger"></i>
                     <h3>Oops! Something went wrong</h3>
                     <p>${message}</p>
-                    <button class="btn btn-primary" onclick="fetchEvents()">
+                    <button class="btn btn-primary px-4 rounded-pill" onclick="fetchEvents()">
                         <i class="fa-solid fa-rotate me-2"></i>Try Again
                     </button>
                 </div>
@@ -1063,31 +1429,39 @@
             filterAndDisplayEvents();
         }
 
-        // Event Invitation Popup Logic
-        async function checkEventInvitation() {
-            const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
+        // Filter by category from footer
+        function filterByCategory(category) {
+            currentFilter = category;
+            currentPage = 1;
             
-            if (!inviteShown && Math.random() < 0.5) {
-                try {
-                    const response = await fetch(`${BACKEND_URL}/api/events/upcoming/`);
-                    const event = await response.json();
-                    
-                    if (event && event.deadline && new Date(event.deadline) > new Date()) {
-                        document.getElementById('eventInviteTitle').textContent = event.title;
-                        document.getElementById('eventInviteDesc').textContent = event.description;
-                        document.getElementById('eventInviteLocation').textContent = event.location;
-                        document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
-                        
-                        eventInviteModal.show();
-                        sessionStorage.setItem('eventInvitePopupShown', 'true');
-                    }
-                } catch (error) {
-                    console.log('No upcoming events for invitation');
-                }
-            }
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === category);
+            });
+            
+            filterAndDisplayEvents();
+            
+            // Scroll to events section
+            document.getElementById('eventsContainer').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Navbar dynamic links
+        // Handle RSVP (redirect to login if not authenticated)
+        function handleRSVP(eventId) {
+            if (!localStorage.getItem('access')) {
+                window.location.href = `login.html?redirect=event-details.html?id=${eventId}`;
+                return;
+            }
+            
+            // In a real implementation, you would send the RSVP to your backend
+            // For now, just show the confirmation modal
+            rsvpModal.show();
+            
+            setTimeout(() => {
+                rsvpModal.hide();
+            }, 2000);
+        }
+
+        // Update navbar based on login status
         function updateNavbarLinks() {
             const userLinks = document.getElementById('navbar-user-links');
             if (!userLinks) return;
@@ -1125,13 +1499,10 @@
             }, 3000);
         }
 
-        // Event Listeners
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
             updateNavbarLinks();
             fetchEvents();
-            
-            // Check for event invitation after 3 seconds
-            setTimeout(checkEventInvitation, 3000);
             
             // Search input handler
             document.getElementById('searchInput').addEventListener('input', function(e) {
