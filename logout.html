@@ -5,32 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Out - Yapei Community Online</title>
     
-    <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --primary-dark: #0b5ed7;
-            --secondary-color: #6c757d;
-            --success-color: #198754;
-            --danger-color: #dc3545;
-            --light-bg: #f8f9fa;
-            --dark-bg: #212529;
-            --border-radius: 1rem;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            --text-light: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --danger-glass: rgba(220, 53, 69, 0.2);
+            --danger-glass-hover: rgba(220, 53, 69, 0.4);
+            --success-glass: rgba(25, 135, 84, 0.2);
         }
 
         * {
@@ -40,84 +35,133 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2c3e50;
+            color: var(--text-light);
+            background-color: #0f172a;
+            overflow: hidden;
             padding: 1.5rem;
+            position: relative;
+        }
+
+        /* Liquid Background Animation */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(45deg, #1e3a8a, #4c1d95, #0f766e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite alternate;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #3b82f6;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: #e11d48;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 40%;
+            width: 40vw;
+            height: 40vw;
+            background: #14b8a6;
+            animation-delay: -10s;
+            animation-duration: 25s;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 2rem;
+        }
+
+        .glass-panel-inner {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(4px);
         }
 
         .logout-wrapper {
             width: 100%;
             max-width: 500px;
+            z-index: 10;
         }
 
         .logout-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 2rem;
-            box-shadow: var(--box-shadow);
+            padding: 3rem 2rem;
+            position: relative;
             overflow: hidden;
-            animation: slideInUp 0.6s ease;
+            animation: slideInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Header Section */
         .logout-header {
-            background: linear-gradient(135deg, var(--danger-color), #b02a37);
-            color: white;
-            padding: 2.5rem 2rem;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logout-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            margin-bottom: 2rem;
         }
 
         .logout-header i {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: rgba(255,255,255,0.2);
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            border-radius: 50%;
-            display: inline-block;
-            position: relative;
-            z-index: 1;
+            color: #fca5a5;
             animation: pulse 2s infinite;
+            text-shadow: 0 0 20px rgba(220, 53, 69, 0.5);
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
 
@@ -125,48 +169,29 @@
             font-weight: 700;
             font-size: 2.2rem;
             margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logout-header p {
-            opacity: 0.95;
-            margin-bottom: 0;
-            position: relative;
-            z-index: 1;
-            font-size: 1.1rem;
-        }
-
-        /* Body Section */
-        .logout-body {
-            padding: 2.5rem 2rem;
-            background: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         /* Info Box */
         .info-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
             text-align: center;
+            margin-bottom: 2rem;
         }
 
         .info-box i {
-            font-size: 2.5rem;
-            color: var(--primary-color);
+            font-size: 2rem;
+            color: #93c5fd;
             margin-bottom: 1rem;
         }
 
         .info-box h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #2c3e50;
         }
 
         .info-box p {
-            color: var(--secondary-color);
+            color: var(--text-dim);
             margin-bottom: 0;
             font-size: 0.95rem;
         }
@@ -176,16 +201,14 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 0.75rem;
             margin-bottom: 2rem;
         }
 
         .user-avatar {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -193,6 +216,7 @@
             color: white;
             font-size: 1.5rem;
             font-weight: 600;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
         }
 
         .user-details {
@@ -206,44 +230,42 @@
 
         .user-details .user-status {
             font-size: 0.85rem;
-            color: var(--success-color);
+            color: #4ade80;
         }
 
         .user-details .user-status i {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             margin-right: 0.25rem;
+            vertical-align: middle;
         }
 
-        /* Logout Button */
-        .btn-logout {
-            background: linear-gradient(135deg, var(--danger-color), #b02a37);
-            border: none;
+        /* Glass Buttons */
+        .btn-glass-danger {
+            background: var(--danger-glass);
+            color: #fff;
+            border: 1px solid rgba(220, 53, 69, 0.4);
             border-radius: 0.75rem;
             padding: 1rem;
             font-weight: 600;
             font-size: 1.1rem;
-            transition: var(--transition);
-            color: white;
             width: 100%;
-            position: relative;
-            overflow: hidden;
+            box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
         }
 
-        .btn-logout:hover:not(:disabled) {
+        .btn-glass-danger:hover:not(:disabled) {
+            background: var(--danger-glass-hover);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(220, 53, 69, 0.4);
+            box-shadow: 0 10px 30px rgba(220, 53, 69, 0.3), inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
-        .btn-logout:active {
-            transform: translateY(0);
-        }
-
-        .btn-logout i {
+        .btn-glass-danger i {
             margin-right: 0.5rem;
             transition: var(--transition);
         }
 
-        .btn-logout:hover i {
+        .btn-glass-danger:hover i {
             transform: translateX(5px);
         }
 
@@ -276,51 +298,35 @@
             to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        /* Message Alerts */
-        .alert {
-            border-radius: 0.75rem;
-            border: none;
-            padding: 1rem;
+        /* Progress Bar */
+        .progress-bar-container {
             margin-top: 1.5rem;
-            animation: slideInDown 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            overflow: hidden;
+            display: none;
         }
 
-        .alert i {
-            font-size: 1.2rem;
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #fca5a5, #ef4444);
+            transition: width 0.1s linear;
         }
 
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Message Alerts */
+        .alert-glass {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
         }
 
-        .alert-success {
-            background: linear-gradient(135deg, #d1e7dd, #c0e0d3);
-            color: #0f5132;
-        }
-
-        .alert-info {
-            background: linear-gradient(135deg, #cff4fc, #bee5eb);
-            color: #055160;
-        }
-
-        .alert-warning {
-            background: linear-gradient(135deg, #fff3cd, #ffe69c);
-            color: #664d03;
-        }
-
-        .alert-danger {
-            background: linear-gradient(135deg, #f8d7da, #f5c2c7);
-            color: #842029;
+        .alert-glass .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
         }
 
         /* Alternative Actions */
@@ -330,7 +336,7 @@
         }
 
         .alternative-actions p {
-            color: var(--secondary-color);
+            color: var(--text-dim);
             margin-bottom: 1rem;
             position: relative;
         }
@@ -342,16 +348,11 @@
             top: 50%;
             width: 30%;
             height: 1px;
-            background: #e9ecef;
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .alternative-actions p::before {
-            left: 0;
-        }
-
-        .alternative-actions p::after {
-            right: 0;
-        }
+        .alternative-actions p::before { left: 0; }
+        .alternative-actions p::after { right: 0; }
 
         .action-buttons {
             display: flex;
@@ -361,10 +362,10 @@
 
         .action-btn {
             padding: 0.75rem 1.5rem;
-            border: 2px solid #e9ecef;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0.75rem;
-            background: white;
-            color: var(--secondary-color);
+            color: var(--text-light);
             font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
@@ -376,91 +377,65 @@
         }
 
         .action-btn:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            background: #f8f9fa;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
             transform: translateY(-2px);
         }
 
-        .action-btn i {
-            font-size: 1rem;
-        }
-
-        /* Progress Bar */
-        .progress-bar-container {
-            margin-top: 1.5rem;
-            height: 4px;
-            background: #e9ecef;
-            border-radius: 1rem;
-            overflow: hidden;
-            display: none;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
-            transition: width 0.1s linear;
+        /* Modals */
+        .modal-content {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            border-radius: 1.5rem;
         }
 
         /* Responsive */
         @media (max-width: 576px) {
-            .logout-header {
-                padding: 2rem 1.5rem;
-            }
-            
-            .logout-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .logout-body {
-                padding: 2rem 1.5rem;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-            }
+            .logout-card { padding: 2rem 1.5rem; }
+            .action-buttons { flex-direction: column; }
+            .logout-header h2 { font-size: 1.8rem; }
         }
 
-        /* Accessibility */
         .visually-hidden-focusable:focus {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background: white;
+            background: rgba(255,255,255,0.9);
             padding: 1rem;
             z-index: 10000;
             border-radius: 0.5rem;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
+            color: #0f172a;
         }
     </style>
 </head>
 <body>
-    <!-- Skip to main content -->
     <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
 
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
     <main id="main-content" class="logout-wrapper">
-        <div class="logout-card">
-            <!-- Header -->
+        <div class="glass-panel logout-card">
             <div class="logout-header">
-                <i class="fa-solid fa-door-open"></i>
+                <i class="fa-solid fa-person-walking-arrow-right"></i>
                 <h2>Sign Out</h2>
-                <p>We hate to see you go, but you're always welcome back!</p>
+                <p class="text-dim">We hate to see you go, but you're always welcome back in the flow.</p>
             </div>
 
-            <!-- Body -->
             <div class="logout-body">
-                <!-- Info Box -->
-                <div class="info-box animate__animated animate__fadeIn">
-                    <i class="fa-regular fa-circle-check"></i>
+                <div class="glass-panel-inner info-box animate__animated animate__fadeIn">
+                    <i class="fa-regular fa-shield-check"></i>
                     <h3>Before You Go...</h3>
-                    <p>Your session will be securely terminated. Any unsaved data will be lost.</p>
+                    <p>Your session will be securely terminated locally. Any unsaved data will be lost.</p>
                 </div>
 
-                <!-- User Info (visible when logged in) -->
-                <div id="userInfoSection" class="user-info animate__animated animate__fadeIn" style="display: none;">
+                <div id="userInfoSection" class="glass-panel-inner user-info animate__animated animate__fadeIn" style="display: none;">
                     <div class="user-avatar" id="userAvatar">Y</div>
                     <div class="user-details">
                         <div class="user-name" id="userName">Community Member</div>
@@ -470,58 +445,52 @@
                     </div>
                 </div>
 
-                <!-- Logout Button -->
-                <button id="logoutBtn" class="btn-logout" aria-label="Sign out of your account">
+                <button id="logoutBtn" class="btn-glass-danger" aria-label="Sign out of your account">
                     <span class="btn-text">
-                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <i class="fa-solid fa-power-off"></i>
                         Sign Out Now
                     </span>
                 </button>
 
-                <!-- Progress Bar -->
                 <div class="progress-bar-container" id="progressBar">
                     <div class="progress-bar-fill" id="progressFill"></div>
                 </div>
 
-                <!-- Message Area -->
-                <div id="logoutMsg" class="mt-3"></div>
+                <div id="logoutMsg"></div>
 
-                <!-- Alternative Actions -->
                 <div class="alternative-actions">
                     <p>or</p>
                     <div class="action-buttons">
                         <a href="index.html" class="action-btn">
-                            <i class="fa-solid fa-home"></i>
+                            <i class="fa-solid fa-house"></i>
                             Go Home
                         </a>
                         <a href="profile.html" class="action-btn" id="stayLoggedInBtn">
-                            <i class="fa-solid fa-arrow-left"></i>
+                            <i class="fa-solid fa-arrow-rotate-left"></i>
                             Stay Logged In
                         </a>
                     </div>
                 </div>
 
-                <!-- Security Notice -->
                 <div class="text-center mt-4">
-                    <small class="text-secondary">
-                        <i class="fa-solid fa-shield-halved me-1"></i>
-                        Secure logout - your session will be cleared
+                    <small class="text-dim">
+                        <i class="fa-solid fa-lock me-1"></i>
+                        Secure local logout - session keys will be wiped
                     </small>
                 </div>
             </div>
         </div>
 
-        <!-- Success Modal (for confirmation) -->
         <div class="modal fade" id="logoutConfirmModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center p-4">
                     <div class="modal-body">
-                        <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
+                        <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block shadow">
                             <i class="fa-solid fa-check fa-2x"></i>
                         </div>
                         <h5 class="fw-bold mb-2">Successfully Signed Out!</h5>
-                        <p class="text-secondary mb-3">You'll be redirected to the home page in a moment.</p>
-                        <div class="spinner-border text-primary" role="status">
+                        <p class="text-dim mb-3">You'll be redirected to the home page in a moment.</p>
+                        <div class="spinner-border text-light" role="status">
                             <span class="visually-hidden">Loading...</span>
                         </div>
                     </div>
@@ -533,7 +502,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // DOM Elements
         const logoutBtn = document.getElementById('logoutBtn');
         const logoutMsg = document.getElementById('logoutMsg');
         const userInfoSection = document.getElementById('userInfoSection');
@@ -543,13 +511,11 @@
         const progressBar = document.getElementById('progressBar');
         const progressFill = document.getElementById('progressFill');
 
-        // Bootstrap Modal
         let logoutModal;
         if (typeof bootstrap !== 'undefined') {
             logoutModal = new bootstrap.Modal(document.getElementById('logoutConfirmModal'));
         }
 
-        // Check login status on page load
         function checkLoginStatus() {
             const isLoggedIn = !!localStorage.getItem('access');
             const storedUsername = localStorage.getItem('username') || 'Community Member';
@@ -557,240 +523,105 @@
             if (isLoggedIn) {
                 userInfoSection.style.display = 'flex';
                 userName.textContent = storedUsername;
-                
-                // Set avatar initial
-                const initial = storedUsername.charAt(0).toUpperCase();
-                userAvatar.textContent = initial;
-                
-                // Enable logout button
+                userAvatar.textContent = storedUsername.charAt(0).toUpperCase();
                 logoutBtn.disabled = false;
             } else {
                 userInfoSection.style.display = 'none';
-                // Still allow logout to clear any stale data
             }
         }
 
-        // Show message with animation
         function showMessage(type, text, icon = null) {
             const iconHtml = icon ? `<i class="fa-solid fa-${icon} me-2"></i>` : '';
-            
             logoutMsg.innerHTML = `
-                <div class="alert alert-${type} alert-dismissible fade show animate__animated animate__fadeInUp" role="alert">
-                    ${iconHtml}
-                    ${text}
+                <div class="alert alert-glass alert-dismissible fade show animate__animated animate__fadeInUp" style="border-color: ${type === 'danger' ? '#fca5a5' : '#86efac'};" role="alert">
+                    ${iconHtml}${text}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             `;
-
-            // Auto scroll to message
-            logoutMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Simulate progress bar
         function startProgressBar(callback) {
             progressBar.style.display = 'block';
             let width = 0;
             const interval = setInterval(() => {
                 width += 2;
                 progressFill.style.width = width + '%';
-                
                 if (width >= 100) {
                     clearInterval(interval);
                     callback();
                 }
-            }, 30);
+            }, 25);
         }
 
-        // Handle logout
         async function handleLogout() {
-            // Show loading state
             logoutBtn.classList.add('btn-loading');
             logoutBtn.disabled = true;
             
-            // Start progress bar
             startProgressBar(() => {
-                // Progress complete - redirect
                 window.location.href = 'index.html';
             });
 
             try {
-                // Get tokens before removal
-                const accessToken = localStorage.getItem('access');
-                const refreshToken = localStorage.getItem('refresh');
-
-                // Clear local storage
+                // Clear local storage (Backend does not have a /logout endpoint configured, so this handles it strictly client-side)
                 localStorage.removeItem('access');
                 localStorage.removeItem('refresh');
                 localStorage.removeItem('username');
                 localStorage.removeItem('userEmail');
                 localStorage.removeItem('userAvatar');
-
-                // Optional: Notify backend about logout (if endpoint exists)
-                if (accessToken && refreshToken) {
-                    try {
-                        await fetch(`${BACKEND_URL}/api/logout/`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Authorization': `Bearer ${accessToken}`
-                            },
-                            body: JSON.stringify({ refresh: refreshToken })
-                        });
-                    } catch (e) {
-                        // Silently fail - backend notification is optional
-                        console.log('Backend logout notification failed:', e);
-                    }
-                }
-
-                // Show success message
-                showMessage('success', 'Successfully signed out! Redirecting to home page...', 'check-circle');
                 
-                // Hide user info
                 userInfoSection.style.display = 'none';
                 
-                // Show modal for better UX
                 if (logoutModal) {
                     logoutModal.show();
-                    
-                    // Auto hide modal and redirect
-                    setTimeout(() => {
-                        logoutModal.hide();
-                    }, 2000);
+                    setTimeout(() => logoutModal.hide(), 2000);
+                } else {
+                    showMessage('success', 'Successfully signed out! Redirecting...', 'check-circle');
                 }
                 
             } catch (error) {
-                console.error('Logout error:', error);
-                
-                // Even if there's an error, clear local storage
-                localStorage.removeItem('access');
-                localStorage.removeItem('refresh');
-                localStorage.removeItem('username');
-                
-                showMessage('warning', 'Signed out but encountered an issue. Redirecting...', 'exclamation-triangle');
+                localStorage.clear();
+                showMessage('warning', 'Signed out but encountered an issue locally. Redirecting...', 'triangle-exclamation');
             }
         }
 
-        // Handle stay logged in
         function handleStayLoggedIn(e) {
             e.preventDefault();
-            
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            if (isLoggedIn) {
-                showMessage('info', 'Continuing your session. Welcome back!', 'info-circle');
-                
-                // Add a small animation to the button
+            if (!!localStorage.getItem('access')) {
                 stayLoggedInBtn.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     stayLoggedInBtn.style.transform = 'scale(1)';
-                    
-                    // Redirect to profile
-                    setTimeout(() => {
-                        window.location.href = 'profile.html';
-                    }, 500);
+                    setTimeout(() => window.location.href = 'profile.html', 300);
                 }, 200);
             } else {
-                // If not logged in, go home
                 window.location.href = 'index.html';
             }
         }
 
-        // Event listeners
         logoutBtn.addEventListener('click', handleLogout);
-
         stayLoggedInBtn.addEventListener('click', handleStayLoggedIn);
 
-        // Check if user is trying to access logout page while not logged in
         function redirectIfNotLoggedIn() {
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            if (!isLoggedIn) {
-                // Still on logout page but not logged in - show appropriate message
+            if (!localStorage.getItem('access')) {
                 showMessage('info', 'You are not currently signed in. Redirecting to home page...', 'info-circle');
-                
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 2000);
+                setTimeout(() => window.location.href = 'index.html', 2000);
             }
         }
 
-        // Auto logout after inactivity (optional)
-        let inactivityTimer;
-        
-        function resetInactivityTimer() {
-            clearTimeout(inactivityTimer);
-            inactivityTimer = setTimeout(() => {
-                // Auto logout after 5 minutes of inactivity on this page
-                if (localStorage.getItem('access')) {
-                    showMessage('warning', 'Session timeout due to inactivity. Logging out...', 'clock');
-                    setTimeout(handleLogout, 2000);
-                }
-            }, 300000); // 5 minutes
-        }
-
-        // Track user activity
-        ['mousemove', 'keypress', 'click', 'scroll'].forEach(event => {
-            document.addEventListener(event, resetInactivityTimer);
-        });
-
-        // Handle page visibility change
-        document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                // Page hidden, don't do anything
-            } else {
-                // Page visible again, check if still logged in
-                checkLoginStatus();
-            }
-        });
-
-        // Handle before unload
-        window.addEventListener('beforeunload', function() {
-            // Optional: Warn user if they're leaving before logout
-            // Not implemented to avoid annoying users
-        });
-
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Define BACKEND_URL (replace with your actual backend URL)
-            const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-            
             checkLoginStatus();
             redirectIfNotLoggedIn();
-            resetInactivityTimer();
             
-            // Add keyboard shortcut (Alt+L) for logout
             document.addEventListener('keydown', function(e) {
-                if (e.altKey && e.key === 'l') {
+                if (e.altKey && e.key === 'l' && !logoutBtn.disabled) {
                     e.preventDefault();
-                    if (!logoutBtn.disabled) {
-                        handleLogout();
-                    }
+                    handleLogout();
                 }
             });
             
-            // Add title change effect
-            let originalTitle = document.title;
-            let titleInterval;
-            
-            // Change title when logged out
-            function setLogoutTitle() {
+            if (!localStorage.getItem('access')) {
                 document.title = '✓ Signed Out - Yapei Community';
             }
-            
-            // If already logged out on arrival
-            if (!localStorage.getItem('access')) {
-                setLogoutTitle();
-            }
-        });
-
-        // Clean up on page unload
-        window.addEventListener('unload', function() {
-            // Clear any intervals/timers
-            if (titleInterval) clearInterval(titleInterval);
         });
     </script>
-
-    <!-- Add Font Awesome for additional icons -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 </body>
 </html>
