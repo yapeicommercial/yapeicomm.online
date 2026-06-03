@@ -5,83 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Back - Yapei Community Online</title>
     
-    <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Core Dependencies -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --primary-dark: #0b5ed7;
-            --secondary-color: #6c757d;
-            --success-color: #198754;
-            --light-bg: #f8f9fa;
-            --dark-bg: #212529;
-            --border-radius: 1rem;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --primary-deep: #06325c;
+            --primary-accent: #3b82f6;
+            --liquid-bg: linear-gradient(135deg, #eef2f7 0%, #f5f7fa 50%, #e0eafd 100%);
+            --glass-card: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.06);
+            --accent-gold: #f59e0b;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--liquid-bg);
+            background-attachment: fixed;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: #2c3e50;
+            color: #1e293b;
+            overflow-x: hidden;
         }
 
-        /* Navigation Enhancement */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            padding: 1rem 0;
+        /* Glassmorphic Navigation */
+        .navbar-glass {
+            background: rgba(6, 50, 92, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 0;
         }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-            transition: var(--transition);
+        .navbar-brand i {
+            color: var(--accent-gold);
+            text-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
         }
-
-        .navbar-brand:hover {
-            transform: translateY(-1px);
-        }
-
         .nav-link {
+            border-radius: 50px;
+            margin: 0 4px;
+            padding: 0.5rem 1.2rem !important;
             font-weight: 500;
-            padding: 0.5rem 1rem !important;
-            border-radius: 0.5rem;
-            transition: var(--transition);
-            color: #495057 !important;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.85) !important;
         }
-
-        .nav-link:hover {
-            background-color: rgba(13, 110, 253, 0.1);
-            color: var(--primary-color) !important;
-            transform: translateY(-1px);
-        }
-
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white !important;
+        .nav-link.active, .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(5px);
         }
 
         /* Main Container */
@@ -90,114 +70,119 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 1.5rem;
+            padding: 6rem 1.5rem 4rem;
+            position: relative;
+            z-index: 2;
         }
 
-        .login-card {
-            background: white;
-            border-radius: 2rem;
-            box-shadow: var(--box-shadow);
+        /* Ambient Background Ornaments */
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 1;
+            opacity: 0.4;
+        }
+        .blob-1 { top: 10%; left: 10%; width: 300px; height: 300px; background: #3b82f6; }
+        .blob-2 { bottom: 10%; right: 10%; width: 400px; height: 400px; background: #8b5cf6; }
+
+        /* Liquid Glass Cards */
+        .glass-card {
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            background: var(--glass-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--glass-shadow);
             overflow: hidden;
             max-width: 480px;
             width: 100%;
-            animation: slideUp 0.6s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            animation: fadeInUp 0.6s ease;
         }
 
         /* Header Section */
         .login-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2.5rem 2rem;
+            padding: 2.5rem 2rem 1rem;
             text-align: center;
         }
 
-        .login-header i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.2);
+        .login-header .icon-wrapper {
+            background: linear-gradient(135deg, #3b82f6 0%, #06325c 100%);
             width: 80px;
             height: 80px;
-            line-height: 80px;
             border-radius: 50%;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(6, 50, 92, 0.2);
+            border: 3px solid rgba(255, 255, 255, 0.6);
         }
 
         .login-header h2 {
-            font-weight: 700;
+            font-weight: 800;
+            color: var(--primary-deep);
             margin-bottom: 0.5rem;
-        }
-
-        .login-header p {
-            opacity: 0.9;
-            margin-bottom: 0;
+            letter-spacing: -0.5px;
         }
 
         /* Form Section */
         .login-body {
-            padding: 2.5rem 2rem;
+            padding: 1rem 2.5rem 2.5rem;
         }
 
         .form-label {
-            font-weight: 600;
-            color: #495057;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-deep);
             margin-bottom: 0.5rem;
-            font-size: 0.95rem;
         }
 
+        /* Liquid Inputs */
         .input-group {
-            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .input-group:focus-within {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15);
         }
 
         .input-group-text {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-right: none;
-            border-radius: 0.75rem 0 0 0.75rem;
-            color: var(--primary-color);
-            padding: 0.75rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--primary-deep);
+            padding: 0.85rem 1rem 0.85rem 1.25rem;
         }
 
-        .form-control {
-            border: 2px solid #e9ecef;
-            border-left: none;
-            border-radius: 0 0.75rem 0.75rem 0;
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: none;
-        }
-
-        .form-control:focus + .input-group-text {
-            border-color: var(--primary-color);
+        .form-control.glass-input {
+            background: transparent;
+            border: none;
+            padding: 0.85rem 1.25rem 0.85rem 0.5rem;
+            color: #1e293b;
+            font-weight: 500;
+            box-shadow: none !important;
         }
 
         /* Password toggle */
         .password-toggle {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
             cursor: pointer;
-            color: var(--secondary-color);
-            z-index: 10;
+            color: #64748b;
+            padding: 0.85rem 1.25rem;
+            transition: color 0.3s ease;
         }
+        .password-toggle:hover { color: var(--primary-deep); }
 
-        /* Remember me and Forgot password */
+        /* Options */
         .form-options {
             display: flex;
             justify-content: space-between;
@@ -210,67 +195,48 @@
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
-        }
-
-        .remember-me input[type="checkbox"] {
-            width: 1.2rem;
-            height: 1.2rem;
-            cursor: pointer;
-            accent-color: var(--primary-color);
+            font-weight: 500;
+            color: #475569;
+            font-size: 0.9rem;
         }
 
         .forgot-password {
-            color: var(--primary-color);
+            color: var(--primary-accent);
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 600;
             transition: var(--transition);
         }
 
         .forgot-password:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
+            color: var(--primary-deep);
         }
 
-        /* Buttons */
-        .btn-login {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border: none;
-            border-radius: 0.75rem;
-            padding: 0.9rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            margin-bottom: 1rem;
-        }
-
-        .btn-login:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.4);
-        }
-
-        .btn-logout {
-            border-radius: 0.75rem;
-            padding: 0.9rem;
-            font-weight: 600;
-            transition: var(--transition);
-            background: white;
-            border: 2px solid #dc3545;
-            color: #dc3545;
-        }
-
-        .btn-logout:hover {
-            background: #dc3545;
+        /* Glass Buttons */
+        .btn-glass-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.85rem 2.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px -6px rgba(29, 78, 216, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-glass-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(220, 53, 69, 0.3);
+            box-shadow: 0 12px 24px -5px rgba(29, 78, 216, 0.6);
+            color: white;
         }
 
         /* Divider */
         .divider {
             position: relative;
             text-align: center;
-            margin: 1.5rem 0;
+            margin: 1.75rem 0;
         }
 
         .divider::before {
@@ -280,15 +246,17 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: #e9ecef;
+            background: rgba(6, 50, 92, 0.1);
         }
 
         .divider span {
-            background: white;
+            background: var(--glass-card);
             padding: 0 1rem;
             position: relative;
-            color: var(--secondary-color);
-            font-size: 0.9rem;
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 20px;
         }
 
         /* Social login */
@@ -296,122 +264,102 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-top: 1rem;
         }
 
-        .social-btn {
+        .btn-glass-outline {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(6, 50, 92, 0.2);
+            color: #334155;
+            border-radius: 16px;
             padding: 0.75rem;
-            border: 2px solid #e9ecef;
-            border-radius: 0.75rem;
-            background: white;
-            color: #495057;
-            font-weight: 500;
-            transition: var(--transition);
+            font-weight: 600;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
         }
 
-        .social-btn:hover {
-            background: #f8f9fa;
+        .btn-glass-outline:hover {
+            background: white;
             transform: translateY(-2px);
-            border-color: var(--primary-color);
+            box-shadow: 0 6px 15px rgba(6, 50, 92, 0.1);
         }
 
-        .social-btn i {
-            font-size: 1.2rem;
-        }
-
-        .social-btn.google:hover i { color: #DB4437; }
-        .social-btn.facebook:hover i { color: #4267B2; }
+        .btn-glass-outline.google:hover i { color: #DB4437; }
+        .btn-glass-outline.facebook:hover i { color: #4267B2; }
 
         /* Sign up link */
         .signup-link {
             text-align: center;
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 2px solid #e9ecef;
+            border-top: 1px solid rgba(6, 50, 92, 0.1);
+            color: #475569;
         }
 
         .signup-link a {
-            color: var(--primary-color);
-            font-weight: 600;
+            color: var(--primary-deep);
+            font-weight: 700;
             text-decoration: none;
             transition: var(--transition);
         }
 
-        .signup-link a:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-
         /* Message alerts */
-        .alert {
-            border-radius: 0.75rem;
-            border: none;
+        .glass-alert {
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
+            font-weight: 600;
             padding: 1rem;
             margin-bottom: 1.5rem;
-            animation: slideIn 0.3s ease;
+            animation: fadeInDown 0.3s ease;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Cinematic Blur Popups */
+        .cinematic-blur-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1060;
+        }
+        
+        .popup-card-glass {
+            border-radius: 32px !important;
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(25px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            box-shadow: 0 40px 80px -20px rgba(6, 50, 92, 0.4) !important;
+            padding: 2.5rem !important;
         }
 
-        /* Popup Enhancement */
-        .popup-card {
-            border-radius: 1.5rem !important;
-            border: none;
-            padding: 2rem !important;
-        }
-
-        .popup-card .icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        .popup-card-glass .icon-wrapper {
+            width: 86px;
+            height: 86px;
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
             border-radius: 50%;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 12px 25px rgba(16, 185, 129, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.5);
         }
 
-        .popup-card h4 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .popup-card p {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-        }
-
-        /* Loading State */
+        /* Button Loading Spinner */
         .btn-loading {
             position: relative;
+            color: transparent !important;
             pointer-events: none;
-            opacity: 0.8;
         }
-
-        .btn-loading .btn-text {
-            visibility: hidden;
-        }
-
         .btn-loading::after {
             content: "";
             position: absolute;
-            width: 1.5rem;
-            height: 1.5rem;
-            top: 50%;
-            left: 50%;
+            width: 1.5rem; height: 1.5rem;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             border: 3px solid white;
             border-radius: 50%;
@@ -419,239 +367,160 @@
             animation: spin 0.8s linear infinite;
         }
 
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Footer */
-        .login-footer {
+        /* Modern Footer */
+        .modern-footer {
+            background: rgba(6, 50, 92, 0.95) !important;
+            backdrop-filter: blur(10px);
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem 0;
             text-align: center;
-            padding: 2rem;
-            color: var(--secondary-color);
-            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
         }
-
-        .login-footer a {
-            color: var(--primary-color);
+        .modern-footer a {
+            color: #cbd5e1;
             text-decoration: none;
+            transition: all 0.3s ease;
             margin: 0 0.5rem;
         }
+        .modern-footer a:hover { color: white; }
 
-        .login-footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 576px) {
-            .login-card {
-                margin: 0;
-            }
-            
-            .login-header {
-                padding: 2rem 1.5rem;
-            }
-            
-            .login-body {
-                padding: 2rem 1.5rem;
-            }
-            
-            .social-login {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Accessibility */
-        .visually-hidden-focusable:focus {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: white;
-            padding: 1rem;
-            z-index: 10000;
-            border-radius: 0.5rem;
-            text-decoration: none;
-        }
+        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
     </style>
 </head>
 <body>
-    <!-- Skip to main content -->
-    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
 
-    <!-- Navigation -->
-    <header>
-        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <i class="fa-solid fa-users me-2"></i>Yapei Community
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                        data-bs-target="#navbarContent" aria-controls="navbarContent" 
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="fa-solid fa-home me-1"></i>Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="blog.html">
-                                <i class="fa-solid fa-book me-1"></i>Blog
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">
-                                <i class="fa-solid fa-info-circle me-1"></i>About Us
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class="fa-solid fa-sign-in-alt me-1"></i>Login
-                            </a>
-                        </li>
-                        <span id="navbar-user-links" class="d-flex"></span>
-                    </ul>
-                </div>
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold fs-4" href="index.html">
+                <i class="fa-solid fa-water-waves me-2"></i>Yapei Community
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="nav-link btn btn-sm btn-primary text-white px-3 rounded-pill shadow-sm" href="register.html">Join Us</a></li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- Main Content -->
-    <main id="main-content" class="login-container">
-        <div class="login-card">
-            <!-- Header -->
+    <main class="login-container">
+        <div class="glass-card">
             <div class="login-header">
-                <i class="fa-solid fa-users"></i>
-                <h2>Welcome Back!</h2>
-                <p>Sign in to continue to your community</p>
+                <div class="icon-wrapper">
+                    <i class="fa-solid fa-user-shield fa-2x"></i>
+                </div>
+                <h2>Welcome Back</h2>
+                <p class="text-secondary small">Authenticate to access the community hub</p>
             </div>
 
-            <!-- Body -->
             <div class="login-body">
-                <!-- Message Area -->
                 <div id="loginMsg"></div>
 
-                <!-- Login Form -->
                 <form id="loginForm" novalidate>
-                    <!-- Username Field -->
                     <div class="mb-3">
-                        <label for="username" class="form-label">
-                            <i class="fa-regular fa-user me-1"></i>Username
-                        </label>
+                        <label for="username" class="form-label">Username</label>
                         <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fa-regular fa-user"></i>
-                            </span>
-                            <input type="text" class="form-control" id="username" 
-                                   placeholder="Enter your username" required autofocus>
+                            <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+                            <input type="text" class="form-control glass-input" id="username" placeholder="Enter your identifier" required autofocus>
                         </div>
                     </div>
 
-                    <!-- Password Field -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">
-                            <i class="fa-solid fa-lock me-1"></i>Password
-                        </label>
-                        <div class="input-group position-relative">
-                            <span class="input-group-text">
-                                <i class="fa-solid fa-lock"></i>
-                            </span>
-                            <input type="password" class="form-control" id="password" 
-                                   placeholder="Enter your password" required>
+                        <label for="password" class="form-label">Authentication Key</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                            <input type="password" class="form-control glass-input" id="password" placeholder="Enter your password" required>
                             <span class="password-toggle" onclick="togglePasswordVisibility()">
                                 <i class="fa-regular fa-eye" id="togglePasswordIcon"></i>
                             </span>
                         </div>
                     </div>
 
-                    <!-- Options -->
                     <div class="form-options">
                         <label class="remember-me">
                             <input type="checkbox" id="rememberMe">
-                            <span>Remember me</span>
+                            Remember session
                         </label>
-                        <a href="forgot-password.html" class="forgot-password">
-                            Forgot Password?
-                        </a>
+                        <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
                     </div>
 
-                    <!-- Login Button -->
-                    <button type="submit" class="btn btn-login w-100" id="loginBtn">
-                        <span class="btn-text">
-                            <i class="fa-solid fa-sign-in-alt me-2"></i>Sign In
-                        </span>
+                    <button type="submit" class="btn btn-glass-primary w-100" id="loginBtn">
+                        <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Sign In
                     </button>
 
-                    <!-- Divider -->
                     <div class="divider">
-                        <span>or continue with</span>
+                        <span>or connect alternative</span>
                     </div>
 
-                    <!-- Social Login -->
                     <div class="social-login">
-                        <button type="button" class="social-btn google" onclick="handleSocialLogin('google')">
-                            <i class="fab fa-google"></i>
-                            <span>Google</span>
+                        <button type="button" class="btn btn-glass-outline google" onclick="handleSocialLogin('Google')">
+                            <i class="fab fa-google"></i> Google
                         </button>
-                        <button type="button" class="social-btn facebook" onclick="handleSocialLogin('facebook')">
-                            <i class="fab fa-facebook-f"></i>
-                            <span>Facebook</span>
+                        <button type="button" class="btn btn-glass-outline facebook" onclick="handleSocialLogin('Facebook')">
+                            <i class="fab fa-facebook-f"></i> Facebook
                         </button>
                     </div>
                 </form>
 
-                <!-- Logout Button (Visible when logged in) -->
-                <button id="logoutBtn" class="btn-logout w-100 mt-3" style="display: none;">
-                    <i class="fa-solid fa-sign-out-alt me-2"></i>Logout
-                </button>
-
-                <!-- Sign Up Link -->
                 <div class="signup-link">
-                    <span>New to our community? </span>
+                    <span>New to the framework? </span>
                     <a href="register.html">Create an account</a>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="login-footer">
+    <footer class="modern-footer">
         <div class="container">
             <div class="mb-2">
                 <a href="privacy.html">Privacy</a>
-                <span class="mx-2">•</span>
-                <a href="terms.html">Terms</a>
-                <span class="mx-2">•</span>
-                <a href="help.html">Help</a>
+                <span class="mx-2 opacity-50">•</span>
+                <a href="terms.html">Terms of Service</a>
+                <span class="mx-2 opacity-50">•</span>
+                <a href="contact.html">Help Desk</a>
             </div>
-            <div>&copy; 2026 Yapei Community Online. All rights reserved.</div>
+            <div class="small opacity-50">&copy; 2026 Yapei Community Online. All rights reserved.</div>
         </div>
     </footer>
 
-    <!-- Login Success Popup -->
-    <div id="loginPopupOverlay" class="popup-overlay"></div>
-    <div id="loginPopupMessage" class="popup-message">
-        <div class="popup-card text-center">
-            <div class="icon-wrapper">
-                <i class="fa-solid fa-check fa-3x text-white"></i>
+    <div id="loginPopupOverlay" class="cinematic-blur-overlay"></div>
+    <div id="loginPopupMessage" class="position-fixed top-50 start-50 translate-middle" style="display:none; z-index:1061;">
+        <div class="card popup-card-glass text-center animate__animated animate__zoomIn">
+            <div class="icon-wrapper mx-auto">
+                <i class="fa-solid fa-check fa-2x text-white"></i>
             </div>
-            <h4 id="welcomeUser">Welcome, <span id="welcomeUsername"></span>!</h4>
-            <p class="text-secondary">
-                You've successfully signed in.<br>
-                Redirecting to your profile...
+            <h3 class="fw-bold text-dark mb-2">Welcome, <span id="welcomeUsername"></span>!</h3>
+            <p class="text-secondary small mb-4">
+                Authentication verified.<br>
+                Establishing secure connection to your profile...
             </p>
-            <div class="mt-3">
-                <div class="spinner-border text-primary" role="status" style="width: 2rem; height: 2rem;">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border text-primary" role="status" style="width: 1.5rem; height: 1.5rem; border-width: 0.2rem;">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+
+        // Direct bypass if already authenticated
+        if (localStorage.getItem('access')) {
+            window.location.href = 'profile.html';
+        }
 
         // Toggle password visibility
         function togglePasswordVisibility() {
@@ -660,65 +529,44 @@
             
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
+                toggleIcon.classList.replace('fa-eye', 'fa-eye-slash');
             } else {
                 passwordInput.type = 'password';
-                toggleIcon.classList.remove('fa-eye-slash');
-                toggleIcon.classList.add('fa-eye');
+                toggleIcon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         }
 
-        // Handle social login (placeholder)
+        // Handle social login stub
         function handleSocialLogin(provider) {
-            showMessage('info', `Signing in with ${provider}...`);
-            // Implement social login logic here
+            showMessage('info', `Integration with ${provider} is currently pending OAuth configuration.`);
         }
 
-        // Show message function
+        // Show Glass Alert Message
         function showMessage(type, text) {
             const msgDiv = document.getElementById('loginMsg');
-            const alertClass = type === 'error' ? 'danger' : type === 'success' ? 'success' : 'info';
-            msgDiv.innerHTML = `<div class="alert alert-${alertClass}">${text}</div>`;
+            const icon = type === 'error' ? 'fa-triangle-exclamation' : (type === 'success' ? 'fa-circle-check' : 'fa-circle-info');
+            const bsClass = type === 'error' ? 'danger' : type;
             
-            // Auto hide after 5 seconds
-            setTimeout(() => {
-                msgDiv.innerHTML = '';
-            }, 5000);
+            msgDiv.innerHTML = `
+                <div class="alert alert-${bsClass} glass-alert text-center shadow-sm">
+                    <i class="fa-solid ${icon} me-2"></i>${text}
+                </div>`;
+            
+            setTimeout(() => { msgDiv.innerHTML = ''; }, 5000);
         }
 
-        // Check if user is already logged in
-        function checkLoginStatus() {
-            const isLoggedIn = !!localStorage.getItem('access');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const loginBtn = document.getElementById('loginBtn');
-            
-            if (isLoggedIn) {
-                logoutBtn.style.display = 'block';
-                loginBtn.disabled = true;
-                loginBtn.style.opacity = '0.6';
-            } else {
-                logoutBtn.style.display = 'none';
-                loginBtn.disabled = false;
-                loginBtn.style.opacity = '1';
-            }
-        }
-
-        // Form submission
+        // Form Submission (Syncs exactly with UserLoginView response)
         const form = document.getElementById('loginForm');
         const loginBtn = document.getElementById('loginBtn');
-        const logoutBtn = document.getElementById('logoutBtn');
 
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Show loading state
             loginBtn.classList.add('btn-loading');
             loginBtn.disabled = true;
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
 
             try {
                 const response = await fetch(`${BACKEND_URL}/api/login/`, {
@@ -730,110 +578,35 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    // Store tokens
+                    // Extract payload definitions matching `UserLoginView` returned Dict
                     localStorage.setItem('access', data.access);
                     localStorage.setItem('refresh', data.refresh);
                     
-                    // Store username for welcome message
-                    localStorage.setItem('username', username);
+                    const returnedUsername = data.username || username;
 
-                    // Show success popup
-                    document.getElementById('welcomeUsername').textContent = username;
+                    // Trigger Cinematic Success Modal
+                    document.getElementById('welcomeUsername').textContent = returnedUsername;
                     document.getElementById('loginPopupOverlay').style.display = 'block';
                     document.getElementById('loginPopupMessage').style.display = 'block';
 
-                    // Clear form
-                    form.reset();
-                    
-                    // Redirect after delay
+                    // Navigate securely to dashboard
                     setTimeout(() => {
                         window.location.href = 'profile.html';
-                    }, 3000);
+                    }, 2500);
+
                 } else {
-                    const errorMsg = data.error || 'Invalid username or password';
+                    const errorMsg = data.error || data.detail || 'Credentials validation failed.';
                     showMessage('error', errorMsg);
-                    
-                    // Remove loading state
                     loginBtn.classList.remove('btn-loading');
                     loginBtn.disabled = false;
                 }
             } catch (error) {
-                console.error('Login error:', error);
-                showMessage('error', 'Network error. Please try again.');
-                
-                // Remove loading state
+                console.error('Data exchange fault:', error);
+                showMessage('error', 'Network synchronization failed. Please check your connection.');
                 loginBtn.classList.remove('btn-loading');
                 loginBtn.disabled = false;
             }
         });
-
-        // Logout functionality
-        logoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
-            localStorage.removeItem('username');
-            
-            showMessage('info', 'You have been successfully logged out.');
-            checkLoginStatus();
-            
-            // Update navbar
-            updateNavbarLinks();
-        });
-
-        // Navbar dynamic links
-        function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
-            
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#" onclick="handleLogoutFromNav()"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link active" href="login.html"><i class="fa-solid fa-sign-in-alt me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-        }
-
-        // Handle logout from navbar
-        window.handleLogoutFromNav = function() {
-            localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
-            localStorage.removeItem('username');
-            updateNavbarLinks();
-            showMessage('info', 'You have been logged out.');
-            
-            // Update logout button visibility
-            checkLoginStatus();
-        };
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavbarLinks();
-            checkLoginStatus();
-            
-            // Add floating label effect
-            const inputs = document.querySelectorAll('.form-control');
-            inputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.parentElement.classList.add('focused');
-                });
-                
-                input.addEventListener('blur', function() {
-                    if (!this.value) {
-                        this.parentElement.classList.remove('focused');
-                    }
-                });
-            });
-        });
-
-        // Close popup when clicking overlay
-        document.getElementById('loginPopupOverlay').addEventListener('click', function() {
-            this.style.display = 'none';
-            document.getElementById('loginPopupMessage').style.display = 'none';
-        });
     </script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
