@@ -5,334 +5,431 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yapei Stories · Community Blog</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <!-- Bootstrap 5 + Font Awesome + Animate.css + nice fonts -->
+    
+    <!-- Bootstrap 5 + Font Awesome 6 + Animate.css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- custom enhancements: fresh blog styling, card hover, refined search/pagination -->
+    
+    <!-- Premium Liquid Glassmorphism CSS Architecture -->
     <style>
         :root {
-            --primary-deep: #0b4b7a;
-            --primary-soft: #e2f0fd;
-            --accent-gold: #f9b84a;
-            --card-round: 28px;
+            --primary-deep: #06325c;
+            --primary-accent: #3b82f6;
+            --liquid-bg: linear-gradient(135deg, #eef2f7 0%, #f5f7fa 50%, #e0eafd 100%);
+            --glass-card: rgba(255, 255, 255, 0.45);
+            --glass-card-hover: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --glass-border-hover: rgba(255, 255, 255, 0.75);
+            --glass-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.06);
+            --glass-shadow-hover: 0 24px 48px 0 rgba(6, 50, 92, 0.15);
+            --accent-gold: #f59e0b;
         }
+
         body {
-            background: #f4f9ff;
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: var(--liquid-bg);
+            background-attachment: fixed;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+            min-height: 100vh;
         }
-        .navbar {
-            background: linear-gradient(135deg, #0b4b7a 0%, #1f6ca3 100%) !important;
-            box-shadow: 0 10px 25px -10px #0a3d61;
+
+        /* Glassmorphic Top Navigation Panel */
+        .navbar-glass {
+            background: rgba(6, 50, 92, 0.8) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
         .navbar-brand i {
             color: var(--accent-gold);
-            margin-right: 8px;
+            text-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
         }
         .nav-link {
-            border-radius: 40px;
-            margin: 0 6px;
+            border-radius: 50px;
+            margin: 0 4px;
             padding: 0.5rem 1.2rem !important;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
         .nav-link.active, .nav-link:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
         }
-        /* blog header with a subtle pattern */
-        .blog-header {
-            background: #fef6e9;
-            border-bottom: 2px solid rgba(249,184,74,0.2);
+
+        /* Ambient Fluid Header */
+        .blog-header-glass {
+            background: linear-gradient(135deg, rgba(254, 246, 233, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
             position: relative;
             overflow: hidden;
+            margin-top: 76px;
         }
-        .blog-header::after {
-            content: "✍️📖";
-            font-size: 140px;
+        .blog-header-glass::after {
+            content: "✨";
+            font-size: 160px;
             position: absolute;
-            right: 20px;
-            bottom: -30px;
-            opacity: 0.1;
-            transform: rotate(5deg);
+            right: 40px;
+            bottom: -50px;
+            opacity: 0.06;
             pointer-events: none;
         }
-        /* search bar */
+
+        /* Liquid Search Matrix */
         .search-wrapper {
             position: relative;
-            max-width: 500px;
-            margin: 0 auto 2rem auto;
+            max-width: 550px;
+            margin: 0 auto 2.5rem auto;
         }
         .search-wrapper i {
             position: absolute;
-            left: 20px;
+            left: 22px;
             top: 18px;
             color: var(--primary-deep);
-            font-size: 1.2rem;
-        }
-        .search-input {
-            border: none;
-            background: white;
-            border-radius: 60px;
-            padding: 0.9rem 1rem 0.9rem 3.2rem;
-            box-shadow: 0 12px 22px -12px rgba(0,70,120,0.2);
-            width: 100%;
             font-size: 1.1rem;
-            transition: box-shadow 0.2s;
+            z-index: 10;
         }
-        .search-input:focus {
-            outline: 2px solid var(--accent-gold);
-            box-shadow: 0 18px 28px -12px #0b4b7a;
+        .search-input-glass {
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 0.9rem 1rem 0.9rem 3.5rem;
+            box-shadow: var(--glass-shadow);
+            width: 100%;
+            font-size: 1.05rem;
+            color: #0f172a;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        /* blog cards – modern & airy */
-        .blog-card {
-            border: none;
-            border-radius: var(--card-round);
+        .search-input-glass:focus {
+            background: rgba(255, 255, 255, 0.85);
+            outline: none;
+            border-color: var(--primary-accent);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Ultra-Premium Glass Cards */
+        .blog-card-glass {
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
             overflow: hidden;
-            background: white;
-            transition: all 0.25s ease;
-            box-shadow: 0 14px 26px -8px rgba(11,75,122,0.12);
+            background: var(--glass-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: var(--glass-shadow);
             height: 100%;
             display: flex;
             flex-direction: column;
         }
-        .blog-card:hover {
+        .blog-card-glass:hover {
             transform: translateY(-8px);
-            box-shadow: 0 30px 45px -14px #0b4b7acc;
+            background: var(--glass-card-hover);
+            border-color: var(--glass-border-hover);
+            box-shadow: var(--glass-shadow-hover);
+        }
+        .blog-card-img-container {
+            overflow: hidden;
+            height: 230px;
+            position: relative;
+            background: #cbd5e1;
         }
         .blog-card-img {
-            height: 220px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            background: #aecfeb;
-            transition: transform 0.5s;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .blog-card:hover .blog-card-img {
-            transform: scale(1.02);
+        .blog-card-glass:hover .blog-card-img {
+            transform: scale(1.05);
         }
-        .blog-card .card-body {
-            padding: 1.6rem 1.4rem;
+        .blog-card-glass .card-body {
+            padding: 1.75rem;
             flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .blog-card .card-title {
+        .blog-card-glass .card-title {
+            color: var(--primary-deep);
             font-weight: 700;
-            font-size: 1.5rem;
-            line-height: 1.3;
-            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
         }
-        .blog-card .card-text {
-            color: #2c4056;
-            opacity: 0.85;
+        .blog-card-glass .card-text {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            margin-bottom: 1.5rem;
         }
-        .blog-card .author-row {
+
+        /* Avatar Elements */
+        .author-row {
             display: flex;
             align-items: center;
-            margin: 1rem 0 0.8rem;
+            margin-bottom: 1.25rem;
+            margin-top: auto;
         }
         .author-avatar {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(145deg, #1c6ea9, #0b4b7a);
-            border-radius: 60px;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #3b82f6 0%, #06325c 100%);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: bold;
-            font-size: 1rem;
-            margin-right: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-right: 12px;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+            border: 2px solid #ffffff;
         }
-        .btn-blog {
-            background: transparent;
-            border: 2px solid var(--primary-deep);
+
+        /* Glass Control Invocations */
+        .btn-glass-action {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(6, 50, 92, 0.25);
             border-radius: 50px;
-            padding: 0.45rem 1.8rem;
+            padding: 0.5rem 1.75rem;
             font-weight: 600;
             color: var(--primary-deep);
-            transition: background 0.2s, color 0.2s;
+            transition: all 0.3s ease;
+            width: fit-content;
         }
-        .btn-blog:hover {
+        .btn-glass-action:hover {
             background: var(--primary-deep);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(6, 50, 92, 0.2);
         }
-        .card-footer {
-            background: transparent;
-            border-top: 1px solid rgba(11,75,122,0.1);
-            padding: 1rem 1.4rem;
-            font-size: 0.95rem;
-            color: #3f5569;
+
+        .card-footer-glass {
+            background: rgba(255, 255, 255, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 0.9rem 1.75rem;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
         }
-        /* pagination */
+
+        /* Custom Translucent Pagination Framework */
         .pagination-custom {
             display: flex;
             justify-content: center;
             gap: 8px;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 3.5rem;
         }
         .page-link-custom {
-            display: block;
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
-            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: var(--primary-deep);
             font-weight: 600;
             text-decoration: none;
-            border: 1px solid rgba(11,75,122,0.2);
-            transition: all 0.15s;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            box-shadow: var(--glass-shadow);
         }
         .page-link-custom.active {
             background: var(--primary-deep);
             color: white;
             border-color: var(--primary-deep);
+            box-shadow: 0 6px 15px rgba(6, 50, 92, 0.3);
         }
-        .page-link-custom:hover {
-            background: #eef4fa;
-            border-color: var(--primary-deep);
+        .page-link-custom:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
         }
-        /* event popup polished */
-        .popup-card {
-            border-radius: 42px !important;
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.95) !important;
-            border: 1px solid rgba(255,215,120,0.5);
-            box-shadow: 0 40px 70px -12px #0a3d61;
+
+        /* Cinematic Blur Popups */
+        .cinematic-blur-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: 1060;
         }
-        .popup-icon {
-            background: linear-gradient(145deg, #23995e, #1b7e4b);
-            width: 80px;
-            height: 80px;
-            border-radius: 60px;
+        .popup-card-glass {
+            border-radius: 32px !important;
+            background: rgba(255, 255, 255, 0.75) !important;
+            backdrop-filter: blur(25px) !important;
+            -webkit-backdrop-filter: blur(25px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 30px 60px -15px rgba(6, 50, 92, 0.25) !important;
+        }
+        .popup-icon-glass {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
         }
-        /* footer upgrade */
+
+        /* Footer Aesthetics */
         .modern-footer {
-            background: #0b4b7a;
+            background: rgba(6, 50, 92, 0.9) !important;
+            backdrop-filter: blur(10px);
             color: white;
-            padding: 2rem 0 1.2rem;
-            margin-top: 3rem;
+            padding: 3rem 0 1.5rem;
+            margin-top: 5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .footer-links a {
-            color: rgba(255,255,255,0.9);
-            margin: 0 12px;
-            transition: opacity 0.2s;
-            font-size: 1.2rem;
+        .footer-social-link {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white !important;
+            transition: all 0.3s ease;
         }
-        .footer-links a:hover {
-            opacity: 0.7;
-        }
-        hr.light {
-            background: rgba(255,255,255,0.2);
-            height: 1px;
-            border: none;
+        .footer-social-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
         }
     </style>
 </head>
 <body>
-    <!-- Enhanced Navbar (active state on blog) -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-semibold fs-3" href="index.html"><i class="fa-solid fa-people-group"></i> Yapei Community</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+    <!-- Glassmorphic Global Topbar Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <i class="fa-solid fa-feather-pointed me-2"></i>Yapei Portal
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center" id="navbar-links">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-1"></i>About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-1"></span>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
+                    <span id="navbar-user-links" class="d-flex gap-2 ms-2"></span>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Blog header (warmer) -->
-    <header class="blog-header py-5 text-center">
-        <div class="container">
-            <span class="badge bg-warning bg-opacity-25 text-dark px-4 py-2 rounded-pill mb-3"><i class="fa-regular fa-pen-to-square me-2"></i>Voices of Yapei</span>
-            <h1 class="display-5 fw-bold mb-3">📚 Community Blog</h1>
-            <p class="lead fs-4 mx-auto" style="max-width: 700px;">Latest stories, news, and updates from Yapei Community members — rooted in tradition, shared with heart.</p>
+    <!-- Translucent Subheader Section -->
+    <header class="blog-header-glass py-5 text-center">
+        <div class="container py-4">
+            <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fw-bold border border-primary border-opacity-25">
+                <i class="fa-solid fa-sparkles me-2"></i>Voices of Yapei
+            </span>
+            <h1 class="display-4 fw-extrabold mb-3" style="color: var(--primary-deep);">The Community Feed</h1>
+            <p class="lead fs-5 mx-auto text-secondary" style="max-width: 680px;">Discover authentic local updates, stories, and expressions directly from members of the Yapei community.</p>
         </div>
     </header>
 
-    <!-- Search bar integrated -->
+    <!-- Integrated Search Hub -->
     <div class="container mt-4">
         <div class="search-wrapper">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" class="search-input" id="blogSearch" placeholder="Search by title, author or words..." autocomplete="off">
+            <input type="text" class="search-input-glass" id="blogSearch" placeholder="Filter by narrative elements, titles, authors..." autocomplete="off">
         </div>
     </div>
 
-    <!-- Blog Cards Grid (dynamic) -->
+    <!-- Dynamic Structural Feed Grid Grid -->
     <section class="container py-2">
-        <div class="row g-4" id="blogGrid"><!-- Blog posts will be loaded here by JS --></div>
-        <!-- Pagination container (custom) -->
-        <div id="blogPagination" class="pagination-custom mt-5"></div>
+        <div class="row g-4 justify-content-center" id="blogGrid"></div>
+        <div id="blogPagination" class="pagination-custom"></div>
     </section>
 
-    <!-- Event Invitation Pop-out (elegant, matching blog style) -->
-    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(10,50,80,0.4); backdrop-filter:blur(3px); z-index:1060;"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:360px; max-width:90vw;">
-        <div class="card popup-card shadow-lg border-0 animate__animated animate__fadeInDown">
-            <div class="card-body text-center p-4 p-lg-5">
-                <div class="popup-icon">
-                    <i class="fa-solid fa-calendar-check fa-3x text-white"></i>
+    <!-- Cinematic Structural Event Intercept Modal -->
+    <div id="eventInviteOverlay" class="cinematic-blur-overlay"></div>
+    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:400px; max-width:92vw;">
+        <div class="card popup-card-glass shadow-2xl border-0 animate__animated animate__zoomIn">
+            <div class="card-body text-center p-4 p-md-5">
+                <div class="popup-icon-glass">
+                    <i class="fa-solid fa-calendar-star fa-2x text-white"></i>
                 </div>
-                <h4 class="fw-bold mb-2" id="eventInviteTitle">🌾 Harvest Gathering</h4>
-                <p class="text-muted mb-3" id="eventInviteDesc">Join us for stories and feasting</p>
-                <p class="mb-2"><i class="fa-solid fa-location-dot text-success me-1"></i> <span id="eventInviteLocation">Yapei riverside</span></p>
-                <p class="mb-3"><i class="fa-regular fa-clock text-success me-1"></i> <span id="eventInviteDate">Sat, 19 Nov · 4:00pm</span></p>
-                <div class="d-flex justify-content-center gap-2">
-                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
-                    <a href="events.html" class="btn btn-success rounded-pill px-4 shadow"><i class="fa-solid fa-users me-1"></i>Join Event</a>
+                <h3 class="fw-bold text-dark mb-2" id="eventInviteTitle">---</h3>
+                <p class="text-secondary mb-4 small" id="eventInviteDesc">---</p>
+                
+                <div class="p-3 rounded-4 mb-4 text-start" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5)">
+                    <p class="mb-2 text-dark small fw-medium"><i class="fa-solid fa-map-location-dot text-success me-2"></i><span id="eventInviteLocation">---</span></p>
+                    <p class="mb-0 text-dark small fw-medium"><i class="fa-regular fa-clock text-success me-2"></i><span id="eventInviteDate">---</span></p>
+                </div>
+                
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="button" class="btn btn-glass-action border-secondary text-secondary py-2 flex-grow-1" id="closeEventInvitePopup">Later</button>
+                    <a href="events.html" class="btn btn-glass-action btn-primary text-white bg-primary py-2 flex-grow-1 d-flex align-items-center justify-content-center"><i class="fa-solid fa-ticket-airline me-2"></i>Explore</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Enhanced Footer -->
+    <!-- Fluid Global Footer Base Frame -->
     <footer class="modern-footer">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0"><i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. All voices matter.</p>
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p class="mb-0 text-white-50"><i class="fa-regular fa-copyright me-2"></i>2026 Yapei Community Online · Structural Transparency</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end footer-links">
-                    <a href="#" class="me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="me-3" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" class="me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
+                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
-            <hr class="light mt-3">
-            <p class="small text-center mb-0 opacity-75">Built with <i class="fa-regular fa-heart text-danger"></i> by the community</p>
+            <hr class="light my-4">
+            <p class="small text-center mb-0 opacity-50">Designed with precision for structural integration & progress</p>
         </div>
     </footer>
 
+    <!-- Bootstrap Execution dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Restful Engine Core Integration -->
     <script>
         (function() {
+            // Environment Endpoint Mapping Matrix Configuration Target
             const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
 
-            // dynamic navbar (login/logout)
             function updateNavbarLinks() {
                 const userLinks = document.getElementById('navbar-user-links');
                 if (!userLinks) return;
                 const isLoggedIn = !!localStorage.getItem('access');
                 userLinks.innerHTML = isLoggedIn
-                    ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
-                       <li class="nav-item"><a class="nav-link" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
-                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
-                       <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
+                    ? `<li class="nav-item"><a class="nav-link btn btn-sm btn-light text-dark px-3" href="profile.html"><i class="fa-solid fa-user-circle me-1"></i>Profile</a></li>
+                       <li class="nav-item"><a class="nav-link text-white-50" href="logout.html"><i class="fa-solid fa-power-off"></i></a></li>`
+                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</a></li>
+                       <li class="nav-item"><a class="nav-link btn btn-sm btn-primary text-white px-3" href="register.html">Join Us</a></li>`;
             }
 
-            // DOM elements
+            // Interface Registry Handles
             const blogGrid = document.getElementById('blogGrid');
             const searchInput = document.getElementById('blogSearch');
             const paginationDiv = document.getElementById('blogPagination');
@@ -341,28 +438,37 @@
             let currentPage = 1;
             const pageSize = 6;
 
-            // fetch posts from backend
             function fetchPosts() {
+                // Pointing dynamically toward your defined MessageListCreateView target
                 fetch(`${BACKEND_URL}/api/messages/`)
                     .then(res => res.json())
                     .then(data => {
                         allPosts = Array.isArray(data) ? data : [];
                         renderPosts();
                     })
-                    .catch(err => {
-                        blogGrid.innerHTML = `<div class="col-12"><div class="alert alert-warning">⚠️ Could not load posts. Please refresh.</div></div>`;
+                    .catch(() => {
+                        if(blogGrid) {
+                            blogGrid.innerHTML = `
+                                <div class="col-12 text-center py-5">
+                                    <div class="alert bg-white border border-danger border-opacity-25 rounded-4 shadow-sm p-4 d-inline-block">
+                                        <i class="fa-solid fa-wifi-slash text-danger fa-2x mb-2"></i>
+                                        <h5 class="fw-bold">Pipeline Sync Fault</h5>
+                                        <p class="text-secondary small mb-0">Unable to establish a link with database endpoints. Please re-verify network stream.</p>
+                                    </div>
+                                </div>`;
+                        }
                     });
             }
 
-            // render cards + pagination
             function renderPosts() {
                 if (!blogGrid) return;
                 const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+                
                 let filtered = allPosts.filter(post => 
                     (post.content && post.content.toLowerCase().includes(searchTerm)) || 
                     (post.user && post.user.toLowerCase().includes(searchTerm))
                 );
-                // if no content, at least show something
+
                 if (filtered.length === 0 && allPosts.length > 0 && searchTerm === '') filtered = allPosts; 
 
                 const totalPages = Math.ceil(filtered.length / pageSize);
@@ -373,32 +479,43 @@
 
                 blogGrid.innerHTML = '';
                 if (pagePosts.length === 0) {
-                    blogGrid.innerHTML = '<div class="col-12 text-center py-5"><i class="fa-regular fa-face-frown fa-3x mb-3"></i><h4>No posts match</h4><p class="text-muted">Try different keywords.</p></div>';
+                    blogGrid.innerHTML = `
+                        <div class="col-12 text-center py-5 animate__animated animate__fadeIn">
+                            <i class="fa-regular fa-folder-magnifying-glass text-muted fa-3x mb-3"></i>
+                            <h4 class="fw-bold text-secondary">Zero Query Matches</h4>
+                            <p class="text-muted small">No narrative records match the specified semantic parameters.</p>
+                        </div>`;
                 } else {
                     pagePosts.forEach(post => {
                         const col = document.createElement('div');
-                        col.className = 'col-md-6 col-lg-4';
-                        // fallback avatar
+                        col.className = 'col-md-6 col-lg-4 d-flex';
+                        
                         const authorInitial = post.user ? post.user.charAt(0).toUpperCase() : 'Y';
-                        const postTitle = post.content ? (post.content.length > 45 ? post.content.substring(0,45)+'…' : post.content) : 'Community story';
-                        const postSnippet = post.content ? (post.content.length > 100 ? post.content.substring(0,100)+'…' : post.content) : 'Read more about this community update.';
-                        const postDate = post.timestamp ? new Date(post.timestamp).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' }) : 'recent';
-                        const imageUrl = post.media && post.media !== '' ? post.media : 'assets/blog-default.jpg'; // fallback if missing
+                        const displayTitle = post.content ? (post.content.length > 45 ? post.content.substring(0, 45) + '...' : post.content) : 'Uncategorized Update';
+                        const contentSnippet = post.content ? (post.content.length > 110 ? post.content.substring(0, 110) + '...' : post.content) : 'Select record module to interface with detailed content profiles.';
+                        
+                        const processedDate = post.timestamp 
+                            ? new Date(post.timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) 
+                            : 'Stored Update';
+                            
+                        const srcMedia = post.media && post.media !== '' ? post.media : 'assets/blog-default.jpg';
 
                         col.innerHTML = `
-                            <div class="blog-card animate__animated animate__fadeInUp">
-                                <img src="${imageUrl}" class="blog-card-img" alt="blog image" onerror="this.src='https://placehold.co/600x400/0b4b7a/white?text=Yapei'">
+                            <div class="blog-card-glass animate__animated animate__fadeInUp flex-grow-1">
+                                <div class="blog-card-img-container">
+                                    <img src="${srcMedia}" class="blog-card-img" alt="Narrative graphics cover" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80'">
+                                </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">${postTitle}</h5>
+                                    <h5 class="card-title">${displayTitle}</h5>
                                     <div class="author-row">
                                         <div class="author-avatar">${authorInitial}</div>
-                                        <span class="fw-semibold">${post.user || 'Elder'}</span>
+                                        <span class="fw-bold small text-dark">${post.user || 'Community Organ'}</span>
                                     </div>
-                                    <p class="card-text">${postSnippet}</p>
-                                    <a href="post.html?message_id=${post.id}" class="btn btn-blog mt-2"><i class="fa-regular fa-book-open me-2"></i>Read more</a>
+                                    <p class="card-text">${contentSnippet}</p>
+                                    <a href="post.html?message_id=${post.id}" class="btn btn-glass-action mt-auto"><i class="fa-regular fa-envelope-open me-2"></i>Access Record</a>
                                 </div>
-                                <div class="card-footer">
-                                    <i class="fa-regular fa-calendar me-1"></i> ${postDate}
+                                <div class="card-footer-glass">
+                                    <i class="fa-regular fa-calendar-days me-1"></i> Timeline Stamp: ${processedDate}
                                 </div>
                             </div>
                         `;
@@ -406,7 +523,7 @@
                     });
                 }
 
-                // pagination controls (custom)
+                // Dynamic Control Elements Processing Execution Loop
                 paginationDiv.innerHTML = '';
                 if (totalPages > 1) {
                     for (let i = 1; i <= totalPages; i++) {
@@ -419,7 +536,7 @@
                             if (i !== currentPage) {
                                 currentPage = i;
                                 renderPosts();
-                                window.scrollTo({ top: blogGrid.offsetTop - 100, behavior: 'smooth' });
+                                window.scrollTo({ top: blogGrid.offsetTop - 120, behavior: 'smooth' });
                             }
                         };
                         paginationDiv.appendChild(btn);
@@ -427,36 +544,33 @@
                 }
             }
 
-            // search handler
             if (searchInput) {
                 searchInput.addEventListener('input', function() {
-                    currentPage = 1; // reset to first page on search
+                    currentPage = 1;
                     renderPosts();
                 });
             }
 
-            // periodic refresh (5 min)
-            setInterval(fetchPosts, 300000); // 300000ms = 5min
-
-            // Event popup (refined)
+            // Sync with defined UpcomingEventView interface configurations
             function setupEventPopup() {
                 const invitePopup = document.getElementById('eventInvitePopup');
                 const overlay = document.getElementById('eventInviteOverlay');
                 const closeBtn = document.getElementById('closeEventInvitePopup');
+                
                 if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
-                const excluded = ['login.html', 'register.html'];
-                if (excluded.some(p => window.location.pathname.endsWith(p))) return;
-                // random ~40% chance
-                if (Math.random() > 0.4) return;
+                if (['login.html', 'register.html'].some(p => window.location.pathname.endsWith(p))) return;
+                if (Math.random() > 0.45) return;
 
                 fetch(`${BACKEND_URL}/api/events/upcoming/`)
                     .then(res => res.json())
                     .then(event => {
-                        if (event && event.deadline && new Date(event.deadline) > new Date()) {
-                            document.getElementById('eventInviteTitle').innerText = event.title || 'Community meet-up';
-                            document.getElementById('eventInviteDesc').innerText = event.description || 'Share stories & enjoy company';
-                            document.getElementById('eventInviteLocation').innerText = event.location || 'Yapei centre';
-                            document.getElementById('eventInviteDate').innerText = event.date ? new Date(event.date).toLocaleString() : 'This Saturday';
+                        // Backend conditional crosscheck alignment verification logic
+                        if (event && event.deadline) {
+                            document.getElementById('eventInviteTitle').innerText = event.title || 'Community Engagement Framework';
+                            document.getElementById('eventInviteDesc').innerText = event.description || 'Participation in community interfaces is requested.';
+                            document.getElementById('eventInviteLocation').innerText = event.location || 'Yapei Hub Assembly';
+                            document.getElementById('eventInviteDate').innerText = event.date ? new Date(event.date).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Scheduled';
+                            
                             invitePopup.style.display = 'block';
                             overlay.style.display = 'block';
                             sessionStorage.setItem('eventInvitePopupShown', 'true');
@@ -464,23 +578,24 @@
                     })
                     .catch(() => {});
 
-                closeBtn.addEventListener('click', () => {
+                const killModalAction = () => {
                     overlay.style.display = 'none';
                     invitePopup.style.display = 'none';
-                });
-                overlay.addEventListener('click', () => closeBtn.click());
+                };
+                closeBtn.addEventListener('click', killModalAction);
+                overlay.addEventListener('click', killModalAction);
             }
 
+            // Core Execution Lifecycles Initialization hooks
             document.addEventListener('DOMContentLoaded', () => {
                 updateNavbarLinks();
                 fetchPosts();
                 setupEventPopup();
             });
+
+            // Standard Data Synchronization Cycles Intercept Vector (Every 60 seconds)
+            setInterval(fetchPosts, 60000);
         })();
     </script>
-    <!-- small fix for missing images -->
-    <style>
-        .blog-card-img[src="assets/blog-default.jpg"] { background: #bed9f2; object-fit: cover; }
-    </style>
 </body>
 </html>
