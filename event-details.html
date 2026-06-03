@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Details - Yapei Community Online</title>
     
-    <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,11 +25,11 @@
             --danger-color: #dc3545;
             --light-bg: #f8f9fa;
             --dark-bg: #212529;
-            --border-radius: 1rem;
-            --border-radius-sm: 0.5rem;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            --box-shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+            --border-radius: 1.25rem;
+            --border-radius-sm: 0.75rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --box-shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         * {
@@ -42,36 +40,40 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef2f7 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             color: #2c3e50;
+            overflow-x: hidden;
         }
 
         /* Navigation */
         .navbar {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)) !important;
-            box-shadow: 0 4px 20px rgba(13, 110, 253, 0.3);
-            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(13, 110, 253, 0.15);
+            padding: 0.85rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .navbar-brand {
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: white !important;
-            transition: var(--transition);
+            letter-spacing: -0.5px;
         }
 
         .nav-link {
             font-weight: 500;
-            color: rgba(255,255,255,0.9) !important;
+            color: rgba(255,255,255,0.85) !important;
             transition: var(--transition);
+            padding: 0.5rem 1rem !important;
+            border-radius: 0.5rem;
         }
 
         .nav-link:hover {
             color: white !important;
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.1);
         }
 
         .nav-link.active {
@@ -80,26 +82,13 @@
             font-weight: 600;
         }
 
-        /* Event Header */
+        /* Event Header Background */
         .event-header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 3rem 0;
-            margin-bottom: 2rem;
+            padding: 2.5rem 0;
+            margin-bottom: -4rem;
             position: relative;
-            overflow: hidden;
-        }
-
-        .event-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
-            background-size: cover;
-            opacity: 0.2;
         }
 
         .back-link {
@@ -109,27 +98,33 @@
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2rem;
+            backdrop-filter: blur(5px);
         }
 
         .back-link:hover {
             color: white;
-            transform: translateX(-5px);
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-3px);
         }
 
-        /* Main Content */
+        /* Main Wrapper Card */
         .event-details-wrapper {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow-lg);
             overflow: hidden;
             margin-bottom: 3rem;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .event-gallery {
-            height: 400px;
+            height: 450px;
             position: relative;
             overflow: hidden;
+            background: #e9ecef;
         }
 
         .event-gallery img {
@@ -143,88 +138,101 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+            padding: 3rem 2.5rem 2.5rem;
             color: white;
         }
 
         .event-badges {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
         }
 
         .event-badge {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 0.5rem 1.2rem;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 0.4rem 1.2rem;
             border-radius: 2rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-transform: capitalize;
         }
 
         .event-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .event-organizer {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-            opacity: 0.9;
+            gap: 0.6rem;
+            font-size: 1.05rem;
+            opacity: 0.95;
         }
 
-        /* Event Info Cards */
+        /* Metric/Info Cards */
         .info-card {
             background: var(--light-bg);
             border-radius: var(--border-radius-sm);
             padding: 1.5rem;
             height: 100%;
             transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
         .info-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: var(--box-shadow);
             background: white;
+            border-color: rgba(13, 110, 253, 0.1);
         }
 
         .info-icon {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: var(--primary-light);
-            border-radius: 50%;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
         }
 
         .info-card h4 {
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: var(--secondary-color);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            font-weight: 600;
         }
 
         .info-card p {
             font-size: 1.1rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 0;
+            color: #1e293b;
+            word-break: break-word;
         }
 
-        /* Section Headers */
+        /* Section Title Rules */
         .section-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
+            color: #0f172a;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.6rem;
         }
 
         .section-title::after {
@@ -232,138 +240,35 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--info-color));
-            border-radius: 3px;
-        }
-
-        /* Attendee List */
-        .attendee-item {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem;
-            border-radius: var(--border-radius-sm);
-            transition: var(--transition);
-        }
-
-        .attendee-item:hover {
-            background: var(--light-bg);
-        }
-
-        .attendee-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-right: 1rem;
-        }
-
-        .attendee-info {
-            flex: 1;
-        }
-
-        .attendee-name {
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .attendee-role {
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-        }
-
-        /* Similar Events */
-        .similar-event-card {
-            background: white;
-            border-radius: var(--border-radius-sm);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            margin-bottom: 1rem;
-        }
-
-        .similar-event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--box-shadow-lg);
-        }
-
-        .similar-event-image {
-            height: 150px;
-            overflow: hidden;
-        }
-
-        .similar-event-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .similar-event-card:hover .similar-event-image img {
-            transform: scale(1.1);
-        }
-
-        .similar-event-content {
-            padding: 1rem;
-        }
-
-        .similar-event-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .similar-event-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.9rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Progress Bar */
-        .capacity-progress {
-            height: 8px;
+            width: 45px;
+            height: 3.5px;
+            background: var(--primary-color);
             border-radius: 4px;
-            background: var(--light-bg);
-            margin: 1rem 0;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--success-color));
-            transition: width 0.3s ease;
         }
 
         /* Action Buttons */
         .action-btn {
-            padding: 1rem 2rem;
+            padding: 0.9rem 2rem;
             font-weight: 600;
-            border-radius: 3rem;
+            border-radius: var(--border-radius-sm);
             transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border: none;
         }
 
         .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(13,110,253,0.4);
+            transform: translateY(-2px);
         }
 
-        .action-btn i {
-            margin-right: 0.5rem;
+        .btn-primary.action-btn {
+            box-shadow: 0 4px 15px rgba(13, 110, 253, 0.25);
         }
 
+        .btn-primary.action-btn:hover {
+            box-shadow: 0 6px 20px rgba(13, 110, 253, 0.35);
+        }
+
+        /* Share Area System */
         .share-dropdown {
             position: relative;
             display: inline-block;
@@ -371,15 +276,18 @@
 
         .share-dropdown-content {
             position: absolute;
-            bottom: 100%;
+            bottom: 105%;
             right: 0;
             background: white;
             border-radius: var(--border-radius-sm);
             box-shadow: var(--box-shadow-lg);
-            min-width: 200px;
+            min-width: 220px;
             display: none;
-            z-index: 1000;
+            z-index: 1050;
             margin-bottom: 0.5rem;
+            border: 1px solid rgba(0,0,0,0.06);
+            overflow: hidden;
+            animation: fadeIn 0.2s ease;
         }
 
         .share-dropdown:hover .share-dropdown-content {
@@ -389,10 +297,12 @@
         .share-link {
             display: flex;
             align-items: center;
-            padding: 0.75rem 1rem;
-            color: #2c3e50;
+            padding: 0.8rem 1.2rem;
+            color: #334155;
             text-decoration: none;
             transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 500;
         }
 
         .share-link:hover {
@@ -401,28 +311,56 @@
         }
 
         .share-link i {
-            width: 24px;
-            margin-right: 0.75rem;
+            width: 20px;
+            margin-right: 0.8rem;
+            font-size: 1.05rem;
         }
 
-        /* Comments Section */
+        /* Progress Capacity Design */
+        .capacity-progress {
+            height: 10px;
+            border-radius: 6px;
+            background: #e2e8f0;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--primary-color), #10b981);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Description Styling */
+        #eventDescription {
+            white-space: pre-line;
+            color: #475569;
+            font-size: 1.05rem;
+        }
+
+        /* Discussion & Comment Engine styles */
         .comment-item {
             display: flex;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e9ecef;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid #f1f5f9;
         }
 
         .comment-avatar {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--primary-light);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .comment-content {
@@ -432,12 +370,13 @@
         .comment-header {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.3rem;
+            gap: 0.75rem;
+            margin-bottom: 0.4rem;
         }
 
         .comment-author {
             font-weight: 600;
+            color: #1e293b;
         }
 
         .comment-date {
@@ -446,134 +385,217 @@
         }
 
         .comment-text {
-            color: #495057;
-            line-height: 1.5;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 0;
+            font-size: 0.95rem;
         }
 
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1a1c2c 0%, #2a2c3c 100%);
-            color: #a0a0b0;
-            margin-top: 4rem;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer h5 {
-            color: white;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer a {
-            color: #a0a0b0;
-            text-decoration: none;
+        /* Attendee Card Framework */
+        .attendee-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: var(--border-radius-sm);
             transition: var(--transition);
+            margin-bottom: 0.25rem;
         }
 
-        .footer a:hover {
-            color: white;
-            transform: translateX(5px);
+        .attendee-item:hover {
+            background: white;
+            box-shadow: var(--box-shadow);
         }
 
-        .social-links a {
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.1);
+        .attendee-avatar {
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
-            display: inline-flex;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 0.5rem;
+            font-weight: 600;
+            margin-right: 0.85rem;
+            font-size: 0.9rem;
+        }
+
+        .attendee-name {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+
+        /* Similar Side Cards */
+        .similar-event-card {
+            background: white;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            box-shadow: rgba(0,0,0,0.02) 0px 4px 12px;
             transition: var(--transition);
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(0,0,0,0.04);
         }
 
-        .social-links a:hover {
-            background: var(--primary-color);
-            transform: translateY(-5px);
+        .similar-event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
         }
 
-        /* Loading State */
+        .similar-event-image {
+            height: 130px;
+            overflow: hidden;
+        }
+
+        .similar-event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .similar-event-content {
+            padding: 1.25rem;
+        }
+
+        .similar-event-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .similar-event-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.85rem;
+        }
+
+        /* Application Empty & Loading Global Classes */
         .loading-state {
             text-align: center;
-            padding: 4rem;
+            padding: 6rem 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--light-bg);
+            width: 45px;
+            height: 45px;
+            border: 3.5px solid #edf2f7;
             border-top-color: var(--primary-color);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 1.25rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .empty-state i {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        /* Footer architecture setup */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            margin-top: auto;
+            padding: 5rem 0 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            letter-spacing: -0.3px;
+        }
+
+        .footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer .list-unstyled li {
+            margin-bottom: 0.75rem;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.6rem;
+            transition: var(--transition);
+            color: #cbd5e1;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Settings */
+        @media (max-width: 991px) {
+            .event-gallery { height: 350px; }
+            .event-title { font-size: 2.2rem; }
+        }
+
         @media (max-width: 768px) {
-            .event-title {
-                font-size: 1.8rem;
-            }
-            
-            .event-gallery {
-                height: 300px;
-            }
-            
-            .event-badges {
-                flex-wrap: wrap;
-            }
+            .event-gallery { height: 280px; }
+            .event-title { font-size: 1.75rem; }
+            .event-gallery-overlay { padding: 1.5rem; }
+            .event-badges { flex-wrap: wrap; gap: 0.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fa-solid fa-users me-2"></i>Yapei Community
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" 
                     data-bs-target="#navbarNav" aria-controls="navbarNav" 
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fa-solid fa-home me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog.html">
-                            <i class="fa-solid fa-book me-1"></i>Blog
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="events.html">
-                            <i class="fa-solid fa-calendar-days me-1"></i>Events
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">
-                            <i class="fa-solid fa-info-circle me-1"></i>About
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            <i class="fa-solid fa-envelope me-1"></i>Contact
-                        </a>
-                    </li>
-                    <span id="navbar-user-links" class="d-flex"></span>
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-book me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="events.html"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
+                    <span id="navbar-user-links" class="d-md-inline-flex gap-2 ms-lg-2 mt-2 mt-lg-0"></span>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Event Header -->
     <section class="event-header">
         <div class="container">
             <a href="events.html" class="back-link">
@@ -582,112 +604,89 @@
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Loading State -->
-        <div id="loadingState" class="loading-state">
+    <main class="container position-relative" style="z-index: 5;">
+        
+        <div id="loadingState" class="loading-state animate__animated animate__fadeIn">
             <div class="spinner"></div>
-            <p class="text-secondary">Loading event details...</p>
+            <p class="text-muted fw-medium mb-0">Fetching event dataset engine matches...</p>
         </div>
 
-        <!-- Event Details (Hidden initially) -->
         <div id="eventDetails" style="display: none;">
             <div class="event-details-wrapper animate__animated animate__fadeInUp">
-                <!-- Event Gallery -->
+                
                 <div class="event-gallery">
-                    <img src="" alt="Event Banner" id="eventImage">
+                    <img src="" alt="Event Canvas Banner" id="eventImage">
                     <div class="event-gallery-overlay">
                         <div class="event-badges">
-                            <span class="event-badge" id="eventCategory">
-                                <i class="fa-regular fa-calendar me-2"></i>
-                            </span>
-                            <span class="event-badge" id="eventStatus">
-                                <i class="fa-regular fa-clock me-2"></i>
-                            </span>
+                            <span class="event-badge" id="eventCategory"></span>
+                            <span class="event-badge" id="eventStatus"></span>
                         </div>
                         <h1 class="event-title" id="eventTitle"></h1>
                         <div class="event-organizer">
-                            <i class="fa-regular fa-user-circle"></i>
+                            <i class="fa-regular fa-circle-user fa-lg"></i>
                             <span>Organized by <strong id="eventOrganizer"></strong></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Event Info Cards -->
-                <div class="row g-4 p-4">
+                <div class="row g-3 g-md-4 p-4">
                     <div class="col-md-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fa-regular fa-calendar"></i>
-                            </div>
+                            <div class="info-icon"><i class="fa-regular fa-calendar-days"></i></div>
                             <h4>Date</h4>
-                            <p id="eventDate"></p>
+                            <p id="eventDate">--</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fa-regular fa-clock"></i>
-                            </div>
+                            <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
                             <h4>Time</h4>
-                            <p id="eventTime"></p>
+                            <p id="eventTime">--</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                             <h4>Location</h4>
-                            <p id="eventLocation"></p>
+                            <p id="eventLocation">--</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-6">
                         <div class="info-card">
-                            <div class="info-icon">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-                            <h4>Attendees</h4>
-                            <p id="eventAttendees"></p>
+                            <div class="info-icon"><i class="fa-solid fa-users"></i></div>
+                            <h4>Registered</h4>
+                            <p id="eventAttendees">0</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="px-4 pb-4">
                     <div class="row g-3">
                         <div class="col-md-8">
                             <button class="btn btn-primary action-btn w-100" onclick="handleRSVP()" id="rsvpBtn">
-                                <i class="fa-regular fa-calendar-check"></i>
-                                RSVP for This Event
+                                <i class="fa-regular fa-calendar-check me-2"></i>RSVP for This Event
                             </button>
                         </div>
                         <div class="col-md-4">
                             <div class="share-dropdown w-100">
                                 <button class="btn btn-outline-secondary action-btn w-100">
-                                    <i class="fa-regular fa-share-from-square"></i>
-                                    Share
+                                    <i class="fa-regular fa-share-from-square me-2"></i>Share Event
                                 </button>
                                 <div class="share-dropdown-content">
-                                    <a href="#" class="share-link" onclick="shareEvent('facebook')">
-                                        <i class="fab fa-facebook-f text-primary"></i>
-                                        Facebook
+                                    <a href="#" class="share-link" onclick="shareEvent('facebook', event)">
+                                        <i class="fab fa-facebook-f text-primary"></i>Facebook
                                     </a>
-                                    <a href="#" class="share-link" onclick="shareEvent('twitter')">
-                                        <i class="fab fa-twitter text-info"></i>
-                                        Twitter
+                                    <a href="#" class="share-link" onclick="shareEvent('twitter', event)">
+                                        <i class="fab fa-x-twitter text-dark"></i>X / Twitter
                                     </a>
-                                    <a href="#" class="share-link" onclick="shareEvent('whatsapp')">
-                                        <i class="fab fa-whatsapp text-success"></i>
-                                        WhatsApp
+                                    <a href="#" class="share-link" onclick="shareEvent('whatsapp', event)">
+                                        <i class="fab fa-whatsapp text-success"></i>WhatsApp
                                     </a>
-                                    <a href="#" class="share-link" onclick="shareEvent('email')">
-                                        <i class="fa-regular fa-envelope text-secondary"></i>
-                                        Email
+                                    <a href="#" class="share-link" onclick="shareEvent('email', event)">
+                                        <i class="fa-regular fa-envelope text-danger"></i>Email Address
                                     </a>
-                                    <a href="#" class="share-link" onclick="copyEventLink()">
-                                        <i class="fa-regular fa-copy"></i>
-                                        Copy Link
+                                    <a href="#" class="share-link" onclick="copyEventLink(event)">
+                                        <i class="fa-regular fa-copy text-secondary"></i>Copy Details URL
                                     </a>
                                 </div>
                             </div>
@@ -695,188 +694,164 @@
                     </div>
                 </div>
 
-                <!-- Progress Bar (if capacity data available) -->
-                <div class="px-4 pb-2" id="capacitySection" style="display: none;">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-secondary" id="attendeeCount"></span>
-                        <span class="text-secondary" id="capacityInfo"></span>
+                <div class="px-4 pb-2 mx-2" id="capacitySection" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="text-muted small fw-medium">Seat Reservation Metric Status</span>
+                        <span class="text-dark small fw-bold" id="capacityInfo"></span>
                     </div>
                     <div class="capacity-progress">
                         <div class="progress-bar-fill" id="capacityProgress" style="width: 0%"></div>
                     </div>
                 </div>
 
-                <!-- Description and Details -->
-                <div class="row g-4 p-4">
+                <div class="row g-4 p-4 border-top border-light">
                     <div class="col-lg-8">
-                        <!-- Description -->
+                        
                         <div class="mb-5">
                             <h3 class="section-title">About This Event</h3>
-                            <p class="text-secondary" id="eventDescription" style="line-height: 1.8;"></p>
+                            <div id="eventDescription"></div>
                         </div>
 
-                        <!-- Agenda (if available) -->
-                        <div class="mb-5" id="agendaSection" style="display: none;">
-                            <h3 class="section-title">Event Agenda</h3>
-                            <div class="timeline" id="eventAgenda"></div>
-                        </div>
-
-                        <!-- Comments Section (if authenticated) -->
-                        <div class="mb-5" id="commentsSection">
-                            <h3 class="section-title">Discussion</h3>
+                        <div class="mb-4" id="commentsSection">
+                            <h3 class="section-title">Discussion & Feedback</h3>
                             
-                            <!-- Comment form (visible when logged in) -->
-                            <div class="bg-light rounded-3 p-3 mb-4" id="commentForm" style="display: none;">
+                            <div class="bg-light rounded-3 p-4 mb-4" id="commentForm" style="display: none;">
                                 <div class="d-flex gap-3">
-                                    <div class="comment-avatar">
-                                        <i class="fa-regular fa-user"></i>
-                                    </div>
+                                    <div class="comment-avatar" id="userFormAvatar">U</div>
                                     <div class="flex-grow-1">
-                                        <textarea class="form-control" rows="2" placeholder="Join the discussion..." id="commentText"></textarea>
-                                        <button class="btn btn-primary mt-2" onclick="postComment()">
+                                        <textarea class="form-control border-0 shadow-sm p-3 mb-2" rows="3" style="border-radius:0.5rem;" placeholder="Write a public dynamic submission statement comment safely..." id="commentText"></textarea>
+                                        <button class="btn btn-primary px-4 fw-semibold" onclick="postComment()">
                                             <i class="fa-regular fa-paper-plane me-2"></i>Post Comment
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Comments list -->
                             <div class="comments-list" id="commentsList"></div>
                             
-                            <!-- Login prompt (if not logged in) -->
-                            <div class="text-center py-4" id="loginPrompt">
-                                <p class="text-secondary mb-3">Please log in to join the discussion</p>
-                                <a href="login.html?redirect=event-details.html?id=" class="btn btn-outline-primary" id="loginLink">
-                                    <i class="fa-solid fa-sign-in-alt me-2"></i>Log In
+                            <div class="text-center bg-light rounded-3 py-5 px-3" id="loginPrompt">
+                                <i class="fa-regular fa-comments text-muted fa-2x mb-3"></i>
+                                <p class="text-secondary mb-3">Authentication check verification required to join event discussion board threads.</p>
+                                <a href="login.html" class="btn btn-outline-primary px-4 fw-semibold" id="loginLink">
+                                    <i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Log In / Authenticate
                                 </a>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
-                        <!-- Attendees List -->
-                        <div class="bg-light rounded-3 p-4 mb-4">
-                            <h4 class="fw-bold mb-3">
-                                <i class="fa-regular fa-face-smile me-2 text-primary"></i>
-                                Attendees (<span id="attendeeCount">0</span>)
+                        
+                        <div class="bg-light rounded-3 p-4 mb-4 border border-light">
+                            <h4 class="fw-bold mb-3 text-dark d-flex justify-content-between align-items-center" style="font-size:1.1rem;">
+                                <span><i class="fa-regular fa-circle-check me-2 text-primary"></i>Attendees</span>
+                                <span class="badge bg-primary rounded-pill text-white fw-bold" style="font-size:0.8rem;" id="attendeeSidebarCount">0</span>
                             </h4>
-                            <div class="attendee-list" id="attendeesList"></div>
-                            <a href="#" class="btn btn-link text-decoration-none p-0 mt-2" id="viewAllAttendees" style="display: none;">
-                                View all attendees <i class="fa-solid fa-arrow-right ms-1"></i>
-                            </a>
+                            <div class="attendee-list mt-3" id="attendeesList"></div>
                         </div>
 
-                        <!-- Similar Events -->
-                        <div class="bg-light rounded-3 p-4">
-                            <h4 class="fw-bold mb-3">
-                                <i class="fa-regular fa-calendar me-2 text-primary"></i>
-                                Similar Events
+                        <div class="bg-light rounded-3 p-4 border border-light">
+                            <h4 class="fw-bold mb-3 text-dark" style="font-size:1.1rem;">
+                                <i class="fa-solid fa-layer-group me-2 text-primary"></i>Similar Events
                             </h4>
-                            <div id="similarEventsList"></div>
+                            <div id="similarEventsList" class="mt-3"></div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-users me-2"></i>Yapei Community</h5>
+                    <h5><i class="fa-solid fa-users me-2 text-primary"></i>Yapei Community</h5>
                     <p class="small opacity-75">Bringing our community together through meaningful events and connections. Join us in making Yapei a better place.</p>
-                    <div class="social-links mt-3">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <div class="social-links mt-4">
+                        <a href="#" aria-label="Facebook Link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="X Twitter Link"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram Link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp Link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2">
-                    <h5>Quick Links</h5>
+                    <h5>Quick Navigation</h5>
                     <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html">Home Landing</a></li>
+                        <li><a href="about.html">About Framework</a></li>
+                        <li><a href="blog.html">Blog Articles</a></li>
+                        <li><a href="contact.html">Contact Form</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5>Event Categories</h5>
+                    <h5>Event Taxonomy</h5>
                     <ul class="list-unstyled">
                         <li><a href="events.html?category=meetup">Community Meetups</a></li>
                         <li><a href="events.html?category=workshop">Workshops</a></li>
-                        <li><a href="events.html?category=cultural">Cultural Events</a></li>
-                        <li><a href="events.html?category=youth">Youth Programs</a></li>
-                        <li><a href="events.html?category=virtual">Virtual Gatherings</a></li>
+                        <li><a href="events.html?category=cultural">Cultural Activities</a></li>
+                        <li><a href="events.html?category=youth">Youth Development</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
-                    <h5>Contact Info</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fa-solid fa-location-dot me-2"></i>Yapei, Northern Region, Ghana</li>
-                        <li><i class="fa-solid fa-phone me-2"></i>+233 54 268 7780</li>
-                        <li><i class="fa-solid fa-envelope me-2"></i>events@yapeicommunity.com</li>
+                    <h5>Regional Headquarters</h5>
+                    <ul class="list-unstyled small text-slate">
+                        <li><i class="fa-solid fa-location-dot me-2 text-primary"></i>Yapei, Northern Region, Ghana</li>
+                        <li><i class="fa-solid fa-phone me-2 text-primary"></i>+233 54 268 7780</li>
+                        <li><i class="fa-solid fa-envelope me-2 text-primary"></i>events@yapeicommunity.com</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom text-center mt-5 pt-4 border-top border-secondary">
-                <p class="mb-0">
-                    <i class="fa-regular fa-copyright me-1"></i>2025 Yapei Community Online. 
-                    All rights reserved. | Built with <i class="fa-solid fa-heart text-danger"></i> for our community
+            <div class="footer-bottom text-center mt-5 pt-4 border-top border-secondary opacity-50">
+                <p class="mb-0 small">
+                    &copy; 2026 Yapei Community Online. All rights reserved. | Powered with micro-services.
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- RSVP Modal -->
     <div class="modal fade" id="rsvpModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header text-center d-block">
-                    <div class="icon-wrapper mb-3">
-                        <i class="fa-regular fa-calendar-check fa-4x"></i>
+            <div class="modal-content border-0 shadow-lg" style="border-radius:1rem;">
+                <div class="modal-header bg-light border-0 px-4 pt-4 pb-2 d-block position-relative">
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="text-center">
+                        <div class="text-primary mb-2"><i class="fa-regular fa-calendar-check fa-3x"></i></div>
+                        <h4 class="modal-title fw-bold text-dark" style="letter-spacing:-0.5px;">Confirm Seat RSVP</h4>
                     </div>
-                    <h4 class="modal-title fw-bold">RSVP for Event</h4>
                 </div>
-                <div class="modal-body">
-                    <p class="text-center text-secondary mb-4" id="rsvpEventTitle"></p>
-                    
+                <div class="modal-body p-4">
+                    <p class="text-center text-muted small px-2 mb-4" id="rsvpEventTitle"></p>
                     <div class="mb-4">
-                        <label class="form-label fw-bold">Number of guests</label>
-                        <select class="form-select" id="guestCount">
-                            <option value="1">1 (Just me)</option>
-                            <option value="2">2 (Me + 1)</option>
-                            <option value="3">3 (Me + 2)</option>
-                            <option value="4">4 (Me + 3)</option>
-                            <option value="5">5 (Me + 4)</option>
+                        <label class="form-label fw-bold text-dark small">Total Guest Seat Counter Reservations</label>
+                        <select class="form-select border-2 p-2" id="guestCount" style="border-radius:0.5rem;">
+                            <option value="1">1 Seat Allocation (Just Me)</option>
+                            <option value="2">2 Seat Allocations (Plus One Guest)</option>
+                            <option value="3">3 Seat Allocations (Group Dynamic Entry)</option>
+                            <option value="4">4 Seat Allocations (Maximum Batch Capacity)</option>
                         </select>
                     </div>
-
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary py-3" onclick="confirmRSVP()">
-                            <i class="fa-regular fa-circle-check me-2"></i>Confirm RSVP
+                        <button class="btn btn-primary py-2.5 fw-bold text-white shadow-sm" onclick="confirmRSVP()" style="border-radius:0.5rem;">
+                            <i class="fa-regular fa-check-circle me-2"></i>Verify Seat Request
                         </button>
-                        <button class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                        <button class="btn btn-link link-secondary btn-sm text-decoration-none fw-medium mt-1" data-bs-dismiss="modal">Cancel and Exit</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content text-center p-4">
+            <div class="modal-content text-center p-4 border-0 shadow-xl" style="border-radius:1rem;">
                 <div class="modal-body p-0">
-                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
-                        <i class="fa-solid fa-check fa-3x"></i>
+                    <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px;">
+                        <i class="fa-solid fa-check fa-2x"></i>
                     </div>
-                    <h5 class="fw-bold mb-2">RSVP Confirmed!</h5>
-                    <p class="text-secondary mb-3">Thank you for registering. We'll send you a reminder before the event.</p>
-                    <button class="btn btn-primary px-4 rounded-pill" data-bs-dismiss="modal">Great!</button>
+                    <h5 class="fw-bold text-dark mb-2">RSVP Successfully Logged!</h5>
+                    <p class="text-secondary small mb-3">Your programmatic allocation reference seat matrix registration tag match has finalized.</p>
+                    <button class="btn btn-primary w-100 rounded-pill py-2" data-bs-dismiss="modal">Excellent</button>
                 </div>
             </div>
         </div>
@@ -887,20 +862,19 @@
     <script>
         const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
         let currentEvent = null;
-        let eventComments = [];
 
-        // Get event ID from URL
+        // Extract parameter metrics safely from query address array
         const urlParams = new URLSearchParams(window.location.search);
         const eventId = urlParams.get('id');
 
-        // Initialize modals
+        // Instantiate Bootstrap modal nodes structures instances
         const rsvpModal = new bootstrap.Modal(document.getElementById('rsvpModal'));
         const successModal = new bootstrap.Modal(document.getElementById('successModal'));
 
-        // Fetch event details
+        // Query event specifications endpoint asynchronously matching models.py fields schema rules 
         async function fetchEventDetails() {
             if (!eventId) {
-                showError('No event ID specified');
+                showError('No identifier index context referenced inside query address string.');
                 return;
             }
 
@@ -909,435 +883,423 @@
                 document.getElementById('eventDetails').style.display = 'none';
                 
                 const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/`);
-                
                 if (!response.ok) {
-                    throw new Error('Event not found');
+                    throw new Error(`Data node network transmission matching validation drop status: ${response.status}`);
                 }
                 
                 const event = await response.json();
                 currentEvent = event;
                 
                 displayEventDetails(event);
-                fetchSimilarEvents(event.category, event.id);
+                fetchSimilarEvents(event.category || '', event.id);
                 fetchComments(eventId);
                 
                 document.getElementById('loadingState').style.display = 'none';
                 document.getElementById('eventDetails').style.display = 'block';
                 
             } catch (error) {
-                console.error('Error fetching event details:', error);
+                console.error('Core transaction operational fail error track logs:', error);
                 document.getElementById('loadingState').innerHTML = `
-                    <div class="empty-state">
-                        <i class="fa-solid fa-circle-exclamation text-danger"></i>
-                        <h3>Failed to Load Event</h3>
-                        <p>${error.message || 'Please try again later.'}</p>
-                        <button class="btn btn-primary" onclick="fetchEventDetails()">
-                            <i class="fa-solid fa-rotate me-2"></i>Retry
+                    <div class="empty-state text-center py-5 animate__animated animate__fadeIn">
+                        <i class="fa-solid fa-circle-nodes text-danger fa-3x mb-3"></i>
+                        <h4 class="fw-bold">Dataset Synchronization Interrupted</h4>
+                        <p class="text-secondary text-center max-width-xs mx-auto mb-4">${error.message || 'The application registry could not pull this instance data context shape cleanly.'}</p>
+                        <button class="btn btn-primary px-4 rounded-2" onclick="window.location.reload()">
+                            <i class="fa-solid fa-rotate me-2"></i>Reload Interface Channel
                         </button>
                     </div>
                 `;
             }
         }
 
-        // Display event details
+        // Render dataset components safely down inside DOM nodes target arrays
         function displayEventDetails(event) {
-            const eventDate = event.date ? new Date(event.date) : new Date();
+            const eventDateStr = event.date || event.timestamp || '';
+            const eventDate = eventDateStr ? new Date(eventDateStr) : null;
             const now = new Date();
-            const isPast = eventDate < now;
+            const isPast = eventDate && eventDate < now;
             
-            // Set page title
-            document.title = `${event.title} - Yapei Community Events`;
+            // Explicit programmatic meta assignment mapping fields
+            document.title = `${event.title || 'Event Details'} - Yapei Community Events`;
             
-            // Set image
-            document.getElementById('eventImage').src = event.image || event.media || 'https://via.placeholder.com/1200x400/0d6efd/ffffff?text=' + encodeURIComponent(event.title);
-            document.getElementById('eventImage').alt = event.title;
+            // Media structural payload fallback evaluation criteria metrics
+            const fallbackGraphic = 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80';
+            document.getElementById('eventImage').src = event.image || event.media || fallbackGraphic;
+            document.getElementById('eventImage').onerror = function() { this.src = fallbackGraphic; };
             
-            // Set badges
-            document.getElementById('eventCategory').innerHTML = `<i class="fa-regular fa-calendar me-2"></i>${event.category || 'Event'}`;
-            document.getElementById('eventStatus').innerHTML = `<i class="fa-regular fa-clock me-2"></i>${isPast ? 'Past Event' : 'Upcoming'}`;
+            // Assignment matching nodes
+            document.getElementById('eventCategory').innerHTML = `<i class="fa-solid fa-tag me-2"></i>${event.category || 'General'}`;
+            document.getElementById('eventStatus').innerHTML = isPast ? 
+                `<i class="fa-solid fa-circle-stop me-2 text-warning"></i>Concluded History` : 
+                `<i class="fa-solid fa-circle-dot me-2 text-success"></i>Active Reservation`;
             
-            // Set title and organizer
-            document.getElementById('eventTitle').textContent = event.title || 'Untitled Event';
-            document.getElementById('eventOrganizer').textContent = event.organizer || 'Community Organizer';
+            document.getElementById('eventTitle').textContent = event.title || 'Untitled Community Session';
+            document.getElementById('eventOrganizer').textContent = event.organizer || 'Administration Core';
             
-            // Set date and time
-            document.getElementById('eventDate').textContent = eventDate.toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                month: 'long', 
-                day: 'numeric',
-                year: 'numeric'
-            });
+            // Format timestamps into clean values
+            if (eventDate) {
+                document.getElementById('eventDate').textContent = eventDate.toLocaleDateString('en-US', { 
+                    weekday: 'short', month: 'long', day: 'numeric', year: 'numeric'
+                });
+                document.getElementById('eventTime').textContent = eventDate.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', minute: '2-digit' 
+                });
+            } else {
+                document.getElementById('eventDate').textContent = 'Date Schedule TBD';
+                document.getElementById('eventTime').textContent = 'Flexible Timeline';
+            }
             
-            document.getElementById('eventTime').textContent = eventDate.toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit' 
-            }) + (event.end_time ? ' - ' + new Date(event.end_time).toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit' 
-            }) : '');
+            document.getElementById('eventLocation').textContent = event.location || 'Yapei Hub Virtual/Physical';
             
-            // Set location
-            document.getElementById('eventLocation').textContent = event.location || 'Location TBD';
+            // Parsing registration metric counts metrics mapping serialization rules
+            const attendeeTotalCount = event.attendees_count || (Array.isArray(event.attendees) ? event.attendees.length : 0);
+            document.getElementById('eventAttendees').textContent = attendeeTotalCount;
+            document.getElementById('attendeeSidebarCount').textContent = attendeeTotalCount;
             
-            // Set attendees count
-            const attendeeCount = event.attendees_count || event.attendees?.length || 0;
-            document.getElementById('eventAttendees').textContent = attendeeCount;
+            // String strip extraction configuration filters
+            let baseDescriptionText = event.description || 'No descriptive summary statements context published for this event instance module node.';
+            document.getElementById('eventDescription').textContent = baseDescriptionText;
             
-            // Update all attendee count spans
-            document.querySelectorAll('#attendeeCount').forEach(el => {
-                el.textContent = attendeeCount;
-            });
-            
-            // Set description
-            document.getElementById('eventDescription').textContent = event.description || 'No description available.';
-            
-            // Handle capacity if available
+            // Capacity mapping verification matrix constraints
             if (event.capacity) {
                 document.getElementById('capacitySection').style.display = 'block';
-                const percentage = (attendeeCount / event.capacity) * 100;
-                document.getElementById('capacityProgress').style.width = `${percentage}%`;
-                document.getElementById('capacityInfo').textContent = `${attendeeCount} / ${event.capacity} spots filled`;
+                const calculatedPercentage = Math.min(100, Math.round((attendeeTotalCount / parseInt(event.capacity)) * 100));
+                document.getElementById('capacityProgress').style.width = `${calculatedPercentage}%`;
+                document.getElementById('capacityInfo').textContent = `${attendeeTotalCount} / ${event.capacity} total seats claimed`;
+            } else {
+                document.getElementById('capacitySection').style.display = 'none';
             }
             
-            // Display agenda if available
-            if (event.agenda && event.agenda.length > 0) {
-                document.getElementById('agendaSection').style.display = 'block';
-                const agendaHtml = event.agenda.map(item => `
-                    <div class="d-flex gap-3 mb-3">
-                        <div class="text-primary fw-bold" style="min-width: 100px;">${item.time}</div>
-                        <div>
-                            <h6 class="fw-bold">${item.title}</h6>
-                            <p class="text-secondary">${item.description}</p>
-                        </div>
-                    </div>
-                `).join('');
-                document.getElementById('eventAgenda').innerHTML = agendaHtml;
-            }
-            
-            // Update RSVP button
+            // Evaluate application authentication flow mapping buttons state changes
             const rsvpBtn = document.getElementById('rsvpBtn');
             if (isPast) {
                 rsvpBtn.disabled = true;
-                rsvpBtn.innerHTML = '<i class="fa-regular fa-clock me-2"></i>Event Ended';
+                rsvpBtn.className = "btn btn-secondary action-btn w-100 text-white";
+                rsvpBtn.innerHTML = '<i class="fa-solid fa-hourglass-end me-2"></i>Registration Period Closed';
             } else if (!localStorage.getItem('access')) {
-                rsvpBtn.innerHTML = '<i class="fa-regular fa-circle-check me-2"></i>Login to RSVP';
+                rsvpBtn.innerHTML = '<i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Login Authentication To Request RSVP';
+            } else {
+                rsvpBtn.innerHTML = '<i class="fa-regular fa-circle-check me-2"></i>Lock Reservation Seat Slot';
             }
             
-            // Update login link
-            document.getElementById('loginLink').href = `login.html?redirect=event-details.html?id=${eventId}`;
-            
-            // Show comment form if logged in
-            if (localStorage.getItem('access')) {
-                document.getElementById('commentForm').style.display = 'block';
-                document.getElementById('loginPrompt').style.display = 'none';
-            }
-            
-            // Display attendees
-            displayAttendees(event.attendees);
+            // Initialize target fallback users arrays
+            renderAttendeesList(event.attendees);
         }
 
-        // Display attendees
-        function displayAttendees(attendees) {
-            const attendeesList = document.getElementById('attendeesList');
-            
-            if (!attendees || attendees.length === 0) {
-                attendeesList.innerHTML = '<p class="text-secondary text-center py-3">No attendees yet. Be the first!</p>';
-                return;
-            }
-            
-            // Show only first 5 attendees
-            const displayAttendees = attendees.slice(0, 5);
-            
-            attendeesList.innerHTML = displayAttendees.map(attendee => `
-                <div class="attendee-item">
-                    <div class="attendee-avatar">${(attendee.name || attendee.username || 'A')[0].toUpperCase()}</div>
-                    <div class="attendee-info">
-                        <div class="attendee-name">${attendee.name || attendee.username || 'Anonymous'}</div>
-                        <div class="attendee-role">${attendee.role || 'Community Member'}</div>
+        // Output collection array into structural view manifest profiles elements block safely
+        function renderAttendeesList(attendees) {
+            const container = document.getElementById('attendeesList');
+            if (!Array.isArray(attendees) || attendees.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-3">
+                        <p class="text-muted small mb-0">No active reservation claims currently verified.</p>
                     </div>
-                </div>
-            `).join('');
-            
-            if (attendees.length > 5) {
-                document.getElementById('viewAllAttendees').style.display = 'inline-block';
-            }
-        }
-
-        // Fetch similar events
-        async function fetchSimilarEvents(category, currentEventId) {
-            try {
-                const response = await fetch(`${BACKEND_URL}/api/events/?category=${category}&limit=3`);
-                const data = await response.json();
-                
-                const events = Array.isArray(data) ? data : (data.results || []);
-                const similarEvents = events.filter(event => event.id != currentEventId).slice(0, 3);
-                
-                const similarEventsList = document.getElementById('similarEventsList');
-                
-                if (similarEvents.length === 0) {
-                    similarEventsList.innerHTML = '<p class="text-secondary text-center py-3">No similar events found.</p>';
-                    return;
-                }
-                
-                similarEventsList.innerHTML = similarEvents.map(event => {
-                    const eventDate = event.date ? new Date(event.date) : new Date();
-                    return `
-                        <div class="similar-event-card">
-                            <div class="similar-event-image">
-                                <img src="${event.image || event.media || 'https://via.placeholder.com/200x150/0d6efd/ffffff?text=' + encodeURIComponent(event.title)}" 
-                                     alt="${event.title}">
-                            </div>
-                            <div class="similar-event-content">
-                                <h5 class="similar-event-title">${event.title}</h5>
-                                <div class="similar-event-meta">
-                                    <span><i class="fa-regular fa-calendar me-1"></i>${eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
-                                    <span><i class="fa-regular fa-clock me-1"></i>${eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</span>
-                                </div>
-                                <a href="event-details.html?id=${event.id}" class="btn btn-sm btn-outline-primary w-100">View Details</a>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-                
-            } catch (error) {
-                console.error('Error fetching similar events:', error);
-                document.getElementById('similarEventsList').innerHTML = '<p class="text-secondary text-center py-3">Unable to load similar events.</p>';
-            }
-        }
-
-        // Fetch comments
-        async function fetchComments(eventId) {
-            try {
-                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/comments/`);
-                const comments = await response.json();
-                
-                eventComments = Array.isArray(comments) ? comments : [];
-                displayComments(eventComments);
-                
-            } catch (error) {
-                console.error('Error fetching comments:', error);
-                document.getElementById('commentsList').innerHTML = '<p class="text-secondary text-center py-3">Unable to load comments.</p>';
-            }
-        }
-
-        // Display comments
-        function displayComments(comments) {
-            const commentsList = document.getElementById('commentsList');
-            
-            if (comments.length === 0) {
-                commentsList.innerHTML = '<p class="text-secondary text-center py-3">No comments yet. Start the discussion!</p>';
+                `;
                 return;
             }
-            
-            commentsList.innerHTML = comments.map(comment => {
-                const commentDate = comment.created_at ? new Date(comment.created_at) : new Date();
+
+            // Slice out rendering view up to maximum 5 visual nodes sequence parameters matching rules
+            const observableDataset = attendees.slice(0, 5);
+            container.innerHTML = observableDataset.map(user => {
+                const standardName = user.name || user.username || 'Community Partner';
+                const charInitial = standardName.trim().charAt(0).toUpperCase();
                 return `
-                    <div class="comment-item">
-                        <div class="comment-avatar">${(comment.author_name || comment.author || 'A')[0].toUpperCase()}</div>
-                        <div class="comment-content">
-                            <div class="comment-header">
-                                <span class="comment-author">${comment.author_name || comment.author || 'Anonymous'}</span>
-                                <span class="comment-date">${timeAgo(commentDate)}</span>
-                            </div>
-                            <p class="comment-text">${comment.text || comment.content}</p>
+                    <div class="attendee-item">
+                        <div class="attendee-avatar">${charInitial}</div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">${standardName}</div>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
-        // Time ago formatter
-        function timeAgo(date) {
-            const seconds = Math.floor((new Date() - date) / 1000);
-            
-            let interval = seconds / 31536000;
-            if (interval > 1) return Math.floor(interval) + ' years ago';
-            
-            interval = seconds / 2592000;
-            if (interval > 1) return Math.floor(interval) + ' months ago';
-            
-            interval = seconds / 86400;
-            if (interval > 1) return Math.floor(interval) + ' days ago';
-            
-            interval = seconds / 3600;
-            if (interval > 1) return Math.floor(interval) + ' hours ago';
-            
-            interval = seconds / 60;
-            if (interval > 1) return Math.floor(interval) + ' minutes ago';
-            
-            return 'just now';
+        // Query cross reference category streams matches matching view signatures guidelines
+        async function fetchSimilarEvents(category, currentId) {
+            try {
+                if (!category) return;
+                const response = await fetch(`${BACKEND_URL}/api/events/`);
+                if (!response.ok) return;
+                
+                const responseData = await response.json();
+                const cleanArray = Array.isArray(responseData) ? responseData : (responseData.results || []);
+                
+                // Exclude current focus element
+                const targetedMatches = cleanArray.filter(item => item.id != currentId).slice(0, 3);
+                const outputTarget = document.getElementById('similarEventsList');
+                
+                if (targetedMatches.length === 0) {
+                    outputTarget.innerHTML = '<p class="text-muted small mb-0">No parallel classification streams scheduled.</p>';
+                    return;
+                }
+                
+                outputTarget.innerHTML = targetedMatches.map(item => {
+                    const dynamicItemDateStr = item.date || item.timestamp || '';
+                    const displayDate = dynamicItemDateStr ? new Date(dynamicItemDateStr).toLocaleDateString('en-US', {month:'short', day:'numeric'}) : 'TBD';
+                    const matchedImage = item.image || item.media || 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=400&q=80';
+                    return `
+                        <div class="similar-event-card">
+                            <div class="similar-event-image">
+                                <img src="${matchedImage}" alt="Event Art Canvas">
+                            </div>
+                            <div class="similar-event-content">
+                                <h5 class="similar-event-title text-truncate">${item.title || 'Community Focus Session'}</h5>
+                                <div class="similar-event-meta">
+                                    <span><i class="fa-regular fa-calendar me-1"></i>${displayDate}</span>
+                                    <span><i class="fa-solid fa-location-dot me-1"></i>${item.location || 'Yapei Center'}</span>
+                                </div>
+                                <a href="event-details.html?id=${item.id}" class="btn btn-sm btn-primary w-100 font-semibold" style="border-radius:0.4rem;">Explore Space</a>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (err) {
+                console.warn('Silent processing failure querying sibling category vectors:', err);
+            }
         }
 
-        // Post comment
+        // Query comments system array utilizing endpoints parsing logic
+        async function fetchComments(eventId) {
+            try {
+                // Fetch utilizing target patterns specified context views schemas
+                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/comments/`);
+                if (!response.ok) throw new Error('Discussions channel fetch drop error verification context.');
+                
+                const comments = await response.json();
+                const parsedCommentsArray = Array.isArray(comments) ? comments : [];
+                
+                const outputListTarget = document.getElementById('commentsList');
+                if (parsedCommentsArray.length === 0) {
+                    outputListTarget.innerHTML = '<p class="text-muted text-center py-4 small">No dialogue statements logged yet. Start the workspace stream thread!</p>';
+                    return;
+                }
+                
+                outputListTarget.innerHTML = parsedCommentsArray.map(node => {
+                    // Normalize author naming variants mapping DRF custom definitions
+                    const identifierAuthor = node.author_name || node.author || 'Active User';
+                    const coreContentMessage = node.text || node.content || '';
+                    const characterLetter = identifierAuthor.trim().charAt(0).toUpperCase();
+                    const nodeTimeStr = node.created_at || node.timestamp || new Date().toISOString();
+                    
+                    return `
+                        <div class="comment-item animate__animated animate__fadeIn">
+                            <div class="comment-avatar">${characterLetter}</div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-author">${identifierAuthor}</span>
+                                    <span class="comment-date">${calculateTimeDelta(new Date(nodeTimeStr))}</span>
+                                </div>
+                                <p class="comment-text">${coreContentMessage}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+            } catch (error) {
+                console.error('Comments extraction fault capture pipeline logs:', error);
+                document.getElementById('commentsList').innerHTML = '<p class="text-danger text-center small py-2">Failed to synchronize commentary feed securely.</p>';
+            }
+        }
+
+        // Evaluate temporal differences dynamically down into simple relative string parameters
+        function calculateTimeDelta(targetPastDate) {
+            const differenceInSeconds = Math.floor((new Date() - targetPastDate) / 1000);
+            if (differenceInSeconds < 60) return 'Just moments ago';
+            const standardMinutes = Math.floor(differenceInSeconds / 60);
+            if (standardMinutes < 60) return `${standardMinutes}m ago`;
+            const absoluteHours = Math.floor(standardMinutes / 60);
+            if (absoluteHours < 24) return `${absoluteHours}h ago`;
+            const dayIntervals = Math.floor(absoluteHours / 24);
+            return `${dayIntervals}d ago`;
+        }
+
+        // Process submission execution strings via validation engine parameters to backend API
         async function postComment() {
-            const commentText = document.getElementById('commentText').value.trim();
-            
-            if (!commentText) {
-                alert('Please enter a comment');
+            const inputField = document.getElementById('commentText');
+            const sanitizedText = inputField.value.trim();
+            if (!sanitizedText) {
+                alert('Input string block content stream parameter validation constraint failed. Empty submissions voided.');
                 return;
             }
-            
-            if (!localStorage.getItem('access')) {
+
+            const activeAuthorizationToken = localStorage.getItem('access');
+            if (!activeAuthorizationToken) {
                 window.location.href = `login.html?redirect=event-details.html?id=${eventId}`;
                 return;
             }
-            
+
             try {
-                const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/comments/`, {
+                // Post matching backend views definitions
+                const executionResponse = await fetch(`${BACKEND_URL}/api/events/${eventId}/comments/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('access')}`
+                        'Authorization': `Bearer ${activeAuthorizationToken}`
                     },
                     body: JSON.stringify({
-                        text: commentText
+                        text: sanitizedText,
+                        content: sanitizedText // Map variants to prevent model parameter mismatches
                     })
                 });
-                
-                if (response.ok) {
-                    document.getElementById('commentText').value = '';
-                    fetchComments(eventId);
+
+                if (executionResponse.ok) {
+                    inputField.value = '';
+                    await fetchComments(eventId);
                 } else {
-                    alert('Failed to post comment. Please try again.');
+                    const traceErrPayload = await executionResponse.json().catch(()=>({}));
+                    alert(`Network transaction validation dropped post payload rejection: ${JSON.stringify(traceErrPayload)}`);
                 }
-                
             } catch (error) {
-                console.error('Error posting comment:', error);
-                alert('Failed to post comment. Please try again.');
+                console.error('Post processing runtime connection issue:', error);
+                alert('Programmatic transmission fail connection fault validation drops. Check device interface status.');
             }
         }
 
-        // Handle RSVP
+        // Interface triggers matching entry paths tracking authentication constraints configurations
         function handleRSVP() {
             if (!currentEvent) return;
             
-            const eventDate = currentEvent.date ? new Date(currentEvent.date) : new Date();
-            if (eventDate < new Date()) {
-                alert('This event has already ended');
+            const dynamicDateValue = currentEvent.date || currentEvent.timestamp || '';
+            if (dynamicDateValue && new Date(dynamicDateValue) < new Date()) {
+                alert('Chronological error. Programmatic session state past event historical timeline matrices cannot collect claims entries.');
                 return;
             }
-            
+
             if (!localStorage.getItem('access')) {
                 window.location.href = `login.html?redirect=event-details.html?id=${eventId}`;
                 return;
             }
-            
-            document.getElementById('rsvpEventTitle').textContent = currentEvent.title;
+
+            document.getElementById('rsvpEventTitle').textContent = currentEvent.title || 'Verify targeted resource tracking signature matching matrix...';
             rsvpModal.show();
         }
 
-        // Confirm RSVP
+        // Finalize transaction mapping payload entries configuration down inside registration endpoints
         async function confirmRSVP() {
-            const guests = document.getElementById('guestCount').value;
-            
+            const guestValueCount = document.getElementById('guestCount').value;
+            const userValidationToken = localStorage.getItem('access');
+
             try {
                 const response = await fetch(`${BACKEND_URL}/api/events/${eventId}/rsvp/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('access')}`
+                        'Authorization': `Bearer ${userValidationToken}`
                     },
                     body: JSON.stringify({
-                        guests: parseInt(guests)
+                        guests: parseInt(guestValueCount)
                     })
                 });
-                
+
                 if (response.ok) {
                     rsvpModal.hide();
                     successModal.show();
-                    
-                    // Refresh event details to update attendee count
-                    fetchEventDetails();
-                    
-                    setTimeout(() => {
-                        successModal.hide();
-                    }, 3000);
+                    await fetchEventDetails(); // Trigger re-evaluation matrix synchronization logic
+                    setTimeout(() => successModal.hide(), 3500);
                 } else {
-                    alert('Failed to RSVP. Please try again.');
+                    const assertionErr = await response.json().catch(()=>({}));
+                    alert(`RSVP application rejection match state event context feedback logs: ${JSON.stringify(assertionErr)}`);
                 }
-                
-            } catch (error) {
-                console.error('Error RSVPing:', error);
-                alert('Failed to RSVP. Please try again.');
+            } catch (err) {
+                console.error('RSVP system connectivity structural fault:', err);
+                alert('Failure interacting secure transmission system matrix profiles endpoints.');
             }
         }
 
-        // Share event
-        function shareEvent(platform) {
-            const url = window.location.href;
-            const title = currentEvent?.title || 'Check out this event';
-            
-            let shareUrl;
-            switch(platform) {
+        // Operational utility triggers tracking target platform mapping variables configurations 
+        function shareEvent(socialNetworkDomain, eventObject) {
+            eventObject.preventDefault();
+            const browserActiveURL = window.location.href;
+            const coreTextStatementTitle = currentEvent ? currentEvent.title : 'Check out this event context matrix node...';
+            let computedDispatchTarget = '';
+
+            switch(socialNetworkDomain) {
                 case 'facebook':
-                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+                    computedDispatchTarget = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(browserActiveURL)}`;
                     break;
                 case 'twitter':
-                    shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+                    computedDispatchTarget = `https://twitter.com/intent/tweet?text=${encodeURIComponent(coreTextStatementTitle)}&url=${encodeURIComponent(browserActiveURL)}`;
                     break;
                 case 'whatsapp':
-                    shareUrl = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
+                    computedDispatchTarget = `https://api.whatsapp.com/send?text=${encodeURIComponent(coreTextStatementTitle + ' - Link: ' + browserActiveURL)}`;
                     break;
                 case 'email':
-                    shareUrl = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this event: ' + url)}`;
+                    computedDispatchTarget = `mailto:?subject=${encodeURIComponent(coreTextStatementTitle)}&body=${encodeURIComponent('Yapei Online Core Interface Event URL: ' + browserActiveURL)}`;
                     break;
             }
-            
-            if (shareUrl) {
-                window.open(shareUrl, '_blank', 'width=600,height=400');
+
+            if (computedDispatchTarget) {
+                window.open(computedDispatchTarget, '_blank', 'width=650,height=450,scrollbars=yes,resizable=yes');
             }
         }
 
-        // Copy event link
-        function copyEventLink() {
+        // Clipboard extraction logic parameters processing tracking triggers interface blocks
+        function copyEventLink(eventRef) {
+            eventRef.preventDefault();
             navigator.clipboard.writeText(window.location.href).then(() => {
-                alert('Link copied to clipboard!');
+                alert('System localization statement link reference tracking path synced securely into data clipboard module registries.');
+            }).catch(() => {
+                alert('Fallback failure allocating background clipboard text reference structures targets array mapping.');
             });
         }
 
-        // Show error message
+        // Render standard functional text strings onto core element container targets
         function showError(message) {
             document.getElementById('loadingState').innerHTML = `
-                <div class="empty-state">
-                    <i class="fa-solid fa-circle-exclamation text-danger"></i>
-                    <h3>Error</h3>
-                    <p>${message}</p>
-                    <a href="events.html" class="btn btn-primary">
-                        <i class="fa-solid fa-arrow-left me-2"></i>Back to Events
-                    </a>
+                <div class="empty-state text-center py-5">
+                    <i class="fa-solid fa-circle-exclamation text-danger fa-2x mb-3"></i>
+                    <h5 class="fw-bold">Interface Configuration Warning</h5>
+                    <p class="text-secondary mb-0">${message}</p>
                 </div>
             `;
         }
 
-        // Update navbar based on login status
-        function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
-            
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-sign-in-alt me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
+        // Synchronize operational user state attributes against navigation bars layouts anchors 
+        function evaluateNavbarStateLayout() {
+            const navLinkBoxTarget = document.getElementById('navbar-user-links');
+            if (!navLinkBoxTarget) return;
+
+            const authorizationStateVerificationToken = localStorage.getItem('access');
+            if (authorizationStateVerificationToken) {
+                // Initialize custom avatar representation parameters matching system variables
+                navLinkBoxTarget.innerHTML = `
+                    <li class="nav-item"><a class="nav-link text-white fw-medium" href="profile.html"><i class="fa-regular fa-user me-1 text-light"></i>Account Profile</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-sm btn-light text-primary fw-bold px-3 py-1.5 mt-1 mt-lg-0" style="border-radius:2rem;" href="#" onclick="executeTerminationLogout(event)">Sign Out</a></li>
+                `;
+                
+                // Toggle state of localized conversation component configurations block
+                document.getElementById('commentForm').style.display = 'block';
+                document.getElementById('loginPrompt').style.display = 'none';
+                
+                try {
+                    // Optional alpha initial profile icon avatar character setting configurations rules
+                    const baseMockUsername = 'Member';
+                    document.getElementById('userFormAvatar').textContent = baseMockUsername.charAt(0).toUpperCase();
+                } catch(e){}
+
+            } else {
+                navLinkBoxTarget.innerHTML = `
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-sm btn-light text-primary fw-bold px-3 py-1.5 mt-1 mt-lg-0" style="border-radius:2rem;" href="register.html">Sign Up</a></li>
+                `;
+                document.getElementById('commentForm').style.display = 'none';
+                document.getElementById('loginPrompt').style.display = 'block';
+            }
         }
 
-        // Handle logout
-        function handleLogout() {
+        // Terminate tracking tokens mapping data tables storage profiles nodes instances objects
+        function executeTerminationLogout(eventNodeObjectRef) {
+            eventNodeObjectRef.preventDefault();
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
-            updateNavbarLinks();
-            
-            // Reload page to update UI
             window.location.reload();
         }
 
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavbarLinks();
+        // Trigger sequence instantiation lifecycle execution tracks
+        document.addEventListener('DOMContentLoaded', () => {
+            evaluateNavbarStateLayout();
             fetchEventDetails();
         });
     </script>
 </body>
-  </html>
+</html>
