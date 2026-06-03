@@ -5,31 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Our Community - Yapei Community Online</title>
     
-    <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --primary-dark: #0b5ed7;
-            --secondary-color: #6c757d;
-            --success-color: #198754;
-            --light-bg: #f8f9fa;
-            --dark-bg: #212529;
-            --border-radius: 1rem;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            --text-light: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --primary-accent: rgba(255, 255, 255, 0.25);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -39,247 +32,234 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: #2c3e50;
+            color: var(--text-light);
+            background-color: #0f172a;
+            overflow-x: hidden;
+            position: relative;
         }
 
-        /* Navigation Enhancement */
+        /* Liquid Background Animation */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(45deg, #1e3a8a, #4c1d95, #0f766e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: float 20s infinite alternate;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #3b82f6;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: #8b5cf6;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 40%;
+            width: 40vw;
+            height: 40vw;
+            background: #14b8a6;
+            animation-delay: -10s;
+            animation-duration: 25s;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 1.5rem;
+        }
+
+        .glass-input {
+            background: rgba(0, 0, 0, 0.1) !important;
+            border: 1px solid var(--glass-border) !important;
+            color: var(--text-light) !important;
+            backdrop-filter: blur(4px);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .glass-input:focus {
+            background: rgba(0, 0, 0, 0.2) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1), 0 0 15px rgba(255,255,255,0.1) !important;
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+        }
+
+        /* Navbar Enhancement */
         .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.05) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             padding: 1rem 0;
         }
 
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-color) !important;
-            transition: var(--transition);
-        }
-
-        .navbar-brand:hover {
-            transform: translateY(-1px);
+            color: var(--text-light) !important;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .nav-link {
             font-weight: 500;
-            padding: 0.5rem 1rem !important;
-            border-radius: 0.5rem;
+            color: var(--text-dim) !important;
             transition: var(--transition);
-            color: #495057 !important;
         }
 
-        .nav-link:hover {
-            background-color: rgba(13, 110, 253, 0.1);
-            color: var(--primary-color) !important;
-            transform: translateY(-1px);
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-light) !important;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
         }
 
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white !important;
-        }
-
-        /* Main Container */
+        /* Register Card Specifics */
         .register-wrapper {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
+            position: relative;
+            z-index: 10;
         }
 
         .register-card {
-            background: white;
-            border-radius: 2rem;
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
             max-width: 600px;
             width: 100%;
-            animation: slideUp 0.6s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Header Section */
-        .register-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2.5rem 2rem;
-            text-align: center;
+            padding: 3rem;
             position: relative;
             overflow: hidden;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .register-header::before {
+        /* Shine effect on card */
+        .register-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-20deg);
+            animation: shine 8s infinite;
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .register-header i {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: rgba(255,255,255,0.2);
-            width: 90px;
-            height: 90px;
-            line-height: 90px;
-            border-radius: 50%;
-            display: inline-block;
-            position: relative;
-            z-index: 1;
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
         }
 
         .register-header h2 {
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .register-header p {
-            opacity: 0.95;
-            margin-bottom: 0;
-            position: relative;
-            z-index: 1;
-            font-size: 1.1rem;
-        }
-
-        /* Form Section */
-        .register-body {
-            padding: 2.5rem 2rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .form-label {
-            font-weight: 600;
-            color: #495057;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .input-group {
-            margin-bottom: 1.5rem;
-            position: relative;
+            color: var(--text-light);
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .input-group-text {
-            background: white;
-            border: 2px solid #e9ecef;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             border-right: none;
-            border-radius: 0.75rem 0 0 0.75rem;
-            color: var(--primary-color);
-            padding: 0.75rem 1rem;
+            color: var(--text-light);
+            backdrop-filter: blur(4px);
         }
 
-        .form-control {
-            border: 2px solid #e9ecef;
-            border-left: none;
-            border-radius: 0 0.75rem 0.75rem 0;
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: none;
-        }
-
-        .form-control:focus + .input-group-text {
-            border-color: var(--primary-color);
-        }
-
-        /* File Input Styling */
-        .file-input-wrapper {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
+        /* Custom File Upload */
         .file-input-label {
+            background: rgba(0,0,0,0.1);
+            border: 1px dashed rgba(255,255,255,0.4);
+            border-radius: 0.75rem;
+            padding: 1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 0.75rem 1rem;
-            border: 2px dashed #e9ecef;
-            border-radius: 0.75rem;
             cursor: pointer;
             transition: var(--transition);
         }
 
         .file-input-label:hover {
-            border-color: var(--primary-color);
-            background: rgba(13, 110, 253, 0.05);
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
         }
 
-        .file-input-label i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .file-input-label span {
-            flex: 1;
-            color: var(--secondary-color);
-        }
-
-        .file-input-label .file-name {
-            color: var(--primary-color);
-            font-weight: 500;
+        .avatar-preview {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.5);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            margin: 0 auto 1.5rem;
+            display: none;
         }
 
         #avatar {
             position: absolute;
             opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
+            width: 0;
+            height: 0;
         }
 
-        /* Avatar Preview */
-        .avatar-preview {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary-color);
-            margin: 0 auto 1rem;
-            display: none;
-        }
-
-        /* Password Strength Meter */
-        .password-strength {
-            margin-top: 0.5rem;
-        }
-
+        /* Password Strength */
         .strength-bar {
-            height: 5px;
-            background: #e9ecef;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
             border-radius: 1rem;
             overflow: hidden;
-            margin-bottom: 0.25rem;
+            margin-top: 0.5rem;
         }
 
         .strength-progress {
@@ -288,237 +268,142 @@
             transition: width 0.3s ease;
         }
 
-        .strength-text {
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-        }
-
-        /* Requirements List */
         .requirements-list {
             list-style: none;
             padding: 0;
             margin: 0.5rem 0 1rem;
-            font-size: 0.85rem;
-        }
-
-        .requirements-list li {
-            margin-bottom: 0.25rem;
-            color: var(--secondary-color);
+            font-size: 0.8rem;
+            color: var(--text-dim);
         }
 
         .requirements-list li i {
             width: 1.2rem;
-            color: #dc3545;
         }
 
-        .requirements-list li.valid i {
-            color: var(--success-color);
-        }
-
-        /* Register Button */
-        .btn-register {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border: none;
+        /* Glass Button */
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
             border-radius: 0.75rem;
             padding: 1rem;
             font-weight: 600;
-            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: var(--glass-shadow), var(--glass-highlight);
+            backdrop-filter: blur(10px);
             transition: var(--transition);
-            margin-bottom: 1rem;
-            color: white;
         }
 
-        .btn-register:hover:not(:disabled) {
+        .btn-glass:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(13, 110, 253, 0.4);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.5);
         }
 
-        .btn-register:disabled {
-            opacity: 0.6;
+        .btn-glass:disabled {
+            opacity: 0.5;
             cursor: not-allowed;
         }
 
-        /* Login Link */
-        .login-link {
-            text-align: center;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid #e9ecef;
+        /* Modals & Popups adapted to glass */
+        .modal-content {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        .modal-header, .modal-footer {
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .btn-close {
+            filter: invert(1) grayscale(100%) brightness(200%);
         }
 
         .login-link a {
-            color: var(--primary-color);
-            font-weight: 600;
+            color: #60a5fa;
             text-decoration: none;
-            transition: var(--transition);
+            font-weight: 600;
         }
 
         .login-link a:hover {
-            color: var(--primary-dark);
+            color: #93c5fd;
             text-decoration: underline;
+            text-underline-offset: 4px;
         }
 
-        /* Message Alerts */
-        .alert {
-            border-radius: 0.75rem;
-            border: none;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            animation: slideIn 0.3s ease;
+        /* Form Text and Checkboxes */
+        .form-check-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        
+        .form-check-label a {
+            color: #60a5fa;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Popup Enhancement */
-        .popup-card {
-            border-radius: 1.5rem !important;
-            border: none;
-            padding: 2rem !important;
+        /* Footer Glass */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            padding: 2rem 0 1rem;
+            position: relative;
+            z-index: 10;
         }
 
-        .popup-card .icon-wrapper {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--success-color), #146c43);
-            border-radius: 50%;
+        .text-secondary {
+            color: rgba(255,255,255,0.6) !important;
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            padding: 0 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            animation: bounceIn 0.6s ease;
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .popup-card h4 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .popup-card p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .popup-card .spinner-border {
-            width: 2rem;
-            height: 2rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            color: #495057;
-            margin-top: auto;
-            padding: 2rem 0 1rem;
-        }
-
-        .footer h5 {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .footer a {
-            color: #495057;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer a:hover {
-            color: var(--primary-color);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(0,0,0,0.1);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .register-wrapper {
-                padding: 1rem;
-            }
-            
-            .register-header {
-                padding: 2rem 1.5rem;
-            }
-            
-            .register-body {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        /* Accessibility */
-        .visually-hidden-focusable:focus {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background: white;
-            padding: 1rem;
-            z-index: 10000;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
+            color: var(--text-dim);
         }
     </style>
 </head>
 <body>
-    <!-- Skip to main content -->
-    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
-    <!-- Navigation -->
     <header>
         <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <i class="fa-solid fa-users me-2"></i>Yapei Community
+                    <i class="fa-solid fa-droplet me-2"></i>Yapei Community
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
                         data-bs-target="#navbarContent" aria-controls="navbarContent" 
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="fa-solid fa-home me-1"></i>Home
-                            </a>
+                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html">
-                                <i class="fa-solid fa-book me-1"></i>Blog
-                            </a>
+                            <a class="nav-link" href="blog.html">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">
-                                <i class="fa-solid fa-info-circle me-1"></i>About Us
-                            </a>
+                            <a class="nav-link" href="about.html">About Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">
-                                <i class="fa-solid fa-user-plus me-1"></i>Register
-                            </a>
+                            <a class="nav-link active" aria-current="page" href="#">Register</a>
                         </li>
                         <span id="navbar-user-links" class="d-flex"></span>
                     </ul>
@@ -527,272 +412,117 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="main-content" class="register-wrapper">
-        <div class="register-card">
-            <!-- Header -->
-            <div class="register-header">
-                <i class="fa-solid fa-hand-wave"></i>
-                <h2>Join Our Community!</h2>
-                <p>Create an account and start connecting with Yapei residents</p>
+    <main class="register-wrapper">
+        <div class="glass-panel register-card">
+            <div class="register-header text-center mb-4">
+                <i class="fa-solid fa-users-rays fa-3x mb-3" style="color: #93c5fd;"></i>
+                <h2>Join The Flow</h2>
+                <p class="text-dim">Connect with the Yapei community today.</p>
             </div>
 
-            <!-- Body -->
-            <div class="register-body">
-                <!-- Message Area -->
-                <div id="registerMsg"></div>
+            <div id="registerMsg"></div>
 
-                <!-- Registration Form -->
-                <form id="registerForm" enctype="multipart/form-data" novalidate>
-                    <!-- Username Field -->
-                    <div class="mb-3">
-                        <label for="username" class="form-label">
-                            <i class="fa-regular fa-user me-1"></i>Username
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fa-regular fa-user"></i>
-                            </span>
-                            <input type="text" class="form-control" id="username" 
-                                   name="username" placeholder="Choose a username" 
-                                   required minlength="3" maxlength="20">
-                        </div>
-                        <small class="text-secondary">3-20 characters, letters and numbers only</small>
+            <form id="registerForm" enctype="multipart/form-data" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text border-0"><i class="fa-regular fa-user"></i></span>
+                        <input type="text" class="form-control glass-input border-start-0" id="username" 
+                               name="username" placeholder="Choose a username" 
+                               required minlength="3" maxlength="20">
                     </div>
+                </div>
 
-                    <!-- Email Field -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">
-                            <i class="fa-regular fa-envelope me-1"></i>Email Address
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fa-regular fa-envelope"></i>
-                            </span>
-                            <input type="email" class="form-control" id="email" 
-                                   name="email" placeholder="you@example.com" required>
-                        </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-text border-0"><i class="fa-regular fa-envelope"></i></span>
+                        <input type="email" class="form-control glass-input border-start-0" id="email" 
+                               name="email" placeholder="you@example.com" required>
                     </div>
+                </div>
 
-                    <!-- Password Field -->
-                    <div class="mb-3">
-                        <label for="password" class="form-label">
-                            <i class="fa-solid fa-lock me-1"></i>Password
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fa-solid fa-lock"></i>
-                            </span>
-                            <input type="password" class="form-control" id="password" 
-                                   name="password" placeholder="Create a strong password" 
-                                   required minlength="8">
-                            <span class="password-toggle" onclick="togglePasswordVisibility()">
-                                <i class="fa-regular fa-eye" id="togglePasswordIcon"></i>
-                            </span>
-                        </div>
-                        
-                        <!-- Password Strength Meter -->
-                        <div class="password-strength">
-                            <div class="strength-bar">
-                                <div class="strength-progress" id="strengthProgress"></div>
-                            </div>
-                            <span class="strength-text" id="strengthText">Enter password</span>
-                        </div>
-
-                        <!-- Password Requirements -->
-                        <ul class="requirements-list" id="passwordRequirements">
-                            <li id="reqLength">
-                                <i class="fa-regular fa-circle-xmark"></i> At least 8 characters
-                            </li>
-                            <li id="reqUpper">
-                                <i class="fa-regular fa-circle-xmark"></i> At least 1 uppercase letter
-                            </li>
-                            <li id="reqLower">
-                                <i class="fa-regular fa-circle-xmark"></i> At least 1 lowercase letter
-                            </li>
-                            <li id="reqNumber">
-                                <i class="fa-regular fa-circle-xmark"></i> At least 1 number
-                            </li>
-                            <li id="reqSpecial">
-                                <i class="fa-regular fa-circle-xmark"></i> At least 1 special character
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Title Field -->
-                    <div class="mb-3">
-                        <label for="title" class="form-label">
-                            <i class="fa-solid fa-heading me-1"></i>Professional Title
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fa-solid fa-briefcase"></i>
-                            </span>
-                            <input type="text" class="form-control" id="title" 
-                                   name="title" placeholder="e.g., Community Member, Teacher, Farmer" 
-                                   required>
-                        </div>
-                    </div>
-
-                    <!-- Bio Field -->
-                    <div class="mb-3">
-                        <label for="bio" class="form-label">
-                            <i class="fa-solid fa-info-circle me-1"></i>Bio
-                        </label>
-                        <textarea class="form-control" id="bio" name="bio" 
-                                  rows="3" placeholder="Tell us a little about yourself..."></textarea>
-                        <small class="text-secondary">Max 500 characters</small>
-                    </div>
-
-                    <!-- Avatar Preview -->
-                    <img class="avatar-preview" id="avatarPreview" alt="Avatar preview">
-
-                    <!-- Avatar Upload -->
-                    <div class="file-input-wrapper">
-                        <label for="avatar" class="file-input-label">
-                            <i class="fa-solid fa-cloud-upload-alt"></i>
-                            <span id="fileLabelText">Choose an avatar image</span>
-                            <span class="file-name" id="fileName"></span>
-                        </label>
-                        <input type="file" class="form-control" id="avatar" 
-                               name="avatar" accept="image/*">
-                    </div>
-
-                    <!-- Terms Agreement -->
-                    <div class="mb-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="terms" required>
-                            <label class="form-check-label" for="terms">
-                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms of Service</a> 
-                                and <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Register Button -->
-                    <button type="submit" class="btn btn-register w-100" id="registerBtn" disabled>
-                        <span class="btn-text">
-                            <i class="fa-solid fa-user-plus me-2"></i>Create Account
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text border-0"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" class="form-control glass-input border-start-0 border-end-0" id="password" 
+                               name="password" placeholder="Create a strong password" required minlength="8">
+                        <span class="input-group-text border-0 glass-input password-toggle" onclick="togglePasswordVisibility()">
+                            <i class="fa-regular fa-eye" id="togglePasswordIcon"></i>
                         </span>
-                    </button>
-
-                    <!-- Login Link -->
-                    <div class="login-link">
-                        <span>Already have an account? </span>
-                        <a href="login.html">Sign in here</a>
                     </div>
-                </form>
-            </div>
+                    
+                    <div class="strength-bar">
+                        <div class="strength-progress" id="strengthProgress"></div>
+                    </div>
+
+                    <ul class="requirements-list mt-2" id="passwordRequirements">
+                        <li id="reqLength"><i class="fa-solid fa-circle-xmark"></i> At least 8 characters</li>
+                        <li id="reqUpper"><i class="fa-solid fa-circle-xmark"></i> 1 uppercase letter</li>
+                        <li id="reqLower"><i class="fa-solid fa-circle-xmark"></i> 1 lowercase letter</li>
+                        <li id="reqNumber"><i class="fa-solid fa-circle-xmark"></i> 1 number</li>
+                        <li id="reqSpecial"><i class="fa-solid fa-circle-xmark"></i> 1 special character</li>
+                    </ul>
+                </div>
+
+                <div class="mb-4">
+                    <label for="bio" class="form-label">Bio</label>
+                    <textarea class="form-control glass-input" id="bio" name="bio" 
+                              rows="2" placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <img class="avatar-preview" id="avatarPreview" alt="Avatar preview">
+                <div class="mb-4">
+                    <label for="avatar" class="file-input-label">
+                        <i class="fa-solid fa-cloud-arrow-up fa-lg"></i>
+                        <span id="fileLabelText">Upload Profile Image</span>
+                        <span class="ms-auto" id="fileName"></span>
+                    </label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*">
+                </div>
+
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input glass-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms</a> 
+                            and <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-glass w-100" id="registerBtn" disabled>
+                    <span class="btn-text">Create Account</span>
+                </button>
+
+                <div class="login-link text-center mt-4 pt-3 border-top border-secondary">
+                    <span class="text-dim">Already in the flow? </span>
+                    <a href="login.html">Sign in here</a>
+                </div>
+            </form>
         </div>
     </main>
 
-    <!-- Terms Modal -->
     <div class="modal fade" id="termsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+        <div class="modal-dialog">
+            <div class="modal-content glass-panel">
                 <div class="modal-header">
                     <h5 class="modal-title">Terms of Service</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <h6>1. Community Guidelines</h6>
-                    <p>By joining Yapei Community Online, you agree to treat all members with respect and kindness. Harassment, hate speech, or discriminatory behavior will not be tolerated.</p>
-                    
-                    <h6>2. Privacy</h6>
-                    <p>We respect your privacy. Your personal information will be protected and never shared without your consent.</p>
-                    
-                    <h6>3. Content</h6>
-                    <p>You are responsible for the content you post. Please ensure it's appropriate and doesn't violate any laws.</p>
-                    
-                    <h6>4. Account Security</h6>
-                    <p>Keep your account credentials secure. Notify us immediately if you suspect unauthorized access.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">I Understand</button>
+                <div class="modal-body text-dim">
+                    <p>By joining Yapei Community Online, you agree to treat all members with respect and kindness...</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Privacy Modal -->
-    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Privacy Policy</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h6>Data Collection</h6>
-                    <p>We collect information you provide during registration to create and manage your account.</p>
-                    
-                    <h6>Data Usage</h6>
-                    <p>Your information is used to personalize your experience and connect you with the community.</p>
-                    
-                    <h6>Data Protection</h6>
-                    <p>We implement security measures to protect your personal information.</p>
-                    
-                    <h6>Your Rights</h6>
-                    <p>You can request access, correction, or deletion of your data at any time.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got It</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Popup -->
-    <div id="registerPopupOverlay" class="popup-overlay"></div>
-    <div id="registerPopupMessage" class="popup-message">
-        <div class="popup-card text-center">
-            <div class="icon-wrapper">
-                <i class="fa-solid fa-check fa-3x text-white"></i>
-            </div>
-            <h4>Welcome to the Family! 🎉</h4>
-            <p class="text-secondary mb-3">
-                Your account has been created successfully.<br>
-                You'll be redirected to login in a moment.
-            </p>
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-info-circle me-2"></i>About Us</h5>
-                    <p class="small">Yapei Community Online is a platform for Yapei residents to connect, share information, and support one another.</p>
-                </div>
-                <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-link me-2"></i>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html"><i class="fa-solid fa-home me-2"></i>Home</a></li>
-                        <li><a href="about.html"><i class="fa-solid fa-info-circle me-2"></i>About Us</a></li>
-                        <li><a href="blog.html"><i class="fa-solid fa-book me-2"></i>Blog</a></li>
-                        <li><a href="events.html"><i class="fa-solid fa-calendar me-2"></i>Events</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <h5><i class="fa-solid fa-share-nodes me-2"></i>Follow Us</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a></li>
-                        <li><a href="#"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-twitter me-2"></i>Twitter</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom text-center">
-                <p class="mb-0">
-                    <i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. 
-                    All rights reserved. | Built with <i class="fa-solid fa-heart text-danger"></i> for our community
-                </p>
-            </div>
+        <div class="container text-center text-dim">
+            <p class="mb-0 small">
+                &copy; 2026 Yapei Community Online. All rights reserved. | Built for our community.
+            </p>
         </div>
     </footer>
 
@@ -812,23 +542,17 @@
         const fileLabelText = document.getElementById('fileLabelText');
         const fileName = document.getElementById('fileName');
 
-        // Password visibility toggle
         window.togglePasswordVisibility = function() {
-            const passwordInput = document.getElementById('password');
             const toggleIcon = document.getElementById('togglePasswordIcon');
-            
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
+                toggleIcon.classList.replace('fa-eye', 'fa-eye-slash');
             } else {
                 passwordInput.type = 'password';
-                toggleIcon.classList.remove('fa-eye-slash');
-                toggleIcon.classList.add('fa-eye');
+                toggleIcon.classList.replace('fa-eye-slash', 'fa-eye');
             }
         };
 
-        // Avatar preview
         avatarInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -847,7 +571,6 @@
             }
         });
 
-        // Password strength checker
         function checkPasswordStrength(password) {
             const requirements = {
                 length: password.length >= 8,
@@ -857,86 +580,59 @@
                 special: /[!@#$%^&*(),.?":{}|<>]/.test(password)
             };
 
-            // Update requirement icons
-            document.getElementById('reqLength').className = requirements.length ? 'valid' : '';
-            document.getElementById('reqUpper').className = requirements.upper ? 'valid' : '';
-            document.getElementById('reqLower').className = requirements.lower ? 'valid' : '';
-            document.getElementById('reqNumber').className = requirements.number ? 'valid' : '';
-            document.getElementById('reqSpecial').className = requirements.special ? 'valid' : '';
+            const reqIds = ['reqLength', 'reqUpper', 'reqLower', 'reqNumber', 'reqSpecial'];
+            const reqKeys = ['length', 'upper', 'lower', 'number', 'special'];
 
-            // Update icons
-            document.querySelectorAll('.requirements-list li').forEach(li => {
+            reqKeys.forEach((key, index) => {
+                const li = document.getElementById(reqIds[index]);
                 const icon = li.querySelector('i');
-                if (li.classList.contains('valid')) {
-                    icon.className = 'fa-regular fa-circle-check';
-                    icon.style.color = '#198754';
+                if (requirements[key]) {
+                    li.style.color = '#4ade80';
+                    icon.className = 'fa-solid fa-circle-check';
                 } else {
-                    icon.className = 'fa-regular fa-circle-xmark';
-                    icon.style.color = '#dc3545';
+                    li.style.color = 'var(--text-dim)';
+                    icon.className = 'fa-solid fa-circle-xmark';
                 }
             });
 
-            // Calculate strength percentage
             const validCount = Object.values(requirements).filter(Boolean).length;
             const strengthPercentage = (validCount / 5) * 100;
-            
             const strengthProgress = document.getElementById('strengthProgress');
-            const strengthText = document.getElementById('strengthText');
             
             strengthProgress.style.width = strengthPercentage + '%';
             
-            if (strengthPercentage === 0) {
-                strengthProgress.style.background = '#dc3545';
-                strengthText.textContent = 'Very Weak';
-            } else if (strengthPercentage <= 40) {
-                strengthProgress.style.background = '#dc3545';
-                strengthText.textContent = 'Weak';
-            } else if (strengthPercentage <= 60) {
-                strengthProgress.style.background = '#ffc107';
-                strengthText.textContent = 'Fair';
-            } else if (strengthPercentage <= 80) {
-                strengthProgress.style.background = '#0dcaf0';
-                strengthText.textContent = 'Good';
-            } else {
-                strengthProgress.style.background = '#198754';
-                strengthText.textContent = 'Strong';
-            }
+            if (strengthPercentage <= 40) strengthProgress.style.background = '#ef4444';
+            else if (strengthPercentage <= 80) strengthProgress.style.background = '#eab308';
+            else strengthProgress.style.background = '#4ade80';
 
             return validCount === 5;
         }
 
-        // Check form validity
         function checkFormValidity() {
             const isPasswordStrong = checkPasswordStrength(passwordInput.value);
             const isTermsChecked = termsCheckbox.checked;
             const isUsernameFilled = document.getElementById('username').value.length >= 3;
             const isEmailFilled = document.getElementById('email').value.includes('@');
-            const isTitleFilled = document.getElementById('title').value.length > 0;
             
-            registerBtn.disabled = !(isPasswordStrong && isTermsChecked && isUsernameFilled && isEmailFilled && isTitleFilled);
+            // Note: Professional title check was removed to align strictly with CustomUserRegisterSerializer.
+            registerBtn.disabled = !(isPasswordStrong && isTermsChecked && isUsernameFilled && isEmailFilled);
         }
 
-        // Password input listener
-        passwordInput.addEventListener('input', function() {
-            checkPasswordStrength(this.value);
+        passwordInput.addEventListener('input', () => {
+            checkPasswordStrength(passwordInput.value);
             checkFormValidity();
         });
 
-        // Terms checkbox listener
         termsCheckbox.addEventListener('change', checkFormValidity);
 
-        // Other inputs listeners
-        ['username', 'email', 'title'].forEach(id => {
+        ['username', 'email'].forEach(id => {
             document.getElementById(id).addEventListener('input', checkFormValidity);
         });
 
-        // Form submission
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Show loading state
-            registerBtn.classList.add('btn-loading');
             registerBtn.disabled = true;
+            registerBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing...';
             
             const formData = new FormData(form);
 
@@ -949,110 +645,34 @@
                 const data = await response.json();
 
                 if (response.ok || response.status === 201) {
-                    // Show success popup
-                    document.getElementById('registerPopupOverlay').style.display = 'block';
-                    document.getElementById('registerPopupMessage').style.display = 'block';
-                    
-                    form.reset();
-                    avatarPreview.style.display = 'none';
-                    
-                    // Redirect after delay
-                    setTimeout(() => {
-                        document.getElementById('registerPopupOverlay').style.display = 'none';
-                        document.getElementById('registerPopupMessage').style.display = 'none';
-                        window.location.href = 'login.html';
-                    }, 3000);
+                    showMessage('Registration successful! Redirecting...', 'success');
+                    setTimeout(() => window.location.href = 'login.html', 2000);
                 } else {
-                    // Handle errors
                     let errorMsg = 'Registration failed. ';
                     if (data.error) errorMsg = data.error;
                     if (data.username) errorMsg += 'Username: ' + data.username.join(' ');
                     if (data.email) errorMsg += ' Email: ' + data.email.join(' ');
-                    if (data.password) errorMsg += ' Password: ' + data.password.join(' ');
                     
                     showMessage(errorMsg, 'danger');
-                    
-                    registerBtn.classList.remove('btn-loading');
-                    registerBtn.disabled = false;
+                    resetBtn();
                 }
             } catch (error) {
-                console.error('Registration error:', error);
-                showMessage('Network error. Please check your connection and try again.', 'danger');
-                
-                registerBtn.classList.remove('btn-loading');
-                registerBtn.disabled = false;
+                showMessage('Network error. Please try again.', 'danger');
+                resetBtn();
             }
         });
 
-        // Show message function
+        function resetBtn() {
+            registerBtn.disabled = false;
+            registerBtn.innerHTML = '<span class="btn-text">Create Account</span>';
+        }
+
         function showMessage(text, type = 'danger') {
-            msg.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            msg.innerHTML = `<div class="alert alert-${type} glass-panel border-0 text-white" style="background: ${type === 'danger' ? 'rgba(239, 68, 68, 0.4)' : 'rgba(74, 222, 128, 0.4)'};" role="alert">
                 ${text}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>`;
-            
-            // Auto dismiss after 5 seconds
-            setTimeout(() => {
-                msg.innerHTML = '';
-            }, 5000);
+            setTimeout(() => msg.innerHTML = '', 5000);
         }
-
-        // Navbar dynamic links
-        function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
-            
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-sign-in-alt me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link active" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-        }
-
-        // Handle logout
-        function handleLogout() {
-            localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
-            updateNavbarLinks();
-            showMessage('You have been logged out.', 'info');
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavbarLinks();
-            
-            // Add loading state styles
-            const style = document.createElement('style');
-            style.textContent = `
-                .btn-loading {
-                    position: relative;
-                    pointer-events: none;
-                    opacity: 0.8;
-                }
-                .btn-loading .btn-text {
-                    visibility: hidden;
-                }
-                .btn-loading::after {
-                    content: "";
-                    position: absolute;
-                    width: 1.5rem;
-                    height: 1.5rem;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    border: 3px solid white;
-                    border-radius: 50%;
-                    border-top-color: transparent;
-                    animation: spin 0.8s linear infinite;
-                }
-                @keyframes spin {
-                    to { transform: translate(-50%, -50%) rotate(360deg); }
-                }
-            `;
-            document.head.appendChild(style);
-        });
     </script>
 </body>
 </html>
