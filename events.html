@@ -5,18 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Events - Yapei Community Online</title>
     
-    <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
     <style>
@@ -168,16 +165,13 @@
             margin-bottom: 2.5rem;
             box-shadow: var(--box-shadow);
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
         .search-box {
-            flex: 1;
-            min-width: 280px;
             position: relative;
+            width: 100%;
         }
 
         .search-box i {
@@ -205,20 +199,37 @@
             box-shadow: 0 0 0 4px rgba(13,110,253,0.15);
         }
 
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--secondary-color);
+            min-width: 90px;
+        }
+
         .filter-buttons {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            flex: 1;
         }
 
         .filter-btn {
-            padding: 0.6rem 1.4rem;
+            padding: 0.5rem 1.2rem;
             border: 2px solid #e9ecef;
             border-radius: 3rem;
             background: white;
             color: var(--secondary-color);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: var(--transition);
             cursor: pointer;
             display: inline-flex;
@@ -229,7 +240,7 @@
         .filter-btn:hover {
             border-color: var(--primary-color);
             color: var(--primary-color);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .filter-btn.active {
@@ -316,6 +327,7 @@
             height: 220px;
             position: relative;
             overflow: hidden;
+            background: #e9ecef;
         }
 
         .event-image img {
@@ -344,6 +356,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            z-index: 2;
         }
 
         .event-category {
@@ -359,6 +372,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 10px rgba(13,110,253,0.3);
+            z-index: 2;
         }
 
         .event-content {
@@ -475,12 +489,6 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(13,110,253,0.4);
             color: white;
-        }
-
-        .btn-attend:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
         }
 
         /* Featured Event */
@@ -607,6 +615,8 @@
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            width: 100%;
+            grid-column: 1 / -1;
         }
 
         .empty-state i {
@@ -739,7 +749,6 @@
             }
             
             .filter-section {
-                flex-direction: column;
                 align-items: stretch;
             }
             
@@ -781,15 +790,12 @@
     </style>
 </head>
 <body>
-    <!-- Skip to main content -->
     <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
 
-    <!-- Scroll to top button -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -801,7 +807,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">
                             <i class="fa-solid fa-home me-1"></i>Home
@@ -822,18 +828,17 @@
                             <i class="fa-solid fa-info-circle me-1"></i>About
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item text-nowrap">
                         <a class="nav-link" href="contact.html">
                             <i class="fa-solid fa-envelope me-1"></i>Contact
                         </a>
                     </li>
-                    <span id="navbar-user-links" class="d-flex"></span>
+                    <span id="navbar-user-links" class="d-md-inline-flex flex-wrap align-items-center"></span>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
     <section class="page-header">
         <div class="container">
             <h1 class="animate__animated animate__fadeInDown">
@@ -843,51 +848,55 @@
                 Discover and join exciting events happening in Yapei. Connect, learn, and grow together with your community!
             </p>
             <div class="header-stats animate__animated animate__fadeInUp animate__delay-2s" id="headerStats">
-                <!-- Stats will be populated from API -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main id="main-content" class="container py-4">
-        <!-- Quick Stats Cards - Will be populated from API -->
         <div class="stats-grid mb-4 animate__animated animate__fadeInUp" id="quickStats">
-            <!-- Stats will be populated from API -->
-        </div>
+            </div>
 
-        <!-- Filter Section -->
         <div class="filter-section animate__animated animate__fadeInUp">
             <div class="search-box">
                 <i class="fa-solid fa-search"></i>
                 <input type="text" id="searchInput" placeholder="Search events by name, location, or description..." aria-label="Search events">
             </div>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fa-solid fa-calendar"></i>All Events
-                </button>
-                <button class="filter-btn" data-filter="today">
-                    <i class="fa-solid fa-sun"></i>Today
-                </button>
-                <button class="filter-btn" data-filter="week">
-                    <i class="fa-solid fa-calendar-week"></i>This Week
-                </button>
-                <button class="filter-btn" data-filter="month">
-                    <i class="fa-solid fa-calendar-alt"></i>This Month
-                </button>
-                <button class="filter-btn" data-filter="virtual">
-                    <i class="fa-solid fa-video"></i>Virtual
-                </button>
+            
+            <div class="filter-row">
+                <div class="filter-label">Timeline:</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-timeline="all">
+                        <i class="fa-solid fa-calendar"></i>All Times
+                    </button>
+                    <button class="filter-btn" data-timeline="today">
+                        <i class="fa-solid fa-sun"></i>Today
+                    </button>
+                    <button class="filter-btn" data-timeline="week">
+                        <i class="fa-solid fa-calendar-week"></i>This Week
+                    </button>
+                    <button class="filter-btn" data-timeline="month">
+                        <i class="fa-solid fa-calendar-alt"></i>This Month
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-row border-top pt-3">
+                <div class="filter-label">Category:</div>
+                <div class="filter-buttons" id="categoryFilterContainer">
+                    <button class="filter-btn active" data-category="all">All Categories</button>
+                    <button class="filter-btn" data-category="meetup">Meetups</button>
+                    <button class="filter-btn" data-category="workshop">Workshops</button>
+                    <button class="filter-btn" data-category="cultural">Cultural</button>
+                    <button class="filter-btn" data-category="youth">Youth</button>
+                    <button class="filter-btn" data-category="virtual">Virtual Gatherings</button>
+                </div>
             </div>
         </div>
 
-        <!-- Featured Event - Will be populated from API -->
         <div id="featuredEvent" class="featured-event animate__animated animate__fadeInUp" style="display: none;">
-            <!-- Featured event will be populated from API -->
-        </div>
+            </div>
 
-        <!-- Events Grid -->
         <div id="eventsContainer">
-            <!-- Loading Skeletons -->
             <div id="loadingSkeletons" class="events-grid">
                 <div class="skeleton-card">
                     <div class="skeleton-image"></div>
@@ -910,34 +919,11 @@
                     <div class="skeleton-line short"></div>
                     <div class="skeleton-line" style="width: 40%;"></div>
                 </div>
-                <div class="skeleton-card">
-                    <div class="skeleton-image"></div>
-                    <div class="skeleton-line title"></div>
-                    <div class="skeleton-line"></div>
-                    <div class="skeleton-line short"></div>
-                    <div class="skeleton-line" style="width: 40%;"></div>
-                </div>
-                <div class="skeleton-card">
-                    <div class="skeleton-image"></div>
-                    <div class="skeleton-line title"></div>
-                    <div class="skeleton-line"></div>
-                    <div class="skeleton-line short"></div>
-                    <div class="skeleton-line" style="width: 40%;"></div>
-                </div>
-                <div class="skeleton-card">
-                    <div class="skeleton-image"></div>
-                    <div class="skeleton-line title"></div>
-                    <div class="skeleton-line"></div>
-                    <div class="skeleton-line short"></div>
-                    <div class="skeleton-line" style="width: 40%;"></div>
-                </div>
             </div>
 
-            <!-- Events List - Will be populated from API -->
             <div id="eventsList" class="events-grid" style="display: none;"></div>
         </div>
 
-        <!-- Load More Button -->
         <div class="text-center mt-5" id="loadMoreContainer">
             <button class="btn btn-outline-primary px-5 py-2 rounded-pill" id="loadMoreBtn" style="display: none;">
                 <i class="fa-solid fa-arrow-down me-2"></i>Load More Events
@@ -945,7 +931,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
@@ -971,11 +956,11 @@
                 <div class="col-lg-3">
                     <h5>Event Categories</h5>
                     <ul class="list-unstyled">
-                        <li><a href="#" onclick="filterByCategory('meetup')">Community Meetups</a></li>
-                        <li><a href="#" onclick="filterByCategory('workshop')">Workshops & Training</a></li>
-                        <li><a href="#" onclick="filterByCategory('cultural')">Cultural Events</a></li>
-                        <li><a href="#" onclick="filterByCategory('youth')">Youth Programs</a></li>
-                        <li><a href="#" onclick="filterByCategory('virtual')">Virtual Gatherings</a></li>
+                        <li><a href="#" onclick="filterByCategoryFooter('meetup')">Community Meetups</a></li>
+                        <li><a href="#" onclick="filterByCategoryFooter('workshop')">Workshops & Training</a></li>
+                        <li><a href="#" onclick="filterByCategoryFooter('cultural')">Cultural Events</a></li>
+                        <li><a href="#" onclick="filterByCategoryFooter('youth')">Youth Programs</a></li>
+                        <li><a href="#" onclick="filterByCategoryFooter('virtual')">Virtual Gatherings</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
@@ -989,14 +974,13 @@
             </div>
             <div class="footer-bottom">
                 <p class="mb-0">
-                    <i class="fa-regular fa-copyright me-1"></i>2025 Yapei Community Online. 
+                    <i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. 
                     All rights reserved. | Built with <i class="fa-solid fa-heart text-danger"></i> for our community
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- Event Invitation Popup -->
     <div class="modal fade" id="eventInviteModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1011,8 +995,7 @@
                     <p class="text-center mb-4" id="inviteModalDesc">Join us for an exciting community event</p>
                     
                     <div class="bg-light rounded-4 p-3 mb-4" id="inviteModalDetails">
-                        <!-- Details will be populated from API -->
-                    </div>
+                        </div>
                     
                     <div class="d-flex gap-2 justify-content-center">
                         <button type="button" class="btn btn-outline-secondary px-4 rounded-pill" data-bs-dismiss="modal">
@@ -1027,17 +1010,16 @@
         </div>
     </div>
 
-    <!-- RSVP Confirmation Modal -->
     <div class="modal fade" id="rsvpModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
             <div class="modal-content text-center p-4">
                 <div class="modal-body p-0">
-                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block">
-                        <i class="fa-solid fa-check fa-3x"></i>
+                    <div class="icon-wrapper bg-success text-white rounded-circle p-3 mb-3 d-inline-block" style="width:70px; height:70px; display:inline-flex !important; align-items:center; justify-content:center;">
+                        <i class="fa-solid fa-check fa-2x"></i>
                     </div>
                     <h5 class="fw-bold mb-2">You're In! 🎉</h5>
-                    <p class="text-secondary mb-3">You've successfully RSVP'd to this event. We'll send you a reminder before it starts.</p>
-                    <button class="btn btn-primary px-4 rounded-pill" data-bs-dismiss="modal">Awesome!</button>
+                    <p class="text-secondary mb-3 small">You've successfully RSVP'd to this event. We'll track this on your profile registration records.</p>
+                    <button class="btn btn-primary px-4 rounded-pill btn-sm" data-bs-dismiss="modal">Awesome!</button>
                 </div>
             </div>
         </div>
@@ -1049,16 +1031,16 @@
         const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
         let allEvents = [];
         let filteredEvents = [];
-        let currentFilter = 'all';
+        let currentTimelineFilter = 'all';
+        let currentCategoryFilter = 'all';
         let searchTerm = '';
         let eventsPerPage = 6;
         let currentPage = 1;
 
-        // Initialize Bootstrap modals
-        const eventInviteModal = new bootstrap.Modal(document.getElementById('eventInviteModal'));
-        const rsvpModal = new bootstrap.Modal(document.getElementById('rsvpModal'));
+        // Initialize elements and modals
+        let eventInviteModal, rsvpModal;
 
-        // Scroll to top functionality
+        // Scroll monitoring
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -1069,222 +1051,260 @@
         });
 
         scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Global lifecycle init
+        document.addEventListener('DOMContentLoaded', function() {
+            eventInviteModal = new bootstrap.Modal(document.getElementById('eventInviteModal'));
+            rsvpModal = new bootstrap.Modal(document.getElementById('rsvpModal'));
+            
+            updateNavbarLinks();
+            fetchEvents();
+            
+            // Textual input listener
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                searchTerm = e.target.value.trim();
+                currentPage = 1;
+                filterAndDisplayEvents();
+            });
+            
+            // Timeline button selection handler
+            document.querySelectorAll('[data-timeline]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('[data-timeline]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTimelineFilter = this.dataset.timeline;
+                    currentPage = 1;
+                    filterAndDisplayEvents();
+                });
+            });
+
+            // Category button selection handler
+            document.querySelectorAll('[data-category]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategoryFilter = this.dataset.category;
+                    currentPage = 1;
+                    filterAndDisplayEvents();
+                });
+            });
+            
+            // Load more listener
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                currentPage++;
+                displayEvents();
             });
         });
 
-        // Fetch and display events
+        // Pull collection items from endpoint pipeline
         async function fetchEvents() {
             try {
                 showLoading(true);
-                
                 const response = await fetch(`${BACKEND_URL}/api/events/`);
+                if (!response.ok) throw new Error('Network query error parsing event records');
                 const data = await response.json();
                 
-                // Handle both array and paginated responses
                 allEvents = Array.isArray(data) ? data : (data.results || []);
                 
-                // Update stats
-                await updateStats();
-                
-                // Check for featured event
-                await checkFeaturedEvent();
+                // Build statistical indicators and promotional features
+                updateStats();
+                checkFeaturedEvent();
                 
                 filterAndDisplayEvents();
                 showLoading(false);
                 
-                // Check for event invitation after events are loaded
-                setTimeout(checkEventInvitation, 3000);
-                
+                setTimeout(checkEventInvitation, 2500);
             } catch (error) {
-                console.error('Error fetching events:', error);
-                showError('Failed to load events. Please try again later.');
+                console.error('Error handling data pipeline:', error);
+                showError('Failed to synchronize current community event listings.');
                 showLoading(false);
             }
         }
 
-        // Update statistics from real data
-        async function updateStats() {
-            try {
-                // Get total events count
-                document.getElementById('headerStats').innerHTML = `
-                    <div class="stat-item">
-                        <span class="stat-number">${allEvents.length}</span>
-                        <span class="stat-label">Total Events</span>
-                    </div>
-                `;
+        // Render counters processing the complete collection locally
+        function updateStats() {
+            const statsContainer = document.getElementById('headerStats');
+            if(!statsContainer) return;
 
-                // Calculate quick stats
-                const now = new Date();
-                const weekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
-                const monthFromNow = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000);
+            statsContainer.innerHTML = `
+                <div class="stat-item">
+                    <span class="stat-number">${allEvents.length}</span>
+                    <span class="stat-label">Total Events</span>
+                </div>
+            `;
 
-                const thisWeekEvents = allEvents.filter(event => {
-                    const eventDate = new Date(event.date);
-                    return eventDate >= now && eventDate <= weekFromNow;
-                }).length;
+            const now = new Date();
+            const oneWeek = 7 * 24 * 60 * 60 * 1000;
+            const oneMonth = 30 * 24 * 60 * 60 * 1000;
 
-                const thisMonthEvents = allEvents.filter(event => {
-                    const eventDate = new Date(event.date);
-                    return eventDate >= now && eventDate <= monthFromNow;
-                }).length;
+            let weekCount = 0, monthCount = 0, virtualCount = 0, inPersonCount = 0;
 
-                const virtualEvents = allEvents.filter(event => 
-                    event.location?.toLowerCase().includes('virtual') || 
-                    event.location?.toLowerCase().includes('online')
-                ).length;
+            allEvents.forEach(ev => {
+                const evDate = new Date(ev.date || ev.timestamp);
+                const diff = evDate - now;
+                const loc = (ev.location || '').toLowerCase();
 
-                const inPersonEvents = allEvents.filter(event => 
-                    event.location && 
-                    !event.location.toLowerCase().includes('virtual') && 
-                    !event.location.toLowerCase().includes('online')
-                ).length;
+                if (evDate >= now && diff <= oneWeek) weekCount++;
+                if (evDate >= now && diff <= oneMonth) monthCount++;
+                
+                if (loc.includes('virtual') || loc.includes('online') || loc.includes('zoom') || loc.includes('meet.')) {
+                    virtualCount++;
+                } else {
+                    inPersonCount++;
+                }
+            });
 
-                document.getElementById('quickStats').innerHTML = `
+            const quickStatsElement = document.getElementById('quickStats');
+            if(quickStatsElement) {
+                quickStatsElement.innerHTML = `
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-calendar-week"></i>
-                        </div>
-                        <h3>${thisWeekEvents}</h3>
+                        <div class="stat-icon"><i class="fa-solid fa-calendar-week"></i></div>
+                        <h3>${weekCount}</h3>
                         <p>This Week</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-calendar-month"></i>
-                        </div>
-                        <h3>${thisMonthEvents}</h3>
+                        <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                        <h3>${monthCount}</h3>
                         <p>This Month</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-video"></i>
-                        </div>
-                        <h3>${virtualEvents}</h3>
+                        <div class="stat-icon"><i class="fa-solid fa-video"></i></div>
+                        <h3>${virtualCount}</h3>
                         <p>Virtual</p>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fa-solid fa-people-group"></i>
-                        </div>
-                        <h3>${inPersonEvents}</h3>
+                        <div class="stat-icon"><i class="fa-solid fa-people-group"></i></div>
+                        <h3>${inPersonCount}</h3>
                         <p>In Person</p>
                     </div>
                 `;
-            } catch (error) {
-                console.error('Error updating stats:', error);
             }
         }
 
-        // Filter events based on current filter and search
+        // Matrix multi-layer validation engine 
         function filterAndDisplayEvents() {
+            const todayStr = new Date().toDateString();
+            const nowTime = new Date().getTime();
+            const upcomingWeekTime = nowTime + (7 * 24 * 60 * 60 * 1000);
+            const upcomingMonthTime = nowTime + (30 * 24 * 60 * 60 * 1000);
+
             filteredEvents = allEvents.filter(event => {
-                // Apply category filter
-                if (currentFilter !== 'all') {
-                    const eventDate = new Date(event.date);
-                    const today = new Date();
-                    const weekFromNow = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
-                    const monthFromNow = new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000);
-                    
-                    switch(currentFilter) {
-                        case 'today':
-                            if (eventDate.toDateString() !== today.toDateString()) return false;
-                            break;
-                        case 'week':
-                            if (eventDate > weekFromNow || eventDate < today) return false;
-                            break;
-                        case 'month':
-                            if (eventDate > monthFromNow || eventDate < today) return false;
-                            break;
-                        case 'virtual':
-                            if (!event.location?.toLowerCase().includes('virtual') && 
-                                !event.location?.toLowerCase().includes('online')) return false;
-                            break;
+                const eventDate = new Date(event.date || event.timestamp);
+                const eventTime = eventDate.getTime();
+                const locationLower = (event.location || '').toLowerCase();
+                const categoryLower = (event.category || '').toLowerCase();
+
+                // 1. Evaluate Timeline constraints
+                if (currentTimelineFilter !== 'all') {
+                    if (currentTimelineFilter === 'today' && eventDate.toDateString() !== todayStr) return false;
+                    if (currentTimelineFilter === 'week' && (eventTime < nowTime || eventTime > upcomingWeekTime)) return false;
+                    if (currentTimelineFilter === 'month' && (eventTime < nowTime || eventTime > upcomingMonthTime)) return false;
+                }
+
+                // 2. Evaluate Category criteria constraints
+                if (currentCategoryFilter !== 'all') {
+                    if (currentCategoryFilter === 'virtual') {
+                        if (!locationLower.includes('virtual') && !locationLower.includes('online')) return false;
+                    } else {
+                        if (!categoryLower.includes(currentCategoryFilter)) return false;
                     }
                 }
-                
-                // Apply search filter
+
+                // 3. Match Textual query parameters
                 if (searchTerm) {
-                    const searchLower = searchTerm.toLowerCase();
-                    return (event.title?.toLowerCase().includes(searchLower) ||
-                           event.description?.toLowerCase().includes(searchLower) ||
-                           event.location?.toLowerCase().includes(searchLower));
+                    const term = searchTerm.toLowerCase();
+                    const titleMatch = (event.title || '').toLowerCase().includes(term);
+                    const descMatch = (event.description || '').toLowerCase().includes(term);
+                    const locMatch = (event.location || '').toLowerCase().includes(term);
+                    if (!titleMatch && !descMatch && !locMatch) return false;
                 }
-                
+
                 return true;
             });
-            
+
             displayEvents();
         }
 
-        // Display events with pagination
+        // Output paginated elements block to view window
         function displayEvents() {
             const eventsList = document.getElementById('eventsList');
             const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if(!eventsList) return;
             
-            const start = 0;
-            const end = currentPage * eventsPerPage;
-            const eventsToShow = filteredEvents.slice(start, end);
+            const limit = currentPage * eventsPerPage;
+            const visibleSlice = filteredEvents.slice(0, limit);
             
-            if (eventsToShow.length === 0) {
+            if (visibleSlice.length === 0) {
                 eventsList.innerHTML = `
                     <div class="empty-state">
                         <i class="fa-regular fa-calendar-xmark"></i>
-                        <h3>No Events Found</h3>
-                        <p>There are no events matching your criteria at the moment. Check back later or clear your filters.</p>
+                        <h3>No matching events located</h3>
+                        <p>We couldn't track down any active schedules fitting your specific combinations. Try reducing keywords or changing dates.</p>
                         <button class="btn btn-primary px-4 rounded-pill" onclick="resetFilters()">
-                            <i class="fa-solid fa-rotate me-2"></i>Clear Filters
+                            <i class="fa-solid fa-rotate me-2"></i>Reset All Filters
                         </button>
                     </div>
                 `;
                 loadMoreBtn.style.display = 'none';
             } else {
-                eventsList.innerHTML = eventsToShow.map(event => createEventCard(event)).join('');
-                loadMoreBtn.style.display = end < filteredEvents.length ? 'block' : 'none';
+                eventsList.innerHTML = visibleSlice.map(event => createEventCard(event)).join('');
+                loadMoreBtn.style.display = limit < filteredEvents.length ? 'block' : 'none';
             }
             
             eventsList.style.display = 'grid';
         }
 
-        // Create event card HTML from real data
+        // Return HTML component template mapping real data values securely
         function createEventCard(event) {
             const eventDate = event.date ? new Date(event.date) : new Date();
             const isPast = eventDate < new Date();
-            const attendeeCount = event.attendees_count || event.attendees?.length || 0;
+            const totalAttendees = event.attendees_count || (Array.isArray(event.attendees) ? event.attendees.length : 0);
             
-            // Generate avatar letters from attendee names or use placeholders
-            const avatarLetters = ['A', 'B', 'C', 'D', 'E'];
-            
+            // Build fallback media image paths
+            let imageUrl = event.image || event.media;
+            if(!imageUrl) {
+                imageUrl = `https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80`;
+            }
+
+            const formattedDate = eventDate.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+
+            const formattedTime = eventDate.toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit' 
+            });
+
             return `
-                <div class="event-card" data-event-id="${event.id}">
+                <div class="event-card" data-id="${event.id}">
                     <div class="event-image">
-                        <img src="${event.image || event.media || 'https://via.placeholder.com/400x200/0d6efd/ffffff?text=' + encodeURIComponent(event.title)}" 
-                             alt="${event.title || 'Event'}"
-                             onerror="this.src='https://via.placeholder.com/400x200/0d6efd/ffffff?text=Yapei+Event'">
+                        <img src="${imageUrl}" alt="${event.title || 'Community Event'}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80';">
                         <span class="event-date-badge">
-                            <i class="fa-regular fa-calendar me-1"></i>
-                            ${eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            <i class="fa-regular fa-calendar me-1"></i>${formattedDate}
                         </span>
-                        ${event.category ? `<span class="event-category">${event.category}</span>` : ''}
+                        ${event.category ? `<span class="event-category">${event.category}</span>` : `<span class="event-category">General</span>`}
                     </div>
                     <div class="event-content">
-                        <h3 class="event-title">${event.title || 'Untitled Event'}</h3>
-                        <p class="event-description">${(event.description || '').substring(0, 100)}${(event.description || '').length > 100 ? '...' : ''}</p>
+                        <h3 class="event-title">${event.title || 'Community Assembly Meeting'}</h3>
+                        <p class="event-description">${(event.description || 'No summary writeup provided for this specific event profile block. Check details link below for agenda outlines.').substring(0, 110)}...</p>
                         
                         <div class="event-meta">
                             <div class="event-meta-item">
                                 <i class="fa-regular fa-clock"></i>
-                                <span>${eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}</span>
+                                <span>${formattedTime}</span>
                             </div>
                             <div class="event-meta-item">
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>${event.location || 'Location TBD'}</span>
+                                <span>${event.location || 'Yapei Community Center'}</span>
                             </div>
                             ${event.organizer ? `
                                 <div class="event-meta-item">
                                     <i class="fa-regular fa-user"></i>
-                                    <span>Organized by: ${event.organizer}</span>
+                                    <span>By: ${event.organizer}</span>
                                 </div>
                             ` : ''}
                         </div>
@@ -1292,19 +1312,14 @@
                         <div class="event-footer">
                             <div class="event-attendees">
                                 <div class="attendee-avatars">
-                                    ${attendeeCount > 0 ? 
-                                        avatarLetters.slice(0, Math.min(3, attendeeCount)).map(letter => 
-                                            `<span class="attendee-avatar">${letter}</span>`
-                                        ).join('') + 
-                                        (attendeeCount > 3 ? `<span class="attendee-avatar">+${attendeeCount - 3}</span>` : '')
-                                        : '<span class="text-secondary">Be the first!</span>'
-                                    }
+                                    <span class="attendee-avatar" style="background:linear-gradient(135deg, #0d6efd, #0b5ed7)">Y</span>
+                                    <span class="attendee-avatar" style="background:linear-gradient(135deg, #198754, #146c43)">C</span>
+                                    ${totalAttendees > 2 ? `<span class="attendee-avatar">+${totalAttendees - 2}</span>` : ''}
                                 </div>
-                                ${attendeeCount > 0 ? `<span>${attendeeCount}+ attending</span>` : ''}
+                                <span class="ms-1 small text-muted">${totalAttendees} registered</span>
                             </div>
-                            <a href="event-details.html?id=${event.id}" class="btn-attend" ${isPast ? 'disabled' : ''}>
-                                <i class="fa-regular fa-eye me-2"></i>
-                                View Details
+                            <a href="event-details.html?id=${event.id}" class="btn-attend">
+                                <i class="fa-regular fa-eye me-1"></i>Details
                             </a>
                         </div>
                     </div>
@@ -1312,222 +1327,152 @@
             `;
         }
 
-        // Check for featured event from API
+        // Pull top pinned highlighted item profile
         async function checkFeaturedEvent() {
             try {
                 const response = await fetch(`${BACKEND_URL}/api/events/featured/`);
+                if(!response.ok) return; // Exit if no specific structural target is setup
                 const event = await response.json();
                 
                 if (event && event.id) {
                     const featuredDiv = document.getElementById('featuredEvent');
-                    const eventDate = event.date ? new Date(event.date) : new Date();
+                    const eventDate = new Date(event.date || event.timestamp);
                     
                     featuredDiv.innerHTML = `
                         <div class="featured-event-content">
                             <h3>${event.title}</h3>
-                            <p class="mb-3">${(event.description || '').substring(0, 150)}${(event.description || '').length > 150 ? '...' : ''}</p>
+                            <p class="mb-3">${(event.description || '').substring(0, 180)}...</p>
                             <div class="d-flex align-items-center flex-wrap gap-3">
                                 <a href="event-details.html?id=${event.id}" class="btn btn-light">
-                                    <i class="fa-solid fa-calendar-check me-2"></i>Register Now
+                                    <i class="fa-solid fa-calendar-check me-2"></i>View Invitation Details
                                 </a>
-                                <span class="text-white-50">
+                                <span class="text-white-50 small">
                                     <i class="fa-regular fa-clock me-1"></i>
-                                    ${eventDate.toLocaleDateString('en-US', { 
-                                        weekday: 'long', 
-                                        month: 'long', 
-                                        day: 'numeric',
-                                        hour: 'numeric',
-                                        minute: '2-digit'
-                                    })}
+                                    ${eventDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} at ${eventDate.toLocaleTimeString('en-US', {hour:'numeric', minute:'2-digit'})}
                                 </span>
                             </div>
                         </div>
                     `;
                     featuredDiv.style.display = 'block';
                 }
-            } catch (error) {
-                console.log('No featured event available');
+            } catch (err) {
+                console.log('Skipping presentation element rendering: no pinned header event rule configured.');
             }
         }
 
-        // Check for event invitation from API
-        async function checkEventInvitation() {
-            const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
+        // Evaluate conditions before prompting structural reminder details card
+        function checkEventInvitation() {
+            const flag = sessionStorage.getItem('eventInvitePopupShown');
+            if (flag === 'true' || allEvents.length === 0) return;
+
+            const upcoming = allEvents.filter(ev => new Date(ev.date || ev.timestamp) > new Date());
+            if (upcoming.length === 0) return;
+
+            // Display a dynamic modal suggestion chosen randomly from upcoming events
+            const luckyTarget = upcoming[Math.floor(Math.random() * upcoming.length)];
+            const targetDate = new Date(luckyTarget.date || luckyTarget.timestamp);
+
+            document.getElementById('inviteModalTitle').textContent = luckyTarget.title || "Don't miss out!";
+            document.getElementById('inviteModalDesc').textContent = (luckyTarget.description || '').substring(0, 120) + '...';
             
-            if (!inviteShown && allEvents.length > 0) {
-                // Pick a random upcoming event for invitation
-                const upcomingEvents = allEvents.filter(event => {
-                    const eventDate = event.date ? new Date(event.date) : null;
-                    return eventDate && eventDate > new Date();
-                });
-                
-                if (upcomingEvents.length > 0) {
-                    const event = upcomingEvents[Math.floor(Math.random() * upcomingEvents.length)];
-                    const eventDate = event.date ? new Date(event.date) : new Date();
-                    
-                    document.getElementById('inviteModalTitle').textContent = event.title || 'You\'re Invited!';
-                    document.getElementById('inviteModalDesc').textContent = (event.description || '').substring(0, 100) + '...';
-                    
-                    document.getElementById('inviteModalDetails').innerHTML = `
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fa-solid fa-location-dot text-primary me-3 fa-fw"></i>
-                            <span class="small">${event.location || 'Location TBD'}</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-clock text-primary me-3 fa-fw"></i>
-                            <span class="small">${eventDate.toLocaleString()}</span>
-                        </div>
-                    `;
-                    
-                    document.getElementById('inviteModalLink').href = `event-details.html?id=${event.id}`;
-                    
-                    eventInviteModal.show();
-                    sessionStorage.setItem('eventInvitePopupShown', 'true');
-                }
-            }
+            document.getElementById('inviteModalDetails').innerHTML = `
+                <div class="d-flex align-items-center mb-2 text-dark">
+                    <i class="fa-solid fa-location-dot text-primary me-3 fa-fw"></i>
+                    <span class="small fw-medium">${luckyTarget.location || 'Yapei, Town Center Hall'}</span>
+                </div>
+                <div class="d-flex align-items-center text-dark">
+                    <i class="fa-solid fa-clock text-primary me-3 fa-fw"></i>
+                    <span class="small fw-medium">${targetDate.toLocaleString()}</span>
+                </div>
+            `;
+            
+            document.getElementById('inviteModalLink').href = `event-details.html?id=${luckyTarget.id}`;
+            eventInviteModal.show();
+            sessionStorage.setItem('eventInvitePopupShown', 'true');
         }
 
-        // Show/hide loading skeletons
-        function showLoading(show) {
+        // Category cross-wire context mapping link triggered from site footer
+        function filterByCategoryFooter(categoryName) {
+            currentCategoryFilter = categoryName;
+            currentPage = 1;
+            
+            // Sync current active design element state
+            document.querySelectorAll('[data-category]').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.category === categoryName);
+            });
+            
+            filterAndDisplayEvents();
+            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // State control switches resets
+        function resetFilters() {
+            searchTerm = '';
+            currentTimelineFilter = 'all';
+            currentCategoryFilter = 'all';
+            currentPage = 1;
+            document.getElementById('searchInput').value = '';
+            
+            document.querySelectorAll('[data-timeline]').forEach(b => b.classList.toggle('active', b.dataset.timeline === 'all'));
+            document.querySelectorAll('[data-category]').forEach(b => b.classList.toggle('active', b.dataset.category === 'all'));
+            
+            filterAndDisplayEvents();
+        }
+
+        function showLoading(status) {
             const skeletons = document.getElementById('loadingSkeletons');
-            const eventsList = document.getElementById('eventsList');
-            
-            if (show) {
+            const targetList = document.getElementById('eventsList');
+            if(!skeletons || !targetList) return;
+
+            if (status) {
                 skeletons.style.display = 'grid';
-                eventsList.style.display = 'none';
+                targetList.style.display = 'none';
             } else {
                 skeletons.style.display = 'none';
-                eventsList.style.display = 'grid';
+                targetList.style.display = 'grid';
             }
         }
 
-        // Show error message
-        function showError(message) {
-            const eventsList = document.getElementById('eventsList');
-            eventsList.innerHTML = `
+        function showError(msg) {
+            const targetList = document.getElementById('eventsList');
+            if(!targetList) return;
+            targetList.innerHTML = `
                 <div class="empty-state">
-                    <i class="fa-solid fa-circle-exclamation text-danger"></i>
-                    <h3>Oops! Something went wrong</h3>
-                    <p>${message}</p>
-                    <button class="btn btn-primary px-4 rounded-pill" onclick="fetchEvents()">
-                        <i class="fa-solid fa-rotate me-2"></i>Try Again
+                    <i class="fa-solid fa-triangle-exclamation text-warning"></i>
+                    <h3>Service Temporarily Disconnected</h3>
+                    <p>${msg}</p>
+                    <button class="btn btn-primary px-4 rounded-pill btn-sm" onclick="fetchEvents()">
+                        <i class="fa-solid fa-rotate me-1"></i>Reload Feeds
                     </button>
                 </div>
             `;
-            eventsList.style.display = 'grid';
+            targetList.style.display = 'grid';
         }
 
-        // Reset filters
-        function resetFilters() {
-            searchTerm = '';
-            currentFilter = 'all';
-            currentPage = 1;
-            document.getElementById('searchInput').value = '';
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.filter === 'all');
-            });
-            filterAndDisplayEvents();
-        }
-
-        // Filter by category from footer
-        function filterByCategory(category) {
-            currentFilter = category;
-            currentPage = 1;
-            
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.filter === category);
-            });
-            
-            filterAndDisplayEvents();
-            
-            // Scroll to events section
-            document.getElementById('eventsContainer').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Handle RSVP (redirect to login if not authenticated)
-        function handleRSVP(eventId) {
-            if (!localStorage.getItem('access')) {
-                window.location.href = `login.html?redirect=event-details.html?id=${eventId}`;
-                return;
-            }
-            
-            // In a real implementation, you would send the RSVP to your backend
-            // For now, just show the confirmation modal
-            rsvpModal.show();
-            
-            setTimeout(() => {
-                rsvpModal.hide();
-            }, 2000);
-        }
-
-        // Update navbar based on login status
+        // Interactive Application Navigation Control Updates
         function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
+            const container = document.getElementById('navbar-user-links');
+            if (!container) return;
             
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link" href="profile.html"><i class="fa-solid fa-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link" href="#" onclick="handleLogout()"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-sign-in-alt me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
+            const sessionToken = localStorage.getItem('access');
+            if (sessionToken) {
+                container.innerHTML = `
+                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
+                    <li class="nav-item ms-md-2"><button class="btn btn-sm btn-outline-light rounded-pill px-3 py-1" onclick="performSecureLogout()"><i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Logout</button></li>
+                `;
+            } else {
+                container.innerHTML = `
+                    <li class="nav-item"><a class="nav-link text-white-50" href="login.html">Login</a></li>
+                    <li class="nav-item ms-md-2"><a class="btn btn-sm btn-light text-primary fw-bold rounded-pill px-3 py-1" href="register.html">Sign Up</a></li>
+                `;
+            }
         }
 
-        // Handle logout
-        function handleLogout() {
+        function performSecureLogout() {
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
-            updateNavbarLinks();
-            showMessage('You have been logged out.', 'info');
+            window.location.reload();
         }
-
-        // Show temporary message
-        function showMessage(message, type = 'info') {
-            const alertDiv = document.createElement('div');
-            alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3`;
-            alertDiv.style.zIndex = '9999';
-            alertDiv.innerHTML = `
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            `;
-            document.body.appendChild(alertDiv);
-            
-            setTimeout(() => {
-                alertDiv.remove();
-            }, 3000);
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavbarLinks();
-            fetchEvents();
-            
-            // Search input handler
-            document.getElementById('searchInput').addEventListener('input', function(e) {
-                searchTerm = e.target.value;
-                currentPage = 1;
-                filterAndDisplayEvents();
-            });
-            
-            // Filter buttons handler
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    currentFilter = this.dataset.filter;
-                    currentPage = 1;
-                    filterAndDisplayEvents();
-                });
-            });
-            
-            // Load more button handler
-            document.getElementById('loadMoreBtn').addEventListener('click', function() {
-                currentPage++;
-                displayEvents();
-            });
-        });
     </script>
 </body>
 </html>
