@@ -5,507 +5,604 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile · Yapei Community</title>
-    <!-- Bootstrap + Icons + Animate.css -->
+    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
     <style>
         :root {
-            --primary-deep: #0b4b7a;
-            --primary-soft: #e2f0fd;
-            --accent-gold: #f9b84a;
-            --card-radius: 28px;
+            --primary-deep: #06325c;
+            --primary-accent: #3b82f6;
+            --liquid-bg: linear-gradient(135deg, #eef2f7 0%, #f5f7fa 50%, #e0eafd 100%);
+            --glass-card: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.06);
+            --accent-gold: #f59e0b;
         }
+
         body {
-            background: #f4f9ff;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: var(--liquid-bg);
+            background-attachment: fixed;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+            min-height: 100vh;
+            padding-top: 90px;
         }
-        /* Navbar same as other pages */
-        .navbar {
-            background: linear-gradient(135deg, #0b4b7a 0%, #1f6ca3 100%) !important;
-            box-shadow: 0 10px 25px -10px #0a3d61;
+
+        /* Glassmorphic Navigation */
+        .navbar-glass {
+            background: rgba(6, 50, 92, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 0;
         }
         .navbar-brand i {
             color: var(--accent-gold);
-            margin-right: 8px;
+            text-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
         }
         .nav-link {
-            border-radius: 40px;
-            margin: 0 6px;
+            border-radius: 50px;
+            margin: 0 4px;
             padding: 0.5rem 1.2rem !important;
             font-weight: 500;
+            transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.85) !important;
         }
         .nav-link.active, .nav-link:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
+            backdrop-filter: blur(5px);
         }
-        /* profile card styling */
-        .profile-card {
-            background: white;
-            border-radius: var(--card-radius);
-            box-shadow: 0 20px 35px -10px rgba(11,75,122,0.2);
-            padding: 2rem;
-            border: none;
+
+        /* Glass Cards */
+        .glass-card {
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            background: var(--glass-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--glass-shadow);
+            padding: 2.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .avatar-large {
-            width: 120px;
-            height: 120px;
-            border-radius: 60px;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 12px 22px -8px var(--primary-deep);
-            background: #b0d2ee;
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 45px 0 rgba(31, 38, 135, 0.1);
         }
-        .avatar-placeholder {
-            width: 120px;
-            height: 120px;
-            border-radius: 60px;
-            background: linear-gradient(145deg, #1c6ea9, #0b4b7a);
-            color: white;
+
+        /* Avatar System */
+        .avatar-frame {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6 0%, #06325c 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3.5rem;
-            font-weight: bold;
-            border: 4px solid white;
-            box-shadow: 0 12px 22px -8px var(--primary-deep);
-        }
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary-deep);
-        }
-        .section-title i {
-            background: var(--primary-soft);
-            padding: 10px;
-            border-radius: 50%;
-            color: var(--primary-deep);
-        }
-        .form-control, .form-select {
-            border-radius: 20px;
-            padding: 0.8rem 1.2rem;
-            border: 1px solid rgba(11,75,122,0.2);
-        }
-        .form-control:focus {
-            box-shadow: 0 0 0 3px rgba(249,184,74,0.3);
-            border-color: var(--accent-gold);
-        }
-        .btn-primary-custom {
-            background: var(--primary-deep);
-            border: none;
-            border-radius: 60px;
-            padding: 0.7rem 2.2rem;
-            font-weight: 600;
-            box-shadow: 0 8px 16px -6px #0a4d8c80;
             color: white;
+            border: 4px solid rgba(255,255,255,0.8);
+            box-shadow: 0 12px 25px rgba(6, 50, 92, 0.2);
+            overflow: hidden;
+            position: relative;
         }
-        .btn-primary-custom:hover {
-            background: #135f94;
-            transform: scale(1.02);
-        }
-        .btn-outline-custom {
-            border-radius: 60px;
-            border: 2px solid var(--primary-deep);
-            color: var(--primary-deep);
-            font-weight: 600;
-            padding: 0.6rem 2rem;
-        }
-        .btn-outline-custom:hover {
-            background: var(--primary-deep);
-            color: white;
-        }
-        .btn-warning-custom {
-            background: #ffc107;
-            border: none;
-            border-radius: 60px;
-            padding: 0.7rem 2rem;
-            font-weight: 600;
-            color: #1e2f3e;
-        }
-        .info-badge {
-            background: var(--primary-soft);
-            border-radius: 60px;
-            padding: 0.5rem 1.5rem;
-            color: var(--primary-deep);
-            font-weight: 600;
-            display: inline-block;
-        }
-        #currentAvatar img {
-            border-radius: 30px;
-            border: 3px solid white;
-            box-shadow: 0 8px 14px rgba(0,0,0,0.1);
-            max-width: 100px;
-            max-height: 100px;
+        .avatar-frame img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
-        .popup-card {
-            border-radius: 42px !important;
-            backdrop-filter: blur(12px);
-            background: rgba(255,255,255,0.98) !important;
-            border: 1px solid rgba(255,215,120,0.5);
-        }
-        .popup-icon-bg {
-            background: linear-gradient(145deg, #23995e, #1b7e4b);
-            width: 80px;
-            height: 80px;
-            border-radius: 60px;
-            display: flex;
+        
+        .info-badge {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            color: var(--primary-accent);
+            font-weight: 600;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.2rem;
+            font-size: 0.85rem;
         }
-        .modern-footer {
-            background: #0b4b7a;
+
+        /* Liquid Inputs */
+        .glass-form-control {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            padding: 0.85rem 1.2rem;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .glass-form-control:focus {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.15);
+        }
+        .form-label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Glass Buttons */
+        .btn-glass-primary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            padding: 2.5rem 0 1.2rem;
-            margin-top: 3rem;
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 2.5rem;
+            font-weight: 600;
+            box-shadow: 0 8px 20px -6px rgba(29, 78, 216, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-glass-primary:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -5px rgba(29, 78, 216, 0.6);
+            color: white;
+        }
+        
+        .btn-glass-warning {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 2.5rem;
+            font-weight: 600;
+            box-shadow: 0 8px 20px -6px rgba(217, 119, 6, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-glass-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -5px rgba(217, 119, 6, 0.6);
+            color: white;
+        }
+
+        .btn-glass-outline {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(6, 50, 92, 0.2);
+            color: var(--primary-deep);
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-glass-outline:hover {
+            background: var(--primary-deep);
+            color: white;
+        }
+
+        /* Cinematic Blur Popups */
+        .cinematic-blur-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(12px);
+            z-index: 1060;
+        }
+        .popup-card-glass {
+            border-radius: 36px !important;
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(25px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.6) !important;
+            box-shadow: 0 40px 80px -20px rgba(6, 50, 92, 0.4) !important;
+        }
+
+        /* Alert Styling */
+        .glass-alert {
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.5);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .modern-footer {
+            background: rgba(6, 50, 92, 0.95) !important;
+            backdrop-filter: blur(10px);
+            color: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 5rem;
+            padding: 4rem 0 2rem;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar (consistent) -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-semibold fs-3" href="index.html"><i class="fa-solid fa-people-group"></i> Yapei Community</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold fs-3" href="index.html">
+                <i class="fa-solid fa-water-waves me-2"></i>Yapei Portal
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center" id="navbar-links">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-1"></i>About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-1"></span>
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profile.html"><i class="fa-solid fa-user-circle me-1"></i>Profile</a></li>
+                    <span id="navbar-user-links" class="d-flex gap-2 ms-lg-3 mt-2 mt-lg-0"></span>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Profile Section -->
-    <div class="container py-5">
+    <main class="container py-4">
         <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <!-- Profile header card with avatar -->
-                <div class="profile-card mb-4 animate__animated animate__fadeInDown">
+            <div class="col-lg-9 col-xl-8">
+                
+                <div id="statusAlertContainer"></div>
+
+                <div class="glass-card mb-5 animate__animated animate__fadeInDown">
                     <div class="row align-items-center g-4">
-                        <div class="col-md-3 text-center">
-                            <div id="avatarDisplay" class="d-flex justify-content-center">
-                                <!-- will be filled by js: either placeholder or image -->
+                        <div class="col-md-4 text-center d-flex justify-content-center">
+                            <div id="avatarDisplay" class="avatar-frame">
+                                <i class="fa-solid fa-spinner fa-spin text-white-50"></i>
                             </div>
                         </div>
-                        <div class="col-md-9">
-                            <h2 class="fw-bold mb-1" id="displayName">Community Member</h2>
-                            <p class="text-muted mb-2" id="displayEmail"><i class="fa-regular fa-envelope me-2"></i>email@example.com</p>
-                            <span class="info-badge" id="memberSince"><i class="fa-regular fa-calendar-check me-2"></i>member</span>
-                            <div class="mt-3">
-                                <a href="logout.html" class="btn btn-outline-custom btn-sm me-2"><i class="fa-solid fa-sign-out-alt me-1"></i>Logout</a>
-                                <a href="index.html" class="btn btn-outline-secondary rounded-pill btn-sm"><i class="fa-solid fa-arrow-left me-1"></i>Home</a>
+                        <div class="col-md-8 text-center text-md-start">
+                            <h2 class="fw-extrabold mb-1 text-dark" id="displayName" style="letter-spacing: -0.5px;">Authenticating...</h2>
+                            <p class="text-secondary mb-3 fs-5" id="displayEmail"><i class="fa-regular fa-envelope me-2 opacity-50"></i>--</p>
+                            
+                            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start gap-3 mb-4">
+                                <span class="info-badge" id="memberSince">
+                                    <i class="fa-regular fa-id-badge me-2"></i>Verified Account
+                                </span>
+                                <span class="info-badge" style="background: rgba(16, 185, 129, 0.1); color: #059669; border-color: rgba(16, 185, 129, 0.2);">
+                                    <i class="fa-solid fa-check-circle me-2"></i>Active
+                                </span>
+                            </div>
+
+                            <div class="d-flex gap-2 justify-content-center justify-content-md-start">
+                                <a href="logout.html" class="btn btn-sm btn-glass-outline"><i class="fa-solid fa-power-off me-2"></i>Sign Out</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Alert / notification area -->
-                <div id="userInfo" class="mb-3"></div>
-
-                <!-- Edit Profile Form (card style) -->
-                <div class="profile-card mb-4">
-                    <h4 class="section-title"><i class="fa-regular fa-pen-to-square"></i> Edit profile</h4>
+                <div class="glass-card mb-5 animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <h4 class="fw-bold mb-4" style="color: var(--primary-deep);">
+                        <i class="fa-solid fa-user-pen me-2 opacity-75"></i>Profile Configuration
+                    </h4>
+                    
                     <form id="profileEditForm" enctype="multipart/form-data">
-                        <div class="row g-3">
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <label for="username" class="form-label fw-semibold">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control glass-form-control" id="first_name" name="first_name">
                             </div>
                             <div class="col-md-6">
-                                <label for="email" class="form-label fw-semibold">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control glass-form-control" id="last_name" name="last_name">
                             </div>
                             <div class="col-md-6">
-                                <label for="first_name" class="form-label fw-semibold">First name</label>
-                                <input type="text" class="form-control" id="first_name" name="first_name">
+                                <label for="username" class="form-label">Username Indicator</label>
+                                <input type="text" class="form-control glass-form-control bg-light opacity-75" id="username" name="username" required readonly>
+                                <div class="form-text small mt-1">Usernames act as permanent structural identifiers.</div>
                             </div>
                             <div class="col-md-6">
-                                <label for="last_name" class="form-label fw-semibold">Last name</label>
-                                <input type="text" class="form-control" id="last_name" name="last_name">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control glass-form-control" id="email" name="email" required>
                             </div>
                             <div class="col-12">
-                                <label for="bio" class="form-label fw-semibold">Bio</label>
-                                <textarea class="form-control" id="bio" name="bio" rows="2" placeholder="Tell the community about yourself..."></textarea>
+                                <label for="bio" class="form-label">Public Biography</label>
+                                <textarea class="form-control glass-form-control" id="bio" name="bio" rows="3" placeholder="Share your background with the Yapei community..."></textarea>
                             </div>
                             <div class="col-12">
-                                <label for="avatar" class="form-label fw-semibold"><i class="fa-regular fa-image me-1"></i>Avatar</label>
-                                <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
-                                <div id="currentAvatar" class="mt-3"></div>
+                                <label for="avatar" class="form-label"><i class="fa-regular fa-image me-1"></i>Profile Graphic</label>
+                                <input type="file" class="form-control glass-form-control" id="avatar" name="avatar" accept="image/*">
                             </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-primary-custom px-5"><i class="fa-regular fa-floppy-disk me-2"></i>Update Profile</button>
+                            <div class="col-12 mt-4 pt-2 border-top border-light">
+                                <button type="submit" class="btn btn-glass-primary w-100 w-md-auto">
+                                    <i class="fa-solid fa-cloud-arrow-up me-2"></i>Synchronize Profile Data
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <!-- Change Password Card -->
-                <div class="profile-card">
-                    <h4 class="section-title"><i class="fa-solid fa-lock"></i> Change password</h4>
+                <div class="glass-card mb-5 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <h4 class="fw-bold mb-4 text-dark">
+                        <i class="fa-solid fa-shield-halved me-2 text-warning opacity-75"></i>Security Credentials
+                    </h4>
+                    
                     <form id="passwordChangeForm">
-                        <div class="row g-3">
-                            <div class="col-md-4">
-                                <label for="current_password" class="form-label fw-semibold">Current password</label>
-                                <input type="password" class="form-control" id="current_password" name="current_password" required>
+                        <div class="row g-4">
+                            <div class="col-md-12">
+                                <label for="current_password" class="form-label">Current Authentication Key</label>
+                                <input type="password" class="form-control glass-form-control" id="current_password" name="current_password" required>
                             </div>
-                            <div class="col-md-4">
-                                <label for="new_password" class="form-label fw-semibold">New password</label>
-                                <input type="password" class="form-control" id="new_password" name="new_password" required>
+                            <div class="col-md-6">
+                                <label for="new_password" class="form-label">New Key</label>
+                                <input type="password" class="form-control glass-form-control" id="new_password" name="new_password" required minlength="8">
                             </div>
-                            <div class="col-md-4">
-                                <label for="confirm_new_password" class="form-label fw-semibold">Confirm new</label>
-                                <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" required>
+                            <div class="col-md-6">
+                                <label for="confirm_new_password" class="form-label">Confirm New Key</label>
+                                <input type="password" class="form-control glass-form-control" id="confirm_new_password" name="confirm_new_password" required minlength="8">
                             </div>
-                            <div class="col-12 mt-4">
-                                <button type="submit" class="btn btn-warning-custom"><i class="fa-solid fa-key me-2"></i>Change Password</button>
+                            <div class="col-12 mt-4 pt-2 border-top border-light">
+                                <button type="submit" class="btn btn-glass-warning text-white w-100 w-md-auto">
+                                    <i class="fa-solid fa-key me-2"></i>Execute Password Rotation
+                                </button>
                             </div>
                         </div>
                     </form>
                 </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="eventInviteOverlay" class="cinematic-blur-overlay"></div>
+    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:420px; max-width:92vw;">
+        <div class="card popup-card-glass border-0 shadow-2xl animate__animated animate__zoomIn">
+            <div class="card-body text-center p-4 p-md-5">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4 shadow-lg" style="width: 80px; height: 80px; background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
+                    <i class="fa-solid fa-calendar-check fa-2x text-white"></i>
+                </div>
+                <h3 class="fw-bold text-dark mb-2" id="eventInviteTitle">---</h3>
+                <p class="text-secondary small mb-4" id="eventInviteDesc">---</p>
+                
+                <div class="p-3 rounded-4 mb-4 text-start" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5)">
+                    <p class="mb-2 text-dark small fw-medium"><i class="fa-solid fa-map-location-dot text-success me-2"></i><span id="eventInviteLocation">---</span></p>
+                    <p class="mb-0 text-dark small fw-medium"><i class="fa-regular fa-clock text-success me-2"></i><span id="eventInviteDate">---</span></p>
+                </div>
+                
+                <div class="d-flex justify-content-center gap-3">
+                    <button type="button" class="btn btn-glass-outline py-2 flex-grow-1" id="closeEventInvitePopup">Dismiss</button>
+                    <a href="events.html" class="btn btn-glass-primary bg-success py-2 flex-grow-1 d-flex align-items-center justify-content-center"><i class="fa-solid fa-users me-2"></i>Join In</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Event Invitation Pop-out (unified) -->
-    <div id="eventInviteOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(10,50,80,0.4); backdrop-filter:blur(3px); z-index:1060;"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; min-width:360px; max-width:90vw;">
-        <div class="card popup-card shadow-lg border-0 animate__animated animate__fadeInDown">
-            <div class="card-body text-center p-4 p-lg-5">
-                <div class="popup-icon-bg">
-                    <i class="fa-solid fa-calendar-check fa-3x text-white"></i>
-                </div>
-                <h4 class="fw-bold mb-2" id="eventInviteTitle">🌾 Harvest Gathering</h4>
-                <p class="text-muted mb-3" id="eventInviteDesc">Join us for stories and feasting</p>
-                <p class="mb-2"><i class="fa-solid fa-location-dot text-success me-1"></i> <span id="eventInviteLocation">Yapei riverside</span></p>
-                <p class="mb-3"><i class="fa-regular fa-clock text-success me-1"></i> <span id="eventInviteDate">Sat, 19 Nov · 4:00pm</span></p>
-                <div class="d-flex justify-content-center gap-2">
-                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" id="closeEventInvitePopup"><i class="fa-solid fa-xmark"></i> Close</button>
-                    <a href="events.html" class="btn btn-success rounded-pill px-4 shadow"><i class="fa-solid fa-users me-1"></i>Join Event</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Enhanced Footer -->
     <footer class="modern-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5><i class="fa-regular fa-compass me-2"></i>Yapei Community</h5>
-                    <p class="small opacity-75">Connecting residents, sharing stories, building together.</p>
+            <div class="text-center">
+                <h5 class="fw-bold text-white mb-3"><i class="fa-solid fa-water-waves me-2"></i>Yapei Community Online</h5>
+                <p class="text-white-50 small mb-4">Structural integration ensuring connectivity, transparency, and progress for all residents.</p>
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    <a href="#" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="col-md-4">
-                    <h5><i class="fa-regular fa-link"></i> Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white text-decoration-none opacity-75"><i class="fa-solid fa-home me-2"></i>Home</a></li>
-                        <li><a href="about.html" class="text-white text-decoration-none opacity-75"><i class="fa-solid fa-circle-info me-2"></i>About</a></li>
-                        <li><a href="blog.html" class="text-white text-decoration-none opacity-75"><i class="fa-solid fa-newspaper me-2"></i>Blog</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5><i class="fa-regular fa-message"></i> Connect</h5>
-                    <a href="#" class="text-white me-3 fs-5"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-white me-3 fs-5"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
-                </div>
+                <hr style="border-color: rgba(255,255,255,0.1);">
+                <p class="small text-white-50 mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
             </div>
-            <hr class="opacity-25 mt-4">
-            <p class="text-center small mb-0 opacity-75"><i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. All voices matter.</p>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // ========== CONFIG ==========
-        const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-        const access = localStorage.getItem('access');
-        if (!access) {
-            window.location.href = 'login.html';
-        }
+        (function() {
+            // Environment Endpoint Mapping
+            const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
+            const accessToken = localStorage.getItem('access');
 
-        // Helper: parse JWT
-        function parseJwt(token) {
-            try { return JSON.parse(atob(token.split('.')[1])); } catch { return null; }
-        }
-        const payload = parseJwt(access);
-
-        // DOM elements
-        const userInfoDiv = document.getElementById('userInfo');
-        const displayNameSpan = document.getElementById('displayName');
-        const displayEmailSpan = document.getElementById('displayEmail');
-        const memberSinceSpan = document.getElementById('memberSince');
-        const avatarDisplay = document.getElementById('avatarDisplay');
-        const currentAvatarDiv = document.getElementById('currentAvatar');
-
-        // Show quick user info from token
-        if (payload) {
-            displayNameSpan.textContent = payload.username || payload.user_id || 'Community member';
-            displayEmailSpan.innerHTML = `<i class="fa-regular fa-envelope me-2"></i>${payload.email || 'no email'}`;
-        } else {
-            userInfoDiv.innerHTML = '<div class="alert alert-warning">Session expired? Please <a href="login.html">login</a> again.</div>';
-        }
-
-        // ========== FETCH PROFILE AND POPULATE ==========
-        fetch(`${BACKEND_URL}/api/profile/`, {
-            headers: { 'Authorization': `Bearer ${access}` }
-        })
-        .then(res => res.json())
-        .then(data => {
-            // fill form fields
-            if (data.username) document.getElementById('username').value = data.username;
-            if (data.first_name) document.getElementById('first_name').value = data.first_name;
-            if (data.last_name) document.getElementById('last_name').value = data.last_name;
-            if (data.email) document.getElementById('email').value = data.email;
-            if (data.bio) document.getElementById('bio').value = data.bio;
-
-            // update display area
-            displayNameSpan.textContent = data.first_name 
-                ? `${data.first_name} ${data.last_name || ''}`.trim() 
-                : (data.username || 'Member');
-            displayEmailSpan.innerHTML = `<i class="fa-regular fa-envelope me-2"></i>${data.email || ''}`;
-            if (data.date_joined) {
-                const joined = new Date(data.date_joined).toLocaleDateString('en-US', { year:'numeric', month:'short' });
-                memberSinceSpan.innerHTML = `<i class="fa-regular fa-calendar-check me-2"></i>since ${joined}`;
-            }
-
-            // avatar display
-            avatarDisplay.innerHTML = ''; // clear
-            if (data.avatar) {
-                avatarDisplay.innerHTML = `<img src="${data.avatar}" class="avatar-large" alt="avatar">`;
-                currentAvatarDiv.innerHTML = `<img src="${data.avatar}" alt="Current avatar" class="img-thumbnail" style="max-width:100px;">`;
-            } else {
-                // placeholder with initial
-                const initial = (data.first_name ? data.first_name[0] : (data.username ? data.username[0] : '👤')).toUpperCase();
-                avatarDisplay.innerHTML = `<div class="avatar-placeholder">${initial}</div>`;
-                currentAvatarDiv.innerHTML = '<p class="text-muted small">No avatar yet.</p>';
-            }
-        })
-        .catch(() => {
-            userInfoDiv.innerHTML = '<div class="alert alert-danger">Could not load profile. Try refreshing.</div>';
-        });
-
-        // ========== PROFILE UPDATE ==========
-        document.getElementById('profileEditForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const formData = new FormData(form);
-
-            fetch(`${BACKEND_URL}/api/profile/`, {
-                method: 'PATCH',
-                headers: { 'Authorization': `Bearer ${access}` },
-                body: formData
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.username) {
-                    userInfoDiv.innerHTML = `<div class="alert alert-success animate__animated animate__fadeIn">✅ Profile updated successfully!</div>`;
-                    // refresh displayed avatar if changed
-                    if (data.avatar) {
-                        avatarDisplay.innerHTML = `<img src="${data.avatar}" class="avatar-large" alt="avatar">`;
-                        currentAvatarDiv.innerHTML = `<img src="${data.avatar}" alt="Avatar" class="img-thumbnail" style="max-width:100px;">`;
-                    }
-                    // update name display
-                    displayNameSpan.textContent = data.first_name 
-                        ? `${data.first_name} ${data.last_name || ''}`.trim() 
-                        : (data.username || 'Member');
-                } else {
-                    userInfoDiv.innerHTML = `<div class="alert alert-danger">${JSON.stringify(data)}</div>`;
-                }
-                setTimeout(() => { userInfoDiv.innerHTML = ''; }, 4000);
-            })
-            .catch(() => {
-                userInfoDiv.innerHTML = '<div class="alert alert-danger">Update failed. Check connection.</div>';
-            });
-        });
-
-        // ========== PASSWORD CHANGE ==========
-        document.getElementById('passwordChangeForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const current_password = document.getElementById('current_password').value;
-            const new_password = document.getElementById('new_password').value;
-            const confirm = document.getElementById('confirm_new_password').value;
-
-            if (new_password !== confirm) {
-                userInfoDiv.innerHTML = '<div class="alert alert-danger">❌ New passwords do not match.</div>';
+            // Hard redirect if missing auth tokens
+            if (!accessToken) {
+                window.location.href = 'login.html';
                 return;
             }
 
-            fetch(`${BACKEND_URL}/api/change-password/`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${access}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ current_password, new_password })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.detail) {
-                    userInfoDiv.innerHTML = `<div class="alert alert-success">✅ ${data.detail}</div>`;
-                    document.getElementById('passwordChangeForm').reset();
-                } else {
-                    userInfoDiv.innerHTML = `<div class="alert alert-danger">${JSON.stringify(data)}</div>`;
+            // System References
+            const alertContainer = document.getElementById('statusAlertContainer');
+            const avatarDisplay = document.getElementById('avatarDisplay');
+            const displayName = document.getElementById('displayName');
+            const displayEmail = document.getElementById('displayEmail');
+
+            // Quick JWT Hydration extraction
+            function parseJwt(token) {
+                try { return JSON.parse(atob(token.split('.')[1])); } catch { return null; }
+            }
+
+            const jwtPayload = parseJwt(accessToken);
+            if (jwtPayload) {
+                displayName.textContent = jwtPayload.username || 'Community Member';
+            }
+
+            // Utility Alert Renderer
+            function showAlert(message, type = 'success') {
+                const icon = type === 'success' ? 'fa-circle-check' : 'fa-triangle-exclamation';
+                alertContainer.innerHTML = `
+                    <div class="alert alert-${type} glass-alert animate__animated animate__fadeInDown shadow-sm">
+                        <i class="fa-solid ${icon} me-2"></i>${message}
+                    </div>
+                `;
+                setTimeout(() => { alertContainer.innerHTML = ''; }, 5000);
+            }
+
+            // Generate fallback avatar strings safely
+            function generateFallbackAvatar(userObj) {
+                const initialSrc = userObj.first_name || userObj.username || 'U';
+                return `<span>${initialSrc.charAt(0).toUpperCase()}</span>`;
+            }
+
+            // Synchronize Navigation 
+            function updateNavbarLinks() {
+                const userLinks = document.getElementById('navbar-user-links');
+                if (!userLinks) return;
+                userLinks.innerHTML = `
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link btn btn-sm btn-outline-light text-white px-3 rounded-pill fw-bold" href="logout.html">
+                            <i class="fa-solid fa-power-off me-1"></i>Sign Out
+                        </a>
+                    </li>`;
+            }
+
+            // Boot Profile Hydration from DRF
+            function fetchProfileData() {
+                fetch(`${BACKEND_URL}/api/profile/`, {
+                    headers: { 'Authorization': `Bearer ${accessToken}` }
+                })
+                .then(res => {
+                    if (res.status === 401) {
+                        localStorage.removeItem('access');
+                        window.location.href = 'login.html';
+                        throw new Error("Token expired");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    // Populate Form Nodes
+                    document.getElementById('username').value = data.username || '';
+                    document.getElementById('email').value = data.email || '';
+                    document.getElementById('first_name').value = data.first_name || '';
+                    document.getElementById('last_name').value = data.last_name || '';
+                    document.getElementById('bio').value = data.bio || '';
+
+                    // Update Top Presentational Card Nodes
+                    const fullName = `${data.first_name || ''} ${data.last_name || ''}`.trim();
+                    displayName.textContent = fullName || data.username || 'Verified Member';
+                    displayEmail.innerHTML = `<i class="fa-regular fa-envelope me-2 opacity-50"></i>${data.email || 'No email registered'}`;
+                    
+                    // Avatar Image Matrix Evaluation
+                    if (data.avatar) {
+                        const avatarUrl = data.avatar.startsWith('http') ? data.avatar : `${BACKEND_URL}${data.avatar}`;
+                        avatarDisplay.innerHTML = `<img src="${avatarUrl}" alt="Profile Identity Node">`;
+                    } else {
+                        avatarDisplay.innerHTML = generateFallbackAvatar(data);
+                    }
+                })
+                .catch(err => console.error("Profile synchronization fault:", err));
+            }
+
+            // Handle Profile Updates (Multipart/Form-Data mapped for Django Images)
+            document.getElementById('profileEditForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formElement = e.target;
+                const formData = new FormData(formElement);
+
+                // Critical: Strip avatar key from payload if no explicit file was chosen 
+                // to prevent DRF from interpreting it as an empty object and clearing it
+                const fileInput = document.getElementById('avatar');
+                if (fileInput.files.length === 0) {
+                    formData.delete('avatar');
                 }
-                setTimeout(() => { userInfoDiv.innerHTML = ''; }, 4000);
-            })
-            .catch(() => {
-                userInfoDiv.innerHTML = '<div class="alert alert-danger">Password change failed.</div>';
+
+                // Username is generally read-only inside systems, strip it from patch just to be safe
+                formData.delete('username'); 
+
+                fetch(`${BACKEND_URL}/api/profile/`, {
+                    method: 'PATCH',
+                    headers: { 'Authorization': `Bearer ${accessToken}` },
+                    body: formData
+                })
+                .then(async res => {
+                    const data = await res.json();
+                    if (res.ok) {
+                        showAlert('Profile data synchronized successfully.', 'success');
+                        
+                        // Update visual DOM immediately
+                        const fullName = `${data.first_name || ''} ${data.last_name || ''}`.trim();
+                        displayName.textContent = fullName || data.username;
+                        displayEmail.innerHTML = `<i class="fa-regular fa-envelope me-2 opacity-50"></i>${data.email}`;
+                        
+                        if (data.avatar) {
+                            const avatarUrl = data.avatar.startsWith('http') ? data.avatar : `${BACKEND_URL}${data.avatar}`;
+                            avatarDisplay.innerHTML = `<img src="${avatarUrl}" alt="Profile Avatar">`;
+                        }
+                    } else {
+                        // Extract first error dynamically
+                        const errMsg = Object.values(data)[0] || 'Verification dropped processing update criteria.';
+                        showAlert(`Configuration Error: ${errMsg}`, 'danger');
+                    }
+                })
+                .catch(() => showAlert('Network transaction dropped. Check internet stability.', 'danger'));
             });
-        });
 
-        // ========== DYNAMIC NAVBAR ==========
-        function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
-            const isLoggedIn = !!localStorage.getItem('access');
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link active" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-        }
-        updateNavbarLinks();
+            // Handle Password Change Pipeline
+            document.getElementById('passwordChangeForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const current_password = document.getElementById('current_password').value;
+                const new_password = document.getElementById('new_password').value;
+                const confirm_pass = document.getElementById('confirm_new_password').value;
 
-        // ========== EVENT INVITATION POPUP ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            const invitePopup = document.getElementById('eventInvitePopup');
-            const overlay = document.getElementById('eventInviteOverlay');
-            const closeBtn = document.getElementById('closeEventInvitePopup');
-            if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
-            const excluded = ['login.html', 'register.html'];
-            if (excluded.some(p => window.location.pathname.endsWith(p))) return;
-            if (Math.random() < 0.5) {
+                if (new_password !== confirm_pass) {
+                    showAlert('Security verification dropped: New passwords do not match.', 'danger');
+                    return;
+                }
+
+                fetch(`${BACKEND_URL}/api/change-password/`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ current_password, new_password })
+                })
+                .then(async res => {
+                    const data = await res.json();
+                    if (res.ok) {
+                        showAlert('Authentication configuration keys rotated successfully.', 'success');
+                        document.getElementById('passwordChangeForm').reset();
+                    } else {
+                        const errMsg = data.current_password || data.new_password || data.non_field_errors || 'Matrix mismatch resolving security token.';
+                        showAlert(`Validation Fault: ${errMsg}`, 'danger');
+                    }
+                })
+                .catch(() => showAlert('Network transaction dropped during security handshake.', 'danger'));
+            });
+
+            // Upcoming Event Popups logic checks
+            function setupEventPopup() {
+                const invitePopup = document.getElementById('eventInvitePopup');
+                const overlay = document.getElementById('eventInviteOverlay');
+                const closeBtn = document.getElementById('closeEventInvitePopup');
+                
+                if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
+                
                 fetch(`${BACKEND_URL}/api/events/upcoming/`)
                     .then(res => res.json())
                     .then(event => {
-                        if (event && event.deadline && new Date(event.deadline) > new Date()) {
-                            document.getElementById('eventInviteTitle').textContent = event.title || 'Community Event';
-                            document.getElementById('eventInviteDesc').textContent = event.description || 'Join us!';
-                            document.getElementById('eventInviteLocation').textContent = event.location || 'Yapei';
-                            document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString() : 'Soon';
+                        if (event && event.deadline) {
+                            document.getElementById('eventInviteTitle').textContent = event.title || 'Community Assembly';
+                            document.getElementById('eventInviteDesc').textContent = event.description || 'Participation in community interfaces is requested.';
+                            document.getElementById('eventInviteLocation').textContent = event.location || 'Yapei Hub Assembly';
+                            document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Scheduled Timeline';
+                            
                             invitePopup.style.display = 'block';
                             overlay.style.display = 'block';
                             sessionStorage.setItem('eventInvitePopupShown', 'true');
                         }
                     })
                     .catch(() => {});
+
+                const closeAction = () => {
+                    invitePopup.classList.add('animate__zoomOut');
+                    overlay.style.opacity = '0';
+                    setTimeout(() => { 
+                        invitePopup.style.display = 'none'; 
+                        overlay.style.display = 'none'; 
+                        invitePopup.classList.remove('animate__zoomOut'); 
+                        overlay.style.opacity = '1';
+                    }, 300);
+                };
+                
+                closeBtn.addEventListener('click', closeAction);
+                overlay.addEventListener('click', closeAction);
             }
-            closeBtn.addEventListener('click', function() {
-                overlay.style.display = 'none';
-                invitePopup.style.display = 'none';
+
+            // Execution Matrix
+            document.addEventListener('DOMContentLoaded', () => {
+                updateNavbarLinks();
+                fetchProfileData();
+                setupEventPopup();
             });
-            overlay.addEventListener('click', () => closeBtn.click());
-        });
+        })();
     </script>
 </body>
 </html>
