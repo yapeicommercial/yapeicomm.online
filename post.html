@@ -5,12 +5,10 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yapei Stories · Community Blog</title>
-    <!-- Bootstrap 5 + FontAwesome 6 + Animate.css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
-    <!-- Ultra-Modern Liquid Glass & Glassmorphism Styling -->
     <style>
         :root {
             --primary-dark: #073b6c;
@@ -94,6 +92,12 @@
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
             border: 2px solid #ffffff;
+            overflow: hidden;
+        }
+        .comment-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Liquid Input & Forms */
@@ -214,7 +218,6 @@
 </head>
 <body>
 
-    <!-- Glassmorphism Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-glass shadow-sm fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold fs-4" href="index.html">
@@ -235,12 +238,10 @@
         </div>
     </nav>
 
-    <!-- Main Dynamic Frame -->
     <section class="container py-5" style="margin-top: 80px;">
         <div class="row justify-content-center">
             <div class="col-lg-9 col-xl-8">
                 
-                <!-- Main Post Glass Card -->
                 <div class="card glass-card mb-5 overflow-hidden animate__animated animate__fadeInUp">
                     <img class="card-img-top-glass" id="postImage" alt="Featured blog cover image">
                     <div class="card-body p-4 p-md-5">
@@ -253,7 +254,6 @@
                         
                         <h1 class="card-title fw-extrabold display-6 mb-4" id="postTitle" style="color: var(--primary-dark)"></h1>
                         
-                        <!-- Author Metadata Strip -->
                         <div class="d-flex align-items-center mb-4 pb-3 border-bottom border-white">
                             <div class="comment-avatar me-3" id="authorAvatar">👤</div>
                             <div>
@@ -264,7 +264,6 @@
 
                         <p class="card-text fs-5 lh-lg mb-4" id="postContent" style="color: #334155; white-space: pre-wrap;"></p>
 
-                        <!-- Dynamic Metrics Hub -->
                         <div class="mt-5 d-flex gap-2 flex-wrap" id="postBadges">
                             <button class="btn btn-sm btn-glass-outline px-3 py-2 rounded-pill"><i class="fa-regular fa-heart me-2 text-danger"></i>24 Likes</button>
                             <button class="btn btn-sm btn-glass-outline px-3 py-2 rounded-pill"><i class="fa-regular fa-comments me-2 text-primary"></i><span id="commentCount">0</span> Conversations</button>
@@ -273,14 +272,12 @@
                     </div>
                 </div>
 
-                <!-- Glass Conversations Node -->
                 <div class="card glass-card mb-5 border-0 rounded-4">
                     <div class="card-header bg-transparent border-0 pt-4 px-4 px-md-5 pb-0">
                         <h4 class="mb-0 fw-bold text-dark"><i class="fa-solid fa-comments-text text-primary me-2"></i>Discussion Hub</h4>
                     </div>
                     
                     <div class="card-body p-4 p-md-5">
-                        <!-- Comment Dynamic Submission Box -->
                         <form class="mb-5 p-4 rounded-4" id="commentForm" style="background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.4);">
                             <div class="mb-3">
                                 <label for="commentName" class="form-label fw-bold small text-secondary"><i class="fa-regular fa-user-crown me-1"></i>Your Identity</label>
@@ -294,7 +291,6 @@
                             <button type="submit" class="btn btn-glass-primary mt-2"><i class="fa-solid fa-paper-plane-top me-2"></i>Transmit Comment</button>
                         </form>
 
-                        <!-- Dynamic Comment Pipeline -->
                         <div id="commentsContainer">
                             <div class="mb-4 d-flex align-items-center">
                                 <i class="fa-solid fa-timeline-arrow text-primary me-2"></i>
@@ -306,13 +302,11 @@
                     </div>
                 </div>
 
-                <!-- Back navigation tracking -->
                 <a href="blog.html" class="btn btn-glass-outline px-4 mb-5"><i class="fa-solid fa-arrow-left-long me-2"></i>Return to Hub</a>
             </div>
         </div>
     </section>
 
-    <!-- Glassmorphic Global Event Intercept Modal -->
     <div id="eventInviteOverlay" class="cinematic-blur-overlay"></div>
     <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:420px; max-width:92vw;">
         <div class="card glass-card event-popup-glass border-0 rounded-5 animate__animated animate__zoomIn">
@@ -334,7 +328,6 @@
         </div>
     </div>
 
-    <!-- Liquid Global Footer Frame -->
     <footer class="text-white pt-5 pb-4">
         <div class="container">
             <div class="row align-items-center">
@@ -353,10 +346,8 @@
         </div>
     </footer>
 
-    <!-- Bootstrap Core Bundles -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Unified API Data Engine Module -->
     <script>
         (function() {
             // DRF Environment Architecture Integration URL
@@ -414,15 +405,25 @@
                 fetch(`${BACKEND_URL}/api/messages/${messageId}/`)
                     .then(res => { if (!res.ok) throw new Error('Requested resource context unavailable.'); return res.json(); })
                     .then(post => {
-                        postImg.src = post.media && post.media !== '' ? post.media : 'assets/blog-default.jpg';
+                        if (post.media && post.media !== '') {
+                            postImg.src = post.media.startsWith('http') ? post.media : `${BACKEND_URL}${post.media}`;
+                        } else {
+                            postImg.src = 'assets/blog-default.jpg';
+                        }
                         
-                        // Extract content-safe title structure matching backend configurations
-                        const titleSnippet = post.content ? post.content.substring(0, 60) + (post.content.length > 60 ? '...' : '') : 'Community Publication';
-                        postTitle.innerHTML = `<i class="fa-solid fa-feather-pointed me-2 opacity-50 text-primary"></i>${titleSnippet}`;
+                        // Extracts explicit models.py title field attributes safely
+                        postTitle.innerHTML = `<i class="fa-solid fa-feather-pointed me-2 opacity-50 text-primary"></i>${post.title || 'Community Publication'}`;
                         postContent.textContent = post.content || 'No content provided.';
                         
                         authorName.textContent = post.user || 'Anonymous Community Representative';
-                        authorAvatar.textContent = post.user ? post.user.charAt(0).toUpperCase() : '👤';
+                        
+                        // Support custom author_avatar images or clean fallback letters
+                        if (post.author_avatar) {
+                            const fullAvatarUrl = post.author_avatar.startsWith('http') ? post.author_avatar : `${BACKEND_URL}${post.author_avatar}`;
+                            authorAvatar.innerHTML = `<img src="${fullAvatarUrl}" alt="Author Avatar">`;
+                        } else {
+                            authorAvatar.textContent = post.user ? post.user.charAt(0).toUpperCase() : '👤';
+                        }
                         
                         const processedDate = post.timestamp 
                             ? new Date(post.timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) 
@@ -437,7 +438,7 @@
             }
 
             function fetchComments() {
-                // Pointing directly to DRF sub-route implementation hierarchy
+                // Interfacing with sub-route list view context for related discussion modules
                 fetch(`${BACKEND_URL}/api/messages/${messageId}/comments/`)
                     .then(res => res.json())
                     .then(data => {
@@ -463,7 +464,7 @@
                     commentsList.innerHTML = `
                         <div class="text-center text-muted py-5 rounded-4 animate__animated animate__fadeIn" style="background: rgba(255,255,255,0.2); border: 1px dashed rgba(0,0,0,0.1)">
                             <i class="fa-light fa-comments-question fa-2x mb-2 text-secondary"></i>
-                            <p class="mb-0 fst-italic">No insights logged yet. Inititate the conversation framework below.</p>
+                            <p class="mb-0 fst-italic">No insights logged yet. Initiate the conversation framework below.</p>
                         </div>`;
                 } else {
                     pageComments.forEach(cmt => {
@@ -476,7 +477,7 @@
                             : 'Just now';
 
                         commentDiv.innerHTML = `
-                            <div class="comment-avatar" style="flex-shrink: 0;">${letter}</div>
+                            <div class="comment-avatar" style="flex-shrink: 0;"><span>${letter}</span></div>
                             <div class="comment-bubble-glass">
                                 <div class="d-flex justify-content-between align-items-center mb-1">
                                     <span class="fw-bold text-dark">${cmt.author || 'Anonymous Observer'}</span>
@@ -522,10 +523,11 @@
                     return;
                 }
 
+                // Sync payload fields with CommentSerializer declaration parameters
                 fetch(`${BACKEND_URL}/api/messages/${messageId}/comments/`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ author, text })
+                    body: JSON.stringify({ message: parseInt(messageId), author, text })
                 })
                 .then(async res => {
                     if (res.ok) {
@@ -550,13 +552,13 @@
                 
                 if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
                 if (['login.html', 'register.html'].some(p => window.location.pathname.endsWith(p))) return;
-                if (Math.random() > 0.60) return; // Balanced analytical intervention presentation check
+                if (Math.random() > 0.60) return;
 
-                // Matches upcoming serialization endpoint logic
+                // Sync with UpcomingEventView route configurations
                 fetch(`${BACKEND_URL}/api/events/upcoming/`)
                     .then(res => res.json())
                     .then(event => {
-                        if (event && event.deadline) {
+                        if (event && event.id) {
                             document.getElementById('eventInviteTitle').textContent = event.title || 'Community Gathering';
                             document.getElementById('eventInviteDesc').textContent = event.description || 'Join your fellow residents in our next community session.';
                             document.getElementById('eventInviteLocation').textContent = event.location || 'Yapei Central Complex';
