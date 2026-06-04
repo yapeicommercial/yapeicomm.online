@@ -5,31 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Disclaimer - Yapei Community Online</title>
     
-    <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Core Dependencies -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
     <style>
         :root {
-            --primary-color: #0d6efd;
-            --primary-dark: #0b5ed7;
-            --secondary-color: #6c757d;
-            --success-color: #198754;
-            --warning-color: #ffc107;
-            --danger-color: #dc3545;
-            --info-color: #0dcaf0;
-            --border-radius: 1rem;
-            --transition: all 0.3s ease;
-            --box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-bg-hover: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --text-light: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.7);
+            --accent-gold: #fbbf24;
+            --accent-blue: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-rose: #fb7185;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --card-round: 24px;
             --header-height: 70px;
         }
 
@@ -41,602 +41,178 @@
 
         html {
             font-size: 16px;
-            -webkit-text-size-adjust: 100%;
             scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
+            scroll-padding-top: calc(var(--header-height) + 2rem);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #0f172a;
+            color: var(--text-light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: #2c3e50;
-            padding-top: var(--header-height);
             overflow-x: hidden;
-            width: 100%;
             position: relative;
         }
 
-        /* Navigation */
-        .navbar {
-            background: rgba(255, 255, 255, 0.98) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            padding: 0.5rem 1rem;
+        /* Liquid Background Animation */
+        .liquid-bg {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            z-index: 1030;
-            height: var(--header-height);
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(45deg, #0b4b7a, #1e1b4b, #0f766e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(90px);
+            opacity: 0.5;
+            animation: float 20s infinite alternate;
+        }
+
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #3b82f6; animation-delay: 0s; }
+        .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: #8b5cf6; animation-delay: -5s; }
+        .blob-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: #14b8a6; animation-delay: -10s; animation-duration: 25s; }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Glassmorphism Classes */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: var(--card-round);
+            transition: var(--transition);
+        }
+
+        .glass-panel-inner {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(15, 23, 42, 0.7) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+            height: auto;
         }
 
         .navbar-brand {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary-color) !important;
-            white-space: normal;
-            line-height: 1.2;
+            color: var(--text-light) !important;
+            font-weight: 600;
+            font-size: 1.5rem;
         }
 
-        .navbar-brand i {
-            font-size: 1.1rem;
-        }
+        .navbar-brand i { color: var(--accent-gold); }
 
-        .navbar-toggler {
-            padding: 0.4rem 0.6rem;
-            border: none;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        .nav-link {
+        .navbar-nav .nav-link {
+            color: var(--text-dim) !important;
+            border-radius: 40px;
+            margin: 0 6px;
+            padding: 0.5rem 1.2rem !important;
             font-weight: 500;
-            padding: 0.5rem 0.8rem !important;
-            border-radius: 0.5rem;
             transition: var(--transition);
-            color: #495057 !important;
-            font-size: 0.95rem;
         }
 
-        .nav-link:hover {
-            background-color: rgba(13, 110, 253, 0.1);
-            color: var(--primary-color) !important;
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: var(--text-light) !important;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: white !important;
+        /* Buttons */
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            border-radius: 60px;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-glass-primary {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(59, 130, 246, 0.4));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #fff;
+            border-radius: 60px;
+            padding: 0.6rem 2rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-glass-primary:hover {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(59, 130, 246, 0.6));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+            color: #fff;
         }
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 2rem 1rem;
+            padding: 4rem 1rem 2rem;
             text-align: center;
             position: relative;
-            overflow: hidden;
-            margin-top: 0;
+            z-index: 10;
         }
 
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .page-header h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .page-header h1 i {
-            font-size: 1.6rem;
-            margin-right: 0.5rem;
-        }
-
-        .page-header p {
-            font-size: 1rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .last-updated {
+        .badge-glass {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-dim);
+            padding: 0.5rem 1.5rem;
+            border-radius: 60px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
             display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 0.4rem 1.2rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 1.5rem 0 3rem;
-        }
-
-        .container {
-            width: 100%;
-            padding-right: 1rem;
-            padding-left: 1rem;
-            margin-right: auto;
-            margin-left: auto;
-        }
-
-        /* Responsive container breakpoints */
-        @media (min-width: 576px) {
-            .container { max-width: 540px; }
-            html { font-size: 16px; }
-        }
-        @media (min-width: 768px) {
-            .container { max-width: 720px; }
-            html { font-size: 17px; }
-        }
-        @media (min-width: 992px) {
-            .container { max-width: 960px; }
-            html { font-size: 18px; }
-        }
-        @media (min-width: 1200px) {
-            .container { max-width: 1140px; }
-        }
-
-        /* Policy Container */
-        .policy-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        /* Table of Contents */
-        .toc-wrapper {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1.25rem;
-            width: 100%;
-            margin-bottom: 0.5rem;
-        }
-
-        .toc-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #e9ecef;
-        }
-
-        .toc-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-
-        .toc-item {
-            list-style: none;
-        }
-
-        .toc-item a {
-            color: #495057;
-            text-decoration: none;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 0.5rem;
-            border-radius: 0.5rem;
-            transition: var(--transition);
-            background: #f8f9fa;
-            height: 100%;
-            word-break: break-word;
-        }
-
-        .toc-item a i {
-            font-size: 0.7rem;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
-
-        .toc-item a:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .toc-item a:hover i {
-            color: white;
-        }
-
-        /* Policy Card */
-        .policy-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1.5rem;
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        .policy-section {
-            scroll-margin-top: calc(var(--header-height) + 20px);
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .policy-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #e9ecef;
-            flex-wrap: wrap;
-        }
-
-        .section-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .section-icon.warning {
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-        }
-
-        .section-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #2c3e50;
-            margin-bottom: 0.1rem;
-            line-height: 1.2;
-            word-break: break-word;
-        }
-
-        .section-subtitle {
-            color: var(--secondary-color);
-            font-size: 0.85rem;
-        }
-
-        .section-content {
-            padding-left: 0;
-        }
-
-        .section-content p {
-            line-height: 1.7;
-            color: #4a5568;
-            margin-bottom: 1.25rem;
-            font-size: 0.95rem;
-            word-wrap: break-word;
-        }
-
-        .section-content h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 1.5rem 0 1rem;
-            color: #2c3e50;
-        }
-
-        .section-content h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 1.25rem 0 0.75rem;
-            color: var(--primary-color);
-        }
-
-        .section-content h5 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 1rem 0 0.5rem;
-            color: #2c3e50;
-        }
-
-        .section-content ul, 
-        .section-content ol {
-            margin-bottom: 1.25rem;
-            padding-left: 1.25rem;
-        }
-
-        .section-content li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-            color: #4a5568;
-            font-size: 0.95rem;
-            word-wrap: break-word;
-        }
-
-        .section-content li strong {
-            color: var(--primary-color);
-        }
-
-        /* Info Boxes */
-        .info-box {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 0.75rem;
-            padding: 1.25rem;
-            margin: 1.25rem 0;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .info-box.warning {
-            border-left-color: var(--warning-color);
-            background: #fff3cd;
-        }
-
-        .info-box.success {
-            border-left-color: var(--success-color);
-            background: #d1e7dd;
-        }
-
-        .info-box.danger {
-            border-left-color: var(--danger-color);
-            background: #f8d7da;
-        }
-
-        .info-box.info {
-            border-left-color: var(--info-color);
-            background: #cff4fc;
-        }
-
-        .info-box h5 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .info-box.warning h5 { color: #856404; }
-        .info-box.success h5 { color: #0f5132; }
-        .info-box.danger h5 { color: #842029; }
-        .info-box.info h5 { color: #055160; }
-
-        .info-box p {
-            font-size: 0.95rem;
-            margin-bottom: 0;
-        }
-
-        /* Disclaimer Cards */
-        .disclaimer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .disclaimer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .disclaimer-card {
-            background: white;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            border: 1px solid #e9ecef;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .disclaimer-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--warning-color));
-        }
-
-        .disclaimer-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--box-shadow);
-        }
-
-        .disclaimer-card i {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .disclaimer-card h4 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .disclaimer-card p {
-            color: var(--secondary-color);
-            margin-bottom: 0;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Examples Grid */
-        .examples-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        @media (min-width: 576px) {
-            .examples-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .example-item {
-            background: #f8f9fa;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .example-item i {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            width: 24px;
-        }
-
-        .example-item span {
-            flex: 1;
-            font-size: 0.9rem;
-            color: #4a5568;
-        }
-
-        /* Accordion */
-        .accordion-item {
-            border: 1px solid #e9ecef;
-            border-radius: 0.5rem;
-            margin-bottom: 0.75rem;
-            overflow: hidden;
-        }
-
-        .accordion-header {
-            background: #f8f9fa;
-            padding: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 600;
-        }
-
-        .accordion-header:hover {
-            background: #e9ecef;
-        }
-
-        .accordion-header i {
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-header.active i {
-            transform: rotate(90deg);
-        }
-
-        .accordion-content {
-            padding: 0 1rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .accordion-content.show {
-            padding: 1rem;
-            max-height: 200px;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary-color), var(--warning-color));
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 1.5rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2.1rem;
-            top: 0.25rem;
-            width: 1rem;
-            height: 1rem;
-            border-radius: 50%;
-            background: var(--primary-color);
-            border: 2px solid white;
-            box-shadow: 0 0 0 2px var(--primary-color);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-content {
-            font-size: 0.9rem;
-            color: #4a5568;
         }
 
         /* Device Info Bar */
         .device-info-bar {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 2rem;
         }
 
         .device-info-item {
@@ -648,118 +224,318 @@
 
         .device-info-item i {
             font-size: 1.2rem;
-            color: var(--primary-color);
+            color: var(--accent-blue);
             width: 24px;
+            text-align: center;
         }
 
-        .device-info-label {
-            color: var(--secondary-color);
-            font-weight: 500;
-        }
-
-        .device-info-value {
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .location-flag {
-            width: 20px;
-            height: 15px;
-            border-radius: 3px;
-            margin-right: 0.25rem;
-        }
+        .device-info-label { color: var(--text-dim); }
+        .device-info-value { font-weight: 600; color: var(--text-light); }
 
         /* Consent Banner */
         .consent-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem;
-            border-radius: var(--border-radius);
-            margin-bottom: 1.5rem;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
+            backdrop-filter: blur(10px);
         }
 
-        .consent-banner p {
-            margin-bottom: 0;
+        /* Main Content Layout */
+        .main-content {
             flex: 1;
+            padding: 1.5rem 0 4rem;
         }
 
-        .consent-banner .btn {
-            background: white;
-            color: #667eea;
+        .policy-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        @media (min-width: 992px) {
+            .policy-container {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+            }
+        }
+
+        /* Table of Contents */
+        .toc-wrapper {
+            padding: 1.5rem;
+            position: sticky;
+            top: calc(var(--header-height) + 2rem);
+            height: fit-content;
+            max-height: calc(100vh - var(--header-height) - 4rem);
+            overflow-y: auto;
+        }
+
+        .toc-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+        .toc-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+        }
+
+        .toc-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .consent-banner .btn:hover {
-            background: #f8f9fa;
-            transform: scale(1.05);
+        .toc-grid {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .toc-item a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            transition: var(--transition);
+        }
+
+        .toc-item a i {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            transition: var(--transition);
+        }
+
+        .toc-item a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .toc-item a:hover i {
+            color: var(--accent-blue);
+            transform: translateX(3px);
+        }
+
+        /* Policy Card */
+        .policy-card {
+            padding: 2.5rem;
+        }
+
+        .policy-section {
+            scroll-margin-top: calc(var(--header-height) + 2rem);
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .policy-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.4rem;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        .section-icon.warning { color: var(--accent-gold); }
+        .section-icon.danger { color: var(--accent-rose); }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: var(--text-light);
+        }
+
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .section-content p, .section-content li {
+            line-height: 1.8;
+            color: var(--text-dim);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .section-content h3, .section-content h4, .section-content h5 {
+            color: var(--text-light);
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+        }
+
+        .section-content ul { padding-left: 1.5rem; }
+
+        /* Glass Info Boxes */
+        .info-box {
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-box.warning {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .info-box.success {
+            background: rgba(52, 211, 153, 0.1);
+            border-left: 4px solid var(--accent-emerald);
+        }
+
+        .info-box.danger {
+            background: rgba(251, 113, 133, 0.1);
+            border-left: 4px solid var(--accent-rose);
+        }
+
+        .info-box.info {
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .info-box h5 {
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-box.warning h5 { color: var(--accent-gold); }
+        .info-box.success h5 { color: var(--accent-emerald); }
+        .info-box.danger h5 { color: var(--accent-rose); }
+        .info-box.info h5 { color: var(--accent-blue); }
+        .info-box p { margin-bottom: 0; color: rgba(255,255,255,0.85); }
+
+        /* Disclaimer Cards & Grids */
+        .disclaimer-grid, .examples-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .disclaimer-grid, .examples-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .disclaimer-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .disclaimer-card:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .disclaimer-card i {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .example-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .example-item i {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            width: 30px;
+            text-align: center;
         }
 
         /* Print Button */
         .print-btn {
             position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            width: 44px;
-            height: 44px;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(13, 110, 253, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             transition: var(--transition);
             z-index: 999;
-            border: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         .print-btn:hover {
-            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1) rotate(5deg);
         }
 
         /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1a1c2c 0%, #2a2c3c 100%);
-            color: #a0a0b0;
+        .modern-footer {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0 1.5rem;
             margin-top: auto;
-            padding: 2rem 0 1rem;
         }
-
-        .footer .row {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer .row {
-                flex-direction: row;
-                justify-content: space-between;
-                text-align: left;
-            }
-        }
-
-        .footer a {
-            color: #a0a0b0;
+        
+        .modern-footer a {
+            color: var(--text-dim);
             text-decoration: none;
             transition: var(--transition);
             margin: 0 0.5rem;
         }
 
-        .footer a:hover {
-            color: white;
-        }
+        .modern-footer a:hover { color: var(--accent-gold); }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -767,243 +543,137 @@
             margin-top: 1.5rem;
             text-align: center;
             font-size: 0.85rem;
-        }
-
-        /* Desktop Styles */
-        @media (min-width: 992px) {
-            .policy-container {
-                display: grid;
-                grid-template-columns: 280px 1fr;
-                gap: 2rem;
-            }
-
-            .toc-wrapper {
-                position: sticky;
-                top: calc(var(--header-height) + 20px);
-                margin-bottom: 0;
-                height: fit-content;
-            }
-
-            .toc-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .toc-item a {
-                background: transparent;
-            }
-
-            .disclaimer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Touch-friendly improvements */
-        .btn-acknowledge,
-        .toc-item a,
-        .disclaimer-card,
-        .print-btn {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .toc-item a:active,
-        .disclaimer-card:active {
-            transform: scale(0.98);
-        }
-
-        /* Prevent text overflow */
-        * {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        /* Better scrolling on iOS */
-        .toc-wrapper {
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Accessibility */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+            color: var(--text-dim);
         }
 
         /* Print Styles */
         @media print {
-            .navbar,
-            .footer,
-            .toc-wrapper,
-            .print-btn,
-            .device-info-bar,
-            .consent-banner {
+            .navbar, .modern-footer, .toc-wrapper, .print-btn, .device-info-bar, .consent-banner, .liquid-bg {
                 display: none !important;
             }
-
-            body {
-                padding-top: 0;
-                background: white;
-            }
-
-            .page-header {
-                background: white;
-                color: black;
-                padding: 1rem 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .policy-card {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-
-            a {
-                text-decoration: none;
-                color: black;
-            }
+            body { background: white; color: black; }
+            .glass-panel { box-shadow: none; border: 1px solid #ddd; backdrop-filter: none; background: white; }
+            .section-content p, .section-content li, .section-title, .section-subtitle, .info-box p { color: black !important; }
+            .info-box { background: #f8f9fa; border: 1px solid #ddd; }
+            a { text-decoration: none; color: black; }
+            .page-header { padding: 1rem 0; color: black; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
+
+    <div class="liquid-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container px-4">
             <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-users me-2"></i>Yapei Community
+                <i class="fa-solid fa-people-group me-2"></i>Yapei Community
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                    data-bs-target="#navbarContent" aria-controls="navbarContent" 
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" style="border-color: rgba(255,255,255,0.1);">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fa-solid fa-home me-1"></i>Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="privacy.html">
-                            <i class="fa-solid fa-shield-halved me-1"></i>Privacy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="terms.html">
-                            <i class="fa-solid fa-file-contract me-1"></i>Terms
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="disclaimer.html">
-                            <i class="fa-solid fa-triangle-exclamation me-1"></i>Disclaimer
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            <i class="fa-solid fa-envelope me-1"></i>Contact
-                        </a>
-                    </li>
-                    <span id="navbar-user-links" class="d-flex"></span>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="privacy.html"><i class="fa-solid fa-shield-halved me-1"></i>Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="terms.html"><i class="fa-solid fa-file-contract me-1"></i>Terms</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="disclaimer.html"><i class="fa-solid fa-triangle-exclamation me-1"></i>Disclaimer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
+                    <span id="navbar-user-links" class="d-flex gap-1 ms-lg-2"></span>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
+    <section class="page-header animate__animated animate__fadeInDown">
         <div class="container">
-            <h1>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+            <h1 class="display-5 fw-bold mb-3">
+                <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-gold);"></i>
                 Legal Disclaimer
             </h1>
-            <p>Important information about your use of our platform, community content, and legal limitations.</p>
-            <div class="last-updated">
+            <p class="text-dim mb-4 mx-auto" style="max-width: 600px;">Important information about your use of our platform, community content, and legal limitations.</p>
+            <div class="badge-glass">
                 <i class="fa-regular fa-calendar me-2"></i>Last Updated: February 20, 2026
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Device Information Bar -->
-            <div class="device-info-bar" id="deviceInfoBar">
+            
+            <div class="consent-banner animate__animated animate__fadeIn" id="consentBanner">
+                <p class="mb-0 text-light"><i class="fa-solid fa-shield-halved me-2" style="color: var(--accent-blue);"></i> By continuing to use this site, you acknowledge that we've detected your device information and location for security purposes.</p>
+                <button class="btn btn-glass btn-sm" onclick="document.getElementById('consentBanner').style.display='none'">I Understand</button>
+            </div>
+
+            <div class="glass-panel-inner device-info-bar animate__animated animate__fadeInUp" id="deviceInfoBar">
                 <div class="device-info-item">
                     <i class="fa-solid fa-display"></i>
                     <div>
-                        <span class="device-info-label">Device:</span>
-                        <span class="device-info-value" id="deviceType">Detecting...</span>
+                        <div class="device-info-label small">Device</div>
+                        <div class="device-info-value" id="deviceType">Detecting...</div>
                     </div>
                 </div>
                 <div class="device-info-item">
                     <i class="fa-solid fa-wifi"></i>
                     <div>
-                        <span class="device-info-label">IP Address:</span>
-                        <span class="device-info-value" id="ipAddress">Detecting...</span>
+                        <div class="device-info-label small">IP Address</div>
+                        <div class="device-info-value" id="ipAddress">Detecting...</div>
                     </div>
                 </div>
                 <div class="device-info-item">
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
-                        <span class="device-info-label">Location:</span>
-                        <span class="device-info-value" id="location">Detecting...</span>
+                        <div class="device-info-label small">Location</div>
+                        <div class="device-info-value" id="location">Detecting...</div>
                     </div>
                 </div>
                 <div class="device-info-item">
-                    <i class="fa-solid fa-globe"></i>
+                    <i class="fa-brands fa-chrome"></i>
                     <div>
-                        <span class="device-info-label">Browser:</span>
-                        <span class="device-info-value" id="browser">Detecting...</span>
+                        <div class="device-info-label small">Browser</div>
+                        <div class="device-info-value" id="browser">Detecting...</div>
                     </div>
                 </div>
                 <div class="device-info-item">
-                    <i class="fa-solid fa-clock"></i>
+                    <i class="fa-regular fa-clock"></i>
                     <div>
-                        <span class="device-info-label">Local Time:</span>
-                        <span class="device-info-value" id="localTime">Detecting...</span>
+                        <div class="device-info-label small">Local Time</div>
+                        <div class="device-info-value" id="localTime">Detecting...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Consent Banner -->
-            <div class="consent-banner" id="consentBanner">
-                <p><i class="fa-solid fa-shield-halved me-2"></i> By continuing to use this site, you acknowledge that we've detected your device information and location for security purposes.</p>
-                <button class="btn" onclick="document.getElementById('consentBanner').style.display='none'">I Understand</button>
-            </div>
-
-            <!-- Policy Container -->
             <div class="policy-container">
-                <!-- Table of Contents -->
-                <aside class="toc-wrapper">
+                <aside class="glass-panel toc-wrapper animate__animated animate__fadeInLeft">
                     <div class="toc-title">
-                        <i class="fa-solid fa-list-ul"></i>
+                        <i class="fa-solid fa-list-ul" style="color: var(--accent-blue);"></i>
                         Quick Navigation
                     </div>
                     <ul class="toc-grid">
-                        <li class="toc-item"><a href="#introduction"><i class="fa-regular fa-circle-right"></i>1. Introduction</a></li>
-                        <li class="toc-item"><a href="#general-information"><i class="fa-regular fa-circle-right"></i>2. General Information</a></li>
-                        <li class="toc-item"><a href="#no-professional-advice"><i class="fa-regular fa-circle-right"></i>3. No Professional Advice</a></li>
-                        <li class="toc-item"><a href="#user-content"><i class="fa-regular fa-circle-right"></i>4. User-Generated Content</a></li>
-                        <li class="toc-item"><a href="#external-links"><i class="fa-regular fa-circle-right"></i>5. External Links</a></li>
-                        <li class="toc-item"><a href="#accuracy"><i class="fa-regular fa-circle-right"></i>6. Accuracy of Information</a></li>
-                        <li class="toc-item"><a href="#availability"><i class="fa-regular fa-circle-right"></i>7. Availability</a></li>
-                        <li class="toc-item"><a href="#liability"><i class="fa-regular fa-circle-right"></i>8. Limitation of Liability</a></li>
-                        <li class="toc-item"><a href="#indemnification"><i class="fa-regular fa-circle-right"></i>9. Indemnification</a></li>
-                        <li class="toc-item"><a href="#testimonials"><i class="fa-regular fa-circle-right"></i>10. Testimonials</a></li>
-                        <li class="toc-item"><a href="#affiliate"><i class="fa-regular fa-circle-right"></i>11. Affiliate Disclosure</a></li>
-                        <li class="toc-item"><a href="#events"><i class="fa-regular fa-circle-right"></i>12. Events Disclaimer</a></li>
-                        <li class="toc-item"><a href="#jurisdiction"><i class="fa-regular fa-circle-right"></i>13. Jurisdiction</a></li>
-                        <li class="toc-item"><a href="#changes"><i class="fa-regular fa-circle-right"></i>14. Changes</a></li>
-                        <li class="toc-item"><a href="#contact"><i class="fa-regular fa-circle-right"></i>15. Contact Us</a></li>
-                        <li class="toc-item"><a href="#data-collection"><i class="fa-regular fa-circle-right"></i>16. Data Collection</a></li>
+                        <li class="toc-item"><a href="#introduction"><i class="fa-solid fa-arrow-right-long"></i>1. Introduction</a></li>
+                        <li class="toc-item"><a href="#general-information"><i class="fa-solid fa-arrow-right-long"></i>2. General Information</a></li>
+                        <li class="toc-item"><a href="#no-professional-advice"><i class="fa-solid fa-arrow-right-long"></i>3. No Professional Advice</a></li>
+                        <li class="toc-item"><a href="#user-content"><i class="fa-solid fa-arrow-right-long"></i>4. User Content</a></li>
+                        <li class="toc-item"><a href="#external-links"><i class="fa-solid fa-arrow-right-long"></i>5. External Links</a></li>
+                        <li class="toc-item"><a href="#accuracy"><i class="fa-solid fa-arrow-right-long"></i>6. Accuracy</a></li>
+                        <li class="toc-item"><a href="#availability"><i class="fa-solid fa-arrow-right-long"></i>7. Availability</a></li>
+                        <li class="toc-item"><a href="#liability"><i class="fa-solid fa-arrow-right-long"></i>8. Liability</a></li>
+                        <li class="toc-item"><a href="#indemnification"><i class="fa-solid fa-arrow-right-long"></i>9. Indemnification</a></li>
+                        <li class="toc-item"><a href="#testimonials"><i class="fa-solid fa-arrow-right-long"></i>10. Testimonials</a></li>
+                        <li class="toc-item"><a href="#affiliate"><i class="fa-solid fa-arrow-right-long"></i>11. Affiliates</a></li>
+                        <li class="toc-item"><a href="#events"><i class="fa-solid fa-arrow-right-long"></i>12. Events</a></li>
+                        <li class="toc-item"><a href="#jurisdiction"><i class="fa-solid fa-arrow-right-long"></i>13. Jurisdiction</a></li>
+                        <li class="toc-item"><a href="#contact"><i class="fa-solid fa-arrow-right-long"></i>14. Contact</a></li>
                     </ul>
                 </aside>
 
-                <!-- Disclaimer Content -->
-                <div class="policy-card">
-                    <!-- 1. Introduction -->
+                <div class="glass-panel policy-card animate__animated animate__fadeInRight">
+                    
                     <section id="introduction" class="policy-section">
                         <div class="section-header">
                             <div class="section-icon warning">
@@ -1021,17 +691,16 @@
                             
                             <div class="info-box warning">
                                 <h5><i class="fa-solid fa-gavel"></i> Legal Notice</h5>
-                                <p class="mb-0">This Disclaimer is a legally binding agreement. Please read it carefully before using our services. If you have any questions, contact us before proceeding.</p>
+                                <p>This Disclaimer is a legally binding agreement. Please read it carefully before using our services. If you have any questions, contact us before proceeding.</p>
                             </div>
 
                             <div class="info-box info">
                                 <h5><i class="fa-regular fa-lightbulb"></i> Quick Summary</h5>
-                                <p class="mb-0">This page explains that information on our platform is for general purposes only, we are not responsible for user-generated content, and we disclaim liability for damages arising from your use of the site.</p>
+                                <p>This page explains that information on our platform is for general purposes only, we are not responsible for user-generated content, and we disclaim liability for damages arising from your use of the site.</p>
                             </div>
                         </div>
                     </section>
 
-                    <!-- 2. General Information -->
                     <section id="general-information" class="policy-section">
                         <div class="section-header">
                             <div class="section-icon">
@@ -1049,20 +718,19 @@
 
                             <div class="disclaimer-grid">
                                 <div class="disclaimer-card">
-                                    <i class="fa-regular fa-circle-check"></i>
-                                    <h4>What We Do</h4>
+                                    <i class="fa-regular fa-circle-check" style="color: var(--accent-emerald);"></i>
+                                    <h4 class="text-light">What We Do</h4>
                                     <p>Provide a platform for community connection, information sharing, and social interaction among Yapei residents.</p>
                                 </div>
                                 <div class="disclaimer-card">
-                                    <i class="fa-regular fa-circle-xmark"></i>
-                                    <h4>What We Don't Do</h4>
+                                    <i class="fa-regular fa-circle-xmark" style="color: var(--accent-rose);"></i>
+                                    <h4 class="text-light">What We Don't Do</h4>
                                     <p>Provide professional advice, verify all user content, or guarantee accuracy of community-shared information.</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- 3. No Professional Advice -->
                     <section id="no-professional-advice" class="policy-section">
                         <div class="section-header">
                             <div class="section-icon warning">
@@ -1076,23 +744,22 @@
                         <div class="section-content">
                             <p>The content on our website does not constitute professional advice of any kind, including but not limited to legal, financial, medical, or technical advice. You should consult with qualified professionals for advice specific to your situation.</p>
 
-                            <h4>3.1 Specific Disclaimers</h4>
                             <div class="examples-grid">
                                 <div class="example-item">
                                     <i class="fa-solid fa-scale-balanced"></i>
-                                    <span><strong>Legal:</strong> Not legal advice. Consult an attorney.</span>
+                                    <span class="text-light"><strong>Legal:</strong> Not legal advice. Consult an attorney.</span>
                                 </div>
                                 <div class="example-item">
-                                    <i class="fa-solid fa-stethoscope"></i>
-                                    <span><strong>Medical:</strong> Not medical advice. See a doctor.</span>
+                                    <i class="fa-solid fa-stethoscope" style="color: var(--accent-emerald);"></i>
+                                    <span class="text-light"><strong>Medical:</strong> Not medical advice. See a doctor.</span>
                                 </div>
                                 <div class="example-item">
-                                    <i class="fa-solid fa-coins"></i>
-                                    <span><strong>Financial:</strong> Not financial advice. Talk to an advisor.</span>
+                                    <i class="fa-solid fa-coins" style="color: var(--accent-gold);"></i>
+                                    <span class="text-light"><strong>Financial:</strong> Not financial advice. Talk to an advisor.</span>
                                 </div>
                                 <div class="example-item">
-                                    <i class="fa-solid fa-gear"></i>
-                                    <span><strong>Technical:</strong> Not technical advice. Consult an expert.</span>
+                                    <i class="fa-solid fa-gear" style="color: var(--text-dim);"></i>
+                                    <span class="text-light"><strong>Technical:</strong> Not technical advice. Consult an expert.</span>
                                 </div>
                             </div>
 
@@ -1103,7 +770,6 @@
                         </div>
                     </section>
 
-                    <!-- 4. User-Generated Content -->
                     <section id="user-content" class="policy-section">
                         <div class="section-header">
                             <div class="section-icon">
@@ -1117,18 +783,14 @@
                         <div class="section-content">
                             <p>Our platform allows users to post content, including comments, blog posts, event listings, and other materials. We do not endorse, support, represent, or guarantee the truthfulness, accuracy, or reliability of any user-generated content.</p>
 
-                            <h4>4.1 Third-Party Content</h4>
+                            <h4>Third-Party Content</h4>
                             <p>User-generated content represents the views and opinions of the individual users and does not necessarily reflect our views. We are not responsible for any user-generated content, including:</p>
                             <ul>
-                                <li>Comments and discussions in community forums</li>
-                                <li>Event listings created by community members</li>
-                                <li>Blog posts and articles submitted by users</li>
-                                <li>Messages exchanged between users</li>
-                                <li>Recommendations or referrals shared by members</li>
+                                <li><span class="text-light">Comments and discussions</span> in community forums</li>
+                                <li><span class="text-light">Event listings</span> created by community members</li>
+                                <li><span class="text-light">Blog posts</span> and articles submitted by users</li>
+                                <li><span class="text-light">Messages</span> exchanged between users</li>
                             </ul>
-
-                            <h4>4.2 Content Moderation</h4>
-                            <p>While we may moderate content to enforce our community guidelines, we do not review all user content and cannot guarantee its accuracy or appropriateness. If you encounter content that violates our policies, please report it to us.</p>
 
                             <div class="info-box warning">
                                 <h5><i class="fa-regular fa-eye"></i> Your Responsibility</h5>
@@ -1137,96 +799,9 @@
                         </div>
                     </section>
 
-                    <!-- 5. External Links -->
-                    <section id="external-links" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-link"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">5. External Links Disclaimer</h2>
-                                <div class="section-subtitle">Third-party websites</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>Our website may contain links to external websites that are not provided or maintained by us. We do not control, endorse, or guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
-
-                            <h4>5.1 Types of External Links</h4>
-                            <ul>
-                                <li><strong>Community Recommendations:</strong> Links shared by users to external resources</li>
-                                <li><strong>Partner Organizations:</strong> Links to organizations we collaborate with</li>
-                                <li><strong>Social Media:</strong> Links to our social media profiles</li>
-                                <li><strong>Resource References:</strong> Links to helpful external resources</li>
-                                <li><strong>Advertisement Links:</strong> Any sponsored or affiliate links (clearly marked)</li>
-                            </ul>
-
-                            <h4>5.2 No Responsibility</h4>
-                            <p>We are not responsible for:</p>
-                            <ul>
-                                <li>The content, accuracy, or opinions expressed on external sites</li>
-                                <li>The privacy practices of external sites</li>
-                                <li>Any damages or losses caused by your use of external sites</li>
-                                <li>The availability or functionality of external links</li>
-                            </ul>
-
-                            <p>When you click on a link to an external website, you will be subject to that website's terms and policies. We encourage you to review the privacy policy and terms of any site you visit.</p>
-                        </div>
-                    </section>
-
-                    <!-- 6. Accuracy of Information -->
-                    <section id="accuracy" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-check-double"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">6. Accuracy of Information</h2>
-                                <div class="section-subtitle">No guarantees</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>While we strive for accuracy, we do not warrant that:</p>
-                            <ul>
-                                <li>The information on this website is complete, accurate, or current</li>
-                                <li>The website will remain available or be updated regularly</li>
-                                <li>Any errors will be corrected</li>
-                                <li>Content reflects the most recent developments</li>
-                            </ul>
-
-                            <p>Information may be changed or updated without notice. We may make improvements and/or changes to the website at any time without notice.</p>
-
-                            <div class="info-box warning">
-                                <h5><i class="fa-regular fa-clock"></i> Time Sensitivity</h5>
-                                <p>Information, particularly about events, community news, or local services, may become outdated quickly. Always verify current information through official sources.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 7. Availability -->
-                    <section id="availability" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-clock"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">7. Availability and Access</h2>
-                                <div class="section-subtitle">Service interruptions</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>We do not guarantee that our website, or any content on it, will always be available or be uninterrupted. Access to our website is permitted on a temporary basis. We may suspend, withdraw, discontinue, or change all or any part of our website without notice. We will not be liable to you if for any reason our website is unavailable at any time or for any period.</p>
-
-                            <p>We may restrict access to some parts of our website, or the entire website, to users who have registered with us.</p>
-
-                            <h4>7.1 Geographic Restrictions</h4>
-                            <p>We provide this website for use by people primarily located in Ghana. We do not represent that content available on or through our website is appropriate for use or available in other locations.</p>
-                        </div>
-                    </section>
-
-                    <!-- 8. Limitation of Liability -->
                     <section id="liability" class="policy-section">
                         <div class="section-header">
-                            <div class="section-icon warning">
+                            <div class="section-icon danger">
                                 <i class="fa-solid fa-scale-balanced"></i>
                             </div>
                             <div>
@@ -1239,292 +814,68 @@
 
                             <div class="info-box danger">
                                 <h5><i class="fa-solid fa-exclamation-triangle"></i> No Liability For:</h5>
-                                <ul class="mb-0">
+                                <ul class="mb-0 text-light">
                                     <li>Loss of profits, sales, business, or revenue</li>
-                                    <li>Business interruption</li>
+                                    <li>Business interruption or data loss</li>
                                     <li>Loss of anticipated savings</li>
-                                    <li>Loss of business opportunity, goodwill, or reputation</li>
                                     <li>Any indirect or consequential loss or damage</li>
                                 </ul>
                             </div>
-
-                            <p>Nothing in this disclaimer excludes or limits our liability for death or personal injury arising from our negligence, or our fraud or fraudulent misrepresentation, or any other liability that cannot be excluded or limited by Ghanaian law.</p>
                         </div>
                     </section>
 
-                    <!-- 9. Indemnification -->
-                    <section id="indemnification" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-shield"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">9. Indemnification</h2>
-                                <div class="section-subtitle">Your agreement to protect us</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>You agree to indemnify, defend, and hold harmless Yapei Community Online, its affiliates, officers, directors, employees, agents, and third-party service providers from and against all claims, losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from or arising out of:</p>
-                            <ul>
-                                <li>Your use of the website</li>
-                                <li>Any violation of this Disclaimer</li>
-                                <li>Any activity related to your account (including negligent or wrongful conduct)</li>
-                                <li>Your violation of any third-party rights</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <!-- 10. Testimonials -->
-                    <section id="testimonials" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">10. Testimonials Disclaimer</h2>
-                                <div class="section-subtitle">User experiences</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>Our website may contain testimonials by users of our products and/or services. These testimonials reflect the real-life experiences and opinions of such users. However, these experiences are personal to those particular users, and may not necessarily be representative of all users of our products and/or services. We do not claim, and you should not assume, that all users will have the same experiences.</p>
-
-                            <p>YOUR INDIVIDUAL RESULTS MAY VARY.</p>
-
-                            <p>The testimonials on our website are submitted in various forms such as text, audio and/or video, and are reviewed by us before being posted. They appear on our website verbatim as given by the users, except for the correction of grammar or typing errors. Some testimonials may have been shortened for the sake of brevity.</p>
-                        </div>
-                    </section>
-
-                    <!-- 11. Affiliate Disclosure -->
-                    <section id="affiliate" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-handshake"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">11. Affiliate Disclosure</h2>
-                                <div class="section-subtitle">Compensated links</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>Our website may contain links to affiliate websites, and we may receive an affiliate commission for any purchases made by you on the affiliate website using such links. Our affiliates include but are not limited to:</p>
-                            <ul>
-                                <li>Local business directories</li>
-                                <li>Service providers in the Yapei area</li>
-                                <li>Recommended products and services</li>
-                            </ul>
-
-                            <p>We are a participant in various affiliate programs designed to provide a means for us to earn fees by linking to affiliated sites. We will always disclose when a link is an affiliate link.</p>
-
-                            <div class="info-box info">
-                                <h5><i class="fa-regular fa-hand-point-right"></i> Transparency</h5>
-                                <p>We believe in transparency and want you to know when we may earn a commission. However, this does not impact our reviews and recommendations, which remain unbiased.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 12. Events Disclaimer -->
-                    <section id="events" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-calendar"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">12. Events Disclaimer</h2>
-                                <div class="section-subtitle">Community gatherings</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>Our platform may list events organized by community members or third parties. We are not responsible for:</p>
-                            <ul>
-                                <li>Event cancellations, changes, or postponements</li>
-                                <li>The quality or safety of events</li>
-                                <li>Any injuries, damages, or losses occurring at events</li>
-                                <li>Third-party event organizers</li>
-                            </ul>
-
-                            <p>When attending events listed on our platform, you do so at your own risk. We encourage you to verify event details directly with the organizer before attending.</p>
-
-                            <div class="info-box warning">
-                                <h5><i class="fa-solid fa-triangle-exclamation"></i> COVID-19 Notice</h5>
-                                <p>Attending events may pose risks related to infectious diseases. Please follow all local health guidelines and take appropriate precautions.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 13. Jurisdiction -->
-                    <section id="jurisdiction" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-gavel"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">13. Governing Law and Jurisdiction</h2>
-                                <div class="section-subtitle">Legal framework</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>This Disclaimer and your use of our website shall be governed by and construed in accordance with the laws of Ghana. Any dispute arising out of or in connection with this Disclaimer shall be subject to the exclusive jurisdiction of the courts of Ghana.</p>
-
-                            <p>If you access our website from outside Ghana, you are responsible for compliance with local laws.</p>
-                        </div>
-                    </section>
-
-                    <!-- 14. Changes -->
-                    <section id="changes" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-pen"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">14. Changes to this Disclaimer</h2>
-                                <div class="section-subtitle">Updates and modifications</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>We may update this Disclaimer from time to time. We will notify you of any changes by posting the new Disclaimer on this page with an updated effective date. You are advised to review this Disclaimer periodically for any changes.</p>
-
-                            <p>Your continued use of our website after any modifications indicates your acceptance of the updated Disclaimer.</p>
-
-                            <div class="info-box info">
-                                <h5><i class="fa-regular fa-bell"></i> Stay Informed</h5>
-                                <p>We recommend checking this page regularly to stay informed about any changes. Significant changes will be highlighted or announced separately.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- 15. Contact Us -->
-                    <section id="contact" class="policy-section">
+                    <section id="contact" class="policy-section border-0 mb-0 pb-0">
                         <div class="section-header">
                             <div class="section-icon">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
-                                <h2 class="section-title">15. Contact Us</h2>
-                                <div class="section-subtitle">Get in touch</div>
+                                <h2 class="section-title">14. Contact Us</h2>
+                                <div class="section-subtitle">Get in touch regarding legal inquiries</div>
                             </div>
                         </div>
                         <div class="section-content">
                             <p>If you have any questions about this Disclaimer, please contact us:</p>
 
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded">
-                                        <i class="fa-solid fa-envelope fa-2x text-primary"></i>
-                                        <div>
-                                            <strong>Email:</strong><br>
-                                            <a href="mailto:legal@yapeicommunity.org">legal@yapeicommunity.org</a>
-                                        </div>
-                                    </div>
+                            <div class="examples-grid mt-4">
+                                <div class="example-item">
+                                    <i class="fa-solid fa-envelope" style="color: var(--accent-blue);"></i>
+                                    <span class="text-light"><strong>Email:</strong><br>legal@yapeicommunity.org</span>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded">
-                                        <i class="fa-solid fa-phone fa-2x text-primary"></i>
-                                        <div>
-                                            <strong>Phone:</strong><br>
-                                            <a href="tel:233591907870">+233 59 190 7870</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded">
-                                        <i class="fa-solid fa-location-dot fa-2x text-primary"></i>
-                                        <div>
-                                            <strong>Address:</strong><br>
-                                            Yapei Community Center<br>
-                                            Yapei, Savanna Region<br>
-                                            Ghana
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="d-flex align-items-center gap-3 p-3 bg-light rounded">
-                                        <i class="fa-solid fa-clock fa-2x text-primary"></i>
-                                        <div>
-                                            <strong>Response Time:</strong><br>
-                                            We typically respond within 2-3 business days
-                                        </div>
-                                    </div>
+                                <div class="example-item">
+                                    <i class="fa-solid fa-phone" style="color: var(--accent-emerald);"></i>
+                                    <span class="text-light"><strong>Phone:</strong><br>+233 59 190 7870</span>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- 16. Data Collection -->
-                    <section id="data-collection" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-database"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">16. Data Collection and Usage</h2>
-                                <div class="section-subtitle">Information we collect</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>As displayed in the device information bar above, we automatically collect certain information when you visit our website, including:</p>
-                            
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li><strong>Device Type:</strong> Information about the device you're using</li>
-                                        <li><strong>IP Address:</strong> Your internet protocol address</li>
-                                        <li><strong>Location:</strong> Approximate geographic location</li>
-                                        <li><strong>Browser:</strong> Browser type and version</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <ul>
-                                        <li><strong>Operating System:</strong> Your device's OS</li>
-                                        <li><strong>Screen Resolution:</strong> Display capabilities</li>
-                                        <li><strong>Language:</strong> Browser language settings</li>
-                                        <li><strong>Time Zone:</strong> Your local time zone</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <p>This information is collected for:</p>
-                            <ul>
-                                <li>Security monitoring and fraud prevention</li>
-                                <li>Analytics to improve our services</li>
-                                <li>Personalizing your experience</li>
-                                <li>Troubleshooting technical issues</li>
-                                <li>Compliance with legal obligations</li>
-                            </ul>
-
-                            <div class="info-box warning">
-                                <h5><i class="fa-solid fa-shield-halved"></i> Your Privacy</h5>
-                                <p>We do not sell your personal information. For more details on how we handle your data, please see our <a href="privacy.html">Privacy Policy</a>.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Acknowledgment Button -->
-                    <div class="text-center mt-5">
-                        <button class="btn btn-primary btn-lg px-5 py-3 btn-acknowledge" onclick="this.innerHTML='<i class=\'fa-solid fa-check-circle me-2\'></i>Acknowledged'; this.disabled=true;">
+                    <div class="text-center mt-5 pt-4 border-top" style="border-color: var(--glass-border) !important;">
+                        <button class="btn-glass-primary btn-lg px-5 py-3" onclick="this.innerHTML='<i class=\'fa-solid fa-check-circle me-2\'></i>Acknowledged'; this.style.opacity='0.7'; this.style.pointerEvents='none';">
                             <i class="fa-solid fa-check-circle me-2"></i>I Acknowledge and Accept
                         </button>
-                        <p class="text-muted mt-3 small">By clicking this button, you acknowledge that you have read and understood this disclaimer.</p>
+                        <p class="text-dim mt-3 small">By clicking this button, you acknowledge that you have read and understood this disclaimer.</p>
                     </div>
+
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <footer class="modern-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Yapei Community Online</h5>
-                    <p class="small">Connecting the Yapei community through shared resources, events, and information.</p>
+            <div class="row g-4">
+                <div class="col-md-6 text-center text-md-start">
+                    <h5 class="text-light mb-3"><i class="fa-regular fa-compass me-2 text-info"></i>Yapei Community</h5>
+                    <p class="text-dim small mx-auto mx-md-0" style="max-width: 300px;">Connecting residents, sharing stories, building together.</p>
                 </div>
-                <div class="col-md-6">
-                    <h5>Quick Links</h5>
+                <div class="col-md-6 text-center text-md-end">
+                    <h5 class="text-light mb-3">Legal Links</h5>
                     <div>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms of Service</a>
-                        <a href="disclaimer.html">Disclaimer</a>
-                        <a href="contact.html">Contact Us</a>
+                        <a href="privacy.html" class="d-inline-block mb-2">Privacy Policy</a>
+                        <a href="terms.html" class="d-inline-block mb-2">Terms of Service</a>
+                        <a href="disclaimer.html" class="d-inline-block mb-2">Disclaimer</a>
+                        <a href="contact.html" class="d-inline-block mb-2">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -1534,26 +885,32 @@
         </div>
     </footer>
 
-    <!-- Print Button -->
-    <div class="print-btn" onclick="window.print()" title="Print this page">
+    <button class="print-btn" onclick="window.print()" aria-label="Print this page">
         <i class="fa-solid fa-print"></i>
-    </div>
+    </button>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Device Information Detection
         document.addEventListener('DOMContentLoaded', function() {
+            // Navbar dynamic links
+            function updateNavbarLinks() {
+                const userLinks = document.getElementById('navbar-user-links');
+                if (!userLinks) return;
+                const isLoggedIn = !!localStorage.getItem('access');
+                userLinks.innerHTML = isLoggedIn 
+                    ? `<li class="nav-item"><a class="nav-link btn-glass px-3 py-1 mt-1 ms-2" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
+                       <li class="nav-item"><a class="nav-link px-3 py-1 mt-1 ms-2" style="color: #fca5a5 !important;" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
+                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
+                       <li class="nav-item"><a class="nav-link btn-glass-primary px-3 py-1 mt-1 ms-2" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
+            }
+            updateNavbarLinks();
+
             // Device Type Detection
             function getDeviceType() {
                 const ua = navigator.userAgent;
-                if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-                    return 'Tablet';
-                }
-                if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
-                    return 'Mobile';
-                }
+                if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return 'Tablet';
+                if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) return 'Mobile';
                 return 'Desktop';
             }
 
@@ -1576,7 +933,6 @@
                 document.getElementById('localTime').textContent = now.toLocaleTimeString() + ', ' + now.toLocaleDateString();
             }
 
-            // Set device info
             document.getElementById('deviceType').textContent = getDeviceType();
             document.getElementById('browser').textContent = getBrowser();
             updateLocalTime();
@@ -1587,25 +943,18 @@
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('ipAddress').textContent = data.ip;
-                    document.getElementById('location').textContent = `${data.city}, ${data.country_name}`;
-                    
-                    // Add flag emoji based on country code
                     const locationElement = document.getElementById('location');
                     const flag = getFlagEmoji(data.country_code);
                     locationElement.innerHTML = `${flag} ${data.city}, ${data.country_name}`;
                 })
                 .catch(error => {
-                    console.log('Error fetching location:', error);
                     document.getElementById('ipAddress').textContent = 'Unable to detect';
                     document.getElementById('location').textContent = 'Unknown location';
                 });
 
-            // Helper function to get flag emoji
             function getFlagEmoji(countryCode) {
-                const codePoints = countryCode
-                    .toUpperCase()
-                    .split('')
-                    .map(char => 127397 + char.charCodeAt());
+                if(!countryCode) return '🌍';
+                const codePoints = countryCode.toUpperCase().split('').map(char => 127397 + char.charCodeAt());
                 return String.fromCodePoint(...codePoints);
             }
 
@@ -1616,26 +965,24 @@
                     const targetId = this.getAttribute('href').substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
-                        const headerOffset = 80;
+                        const headerOffset = 90;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                     }
                 });
             });
 
-            // Consent banner auto-hide after 10 seconds (if not clicked)
+            // Consent banner auto-hide
             setTimeout(() => {
                 const banner = document.getElementById('consentBanner');
-                if (banner.style.display !== 'none') {
-                    banner.style.display = 'none';
+                if (banner && banner.style.display !== 'none') {
+                    banner.classList.add('animate__fadeOut');
+                    setTimeout(() => banner.style.display = 'none', 1000);
                 }
             }, 10000);
         });
     </script>
 </body>
-  </html>
+</html>
