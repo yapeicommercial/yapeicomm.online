@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Frequently Asked Questions - Yapei Community Online</title>
+    <meta name="description" content="Frequently Asked Questions about Yapei Community Online. Find answers to common questions about membership, events, posting, and community guidelines.">
+    <meta name="keywords" content="FAQ, frequently asked questions, Yapei community, help, support">
+    <meta name="author" content="Yapei Community Online">
+    <meta property="og:title" content="FAQ | Yapei Community Online">
+    <meta property="og:description" content="Get answers to frequently asked questions about Yapei Community Online platform.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yapeionline.jo3.org/faq.html">
+    <title>FAQ | Yapei Community Online - Frequently Asked Questions</title>
     
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="canonical" href="https://www.yapeionline.jo3.org/faq.html">
     
     <style>
         :root {
@@ -104,6 +112,11 @@
             transition: var(--transition);
         }
 
+        .glass-panel:hover {
+            background: var(--glass-bg-hover);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+        }
+
         .glass-panel-inner {
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -143,1108 +156,506 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Buttons */
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-light);
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-glass-primary {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(59, 130, 246, 0.4));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #fff;
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .btn-glass-primary:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(59, 130, 246, 0.6));
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-            color: #fff;
-        }
-
         /* Page Header */
         .page-header {
-            padding: 4rem 1rem 2rem;
+            padding: 6rem 1rem 3rem;
             text-align: center;
             position: relative;
             z-index: 10;
         }
 
-        .search-container {
+        .page-header h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
             max-width: 600px;
-            margin: 2.5rem auto 0;
-            position: relative;
-            z-index: 1;
+            margin: 0 auto;
         }
 
-        .search-box {
+        /* Search Bar */
+        .search-wrapper {
+            max-width: 600px;
+            margin: 2rem auto 0;
             position: relative;
+        }
+
+        .search-input {
             width: 100%;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
         }
 
-        .search-box i {
+        .search-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-dim);
+        }
+
+        .search-wrapper i {
             position: absolute;
-            left: 1.5rem;
+            left: 1.3rem;
             top: 50%;
             transform: translateY(-50%);
             color: var(--accent-blue);
-            font-size: 1.2rem;
-            z-index: 2;
+            pointer-events: none;
         }
 
-        .search-box input {
-            width: 100%;
-            padding: 1.2rem 1.5rem 1.2rem 3.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--glass-border);
-            border-radius: 3rem;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-            transition: var(--transition);
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.2), 0 0 15px rgba(56, 189, 248, 0.2);
-        }
-
-        .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        /* Category Tabs */
-        .category-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-            padding: 1rem;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .category-tab {
-            padding: 0.7rem 1.4rem;
-            border: 1px solid transparent;
-            border-radius: 2rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            cursor: pointer;
-            background: transparent;
-            color: var(--text-dim);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .category-tab i { font-size: 1rem; }
-
-        .category-tab:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-light);
-        }
-
-        .category-tab.active {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(59, 130, 246, 0.2));
-            border-color: rgba(56, 189, 248, 0.4);
-            color: var(--text-light);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .category-tabs { border-radius: 1.5rem; padding: 0.75rem; }
-            .category-tab { flex: 1 1 calc(33% - 0.5rem); justify-content: center; padding: 0.5rem; font-size: 0.85rem; }
-        }
-        @media (max-width: 576px) {
-            .category-tab { flex: 1 1 calc(50% - 0.5rem); }
-        }
-
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 1rem 0 4rem;
+        /* FAQ Container */
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto;
             position: relative;
             z-index: 10;
         }
 
-        .faq-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.25rem;
-        }
-        @media (min-width: 992px) {
-            .faq-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        }
-
-        /* FAQ Category */
-        .faq-category { margin-bottom: 3.5rem; }
-
-        .category-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .category-icon {
-            width: 45px;
-            height: 45px;
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-blue);
-            font-size: 1.3rem;
-            box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.1);
-        }
-
-        .category-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .category-count {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-left: 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.2rem 0.6rem;
-            border-radius: 1rem;
-        }
-
-        /* FAQ Item */
+        /* FAQ Items */
         .faq-item {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            transition: var(--transition);
+            glass-panel;
+            margin-bottom: 1.5rem;
             overflow: hidden;
-            height: fit-content;
-        }
-
-        .faq-item:hover {
-            background: rgba(15, 23, 42, 0.8);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
         .faq-question {
             padding: 1.5rem;
             cursor: pointer;
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            transition: var(--transition);
-        }
-
-        .faq-icon {
-            width: 30px;
-            height: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            transition: var(--transition);
-            margin-top: 0.1rem;
+            gap: 1rem;
+            user-select: none;
         }
 
-        .faq-item.active {
-            background: rgba(0, 0, 0, 0.4);
-            border-color: rgba(56, 189, 248, 0.3);
-        }
-
-        .faq-item.active .faq-icon {
-            background: rgba(56, 189, 248, 0.2);
-            color: var(--accent-blue);
-            transform: rotate(90deg);
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .faq-question h3 {
-            flex: 1;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             margin: 0;
             color: var(--text-light);
-            line-height: 1.5;
         }
 
-        .faq-toggle {
-            color: var(--text-dim);
-            font-size: 1rem;
-            transition: var(--transition);
-            flex-shrink: 0;
-            margin-top: 0.3rem;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
+        .faq-icon {
+            min-width: 24px;
+            width: 24px;
+            height: 24px;
             color: var(--accent-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.open {
+            transform: rotate(180deg);
         }
 
         .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-dim);
+            padding: 0 1.5rem;
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
             padding: 0 1.5rem 1.5rem;
-            display: none;
-            animation: fadeIn 0.3s ease;
         }
 
-        .faq-item.active .faq-answer { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .faq-answer p, .faq-answer li {
-            color: var(--text-dim);
+        .faq-answer p {
+            margin: 0.5rem 0;
             line-height: 1.7;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        
-        .faq-answer ul, .faq-answer ol { padding-left: 1.5rem; margin-bottom: 1rem; }
-        .faq-answer p:last-child, .faq-answer ul:last-child { margin-bottom: 0; }
-
-        .faq-answer a { color: var(--accent-blue); text-decoration: none; transition: var(--transition); }
-        .faq-answer a:hover { color: var(--text-light); text-decoration: underline; }
-
-        .faq-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .faq-tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.75rem;
-            color: var(--text-dim);
+        .faq-answer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: var(--transition);
         }
 
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px dashed rgba(255,255,255,0.1);
-            border-radius: 1.5rem;
-            backdrop-filter: blur(10px);
+        .faq-answer a:hover {
+            color: var(--accent-emerald);
+            text-decoration: underline;
         }
 
-        .no-results i { font-size: 3rem; color: var(--text-dim); margin-bottom: 1rem; }
-        .no-results h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-light); }
-        .no-results p { color: var(--text-dim); margin-bottom: 2rem; }
-
-        /* Featured Questions */
-        .featured-section {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--glass-border);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            margin-top: 4rem;
-            backdrop-filter: blur(15px);
+        /* Category Section */
+        .faq-category {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .featured-title {
+        .faq-category h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1rem;
         }
 
-        .featured-title i { font-size: 1.5rem; color: var(--accent-gold); }
-        .featured-title h2 { font-size: 1.5rem; font-weight: 600; margin: 0; color: var(--text-light); }
-
-        .featured-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        .faq-category h2 i {
+            color: var(--accent-blue);
         }
-
-        .featured-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .featured-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--accent-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .featured-card i.fa-circle-question { color: var(--accent-blue); font-size: 1.5rem; margin-bottom: 1rem; display: block; }
-        .featured-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-light); }
-        .featured-card p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1rem; line-height: 1.5; }
-        .featured-card .read-more { font-size: 0.85rem; color: var(--accent-emerald); font-weight: 500; transition: var(--transition); }
-        .featured-card:hover .read-more { color: var(--text-light); }
-
-        /* Still Need Help */
-        .help-section {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(59, 130, 246, 0.2));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-radius: 1.5rem;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .help-section h3 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-light); }
-        .help-section p { font-size: 1.1rem; color: var(--text-dim); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        .help-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
         /* Footer */
-        .modern-footer {
-            background: rgba(15, 23, 42, 0.7);
+        .footer-glass {
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 0 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: auto;
         }
-        
-        .modern-footer a { color: var(--text-dim); text-decoration: none; transition: var(--transition); margin: 0 0.5rem; }
-        .modern-footer a:hover { color: var(--accent-gold); }
 
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        .footer-link {
+            color: var(--text-dim) !important;
             transition: var(--transition);
-            z-index: 999;
-            font-size: 1.2rem;
-            opacity: 0;
-            visibility: hidden;
         }
-        .back-to-top.visible { opacity: 1; visibility: visible; }
-        .back-to-top:hover { background: rgba(255, 255, 255, 0.25); transform: scale(1.1) translateY(-5px); }
 
-        /* Loading Skeleton */
-        .skeleton-item {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(5px);
+        .footer-link:hover {
+            color: var(--accent-blue) !important;
+            transform: translateX(4px);
         }
-        .skeleton-line {
-            height: 1rem;
-            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            border-radius: 0.25rem;
-            margin-bottom: 0.75rem;
-        }
-        .skeleton-line.title { height: 1.5rem; width: 60%; margin-bottom: 1rem; }
-        .skeleton-line.short { width: 40%; }
-        @keyframes loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-        /* Info boxes */
-        .info-box.warning {
-            background: rgba(251, 191, 36, 0.1);
-            border-left: 4px solid var(--accent-gold);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            color: var(--text-dim);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .faq-question {
+                padding: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 0 1rem 1rem;
+            }
+
+            .page-header {
+                padding: 4rem 1rem 2rem;
+            }
         }
     </style>
 </head>
 <body>
-
+    <!-- Liquid Background -->
     <div class="liquid-bg">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container px-4">
-            <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-people-group me-2"></i>Yapei Community
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand" href="index.html" title="Yapei Community Online Home">
+                <i class="fa-solid fa-water-waves"></i> Yapei Community
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" style="border-color: rgba(255,255,255,0.1);">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle me-1"></i>About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-book me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="events.html"><i class="fa-solid fa-calendar me-1"></i>Events</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="faq.html"><i class="fa-solid fa-question-circle me-1"></i>FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-1 ms-lg-2"></span>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html" title="Home"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html" title="Blog"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html" title="Events"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" title="About Us"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" title="Contact"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="faq.html" title="FAQ" aria-current="page"><i class="fa-solid fa-question me-1"></i>FAQ</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="page-header animate__animated animate__fadeInDown">
+    <!-- Page Header -->
+    <div class="page-header">
         <div class="container">
-            <h1 class="display-5 fw-bold mb-3">
-                <i class="fa-solid fa-circle-question" style="color: var(--accent-blue);"></i>
-                Frequently Asked Questions
-            </h1>
-            <p class="text-dim mb-0 mx-auto" style="max-width: 600px;">Find quick answers to common questions about navigating and participating in the Yapei Community Online.</p>
+            <h1><i class="fa-solid fa-circle-question me-2"></i>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Yapei Community Online</p>
             
-            <div class="search-container">
-                <div class="search-box">
-                    <i class="fa-solid fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Search for answers..." aria-label="Search FAQs">
-                </div>
+            <!-- Search Bar -->
+            <div class="search-wrapper mt-4">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" class="search-input" id="faqSearch" placeholder="Search FAQs..." aria-label="Search FAQs">
             </div>
         </div>
-    </section>
+    </div>
 
-    <main id="main-content" class="main-content">
+    <!-- FAQ Content -->
+    <div class="container faq-container">
+        <!-- Getting Started Section -->
+        <section class="faq-category">
+            <h2><i class="fa-solid fa-rocket"></i>Getting Started</h2>
+            
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>What is Yapei Community Online?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yapei Community Online is a digital platform designed for residents of Yapei and surrounding areas to connect, share information, discuss community matters, and work together for local development. It serves as a hub for news, events, stories, and collaborative initiatives.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How do I create an account?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Click the "Register" button in the navigation menu and fill in your details including your name, email address, and password. After registration, verify your email address through the confirmation link sent to your inbox, and you'll be ready to participate.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>Is there a membership fee?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No, Yapei Community Online is completely free. There are no membership fees or hidden charges. Our mission is to connect all members of the Yapei community, and we believe access should be available to everyone.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Guidelines Section -->
+        <section class="faq-category">
+            <h2><i class="fa-solid fa-heart-handshake"></i>Community Guidelines</h2>
+            
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>What content can I share?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can share community news, stories, events, photos, and ideas. We encourage posts that are respectful, relevant to Yapei, and beneficial to the community. Avoid sharing inappropriate, offensive, or misleading content.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How do I report inappropriate content?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>If you encounter inappropriate, offensive, or harmful content, please use the report button on the post or contact our administration team at <a href="mailto:info@yapeionline.jo3.org">info@yapeionline.jo3.org</a>. We take community safety seriously and will investigate all reports.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>What are the community rules?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our community rules include: be respectful to others, avoid spam, no discrimination or harassment, no commercial advertising without permission, keep discussions relevant to Yapei, and follow all applicable laws. Violations may result in content removal or account suspension.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features & Functionality Section -->
+        <section class="faq-category">
+            <h2><i class="fa-solid fa-star"></i>Features & Functionality</h2>
+            
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How do I post a blog article?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Once logged in, navigate to the Blog section and click "Write Story" or "Create Post". Fill in your title, content, add images if desired, and publish. Your post will be visible to the community and can help share valuable information or stories.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>Can I organize and promote events?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Registered users can create and promote events through the Events section. Include event details like date, time, location, and description. This helps community members stay informed and participate in local activities.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How can I follow other community members?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Visit a member's profile and click the "Follow" button to stay updated with their posts and activities. This helps you stay connected with people sharing similar interests or perspectives in the community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy & Security Section -->
+        <section class="faq-category">
+            <h2><i class="fa-solid fa-shield-halved"></i>Privacy & Security</h2>
+            
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>Is my personal data safe?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we prioritize data security and privacy. We use industry-standard encryption and follow strict data protection protocols. Please review our <a href="privacy.html">Privacy Policy</a> to understand how we collect, use, and protect your personal information.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>Can I control who sees my posts?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, when creating a post, you can set privacy controls to determine who can see it - public to all community members, followers only, or private. This gives you control over your content visibility.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How do I delete my account?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can request account deletion through your account settings or by contacting <a href="mailto:info@yapeionline.jo3.org">info@yapeionline.jo3.org</a>. Please note that some data may be retained for legal or operational purposes as outlined in our <a href="privacy.html">Privacy Policy</a>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support & Contact Section -->
+        <section class="faq-category">
+            <h2><i class="fa-solid fa-headset"></i>Support & Contact</h2>
+            
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How can I get in touch with the team?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can reach us through our <a href="contact.html">Contact Page</a> or email us at <a href="mailto:info@yapeionline.jo3.org">info@yapeionline.jo3.org</a>. We typically respond within 24-48 hours. For urgent matters, please specify in your message.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>Can I volunteer for the community?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely! We welcome volunteers who want to contribute to community development. Visit our <a href="contact.html">Contact Page</a> to learn about volunteering opportunities or email us with your interests and skills.</p>
+                </div>
+            </div>
+
+            <div class="faq-item glass-panel">
+                <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+                    <h3>How can I suggest new features?</h3>
+                    <i class="fa-solid fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We value your feedback! Send your suggestions and feature requests to <a href="mailto:info@yapeionline.jo3.org">info@yapeionline.jo3.org</a> with the subject "Feature Suggestion". Your ideas help us improve the platform for everyone.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-glass py-5 mt-5">
         <div class="container">
-            <div class="category-tabs animate__animated animate__fadeInUp" id="categoryTabs">
-                <button class="category-tab active" data-category="all">
-                    <i class="fa-solid fa-border-all"></i><span>All</span>
-                </button>
-                <button class="category-tab" data-category="account">
-                    <i class="fa-solid fa-user"></i><span>Account</span>
-                </button>
-                <button class="category-tab" data-category="community">
-                    <i class="fa-solid fa-users"></i><span>Community</span>
-                </button>
-                <button class="category-tab" data-category="events">
-                    <i class="fa-solid fa-calendar"></i><span>Events</span>
-                </button>
-                <button class="category-tab" data-category="blog">
-                    <i class="fa-solid fa-blog"></i><span>Blog</span>
-                </button>
-                <button class="category-tab" data-category="technical">
-                    <i class="fa-solid fa-gear"></i><span>Technical</span>
-                </button>
-                <button class="category-tab" data-category="privacy">
-                    <i class="fa-solid fa-shield"></i><span>Privacy</span>
-                </button>
-                <button class="category-tab" data-category="payment">
-                    <i class="fa-solid fa-credit-card"></i><span>Payments</span>
-                </button>
-            </div>
-
-            <div id="loadingSkeletons" style="display: none;">
-                <div class="faq-category">
-                    <div class="faq-grid">
-                        <div class="skeleton-item">
-                            <div class="skeleton-line title"></div>
-                            <div class="skeleton-line"></div>
-                            <div class="skeleton-line short"></div>
-                        </div>
-                        <div class="skeleton-item">
-                            <div class="skeleton-line title"></div>
-                            <div class="skeleton-line"></div>
-                            <div class="skeleton-line short"></div>
-                        </div>
-                    </div>
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-water-waves me-2"></i>About</h5>
+                    <p class="text-dim">Yapei Community Online connects residents and promotes local development through digital engagement and collaboration.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-link me-2"></i>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Home</a></li>
+                        <li><a href="blog.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Blog</a></li>
+                        <li><a href="events.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Events</a></li>
+                        <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-gavel me-2"></i>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="privacy.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Privacy Policy</a></li>
+                        <li><a href="terms.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Terms of Service</a></li>
+                        <li><a href="cookies.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Cookies Policy</a></li>
+                        <li><a href="disclaimer.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Disclaimer</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <div id="faqContent" class="animate__animated animate__fadeIn">
-                <div class="faq-category" data-category="account">
-                    <div class="category-header">
-                        <div class="category-icon"><i class="fa-solid fa-user"></i></div>
-                        <h2 class="category-title">Account Management <span class="category-count" id="accountCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="accountFaqs"></div>
-                </div>
-
-                <div class="faq-category" data-category="community">
-                    <div class="category-header">
-                        <div class="category-icon" style="color: var(--accent-emerald); border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.1);"><i class="fa-solid fa-users"></i></div>
-                        <h2 class="category-title">Community & Interaction <span class="category-count" id="communityCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="communityFaqs"></div>
-                </div>
-
-                <div class="faq-category" data-category="events">
-                    <div class="category-header">
-                        <div class="category-icon" style="color: var(--accent-gold); border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.1);"><i class="fa-solid fa-calendar"></i></div>
-                        <h2 class="category-title">Events & Activities <span class="category-count" id="eventsCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="eventsFaqs"></div>
-                </div>
-
-                <div class="faq-category" data-category="blog">
-                    <div class="category-header">
-                        <div class="category-icon" style="color: var(--accent-rose); border-color: rgba(251, 113, 133, 0.3); background: rgba(251, 113, 133, 0.1);"><i class="fa-solid fa-blog"></i></div>
-                        <h2 class="category-title">Blog & Content <span class="category-count" id="blogCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="blogFaqs"></div>
-                </div>
-
-                <div class="faq-category" data-category="technical">
-                    <div class="category-header">
-                        <div class="category-icon"><i class="fa-solid fa-gear"></i></div>
-                        <h2 class="category-title">Technical Support <span class="category-count" id="technicalCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="technicalFaqs"></div>
-                </div>
-
-                <div class="faq-category" data-category="privacy">
-                    <div class="category-header">
-                        <div class="category-icon" style="color: var(--accent-emerald); border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.1);"><i class="fa-solid fa-shield"></i></div>
-                        <h2 class="category-title">Privacy & Security <span class="category-count" id="privacyCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="privacyFaqs"></div>
-                </div>
-
-                <div class="faq-category" data-category="payment">
-                    <div class="category-header">
-                        <div class="category-icon" style="color: var(--accent-gold); border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.1);"><i class="fa-solid fa-credit-card"></i></div>
-                        <h2 class="category-title">Payments & Donations <span class="category-count" id="paymentCount"></span></h2>
-                    </div>
-                    <div class="faq-grid" id="paymentFaqs"></div>
-                </div>
-            </div>
-
-            <div id="noResults" class="no-results" style="display: none;">
-                <i class="fa-regular fa-face-frown"></i>
-                <h3>No FAQs Found</h3>
-                <p>We couldn't find any FAQs matching your search. Try different keywords or browse by category.</p>
-                <button class="btn-glass-primary" onclick="clearSearch()">
-                    <i class="fa-solid fa-rotate me-2"></i>Clear Search
-                </button>
-            </div>
-
-            <section class="featured-section animate__animated animate__fadeInUp">
-                <div class="featured-title">
-                    <i class="fa-solid fa-star"></i>
-                    <h2>Featured Questions</h2>
-                </div>
-                <div class="featured-grid">
-                    <div class="featured-card" onclick="scrollToFaq('account', 0)">
-                        <i class="fa-solid fa-circle-question"></i>
-                        <h4>How do I create an account?</h4>
-                        <p>Learn how to join our community in minutes.</p>
-                        <span class="read-more">Read answer &rarr;</span>
-                    </div>
-                    <div class="featured-card" onclick="scrollToFaq('events', 0)">
-                        <i class="fa-solid fa-circle-question" style="color: var(--accent-gold);"></i>
-                        <h4>How do I create an event?</h4>
-                        <p>Organize community gatherings easily.</p>
-                        <span class="read-more">Read answer &rarr;</span>
-                    </div>
-                    <div class="featured-card" onclick="scrollToFaq('technical', 0)">
-                        <i class="fa-solid fa-circle-question" style="color: var(--accent-rose);"></i>
-                        <h4>Website not loading properly</h4>
-                        <p>Troubleshoot common connection issues.</p>
-                        <span class="read-more">Read answer &rarr;</span>
-                    </div>
-                    <div class="featured-card" onclick="scrollToFaq('privacy', 0)">
-                        <i class="fa-solid fa-circle-question" style="color: var(--accent-emerald);"></i>
-                        <h4>Is my data secure?</h4>
-                        <p>Learn about our security measures.</p>
-                        <span class="read-more">Read answer &rarr;</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="help-section animate__animated animate__fadeInUp">
-                <h3>Still Have Questions?</h3>
-                <p>Can't find what you're looking for? Our support team is here to help you navigate the community.</p>
-                <div class="help-buttons">
-                    <a href="contact.html" class="btn-glass-primary">
-                        <i class="fa-regular fa-envelope me-2"></i>Contact Support
-                    </a>
-                    <button class="btn-glass" onclick="startLiveChat()">
-                        <i class="fa-regular fa-message me-2"></i>Live Chat
-                    </button>
-                </div>
-                <p class="mt-4 mb-0 small text-dim">
-                    <i class="fa-regular fa-clock me-1"></i>Average response time: 2-4 hours
-                </p>
-            </section>
-        </div>
-    </main>
-
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="Back to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <footer class="modern-footer">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-2 text-light">&copy; 2026 Yapei Community Online. All rights reserved.</p>
-                    <p class="small text-dim">Building stronger communities together in Ghana.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="privacy.html" class="mx-2">Privacy</a>
-                    <a href="terms.html" class="mx-2">Terms</a>
-                    <a href="faq.html" class="mx-2">FAQ</a>
-                    <a href="sitemap.html" class="mx-2">Sitemap</a>
-                </div>
+            <hr class="border-secondary">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved. | Domain: <a href="https://yapeionline.jo3.org" class="footer-link">www.yapeionline.jo3.org</a></p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
-        const faqData = {
-            account: [
-                {
-                    question: "How do I create an account?",
-                    answer: `<p>Creating an account is easy and free! Follow these steps:</p>
-                            <ol>
-                                <li>Click the "Register" button in the top navigation menu</li>
-                                <li>Fill in your username, email address, and a strong password</li>
-                                <li>Add optional profile information like your bio and avatar</li>
-                                <li>Agree to our Terms of Service and Privacy Policy</li>
-                                <li>Click "Create Account" to complete registration</li>
-                            </ol>
-                            <p>You'll receive a confirmation email to verify your account. Once verified, you can start participating in the community!</p>`,
-                    tags: ["account", "registration", "signup", "join"],
-                    featured: true
-                },
-                {
-                    question: "I forgot my password. How do I reset it?",
-                    answer: `<p>No worries! Resetting your password is simple:</p>
-                            <ol>
-                                <li>Go to the <a href="login.html">Login page</a></li>
-                                <li>Click the "Forgot Password?" link below the login form</li>
-                                <li>Enter your email address associated with your account</li>
-                                <li>Check your email for a password reset link</li>
-                                <li>Click the link and create a new password</li>
-                            </ol>
-                            <div class="info-box warning small mt-3">
-                                <i class="fa-solid fa-triangle-exclamation me-2"></i>
-                                If you don't see the email, check your spam folder or contact support.
-                            </div>`,
-                    tags: ["password", "reset", "forgot", "login", "access"]
-                },
-                {
-                    question: "How do I update my profile information?",
-                    answer: `<p>You can update your profile anytime:</p>
-                            <ol>
-                                <li>Log in to your account</li>
-                                <li>Click on your profile picture in the navigation bar</li>
-                                <li>Select "Profile Settings" from the dropdown</li>
-                                <li>Edit your information (username, bio, avatar, title, etc.)</li>
-                                <li>Click "Save Changes" to update your profile</li>
-                            </ol>`,
-                    tags: ["profile", "settings", "update", "edit", "avatar", "bio"]
-                },
-                {
-                    question: "Can I delete my account?",
-                    answer: `<p>Yes, you can delete your account at any time. However, please note:</p>
-                            <ul>
-                                <li>Account deletion is permanent and cannot be undone</li>
-                                <li>All your data will be removed from our active databases</li>
-                                <li>Content you've posted publicly may remain visible (but will be anonymized)</li>
-                            </ul>
-                            <p>To delete your account, go to Profile Settings, scroll to the bottom, and click "Delete Account".</p>`,
-                    tags: ["delete", "remove", "close", "terminate", "cancel"]
-                }
-            ],
-            community: [
-                {
-                    question: "How do I connect with other community members?",
-                    answer: `<p>Yapei Community offers several ways to connect:</p>
-                            <ul>
-                                <li><strong>Blog Comments:</strong> Share your thoughts on community blog posts</li>
-                                <li><strong>Community Events:</strong> Attend virtual or in-person gatherings</li>
-                                <li><strong>Direct Messages:</strong> Send private messages to other members</li>
-                            </ul>
-                            <p>Remember to follow our Community Guidelines!</p>`,
-                    tags: ["connect", "interact", "message", "community", "members"]
-                },
-                {
-                    question: "Are there any rules for posting content?",
-                    answer: `<p>Yes, we have community guidelines to ensure a safe and welcoming environment:</p>
-                            <ul>
-                                <li>Be respectful and kind to others</li>
-                                <li>Keep content appropriate for all ages</li>
-                                <li>No spam or self-promotion without permission</li>
-                                <li>No hate speech, harassment, or discrimination</li>
-                            </ul>`,
-                    tags: ["rules", "guidelines", "posting", "content", "moderation"]
-                }
-            ],
-            events: [
-                {
-                    question: "How do I create an event?",
-                    answer: `<p>Creating an event is easy! Here's how:</p>
-                            <ol>
-                                <li>Log in to your account</li>
-                                <li>Go to the <a href="events.html">Events page</a></li>
-                                <li>Click the "Create Event" button</li>
-                                <li>Fill in event details (title, date, location, etc.)</li>
-                                <li>Click "Publish Event"</li>
-                            </ol>`,
-                    tags: ["event", "create", "organize", "host", "schedule"],
-                    featured: true
-                },
-                {
-                    question: "How do I RSVP to an event?",
-                    answer: `<p>To attend an event:</p>
-                            <ol>
-                                <li>Find the event on our <a href="events.html">Events page</a></li>
-                                <li>Click on the event to view details</li>
-                                <li>Click the "RSVP" or "Attend" button</li>
-                            </ol>`,
-                    tags: ["rsvp", "attend", "event", "register", "join"]
-                }
-            ],
-            blog: [
-                {
-                    question: "How do I write a blog post?",
-                    answer: `<p>To contribute to our community blog:</p>
-                            <ol>
-                                <li>Log in to your account</li>
-                                <li>Navigate to the <a href="blog.html">Blog section</a></li>
-                                <li>Click "Write a Post" or "Submit Article"</li>
-                                <li>Use our editor to create your post and submit for review.</li>
-                            </ol>`,
-                    tags: ["blog", "write", "post", "article", "contribute"]
-                },
-                {
-                    question: "Can I comment on blog posts?",
-                    answer: `<p>Absolutely! Comments are a great way to engage. Just log in, scroll to the bottom of any post, and type your comment. All comments are moderated for spam and appropriateness.</p>`,
-                    tags: ["comment", "blog", "discuss", "feedback"]
-                }
-            ],
-            technical: [
-                {
-                    question: "The website isn't loading properly. What should I do?",
-                    answer: `<p>Try these troubleshooting steps:</p>
-                            <ol>
-                                <li><strong>Refresh the page:</strong> Press F5 or Ctrl+R</li>
-                                <li><strong>Clear browser cache:</strong> Clear cookies and cached files</li>
-                                <li><strong>Try a different browser:</strong> Chrome, Firefox, or Edge</li>
-                                <li><strong>Check your internet connection</strong></li>
-                            </ol>
-                            <p>If problems persist, please <a href="contact.html">contact support</a>.</p>`,
-                    tags: ["loading", "error", "crash", "not working", "technical"],
-                    featured: true
-                },
-                {
-                    question: "Is there a mobile app?",
-                    answer: `<p>Currently, we don't have a dedicated mobile app, but our website is fully responsive and works great on mobile devices! You can add our site to your home screen for quick access.</p>`,
-                    tags: ["app", "mobile", "android", "ios", "phone"]
-                }
-            ],
-            privacy: [
-                {
-                    question: "How do you protect my personal information?",
-                    answer: `<p>We take data protection seriously and implement multiple security measures:</p>
-                            <ul>
-                                <li><strong>Encryption:</strong> All data transmitted using SSL/TLS (HTTPS)</li>
-                                <li><strong>Secure Storage:</strong> Passwords are hashed and salted</li>
-                                <li><strong>Access Controls:</strong> Strict internal access policies</li>
-                            </ul>
-                            <p>For full details, please read our <a href="privacy.html">Privacy Policy</a>.</p>`,
-                    tags: ["security", "protect", "data", "privacy", "safe"],
-                    featured: true
-                },
-                {
-                    question: "Do you share my data with third parties?",
-                    answer: `<p>We do NOT sell your personal information. We only share data in limited circumstances, such as with essential service providers (like hosting) who are contractually bound to protect your data.</p>`,
-                    tags: ["share", "third party", "sell", "data sharing"]
-                }
-            ],
-            payment: [
-                {
-                    question: "How do I make a donation?",
-                    answer: `<p>Support our community through donations by going to the "Support Us" page, choosing an amount, and selecting your preferred payment method (Mobile Money, Card, or Bank Transfer).</p>`,
-                    tags: ["donate", "payment", "support", "contribute"]
-                },
-                {
-                    question: "What payment methods do you accept?",
-                    answer: `<p>We accept multiple payment methods for your convenience:</p>
-                            <ul>
-                                <li><strong>Mobile Money:</strong> MTN, Vodafone, AirtelTigo</li>
-                                <li><strong>Credit/Debit Cards:</strong> Visa, Mastercard</li>
-                                <li><strong>Bank Transfers:</strong> Local bank accounts</li>
-                            </ul>`,
-                    tags: ["payment", "methods", "mobile money", "card", "bank"]
-                }
-            ]
-        };
-
-        const searchInput = document.getElementById('searchInput');
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const faqContent = document.getElementById('faqContent');
-        const noResults = document.getElementById('noResults');
-        const loadingSkeletons = document.getElementById('loadingSkeletons');
-        const backToTop = document.getElementById('backToTop');
-
-        let activeCategory = 'all';
-        let searchTerm = '';
-
-        document.addEventListener('DOMContentLoaded', function() {
-            renderFAQs();
-            updateNavbarLinks();
-            setupEventListeners();
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            const isActive = answer.classList.contains('active');
             
-            if (window.location.hash) {
-                setTimeout(() => {
-                    const targetId = window.location.hash.substring(1);
-                    const targetFaq = document.querySelector(`[data-faq-id="${targetId}"]`);
-                    if (targetFaq) {
-                        targetFaq.classList.add('active');
-                        targetFaq.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                }, 500);
-            }
-        });
-
-        function renderFAQs() {
-            loadingSkeletons.style.display = 'block';
-            faqContent.style.opacity = '0';
-
-            setTimeout(() => {
-                loadingSkeletons.style.display = 'none';
-                faqContent.style.opacity = '1';
-
-                for (const [category, faqs] of Object.entries(faqData)) {
-                    const container = document.getElementById(`${category}Faqs`);
-                    if (container) {
-                        container.innerHTML = faqs.map((faq, index) => createFaqItem(faq, category, index)).join('');
-                    }
-                    const countElement = document.getElementById(`${category}Count`);
-                    if (countElement) countElement.textContent = `(${faqs.length})`;
-                }
-
-                document.querySelectorAll('.faq-question').forEach(question => {
-                    question.addEventListener('click', function() {
-                        const faqItem = this.closest('.faq-item');
-                        faqItem.classList.toggle('active');
-                        const faqId = faqItem.dataset.faqId;
-                        if (faqItem.classList.contains('active')) {
-                            history.pushState(null, null, `#${faqId}`);
-                        } else {
-                            history.pushState(null, null, window.location.pathname + window.location.search);
-                        }
-                    });
-                });
-            }, 600);
-        }
-
-        function createFaqItem(faq, category, index) {
-            const faqId = `${category}-${index}`;
-            return `
-                <div class="faq-item" data-faq-id="${faqId}" data-category="${category}">
-                    <div class="faq-question">
-                        <div class="faq-icon"><i class="fa-solid fa-plus"></i></div>
-                        <h3>${faq.question}</h3>
-                        <i class="fa-solid fa-chevron-down faq-toggle"></i>
-                    </div>
-                    <div class="faq-answer">
-                        ${faq.answer}
-                        <div class="faq-tags">
-                            ${faq.tags.map(tag => `<span class="faq-tag">#${tag}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function setupEventListeners() {
-            searchInput.addEventListener('input', function(e) {
-                searchTerm = e.target.value.toLowerCase();
-                filterFAQs();
-            });
-
-            categoryTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    categoryTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    activeCategory = this.dataset.category;
-                    filterFAQs();
-                });
-            });
-
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTop.classList.add('visible');
-                } else {
-                    backToTop.classList.remove('visible');
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer.active').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.querySelector('.faq-icon').classList.remove('open');
+                    item.previousElementSibling.setAttribute('aria-expanded', 'false');
                 }
             });
+            
+            // Toggle current
+            answer.classList.toggle('active');
+            icon.classList.toggle('open');
+            element.setAttribute('aria-expanded', !isActive);
         }
 
-        function filterFAQs() {
+        // Search functionality
+        document.getElementById('faqSearch').addEventListener('keyup', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
             const faqItems = document.querySelectorAll('.faq-item');
-            let visibleCount = 0;
-
+            
             faqItems.forEach(item => {
-                const question = item.querySelector('h3').textContent.toLowerCase();
+                const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
                 const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-                const category = item.dataset.category;
-                const tags = Array.from(item.querySelectorAll('.faq-tag')).map(t => t.textContent.toLowerCase());
                 
-                const matchesSearch = searchTerm === '' || question.includes(searchTerm) || answer.includes(searchTerm) || tags.some(tag => tag.includes(searchTerm));
-                const matchesCategory = activeCategory === 'all' || category === activeCategory;
-                
-                if (matchesSearch && matchesCategory) {
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
                     item.style.display = 'block';
-                    visibleCount++;
                 } else {
                     item.style.display = 'none';
                 }
             });
+        });
 
-            document.querySelectorAll('.faq-category').forEach(section => {
-                const category = section.dataset.category;
-                const visibleInSection = Array.from(section.querySelectorAll('.faq-item')).filter(item => item.style.display !== 'none').length;
-                
-                if (activeCategory === 'all' && visibleInSection === 0) {
-                    section.style.display = 'none';
-                } else if (activeCategory !== 'all' && category !== activeCategory) {
-                    section.style.display = 'none';
-                } else if (activeCategory !== 'all' && category === activeCategory && visibleCount === 0) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'block';
+        // Keyboard navigation
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFaq(this);
                 }
             });
-
-            if (visibleCount === 0) {
-                noResults.style.display = 'block';
-                faqContent.style.display = 'none';
-            } else {
-                noResults.style.display = 'none';
-                faqContent.style.display = 'block';
-            }
-        }
-
-        function clearSearch() {
-            searchInput.value = '';
-            searchTerm = '';
-            filterFAQs();
-        }
-
-        function scrollToFaq(category, index) {
-            const faqId = `${category}-${index}`;
-            
-            categoryTabs.forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.dataset.category === category || (category === 'all' && tab.dataset.category === 'all')) {
-                    tab.classList.add('active');
-                }
-            });
-            activeCategory = category;
-            filterFAQs(); // Ensure category is visible before scrolling
-
-            setTimeout(() => {
-                const targetFaq = document.querySelector(`[data-faq-id="${faqId}"]`);
-                if (targetFaq) {
-                    targetFaq.classList.add('active');
-                    const headerOffset = 100;
-                    const elementPosition = targetFaq.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    history.pushState(null, null, `#${faqId}`);
-                }
-            }, 100);
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function startLiveChat() {
-            alert('Live chat feature coming soon! Please use our contact form for now.');
-        }
-
-        function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
-            const isLoggedIn = !!localStorage.getItem('access');
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link btn-glass px-3 py-1 mt-1 ms-2" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link px-3 py-1 mt-1 ms-2" style="color: #fca5a5 !important;" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link btn-glass-primary px-3 py-1 mt-1 ms-2" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-        }
+        });
     </script>
 </body>
 </html>
