@@ -1,0 +1,99 @@
+{
+  "site": {
+    "title": "Yapei Community Online",
+    "description": "Connect with Yapei residents. Discover local events, community stories, and opportunities to get involved in Ghana's vibrant Yapei community.",
+    "url": "https://www.yapeionline.jo3.org",
+    "image": "https://www.yapeionline.jo3.org/assets/community1.jpg",
+    "keywords": ["Yapei", "Ghana", "community", "events", "local news", "online platform"],
+    "locale": "en_US",
+    "type": "website"
+  },
+  "pages": {
+    "index": {
+      "title": "Yapei Community Online | Connect & Share",
+      "description": "Join Yapei Community Online to connect with residents, discover events, read stories, and support community development.",
+      "keywords": ["Yapei community", "Ghana online platform", "local connection", "community events"],
+      "priority": "1.0"
+    },
+    "blog": {
+      "title": "Blog | Yapei Community Stories & News",
+      "description": "Read inspiring stories, local news, and articles from Yapei community members. Share your voice and connect with neighbors.",
+      "keywords": ["Yapei blog", "community stories", "local news Ghana", "Yapei newsletter"],
+      "priority": "0.9"
+    },
+    "events": {
+      "title": "Events Calendar | Yapei Community Activities",
+      "description": "Discover upcoming events in Yapei including durbar festivals, health screenings, cultural celebrations, and community gatherings.",
+      "keywords": ["Yapei events", "Ghana community events", "festival calendar", "local gatherings"],
+      "priority": "0.9"
+    },
+    "about": {
+      "title": "About Yapei Community Online | Our Mission",
+      "description": "Learn about Yapei Community Online platform, our mission to connect residents, and how we support community development.",
+      "keywords": ["about Yapei", "community mission", "platform information", "Yapei vision"],
+      "priority": "0.8"
+    },
+    "contact": {
+      "title": "Contact | Get Involved with Yapei Community",
+      "description": "Contact Yapei Community Online to volunteer, share ideas, partner with us, or provide feedback. We'd love to hear from you.",
+      "keywords": ["contact Yapei", "volunteer opportunities", "community involvement", "reach out"],
+      "priority": "0.8"
+    },
+    "post": {
+      "title": "Community Story | Yapei Online Platform",
+      "description": "Discover stories from Yapei community members sharing experiences, insights, and connections.",
+      "keywords": ["community story", "Yapei voice", "local perspective"],
+      "priority": "0.7"
+    },
+    "privacy": {
+      "title": "Privacy Policy | Yapei Community Online",
+      "description": "Privacy policy for Yapei Community Online. Learn how we protect your data and personal information.",
+      "keywords": ["privacy policy", "data protection", "terms"],
+      "priority": "0.5"
+    },
+    "terms": {
+      "title": "Terms of Service | Yapei Community Online",
+      "description": "Terms of service for Yapei Community Online platform. Please review our guidelines and policies.",
+      "keywords": ["terms of service", "platform rules", "user agreement"],
+      "priority": "0.5"
+    }
+  },
+  "structured_data": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Yapei Community Online",
+      "url": "https://www.yapeionline.jo3.org",
+      "logo": "https://www.yapeionline.jo3.org/assets/community1.jpg",
+      "description": "A centralized platform for Yapei residents to connect, share local intelligence, and support mutual development.",
+      "location": {
+        "@type": "Place",
+        "name": "Yapei",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Yapei",
+          "addressCountry": "GH"
+        }
+      },
+      "sameAs": [
+        "https://www.facebook.com/yapeicommunity",
+        "https://www.instagram.com/yapeicommunity",
+        "https://www.whatsapp.com/yapeicommunity"
+      ]
+    },
+    "website": {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Yapei Community Online",
+      "url": "https://www.yapeionline.jo3.org",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.yapeionline.jo3.org/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  }
+}
