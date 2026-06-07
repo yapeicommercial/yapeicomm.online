@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /logout.html
+Disallow: /profile.html
+
+# Sitemap
+Sitemap: https://www.yapeionline.jo3.org/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
