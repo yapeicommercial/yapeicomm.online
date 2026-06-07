@@ -1,19 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character Encoding and Viewport -->
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yapei Community · Home of Togetherness</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Join Yapei Community Online - Connect with residents, discover local events, read community stories, and get involved in Ghana's vibrant Yapei community. Platform for cultural celebration and mutual development.">
+    <meta name="keywords" content="Yapei, Ghana, community platform, local events, community news, cultural heritage, volunteer opportunities, Yapei online">
+    <meta name="author" content="Yapei Community">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph Meta Tags (Social Media Sharing) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yapeionline.jo3.org/">
+    <meta property="og:title" content="Yapei Community Online - Connect & Share">
+    <meta property="og:description" content="Connect with Yapei residents, discover events, share stories, and support community development. Your platform for local connection and cultural celebration.">
+    <meta property="og:image" content="https://www.yapeionline.jo3.org/assets/community1.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Yapei Community Online">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yapei Community Online - Connect & Share">
+    <meta name="twitter:description" content="Join Yapei Community Online to connect with residents, discover events, and support mutual development.">
+    <meta name="twitter:image" content="https://www.yapeionline.jo3.org/assets/community1.jpg">
+    <meta name="twitter:site" content="@yapeicommunity">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.yapeionline.jo3.org/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/favicon.ico">
+    
+    <!-- Title Tag for Search Engines -->
+    <title>Yapei Community Online | Connect, Share & Grow - Home of Togetherness</title>
+    
+    <!-- Preconnect to External Resources -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
+    <!-- DNS Prefetch for Performance -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Stylesheets with Loading Priority -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="screen">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Yapei Community Online",
+        "url": "https://www.yapeionline.jo3.org",
+        "logo": "https://www.yapeionline.jo3.org/assets/community1.jpg",
+        "description": "A centralized platform for Yapei residents to connect, share local intelligence, and support mutual development — rooted in tradition, reaching for tomorrow.",
+        "sameAs": [
+            "https://www.facebook.com/yapeicommunity",
+            "https://www.instagram.com/yapeicommunity",
+            "https://www.whatsapp.com/yapeicommunity"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Yapei",
+            "addressCountry": "GH"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Community Support",
+            "email": "info@yapeionline.jo3.org"
+        }
+    }
+    </script>
+    
+    <!-- WebSite Schema for Search Enhancement -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Yapei Community Online",
+        "url": "https://www.yapeionline.jo3.org",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.yapeionline.jo3.org/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- Inline Styles for Performance -->
     <style>
         :root {
             --primary-deep: #06325c;
@@ -37,7 +126,6 @@
             overflow-x: hidden;
         }
 
-        /* Glassmorphic Navigation */
         .navbar-glass {
             background: rgba(6, 50, 92, 0.85) !important;
             backdrop-filter: blur(20px);
@@ -63,7 +151,6 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Fluid Hero Section */
         .hero-glass {
             background: linear-gradient(135deg, rgba(254, 246, 233, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
             backdrop-filter: blur(10px);
@@ -91,7 +178,6 @@
             text-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
         }
 
-        /* Glass Controls */
         .btn-glass-primary {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
@@ -127,7 +213,6 @@
             box-shadow: 0 10px 20px -5px rgba(6, 50, 92, 0.3);
         }
 
-        /* Ultra-Premium Glass Cards */
         .glass-card {
             border: 1px solid var(--glass-border);
             border-radius: 28px;
@@ -186,7 +271,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Cinematic Blur Popups */
         .cinematic-blur-overlay {
             display: none;
             position: fixed;
@@ -221,7 +305,6 @@
             border: 3px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Modern Footer */
         .modern-footer {
             background: rgba(6, 50, 92, 0.95) !important;
             backdrop-filter: blur(10px);
@@ -271,21 +354,21 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top" role="navigation" aria-label="Main navigation">
         <div class="container-fluid px-md-4">
-            <a class="navbar-brand fw-bold fs-3" href="index.html">
-                <i class="fa-solid fa-water-waves"></i>Yapei Community
+            <a class="navbar-brand fw-bold fs-3" href="index.html" aria-label="Yapei Community home">
+                <i class="fa-solid fa-water-waves" aria-hidden="true"></i>Yapei Community
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center gap-1">
-                    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="events.html"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page"><i class="fa-solid fa-house-chimney me-1" aria-hidden="true"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-feather-pointed me-1" aria-hidden="true"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html"><i class="fa-solid fa-calendar-days me-1" aria-hidden="true"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-nodes me-1" aria-hidden="true"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope-open-text me-1" aria-hidden="true"></i>Contact</a></li>
                     <span id="navbar-user-links" class="d-flex gap-2 ms-lg-3 mt-2 mt-lg-0"></span>
                 </ul>
             </div>
@@ -295,19 +378,19 @@
     <section class="hero-glass text-center">
         <div class="container position-relative" style="z-index: 2;">
             <span class="badge bg-warning bg-opacity-25 text-dark border border-warning border-opacity-50 px-4 py-2 rounded-pill mb-4 fw-bold shadow-sm">
-                <i class="fa-regular fa-hand-peace me-2"></i>Elder's Greetings · Maaraba
+                <i class="fa-regular fa-hand-peace me-2" aria-hidden="true"></i>Elder's Greetings · Maaraba
             </span>
             <h1 class="display-3 hero-title mb-4 animate__animated animate__fadeInDown">
-                <i class="fa-solid fa-sun me-3 text-warning"></i>Welcome to Yapei Online
+                <i class="fa-solid fa-sun me-3 text-warning" aria-hidden="true"></i>Welcome to Yapei Online
             </h1>
             <p class="lead fs-4 mx-auto mb-5" style="max-width: 800px; color: #334155;">
-                <i class="fa-solid fa-quote-left me-2 text-primary opacity-50"></i>
+                <i class="fa-solid fa-quote-left me-2 text-primary opacity-50" aria-hidden="true"></i>
                 Connect, share, and grow with your community. Discover authentic local stories, structural updates, and collaborative opportunities.
-                <i class="fa-solid fa-quote-right ms-2 text-primary opacity-50"></i>
+                <i class="fa-solid fa-quote-right ms-2 text-primary opacity-50" aria-hidden="true"></i>
             </p>
             <div class="d-flex justify-content-center gap-3 flex-wrap animate__animated animate__fadeInUp animate__delay-1s">
-                <a href="blog.html" class="btn btn-glass-primary"><i class="fa-solid fa-book-open-reader me-2"></i>Explore the Blog</a>
-                <a href="#featured-cards" class="btn btn-glass-outline"><i class="fa-regular fa-compass me-2"></i>Discover Hubs</a>
+                <a href="blog.html" class="btn btn-glass-primary"><i class="fa-solid fa-book-open-reader me-2" aria-hidden="true"></i>Explore the Blog</a>
+                <a href="#featured-cards" class="btn btn-glass-outline"><i class="fa-regular fa-compass me-2" aria-hidden="true"></i>Discover Hubs</a>
             </div>
         </div>
     </section>
@@ -320,122 +403,122 @@
         
         <div class="row g-4 g-lg-5 justify-content-center">
             <div class="col-md-6 col-lg-4">
-                <div class="glass-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                <article class="glass-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
                     <div class="glass-card-img-container">
-                        <img src="assets/community1.jpg" class="glass-card-img" alt="Community events" onerror="this.src='https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80'">
+                        <img src="assets/community1.jpg" class="glass-card-img" alt="Upcoming community events in Yapei including festivals and gatherings" loading="lazy" width="300" height="240">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title"><i class="fa-solid fa-calendar-star"></i> Upcoming Events</h4>
+                        <h3 class="card-title"><i class="fa-solid fa-calendar-star" aria-hidden="true"></i> Upcoming Events</h3>
                         <p class="card-text">Join the weekly durbar, health screenings, and annual harvest festivals. Stay connected to our cultural roots.</p>
-                        <a href="events.html" class="btn btn-sm btn-glass-outline mt-auto w-100 py-2"><i class="fa-regular fa-eye me-2"></i>View Schedule</a>
+                        <a href="events.html" class="btn btn-sm btn-glass-outline mt-auto w-100 py-2"><i class="fa-regular fa-eye me-2" aria-hidden="true"></i>View Schedule</a>
                     </div>
-                </div>
+                </article>
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="glass-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <article class="glass-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
                     <div class="glass-card-img-container">
-                        <img src="assets/blogpage.jpg" class="glass-card-img" alt="Community stories" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80'">
+                        <img src="assets/blogpage.jpg" class="glass-card-img" alt="Community stories and personal narratives from Yapei residents" loading="lazy" width="300" height="240">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title"><i class="fa-solid fa-feather-pointed"></i> Shared Stories</h4>
+                        <h3 class="card-title"><i class="fa-solid fa-feather-pointed" aria-hidden="true"></i> Shared Stories</h3>
                         <p class="card-text">Read inspiring tales from community elders, dedicated farmers, and our ambitious youth. Your voice truly matters.</p>
-                        <a href="blog.html" class="btn btn-sm btn-glass-outline mt-auto w-100 py-2"><i class="fa-regular fa-newspaper me-2"></i>Read the Feed</a>
+                        <a href="blog.html" class="btn btn-sm btn-glass-outline mt-auto w-100 py-2"><i class="fa-regular fa-newspaper me-2" aria-hidden="true"></i>Read the Feed</a>
                     </div>
-                </div>
+                </article>
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="glass-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                <article class="glass-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
                     <div class="glass-card-img-container">
-                        <img src="assets/Yapei-contact.jpg" class="glass-card-img" alt="Get involved" onerror="this.src='https://images.unsplash.com/photo-1593113580332-ceb4b1a43a41?auto=format&fit=crop&w=600&q=80'">
+                        <img src="assets/Yapei-contact.jpg" class="glass-card-img" alt="Get involved and volunteer with Yapei community initiatives" loading="lazy" width="300" height="240">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title"><i class="fa-solid fa-handshake-angle"></i> Get Involved</h4>
+                        <h3 class="card-title"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i> Get Involved</h3>
                         <p class="card-text">Volunteer your time, share innovative ideas, or partner directly with our administration to uplift Yapei.</p>
-                        <a href="contact.html" class="btn btn-sm btn-glass-outline mt-auto w-100 py-2"><i class="fa-regular fa-hand-peace me-2"></i>Reach Out</a>
+                        <a href="contact.html" class="btn btn-sm btn-glass-outline mt-auto w-100 py-2"><i class="fa-regular fa-hand-peace me-2" aria-hidden="true"></i>Reach Out</a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <div id="loginRegisterOverlay" class="cinematic-blur-overlay"></div>
-    <div id="loginRegisterPopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:420px; max-width:92vw;">
+    <div id="loginRegisterPopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:420px; max-width:92vw;" role="dialog" aria-labelledby="loginRegisterTitle" aria-hidden="true">
         <div class="card popup-card-glass border-0 shadow-2xl animate__animated animate__zoomIn">
             <div class="card-body text-center p-4 p-md-5">
                 <div class="popup-icon-glass">
-                    <i class="fa-solid fa-user-shield fa-2x text-white"></i>
+                    <i class="fa-solid fa-user-shield fa-2x text-white" aria-hidden="true"></i>
                 </div>
-                <h3 class="fw-bold text-dark mb-2">Establish Identity</h3>
+                <h3 class="fw-bold text-dark mb-2" id="loginRegisterTitle">Establish Identity</h3>
                 <p class="text-secondary small mb-4 px-2">Join the authenticated Yapei framework to share narratives, access secure events, and connect.</p>
                 
                 <div class="d-flex flex-column gap-3 mt-4">
-                    <a href="login.html" class="btn btn-glass-primary py-2"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i>Authenticate</a>
-                    <a href="register.html" class="btn btn-glass-outline py-2"><i class="fa-solid fa-user-plus me-2"></i>Register Profile</a>
+                    <a href="login.html" class="btn btn-glass-primary py-2"><i class="fa-solid fa-arrow-right-to-bracket me-2" aria-hidden="true"></i>Authenticate</a>
+                    <a href="register.html" class="btn btn-glass-outline py-2"><i class="fa-solid fa-user-plus me-2" aria-hidden="true"></i>Register Profile</a>
                 </div>
                 
                 <button type="button" class="btn btn-link text-secondary text-decoration-none mt-3 fw-medium" id="closeLoginRegisterPopup">
-                    <i class="fa-regular fa-circle-xmark me-1"></i>Dismiss for now
+                    <i class="fa-regular fa-circle-xmark me-1" aria-hidden="true"></i>Dismiss for now
                 </button>
             </div>
         </div>
     </div>
 
     <div id="eventInviteOverlay" class="cinematic-blur-overlay"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1062; display:none; width:420px; max-width:92vw;">
+    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1062; display:none; width:420px; max-width:92vw;" role="dialog" aria-labelledby="eventInviteTitle" aria-hidden="true">
         <div class="card popup-card-glass border-0 shadow-2xl animate__animated animate__zoomIn">
             <div class="card-body text-center p-4 p-md-5">
                 <div class="popup-icon-glass" style="background: linear-gradient(135deg, #10b981 0%, #047857 100%);">
-                    <i class="fa-solid fa-calendar-check fa-2x text-white"></i>
+                    <i class="fa-solid fa-calendar-check fa-2x text-white" aria-hidden="true"></i>
                 </div>
                 <h3 class="fw-bold text-dark mb-2" id="eventInviteTitle">---</h3>
                 <p class="text-secondary small mb-4" id="eventInviteDesc">---</p>
                 
                 <div class="p-3 rounded-4 mb-4 text-start" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5)">
-                    <p class="mb-2 text-dark small fw-medium"><i class="fa-solid fa-map-location-dot text-success me-2"></i><span id="eventInviteLocation">---</span></p>
-                    <p class="mb-0 text-dark small fw-medium"><i class="fa-regular fa-clock text-success me-2"></i><span id="eventInviteDate">---</span></p>
+                    <p class="mb-2 text-dark small fw-medium"><i class="fa-solid fa-map-location-dot text-success me-2" aria-hidden="true"></i><span id="eventInviteLocation">---</span></p>
+                    <p class="mb-0 text-dark small fw-medium"><i class="fa-regular fa-clock text-success me-2" aria-hidden="true"></i><span id="eventInviteDate">---</span></p>
                 </div>
                 
                 <div class="d-flex justify-content-center gap-3">
                     <button type="button" class="btn btn-glass-outline py-2 flex-grow-1" id="closeEventInvitePopup">Later</button>
-                    <a href="events.html" class="btn btn-glass-primary bg-success py-2 flex-grow-1 d-flex align-items-center justify-content-center"><i class="fa-solid fa-users me-2"></i>Join In</a>
+                    <a href="events.html" class="btn btn-glass-primary bg-success py-2 flex-grow-1 d-flex align-items-center justify-content-center"><i class="fa-solid fa-users me-2" aria-hidden="true"></i>Join In</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="modern-footer pt-5 pb-4">
+    <footer class="modern-footer pt-5 pb-4" role="contentinfo">
         <div class="container">
             <div class="row g-4 g-lg-5">
                 <div class="col-lg-4">
-                    <h5 class="footer-heading"><i class="fa-solid fa-water-waves"></i>Yapei Community</h5>
+                    <h4 class="footer-heading"><i class="fa-solid fa-water-waves" aria-hidden="true"></i>Yapei Community</h4>
                     <p class="mt-3 text-white-50" style="font-size: 0.95rem; line-height: 1.6;">
                         A centralized platform for residents to connect, share local intelligence, and support mutual development — rooted in tradition, reaching for tomorrow.
                     </p>
                     <div class="mt-4">
-                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <h5 class="footer-heading"><i class="fa-regular fa-compass"></i>Platform Matrix</h5>
+                    <h4 class="footer-heading"><i class="fa-regular fa-compass" aria-hidden="true"></i>Platform Matrix</h4>
                     <ul class="list-unstyled mt-3">
-                        <li><a href="index.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50"></i>Central Dashboard</a></li>
-                        <li><a href="about.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50"></i>Framework Structure</a></li>
-                        <li><a href="blog.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50"></i>Community Feed</a></li>
-                        <li><a href="events.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50"></i>Scheduling & Events</a></li>
+                        <li><a href="index.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50" aria-hidden="true"></i>Central Dashboard</a></li>
+                        <li><a href="about.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50" aria-hidden="true"></i>Framework Structure</a></li>
+                        <li><a href="blog.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50" aria-hidden="true"></i>Community Feed</a></li>
+                        <li><a href="events.html"><i class="fa-solid fa-chevron-right me-2 small opacity-50" aria-hidden="true"></i>Scheduling & Events</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
-                    <h5 class="footer-heading"><i class="fa-regular fa-envelope-open"></i>Secure Channels</h5>
+                    <h4 class="footer-heading"><i class="fa-regular fa-envelope-open" aria-hidden="true"></i>Secure Channels</h4>
                     <ul class="list-unstyled mt-3">
-                        <li><a href="contact.html"><i class="fa-regular fa-paper-plane me-2 opacity-50"></i>Contact Administration</a></li>
-                        <li><a href="#"><i class="fa-brands fa-whatsapp me-2 opacity-50"></i>WhatsApp Broadcasts</a></li>
-                        <li><a href="#"><i class="fa-regular fa-bell me-2 opacity-50"></i>Global Announcements</a></li>
-                        <li><a href="privacy.html"><i class="fa-solid fa-shield-halved me-2 opacity-50"></i>Data Privacy Standards</a></li>
+                        <li><a href="contact.html"><i class="fa-regular fa-paper-plane me-2 opacity-50" aria-hidden="true"></i>Contact Administration</a></li>
+                        <li><a href="#"><i class="fa-brands fa-whatsapp me-2 opacity-50" aria-hidden="true"></i>WhatsApp Broadcasts</a></li>
+                        <li><a href="#"><i class="fa-regular fa-bell me-2 opacity-50" aria-hidden="true"></i>Global Announcements</a></li>
+                        <li><a href="privacy.html"><i class="fa-solid fa-shield-halved me-2 opacity-50" aria-hidden="true"></i>Data Privacy Standards</a></li>
                     </ul>
                 </div>
             </div>
@@ -448,26 +531,21 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script defer>
         (function() {
-            // DRF Environment Architecture Target
             const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
 
-            // Inject Active Link Configurations based on LocalStorage Tokens
             function updateNavbarLinks() {
                 const userLinks = document.getElementById('navbar-user-links');
                 if (!userLinks) return;
                 
                 const isLoggedIn = !!localStorage.getItem('access');
                 userLinks.innerHTML = isLoggedIn
-                    ? `<li class="nav-item"><a class="nav-link btn btn-sm btn-light text-dark px-3 rounded-pill fw-bold" href="profile.html"><i class="fa-solid fa-user-gear me-1"></i>Profile</a></li>
-                       <li class="nav-item"><a class="nav-link text-white-50 ms-lg-2" href="logout.html"><i class="fa-solid fa-power-off"></i></a></li>`
-                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</a></li>
-                       <li class="nav-item ms-lg-2"><a class="nav-link btn btn-sm btn-primary text-white px-3 rounded-pill shadow-sm" href="register.html">Register</a></li>`;
+                    ? `<li class="nav-item"><a class="nav-link btn btn-sm btn-light text-dark px-3 rounded-pill fw-bold" href="profile.html"><i class="fa-solid fa-user-gear me-1"></i>Profile</a></li><li class="nav-item"><a class="nav-link text-white-50 ms-lg-2" href="logout.html"><i class="fa-solid fa-power-off"></i></a></li>`
+                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</a></li><li class="nav-item ms-lg-2"><a class="nav-link btn btn-sm btn-primary text-white px-3 rounded-pill shadow-sm" href="register.html">Register</a></li>`;
             }
 
-            // Cinematic Auth Trigger Mapping
             function setupLoginPopup() {
                 const popup = document.getElementById('loginRegisterPopup');
                 const overlay = document.getElementById('loginRegisterOverlay');
@@ -478,6 +556,7 @@
                 
                 if (!isLoggedIn && !popupShown) {
                     popup.style.display = 'block';
+                    popup.setAttribute('aria-hidden', 'false');
                     overlay.style.display = 'block';
                     sessionStorage.setItem('loginRegisterPopupShown', 'true');
                 }
@@ -488,6 +567,7 @@
                     overlay.style.opacity = '0';
                     setTimeout(() => { 
                         popup.style.display = 'none'; 
+                        popup.setAttribute('aria-hidden', 'true');
                         overlay.style.display = 'none'; 
                         popup.classList.remove('animate__zoomOut');
                         overlay.style.opacity = '1';
@@ -498,7 +578,6 @@
                 overlay.addEventListener('click', closeAction);
             }
 
-            // Cinematic Upcoming Event Intercept Node
             function setupEventPopup() {
                 const invitePopup = document.getElementById('eventInvitePopup');
                 const inviteOverlay = document.getElementById('eventInviteOverlay');
@@ -508,7 +587,6 @@
                 const excludedPages = ['login.html', 'register.html'];
                 if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
                 
-                // 50% presentation probability
                 if (!inviteShown && Math.random() < 0.5) {
                     fetch(`${BACKEND_URL}/api/events/upcoming/`)
                         .then(res => res.json())
@@ -517,9 +595,10 @@
                                 document.getElementById('eventInviteTitle').textContent = event.title || 'Community Assembly';
                                 document.getElementById('eventInviteDesc').textContent = event.description || 'Participation in community interfaces is requested.';
                                 document.getElementById('eventInviteLocation').textContent = event.location || 'Yapei Central Hub';
-                                document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Scheduled Timeline';
+                                document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '';
                                 
                                 invitePopup.style.display = 'block';
+                                invitePopup.setAttribute('aria-hidden', 'false');
                                 inviteOverlay.style.display = 'block';
                                 sessionStorage.setItem('eventInvitePopupShown', 'true');
                             }
@@ -532,6 +611,7 @@
                     inviteOverlay.style.opacity = '0';
                     setTimeout(() => { 
                         invitePopup.style.display = 'none'; 
+                        invitePopup.setAttribute('aria-hidden', 'true');
                         inviteOverlay.style.display = 'none'; 
                         invitePopup.classList.remove('animate__zoomOut'); 
                         inviteOverlay.style.opacity = '1';
@@ -542,11 +622,9 @@
                 inviteOverlay.addEventListener('click', closeAction);
             }
 
-            // Centralized Execution Bootloader
             document.addEventListener('DOMContentLoaded', () => {
                 updateNavbarLinks();
                 
-                // Delay popups to allow hero animations to complete cleanly
                 setTimeout(() => {
                     setupLoginPopup();
                     setupEventPopup();
@@ -554,6 +632,6 @@
             });
         })();
     </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "eb7ffd6f11764c8c8ee7bc42c9fe644f"}'></script><!-- End Cloudflare Web Analytics -->
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "eb7ffd6f11764c8c8ee7bc42c9fe644f"}'></script>
 </body>
 </html>
