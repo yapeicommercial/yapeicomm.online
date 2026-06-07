@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Privacy Policy - Yapei Community Online</title>
+    <meta name="description" content="Privacy Policy for Yapei Community Online. Learn how we collect, use, and protect your personal data. GDPR compliant data protection.">
+    <meta name="keywords" content="privacy policy, data protection, GDPR, personal data, security, Yapei community">
+    <meta name="author" content="Yapei Community Online">
+    <meta property="og:title" content="Privacy Policy | Yapei Community Online">
+    <meta property="og:description" content="Learn how Yapei Community Online protects your personal data and privacy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.yapeionline.jo3.org/privacy.html">
+    <title>Privacy Policy | Yapei Community Online - Data Protection</title>
     
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,1186 +19,366 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="canonical" href="https://www.yapeionline.jo3.org/privacy.html">
     
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-bg-hover: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            --text-light: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.7);
-            --accent-gold: #fbbf24;
-            --accent-blue: #38bdf8;
-            --accent-emerald: #34d399;
-            --accent-rose: #fb7185;
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --card-round: 24px;
-            --header-height: 70px;
+            --primary-deep: #06325c;
+            --primary-accent: #3b82f6;
+            --accent-gold: #f59e0b;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            scroll-padding-top: calc(var(--header-height) + 2rem);
-        }
-
         body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: var(--text-light);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #eef2f7 0%, #f5f7fa 50%, #e0eafd 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
         }
-
-        /* Liquid Background Animation */
-        .liquid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: linear-gradient(45deg, #0b4b7a, #1e1b4b, #0f766e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(90px);
-            opacity: 0.5;
-            animation: float 20s infinite alternate;
-        }
-
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #3b82f6; animation-delay: 0s; }
-        .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: #8b5cf6; animation-delay: -5s; }
-        .blob-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: #14b8a6; animation-delay: -10s; animation-duration: 25s; }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-
-        /* Glassmorphism Classes */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            border-radius: var(--card-round);
-            transition: var(--transition);
-        }
-
-        .glass-panel-inner {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-        }
-
-        /* Navbar */
         .navbar {
-            background: rgba(15, 23, 42, 0.7) !important;
+            background: rgba(6, 50, 92, 0.85) !important;
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-            height: auto;
         }
-
-        .navbar-brand {
-            color: var(--text-light) !important;
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
         .navbar-brand i { color: var(--accent-gold); }
-
-        .navbar-nav .nav-link {
-            color: var(--text-dim) !important;
-            border-radius: 40px;
-            margin: 0 6px;
+        .nav-link {
+            border-radius: 50px;
+            margin: 0 4px;
             padding: 0.5rem 1.2rem !important;
             font-weight: 500;
-            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.85) !important;
         }
-
-        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-            color: var(--text-light) !important;
-            background: rgba(255, 255, 255, 0.1);
+        .nav-link.active, .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
         }
-
-        /* Buttons */
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-light);
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-glass-primary {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(59, 130, 246, 0.4));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #fff;
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .btn-glass-primary:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(59, 130, 246, 0.6));
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-            color: #fff;
-        }
-
-        /* Page Header */
         .page-header {
-            padding: 4rem 1rem 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 10;
+            background: linear-gradient(135deg, var(--primary-deep), var(--primary-accent));
+            color: white;
+            padding: 4rem 0 3rem;
+            margin-bottom: 3rem;
         }
-
-        .badge-glass {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-dim);
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            display: inline-block;
+        .page-header h1 {
+            font-size: clamp(2rem, 8vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
-
-        /* Main Content Layout */
-        .main-content {
-            flex: 1;
-            padding: 1.5rem 0 4rem;
+        .page-header small {
+            font-size: 1rem;
+            opacity: 0.9;
         }
-
-        .policy-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .content-section {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-accent);
+            transition: all 0.3s ease;
         }
-
-        @media (min-width: 992px) {
-            .policy-container {
-                display: grid;
-                grid-template-columns: 300px 1fr;
-            }
+        .content-section:hover {
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
         }
-
-        /* Table of Contents */
-        .toc-wrapper {
-            padding: 1.5rem;
-            position: sticky;
-            top: calc(var(--header-height) + 2rem);
-            height: fit-content;
-            max-height: calc(100vh - var(--header-height) - 4rem);
-            overflow-y: auto;
-        }
-
-        .toc-wrapper::-webkit-scrollbar { width: 6px; }
-        .toc-wrapper::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
-
-        .toc-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .toc-grid {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .toc-item a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
+        .content-section h2 {
+            color: var(--primary-deep);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: 0.75rem;
-            transition: var(--transition);
         }
-
-        .toc-item a i {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
-            transition: var(--transition);
+        .content-section h2 i {
+            color: var(--primary-accent);
         }
-
-        .toc-item a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-        }
-
-        .toc-item a:hover i {
-            color: var(--accent-emerald);
-            transform: translateX(3px);
-        }
-        
-        .toc-item.active a {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--text-light);
-        }
-
-        .toc-item.active a i { color: var(--accent-emerald); }
-
-        /* Policy Card */
-        .policy-card {
-            padding: 2.5rem;
-        }
-
-        .policy-section {
-            scroll-margin-top: calc(var(--header-height) + 2rem);
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .policy-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-emerald);
-            font-size: 1.4rem;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-            color: var(--text-light);
-        }
-
-        .section-subtitle {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .section-content p, .section-content li {
+        .content-section p, .content-section li {
+            color: #475569;
             line-height: 1.8;
-            color: var(--text-dim);
-            margin-bottom: 1.25rem;
-            font-size: 1rem;
-        }
-
-        .section-content h3, .section-content h4, .section-content h5 {
-            color: var(--text-light);
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-        }
-
-        .section-content ul, .section-content ol { padding-left: 1.5rem; }
-
-        /* Glass Info Boxes */
-        .info-box {
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .info-box.warning { background: rgba(251, 191, 36, 0.1); border-left: 4px solid var(--accent-gold); }
-        .info-box.success { background: rgba(52, 211, 153, 0.1); border-left: 4px solid var(--accent-emerald); }
-        .info-box.danger { background: rgba(251, 113, 133, 0.1); border-left: 4px solid var(--accent-rose); }
-        .info-box.info { background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); }
-
-        .info-box h5 {
-            font-size: 1.1rem;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .info-box.warning h5 { color: var(--accent-gold); }
-        .info-box.success h5 { color: var(--accent-emerald); }
-        .info-box.danger h5 { color: var(--accent-rose); }
-        .info-box.info h5 { color: var(--accent-blue); }
-        
-        .info-box p { margin-bottom: 0; color: rgba(255,255,255,0.85); }
-
-        /* Data Tables */
-        .data-table {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 1rem;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border: 1px solid rgba(255,255,255,0.1);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .data-table table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 500px;
-        }
-
-        .data-table th {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-            font-weight: 600;
-            padding: 1rem;
-            text-align: left;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .data-table td {
-            padding: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-
-        .data-table tr:last-child td { border-bottom: none; }
-        .data-table tr:hover td { background: rgba(255,255,255,0.05); }
-
-        /* Contact Cards Grid */
-        .contact-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        @media (min-width: 576px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
-
-        .contact-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .contact-card:hover {
-            background: rgba(0, 0, 0, 0.4);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-card i {
-            font-size: 1.8rem;
-            color: var(--accent-emerald);
             margin-bottom: 1rem;
         }
-
-        .contact-card h5 { color: var(--text-light); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.5rem; }
-        .contact-card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 0.75rem; }
-        
-        .contact-link {
-            color: var(--accent-blue);
+        .content-section ul, .content-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .content-section li {
+            margin-bottom: 0.75rem;
+        }
+        .content-section a {
+            color: var(--primary-accent);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
         }
-        
-        .contact-link:hover { color: var(--text-light); text-decoration: underline; }
-
-        /* Cookie Preferences */
-        .cookie-preferences {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 1.5rem;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
+        .content-section a:hover {
+            text-decoration: underline;
         }
-
-        .cookie-preferences h4 { color: var(--accent-blue); font-weight: 600; margin-bottom: 1rem; }
-        .cookie-types { text-align: left; margin: 1.5rem 0; }
-        .cookie-type {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .cookie-type:last-child { border-bottom: none; }
-        
-        /* Custom Checkbox */
-        .cookie-type input[type="checkbox"] {
-            appearance: none;
-            background-color: rgba(255,255,255,0.1);
-            margin: 0;
-            font: inherit;
-            color: currentColor;
-            width: 1.4em;
-            height: 1.4em;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 0.25em;
-            display: grid;
-            place-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .cookie-type input[type="checkbox"]::before {
-            content: "";
-            width: 0.8em;
-            height: 0.8em;
-            transform: scale(0);
-            transition: 120ms transform ease-in-out;
-            box-shadow: inset 1em 1em var(--accent-emerald);
-            background-color: var(--accent-emerald);
-            transform-origin: bottom left;
-            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        }
-        .cookie-type input[type="checkbox"]:checked { border-color: var(--accent-emerald); }
-        .cookie-type input[type="checkbox"]:checked::before { transform: scale(1); }
-        .cookie-type input[type="checkbox"]:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        .cookie-type label { flex: 1; color: var(--text-light); }
-        .cookie-type small { display: block; color: var(--text-dim); margin-top: 0.2rem; }
-
-        .cookie-buttons { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-        @media (min-width: 768px) { .cookie-buttons { flex-direction: row; justify-content: center; } }
-
-        /* Version History */
-        .version-history {
-            background: rgba(0,0,0,0.2);
-            border-radius: 1rem;
+        .highlight-box {
+            background: rgba(251, 191, 36, 0.1);
+            border-left: 4px solid var(--accent-gold);
             padding: 1.5rem;
-            margin-top: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            margin: 1.5rem 0;
         }
-
-        .version-title { color: var(--accent-gold); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
-        
-        .version-list { list-style: none; padding: 0; max-height: 250px; overflow-y: auto; }
-        .version-list li {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        .highlight-box strong {
+            color: #d97706;
         }
-        @media (min-width: 576px) { .version-list li { flex-direction: row; align-items: center; gap: 1.5rem; } }
-        
-        .version-badge {
-            background: rgba(255,255,255,0.1);
-            color: var(--accent-emerald);
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            border: 1px solid rgba(52, 211, 153, 0.3);
-        }
-        .version-date { color: var(--text-dim); font-size: 0.85rem; white-space: nowrap; }
-        .version-desc { color: var(--text-light); font-size: 0.95rem; flex: 1; }
-
-        /* Print Button */
-        .print-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        footer {
+            background: rgba(6, 50, 92, 0.95);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            transition: var(--transition);
-            z-index: 999;
-            font-size: 1.2rem;
-        }
-
-        .print-btn:hover { background: rgba(255, 255, 255, 0.25); transform: scale(1.1) rotate(5deg); }
-
-        /* Footer */
-        .modern-footer {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 0 1.5rem;
             margin-top: auto;
         }
-        
-        .modern-footer a { color: var(--text-dim); text-decoration: none; transition: var(--transition); margin: 0 0.5rem; }
-        .modern-footer a:hover { color: var(--accent-gold); }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-dim);
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
         }
-
-        /* Print Styles */
-        @media print {
-            .navbar, .modern-footer, .toc-wrapper, .print-btn, .cookie-preferences, .liquid-bg { display: none !important; }
-            body { background: white; color: black; }
-            .glass-panel { box-shadow: none; border: 1px solid #ddd; backdrop-filter: none; background: white; }
-            .section-content p, .section-content li, .section-title, .section-subtitle, .info-box p { color: black !important; }
-            .info-box { background: #f8f9fa; border: 1px solid #ddd; }
-            a { text-decoration: none; color: black; }
-            .page-header { padding: 1rem 0; color: black; }
-            .data-table th { background: #eee; color: black; }
+        footer a:hover {
+            color: var(--accent-gold);
+        }
+        .toc {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .toc h3 {
+            color: var(--primary-deep);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        .toc ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .toc li {
+            margin-bottom: 0.75rem;
+        }
+        .toc a {
+            color: var(--primary-accent);
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3rem 0 2rem;
+            }
+            .content-section {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="liquid-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container px-4">
-            <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-people-group me-2"></i>Yapei Community
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold fs-3" href="index.html" title="Yapei Community Online Home">
+                <i class="fa-solid fa-water-waves"></i> Yapei Community
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" style="border-color: rgba(255,255,255,0.1);">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="privacy.html"><i class="fa-solid fa-shield-halved me-1"></i>Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="terms.html"><i class="fa-solid fa-file-contract me-1"></i>Terms</a></li>
-                    <li class="nav-item"><a class="nav-link" href="disclaimer.html"><i class="fa-solid fa-triangle-exclamation me-1"></i>Disclaimer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-1 ms-lg-2"></span>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html" title="Home"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html" title="Blog"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html" title="Events"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" title="About"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" title="Contact"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html" title="FAQ"><i class="fa-solid fa-question me-1"></i>FAQ</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="page-header animate__animated animate__fadeInDown">
-        <div class="container">
-            <h1 class="display-5 fw-bold mb-3">
-                <i class="fa-solid fa-shield-halved" style="color: var(--accent-emerald);"></i>
-                Privacy Policy
-            </h1>
-            <p class="text-dim mb-4 mx-auto" style="max-width: 600px;">Your privacy is important to us. Learn how we collect, use, and protect your information securely.</p>
-            <div class="badge-glass">
-                <i class="fa-regular fa-calendar me-2"></i>Last Updated: February 15, 2026
-            </div>
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container text-center">
+            <h1><i class="fa-solid fa-shield-halved me-2"></i>Privacy Policy</h1>
+            <small>Last Updated: June 7, 2026 | Effective Date: June 7, 2026</small>
         </div>
-    </section>
+    </div>
 
-    <main class="main-content">
-        <div class="container policy-container">
+    <!-- Main Content -->
+    <div class="container mb-5" style="max-width: 900px; flex: 1;">
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3><i class="fa-solid fa-list me-2"></i>Table of Contents</h3>
+            <ul>
+                <li><a href="#introduction">1. Introduction</a></li>
+                <li><a href="#collection">2. Information We Collect</a></li>
+                <li><a href="#usage">3. How We Use Your Information</a></li>
+                <li><a href="#sharing">4. Data Sharing</a></li>
+                <li><a href="#security">5. Data Security</a></li>
+                <li><a href="#rights">6. Your Rights</a></li>
+                <li><a href="#retention">7. Data Retention</a></li>
+                <li><a href="#contact">8. Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Introduction -->
+        <div class="content-section" id="introduction">
+            <h2><i class="fa-solid fa-book"></i>Introduction</h2>
+            <p>Yapei Community Online ("we," "our," "us," or "Company") is committed to protecting your privacy and ensuring you have a positive experience on our platform. This Privacy Policy explains our practices regarding data collection, usage, and protection when you visit our website at <strong>www.yapeionline.jo3.org</strong> and use our services.</p>
+            <p>By accessing and using Yapei Community Online, you agree to the terms of this Privacy Policy. If you do not agree with our practices, please do not use our platform.</p>
+        </div>
+
+        <!-- Information Collection -->
+        <div class="content-section" id="collection">
+            <h2><i class="fa-solid fa-database"></i>Information We Collect</h2>
             
-            <aside class="glass-panel toc-wrapper animate__animated animate__fadeInLeft">
-                <div class="toc-title">
-                    <i class="fa-solid fa-list-ul" style="color: var(--accent-emerald);"></i>
-                    Quick Navigation
-                </div>
-                <ul class="toc-grid">
-                    <li class="toc-item"><a href="#introduction"><i class="fa-solid fa-arrow-right-long"></i>1. Introduction</a></li>
-                    <li class="toc-item"><a href="#definitions"><i class="fa-solid fa-arrow-right-long"></i>2. Definitions</a></li>
-                    <li class="toc-item"><a href="#data-collection"><i class="fa-solid fa-arrow-right-long"></i>3. Data Collection</a></li>
-                    <li class="toc-item"><a href="#data-usage"><i class="fa-solid fa-arrow-right-long"></i>4. Data Usage</a></li>
-                    <li class="toc-item"><a href="#data-sharing"><i class="fa-solid fa-arrow-right-long"></i>5. Data Sharing</a></li>
-                    <li class="toc-item"><a href="#data-retention"><i class="fa-solid fa-arrow-right-long"></i>6. Retention</a></li>
-                    <li class="toc-item"><a href="#cookies"><i class="fa-solid fa-arrow-right-long"></i>7. Cookies</a></li>
-                    <li class="toc-item"><a href="#security"><i class="fa-solid fa-arrow-right-long"></i>8. Security</a></li>
-                    <li class="toc-item"><a href="#rights"><i class="fa-solid fa-arrow-right-long"></i>9. Your Rights</a></li>
-                    <li class="toc-item"><a href="#children"><i class="fa-solid fa-arrow-right-long"></i>10. Children</a></li>
-                    <li class="toc-item"><a href="#international"><i class="fa-solid fa-arrow-right-long"></i>11. International</a></li>
-                    <li class="toc-item"><a href="#third-party"><i class="fa-solid fa-arrow-right-long"></i>12. Third-Party</a></li>
-                    <li class="toc-item"><a href="#changes"><i class="fa-solid fa-arrow-right-long"></i>13. Policy Changes</a></li>
-                    <li class="toc-item"><a href="#contact"><i class="fa-solid fa-arrow-right-long"></i>14. Contact Us</a></li>
-                </ul>
-            </aside>
+            <h4 class="mt-3 mb-2"><strong>Personal Information You Provide</strong></h4>
+            <ul>
+                <li><strong>Account Information:</strong> Name, email address, phone number, and username</li>
+                <li><strong>Profile Data:</strong> Bio, profile picture, location, and interests</li>
+                <li><strong>Communication Data:</strong> Messages, comments, posts, and support inquiries</li>
+                <li><strong>Event Information:</strong> Event attendance, RSVP details, and participation records</li>
+            </ul>
 
-            <div class="glass-panel policy-card animate__animated animate__fadeInRight">
-                
-                <section id="introduction" class="policy-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-hand-peace"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">1. Introduction</h2>
-                            <div class="section-subtitle">Our commitment to your privacy</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <p>Welcome to Yapei Community Online ("we," "our," or "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with our community.</p>
-                        
-                        <p>Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site. We reserve the right to make changes to this privacy policy at any time and for any reason. We will alert you about any changes by updating the "Last Updated" date.</p>
-                        
-                        <div class="info-box success">
-                            <h5><i class="fa-solid fa-lightbulb"></i> Quick Summary</h5>
-                            <p>We collect information to provide better services to our community members. We never sell your personal data. You have control over your information and can request access, correction, or deletion at any time. We use industry-standard security measures to protect your data.</p>
-                        </div>
+            <h4 class="mt-3 mb-2"><strong>Automatically Collected Information</strong></h4>
+            <ul>
+                <li><strong>Technical Data:</strong> IP address, browser type, device information, and operating system</li>
+                <li><strong>Usage Data:</strong> Pages visited, time spent, click patterns, and features used</li>
+                <li><strong>Cookies:</strong> Session data and user preferences</li>
+                <li><strong>Location Data:</strong> General geographic location (with your permission)</li>
+            </ul>
 
-                        <div class="info-box warning">
-                            <h5><i class="fa-solid fa-gavel"></i> Legal Compliance</h5>
-                            <p>This policy complies with the General Data Protection Regulation (GDPR), California Consumer Privacy Act (CCPA), and other applicable privacy laws. Your rights may vary depending on your location.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="definitions" class="policy-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">2. Definitions</h2>
-                            <div class="section-subtitle">Key terms explained</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <p>To help you understand this privacy policy, here are some key terms and their meanings:</p>
-                        
-                        <div class="data-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Term</th>
-                                        <th>Definition</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Personal Data</strong></td>
-                                        <td>Any information relating to an identified or identifiable natural person</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Processing</strong></td>
-                                        <td>Any operation performed on personal data (collection, storage, use, etc.)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Data Controller</strong></td>
-                                        <td>Yapei Community Online (determines purposes and means of processing)</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Data Processor</strong></td>
-                                        <td>Third parties who process data on our behalf</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Cookies</strong></td>
-                                        <td>Small text files stored on your device to remember preferences</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="data-collection" class="policy-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">3. Information We Collect</h2>
-                            <div class="section-subtitle">Types of data we gather</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <h4>Personal Information You Disclose</h4>
-                        <p>We collect personal information that you voluntarily provide to us when you register on the website, express interest in obtaining information, participate in activities, or contact us.</p>
-                        
-                        <div class="data-table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Data Category</th>
-                                        <th>Specific Data</th>
-                                        <th>Legal Basis</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>Identity Data</strong></td>
-                                        <td>Username, full name, display name, title</td>
-                                        <td>Contract performance</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Contact Data</strong></td>
-                                        <td>Email address, phone number, location</td>
-                                        <td>Legitimate interests</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Profile Data</strong></td>
-                                        <td>Bio, avatar image, preferences</td>
-                                        <td>Consent</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Content Data</strong></td>
-                                        <td>Posts, comments, messages</td>
-                                        <td>Contract performance</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h4>Information Automatically Collected</h4>
-                        <ul>
-                            <li><strong class="text-light">Log Data:</strong> IP address, browser type, operating system, referring URLs.</li>
-                            <li><strong class="text-light">Device Data:</strong> Device type, screen resolution, language preferences.</li>
-                            <li><strong class="text-light">Usage Data:</strong> Features used, interaction patterns, clickstream data.</li>
-                        </ul>
-
-                        <div class="info-box info">
-                            <h5><i class="fa-solid fa-shield"></i> Note on Sensitive Data</h5>
-                            <p>We do not intentionally collect sensitive personal data (racial or ethnic origin, political opinions, religious beliefs, health information, etc.). Please avoid sharing such information in public areas of our platform.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="cookies" class="policy-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-cookie-bite"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">7. Cookies and Tracking</h2>
-                            <div class="section-subtitle">How we use cookies</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information to improve your experience.</p>
-
-                        <div class="cookie-preferences">
-                            <h4><i class="fa-solid fa-sliders me-2"></i>Cookie Preferences</h4>
-                            <p class="text-dim">You can choose which cookies to accept. Essential cookies are always required.</p>
-                            
-                            <div class="cookie-types">
-                                <div class="cookie-type">
-                                    <input type="checkbox" id="essentialCookies" checked disabled>
-                                    <label for="essentialCookies">
-                                        <strong>Essential Cookies</strong>
-                                        <small>Required for basic functionality (login, security)</small>
-                                    </label>
-                                </div>
-                                <div class="cookie-type">
-                                    <input type="checkbox" id="preferenceCookies">
-                                    <label for="preferenceCookies">
-                                        <strong>Preference Cookies</strong>
-                                        <small>Remember your settings and choices</small>
-                                    </label>
-                                </div>
-                                <div class="cookie-type">
-                                    <input type="checkbox" id="analyticsCookies">
-                                    <label for="analyticsCookies">
-                                        <strong>Analytics Cookies</strong>
-                                        <small>Help us improve our website performance</small>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="cookie-buttons">
-                                <button class="btn-glass-primary px-4 py-2" onclick="acceptAllCookies()">
-                                    <i class="fa-regular fa-circle-check me-2"></i>Accept All
-                                </button>
-                                <button class="btn-glass px-4 py-2" onclick="saveCookiePreferences()">
-                                    <i class="fa-regular fa-floppy-disk me-2"></i>Save Preferences
-                                </button>
-                                <button class="btn-glass px-4 py-2" style="color: var(--accent-rose); border-color: rgba(251,113,133,0.3);" onclick="declineOptionalCookies()">
-                                    <i class="fa-regular fa-circle-xmark me-2"></i>Essential Only
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="security" class="policy-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-lock"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">8. Data Security</h2>
-                            <div class="section-subtitle">How we protect your information</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process.</p>
-
-                        <ul class="mt-4">
-                            <li><i class="fa-solid fa-shield text-success me-2"></i><strong class="text-light">Encryption:</strong> Data transmitted is encrypted using SSL/TLS technology (HTTPS).</li>
-                            <li><i class="fa-solid fa-shield text-success me-2"></i><strong class="text-light">Password Security:</strong> Passwords are hashed and salted. We never store plain-text passwords.</li>
-                            <li><i class="fa-solid fa-shield text-success me-2"></i><strong class="text-light">Access Controls:</strong> Strict access controls limit internal access to personal data.</li>
-                            <li><i class="fa-solid fa-shield text-success me-2"></i><strong class="text-light">Monitoring:</strong> 24/7 monitoring for suspicious activity and potential breaches.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <section id="changes" class="policy-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">13. Changes to This Policy</h2>
-                            <div class="section-subtitle">How we notify you of updates</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <p>We may update our Privacy Policy from time to time to reflect changes in our practices, legal requirements, or operational needs.</p>
-
-                        <div class="version-history">
-                            <h5 class="version-title">
-                                <i class="fa-regular fa-clock me-2"></i>Version History
-                            </h5>
-                            <ul class="version-list">
-                                <li>
-                                    <span class="version-badge">v2.3</span>
-                                    <span class="version-date">Feb 15, 2026</span>
-                                    <span class="version-desc">Added section on international transfers and GDPR compliance</span>
-                                </li>
-                                <li>
-                                    <span class="version-badge">v2.2</span>
-                                    <span class="version-date">Jan 10, 2026</span>
-                                    <span class="version-desc">Updated cookie preferences and security measures</span>
-                                </li>
-                                <li>
-                                    <span class="version-badge">v2.1</span>
-                                    <span class="version-date">Dec 5, 2025</span>
-                                    <span class="version-desc">Expanded children's privacy and parental rights</span>
-                                </li>
-                                <li>
-                                    <span class="version-badge">v1.0</span>
-                                    <span class="version-date">Oct 1, 2025</span>
-                                    <span class="version-desc">Initial privacy policy</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="contact" class="policy-section border-0 mb-0 pb-0">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h2 class="section-title">14. Contact Us</h2>
-                            <div class="section-subtitle">How to reach us</div>
-                        </div>
-                    </div>
-                    <div class="section-content">
-                        <p>If you have questions or concerns about this Privacy Policy or our data practices, please contact us:</p>
-
-                        <div class="contact-grid mt-4">
-                            <div class="contact-card">
-                                <i class="fa-regular fa-envelope"></i>
-                                <h5>Email</h5>
-                                <p>privacy@yapeicommunity.com</p>
-                                <a href="mailto:privacy@yapeicommunity.com" class="contact-link">Send Email →</a>
-                            </div>
-                            <div class="contact-card">
-                                <i class="fa-solid fa-location-dot"></i>
-                                <h5>Postal Address</h5>
-                                <p>Yapei Community Online<br>P.O. Box 123<br>Yapei, Northern Region<br>Ghana</p>
-                            </div>
-                            <div class="contact-card">
-                                <i class="fa-solid fa-phone"></i>
-                                <h5>Phone</h5>
-                                <p>+233 54 268 7780</p>
-                                <a href="tel:+233542687780" class="contact-link">Call Us →</a>
-                            </div>
-                            <div class="contact-card">
-                                <i class="fa-regular fa-building"></i>
-                                <h5>Data Protection Officer</h5>
-                                <p>dpo@yapeicommunity.com</p>
-                                <a href="mailto:dpo@yapeicommunity.com" class="contact-link">Email DPO →</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div class="text-center mt-5 pt-4 border-top" style="border-color: var(--glass-border) !important;">
-                    <i class="fa-regular fa-circle-check fa-3x mb-3" style="color: var(--accent-emerald);"></i>
-                    <h4 class="text-light">Privacy Consent</h4>
-                    <p class="text-dim mb-4 mx-auto" style="max-width: 400px;">By using our website, you acknowledge that you have read and understood this Privacy Policy.</p>
-                    <button class="btn-glass-primary px-5 py-3" onclick="acknowledgePrivacy()">
-                        <i class="fa-regular fa-circle-check me-2"></i>I Acknowledge
-                    </button>
-                </div>
-
+            <div class="highlight-box">
+                <strong><i class="fa-solid fa-exclamation-triangle me-2"></i>Note:</strong> We do not intentionally collect sensitive personal information such as racial or ethnic origin, political opinions, religious beliefs, or health data, unless expressly provided by you for specific purposes.
             </div>
         </div>
-    </main>
 
-    <button class="print-btn" onclick="window.print()" aria-label="Print Privacy Policy">
-        <i class="fa-solid fa-print"></i>
-    </button>
+        <!-- How We Use Information -->
+        <div class="content-section" id="usage">
+            <h2><i class="fa-solid fa-cogs"></i>How We Use Your Information</h2>
+            <p>We use the information we collect for the following purposes:</p>
+            <ul>
+                <li>Creating and maintaining your account</li>
+                <li>Providing community features (posts, comments, events)</li>
+                <li>Sending service updates and notifications</li>
+                <li>Responding to your inquiries and support requests</li>
+                <li>Improving our platform and user experience</li>
+                <li>Analyzing community trends and engagement</li>
+                <li>Preventing fraud and ensuring platform security</li>
+                <li>Complying with legal obligations</li>
+            </ul>
+        </div>
 
-    <footer class="modern-footer">
+        <!-- Data Sharing -->
+        <div class="content-section" id="sharing">
+            <h2><i class="fa-solid fa-share-alt"></i>Data Sharing and Disclosure</h2>
+            
+            <h4 class="mt-3 mb-2"><strong>When We Share Data</strong></h4>
+            <p>We do not sell your personal data. We only share information in the following circumstances:</p>
+            <ul>
+                <li><strong>Service Providers:</strong> Third-party vendors who assist with hosting, email delivery, analytics, and customer support</li>
+                <li><strong>Legal Requirements:</strong> When required by law, court order, or government request</li>
+                <li><strong>Community Features:</strong> Public posts and profiles visible to other community members as per your privacy settings</li>
+                <li><strong>Business Partners:</strong> With your consent, for community improvement initiatives</li>
+            </ul>
+
+            <h4 class="mt-3 mb-2"><strong>Public Information</strong></h4>
+            <p>Your profile name, profile picture, posts, and comments may be visible to other community members depending on your privacy settings. You control the visibility of your content through account settings.</p>
+        </div>
+
+        <!-- Data Security -->
+        <div class="content-section" id="security">
+            <h2><i class="fa-solid fa-lock"></i>Data Security</h2>
+            <p>We implement comprehensive security measures to protect your personal data:</p>
+            <ul>
+                <li>SSL/TLS encryption for data transmission</li>
+                <li>Secure password storage using industry-standard hashing</li>
+                <li>Regular security audits and vulnerability assessments</li>
+                <li>Restricted access to personal data by authorized personnel only</li>
+                <li>Monitoring for unauthorized access attempts</li>
+            </ul>
+            <div class="highlight-box">
+                <strong>Important:</strong> While we implement strong security measures, no online platform is 100% secure. We cannot guarantee absolute security of your data. You are responsible for maintaining the confidentiality of your password.
+            </div>
+        </div>
+
+        <!-- Your Rights -->
+        <div class="content-section" id="rights">
+            <h2><i class="fa-solid fa-user-shield"></i>Your Data Rights</h2>
+            <p>You have the following rights regarding your personal data:</p>
+            <ul>
+                <li><strong>Right to Access:</strong> Request a copy of your personal data</li>
+                <li><strong>Right to Correction:</strong> Update or correct inaccurate information</li>
+                <li><strong>Right to Deletion:</strong> Request deletion of your data (subject to legal retention requirements)</li>
+                <li><strong>Right to Opt-Out:</strong> Unsubscribe from marketing communications</li>
+                <li><strong>Right to Portability:</strong> Obtain your data in a portable format</li>
+                <li><strong>Right to Restrict Processing:</strong> Limit how we use your information</li>
+            </ul>
+            <p>To exercise these rights, please contact us at <a href="mailto:info@yapeionline.jo3.org">info@yapeionline.jo3.org</a>.</p>
+        </div>
+
+        <!-- Data Retention -->
+        <div class="content-section" id="retention">
+            <h2><i class="fa-solid fa-hourglass-end"></i>Data Retention</h2>
+            <p>We retain your personal data for as long as necessary to provide our services and comply with legal obligations:</p>
+            <ul>
+                <li><strong>Account Data:</strong> Retained while your account is active and for 2 years after deletion</li>
+                <li><strong>Communication Data:</strong> Retained for dispute resolution (up to 7 years)</li>
+                <li><strong>Analytics Data:</strong> Retained for 12 months</li>
+                <li><strong>Legal Data:</strong> Retained as required by applicable laws</li>
+            </ul>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="content-section" id="contact">
+            <h2><i class="fa-solid fa-envelope"></i>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:info@yapeionline.jo3.org">info@yapeionline.jo3.org</a></li>
+                <li><strong>Website:</strong> <a href="https://www.yapeionline.jo3.org">www.yapeionline.jo3.org</a></li>
+                <li><strong>Location:</strong> Yapei, Ghana</li>
+            </ul>
+            <p class="mt-3">We typically respond to privacy inquiries within 30 days.</p>
+        </div>
+
+        <!-- Policy Updates -->
+        <div class="content-section">
+            <h2><i class="fa-solid fa-sync"></i>Policy Updates</h2>
+            <p>We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will notify you of significant changes by email or prominent notice on our website. Your continued use of the platform constitutes acceptance of the updated Privacy Policy.</p>
+            <p><strong>Version:</strong> 1.0 | <strong>Last Updated:</strong> June 7, 2026</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 text-center text-md-start">
-                    <h5 class="text-light mb-3"><i class="fa-regular fa-compass me-2 text-info"></i>Yapei Community</h5>
-                    <p class="text-dim small mx-auto mx-md-0" style="max-width: 300px;">Connecting residents, sharing stories, building together.</p>
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-water-waves me-2"></i>About</h5>
+                    <p>Yapei Community Online is a platform dedicated to connecting Yapei residents and promoting community development through digital engagement.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <h5 class="text-light mb-3">Legal Links</h5>
-                    <div>
-                        <a href="privacy.html" class="d-inline-block mb-2">Privacy Policy</a>
-                        <a href="terms.html" class="d-inline-block mb-2">Terms of Service</a>
-                        <a href="disclaimer.html" class="d-inline-block mb-2">Disclaimer</a>
-                        <a href="contact.html" class="d-inline-block mb-2">Contact Us</a>
-                    </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-link me-2"></i>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Home</a></li>
+                        <li><a href="blog.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Blog</a></li>
+                        <li><a href="events.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Events</a></li>
+                        <li><a href="faq.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-gavel me-2"></i>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="terms.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Terms of Service</a></li>
+                        <li><a href="cookies.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Cookies Policy</a></li>
+                        <li><a href="disclaimer.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Disclaimer</a></li>
+                        <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-chevron-right me-2 small"></i>Contact</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
+            <hr class="bg-white-50">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved. | Domain: <a href="https://www.yapeionline.jo3.org" class="footer-link">www.yapeionline.jo3.org</a></p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Cookie functions
-        function acceptAllCookies() {
-            localStorage.setItem('cookieConsent', 'all');
-            localStorage.setItem('preferenceCookies', 'true');
-            localStorage.setItem('analyticsCookies', 'true');
-            
-            document.getElementById('preferenceCookies').checked = true;
-            document.getElementById('analyticsCookies').checked = true;
-            
-            showNotification('All cookies accepted. Thank you!', 'success');
-        }
-
-        function declineOptionalCookies() {
-            localStorage.setItem('cookieConsent', 'essential');
-            localStorage.setItem('preferenceCookies', 'false');
-            localStorage.setItem('analyticsCookies', 'false');
-            
-            document.getElementById('preferenceCookies').checked = false;
-            document.getElementById('analyticsCookies').checked = false;
-            
-            showNotification('Only essential cookies will be used.', 'info');
-        }
-
-        function saveCookiePreferences() {
-            const preferenceCookies = document.getElementById('preferenceCookies').checked;
-            const analyticsCookies = document.getElementById('analyticsCookies').checked;
-            
-            localStorage.setItem('cookieConsent', 'custom');
-            localStorage.setItem('preferenceCookies', preferenceCookies);
-            localStorage.setItem('analyticsCookies', analyticsCookies);
-            
-            showNotification('Cookie preferences saved!', 'success');
-        }
-
-        // Load saved cookie preferences
-        function loadCookiePreferences() {
-            const preferenceCookies = localStorage.getItem('preferenceCookies') === 'true';
-            const analyticsCookies = localStorage.getItem('analyticsCookies') === 'true';
-            
-            document.getElementById('preferenceCookies').checked = preferenceCookies;
-            document.getElementById('analyticsCookies').checked = analyticsCookies;
-        }
-
-        // Acknowledge privacy policy
-        function acknowledgePrivacy() {
-            localStorage.setItem('privacyAcknowledged', 'true');
-            showNotification('Thank you for acknowledging our Privacy Policy', 'success');
-        }
-
-        // Custom Notification (Glass style)
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            
-            let borderColor = 'rgba(56, 189, 248, 0.4)';
-            let bgColor = 'rgba(56, 189, 248, 0.15)';
-            if (type === 'success') {
-                borderColor = 'rgba(52, 211, 153, 0.4)';
-                bgColor = 'rgba(52, 211, 153, 0.15)';
-            } else if (type === 'danger') {
-                borderColor = 'rgba(251, 113, 133, 0.4)';
-                bgColor = 'rgba(251, 113, 133, 0.15)';
-            }
-            
-            notification.className = `alert alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg text-white`;
-            notification.style.background = bgColor;
-            notification.style.border = `1px solid ${borderColor}`;
-            notification.style.backdropFilter = 'blur(15px)';
-            notification.style.zIndex = '9999';
-            notification.style.maxWidth = '90%';
-            notification.style.width = '400px';
-            notification.style.borderRadius = '12px';
-            
-            notification.innerHTML = `
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="filter: invert(1);"></button>
-            `;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('.toc-item a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    const offset = 90;
-                    const targetPosition = targetElement.offsetTop - offset;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-
-                    const navbarCollapse = document.getElementById('navbarContent');
-                    if (navbarCollapse.classList.contains('show')) {
-                        navbarCollapse.classList.remove('show');
-                    }
-                }
-            });
-        });
-
-        // Active section highlighting
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('.policy-section');
-            const navLinks = document.querySelectorAll('.toc-item');
-            
-            let currentSection = '';
-            const scrollPosition = window.scrollY + 100;
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionBottom = sectionTop + section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(item => {
-                item.classList.remove('active');
-                if (item.querySelector('a').getAttribute('href') === '#' + currentSection) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Navbar dynamic links
-        function updateNavbarLinks() {
-            const userLinks = document.getElementById('navbar-user-links');
-            if (!userLinks) return;
-            
-            const isLoggedIn = !!localStorage.getItem('access');
-            
-            userLinks.innerHTML = isLoggedIn
-                ? `<li class="nav-item"><a class="nav-link btn-glass px-3 py-1 mt-1 ms-2" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
-                   <li class="nav-item"><a class="nav-link px-3 py-1 mt-1 ms-2" style="color: #fca5a5 !important;" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
-                : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
-                   <li class="nav-item"><a class="nav-link btn-glass-primary px-3 py-1 mt-1 ms-2" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNavbarLinks();
-            loadCookiePreferences();
-            
-            if (!localStorage.getItem('cookieConsent')) {
-                setTimeout(() => {
-                    const cookieSection = document.querySelector('.cookie-preferences');
-                    if(cookieSection) {
-                        cookieSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }
-                }, 1000);
-            }
-        });
-    </script>
 </body>
 </html>
