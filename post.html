@@ -4,603 +4,130 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yapei Community Online - Connect with Yapei residents, share stories, discover events, and participate in community development. Join our digital platform today.">
-    <meta name="keywords" content="Yapei community, online community, local events, Ghana community, connect locally, community platform">
+    <meta name="description" content="Read inspiring community stories from Yapei residents sharing experiences, insights, and perspectives on life in Yapei.">
+    <meta name="keywords" content="community story, Yapei voice, local perspective, community experience, Yapei story">
     <meta name="author" content="Yapei Community Online">
-    <meta property="og:title" content="Yapei Community · Home of Togetherness">
-    <meta property="og:description" content="Connect, share, and grow with Yapei Community Online. Discover stories, events, and opportunities.">
+    <meta property="og:title" content="Community Story | Yapei Online Platform">
+    <meta property="og:description" content="Discover stories from Yapei community members sharing experiences, insights, and connections.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.yapeionline.jo3.org/post.html">
     <meta property="og:image" content="https://www.yapeionline.jo3.org/assets/community1.jpg">
-    <title>Yapei Stories · Community Blog</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Community Story">
+    <meta name="twitter:description" content="Inspiring stories from Yapei community members">
+    <title>Community Story | Yapei Stories · Blog</title>
     <link rel="canonical" href="https://www.yapeionline.jo3.org/post.html">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     
     <style>
-        :root {
-            --primary-dark: #073b6c;
-            --primary-accent: #0d6efd;
-            --liquid-shine: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.05) 100%);
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-card: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.4);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
-            --accent-gold: #ffb703;
-        }
-
         body {
             background: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 50%, #fae8ff 100%);
-            background-attachment: fixed;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             color: #1e293b;
             min-height: 100vh;
         }
-
-        /* Glassmorphism Navbar */
-        .navbar-glass {
-            background: rgba(7, 59, 108, 0.75) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .navbar-brand i {
-            color: var(--accent-gold);
-            text-shadow: 0 0 10px rgba(255, 183, 3, 0.5);
-        }
-
-        /* Liquid Glass Cards */
-        .glass-card {
-            background: var(--glass-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: var(--glass-shadow);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px 0 rgba(31, 38, 135, 0.15);
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .card-img-top-glass {
-            border-top-left-radius: 24px;
-            border-top-right-radius: 24px;
-            object-fit: cover;
-            height: 350px;
-            position: relative;
-        }
-
-        /* Fluid Badge Styles */
-        .post-meta-badge {
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.15), rgba(13, 110, 253, 0.05));
-            border: 1px solid rgba(13, 110, 253, 0.2);
-            border-radius: 50px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
-            color: var(--primary-dark);
-            font-weight: 600;
-            backdrop-filter: blur(4px);
-        }
-
-        /* Premium Avatars */
-        .comment-avatar {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
-            border: 2px solid #ffffff;
-            overflow: hidden;
-        }
-        .comment-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Liquid Input & Forms */
-        .glass-form-control {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: #1e293b;
-            transition: all 0.3s ease;
-        }
-        .glass-form-control:focus {
-            background: rgba(255, 255, 255, 0.85);
-            border-color: var(--primary-accent);
-            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
-            color: #0f172a;
-        }
-
-        .comment-bubble-glass {
-            background: rgba(255, 255, 255, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 0px 20px 20px 20px;
-            padding: 1rem 1.4rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-            flex: 1;
-            transition: background 0.3s ease;
-        }
-        .comment-bubble-glass:hover {
-            background: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Glassmorphic Buttons */
-        .btn-glass-primary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            box-shadow: 0 8px 20px -6px rgba(29, 78, 216, 0.5);
-            transition: all 0.3s ease;
-        }
-        .btn-glass-primary:hover {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px -5px rgba(29, 78, 216, 0.6);
-            color: white;
-        }
-
-        .btn-glass-outline {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(7, 59, 108, 0.3);
-            color: var(--primary-dark);
-            border-radius: 50px;
-            padding: 0.75rem 2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        .btn-glass-outline:hover {
-            background: var(--primary-dark);
-            color: white;
-            transform: translateY(-2px);
-            border-color: var(--primary-dark);
-        }
-
-        /* Pagination Setup */
-        .pagination .page-link {
-            border-radius: 50% !important;
-            margin: 0 5px;
-            border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(5px);
-            color: var(--primary-dark);
-            font-weight: 600;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .pagination .page-item.active .page-link {
-            background: var(--primary-dark) !important;
-            border-color: var(--primary-dark) !important;
-            color: white !important;
-            box-shadow: 0 4px 12px rgba(7, 59, 108, 0.3);
-        }
-
-        /* Blurred Cinematic Overlay Background */
-        .cinematic-blur-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 1060;
-        }
-
-        .event-popup-glass {
-            background: rgba(255, 255, 255, 0.75) !important;
-            backdrop-filter: blur(25px) !important;
-            -webkit-backdrop-filter: blur(25px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.6) !important;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-        }
-
-        footer {
-            background: rgba(7, 59, 108, 0.9) !important;
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .navbar { background: rgba(7, 59, 108, 0.85) !important; backdrop-filter: blur(20px); }
+        .navbar-brand { color: white !important; font-weight: 600; }
+        .navbar-brand i { color: #ffb703; }
+        .nav-link { color: rgba(255,255,255,0.85) !important; border-radius: 50px; margin: 0 4px; padding: 0.5rem 1.2rem !important; }
+        .nav-link.active, .nav-link:hover { background: rgba(255,255,255,0.15); color: #ffffff !important; }
+        .post-hero { background: linear-gradient(135deg, #073b6c, #0d6efd); color: white; padding: 3rem 0; }
+        footer { background: #073b6c; color: white; }
+        footer a { color: #cbd5e1; text-decoration: none; }
+        footer a:hover { color: #ffb703; }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass shadow-sm fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="index.html">
-                <i class="fa-solid fa-water-waves me-2 text-accent"></i>Yapei Community
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold" href="index.html" title="Yapei Community Online">
+                <i class="fa-solid fa-book-open"></i> Story
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="blog.html"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-2"></span>
+                <ul class="navbar-nav ms-auto align-items-center gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html" title="Home"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html" title="Blog"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html" title="Events"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" title="About"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" title="Contact"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="container py-5" style="margin-top: 80px;">
-        <div class="row justify-content-center">
-            <div class="col-lg-9 col-xl-8">
-                
-                <div class="card glass-card mb-5 overflow-hidden animate__animated animate__fadeInUp">
-                    <img class="card-img-top-glass" id="postImage" alt="Featured blog cover image">
-                    <div class="card-body p-4 p-md-5">
-                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
-                            <span class="post-meta-badge"><i class="fa-solid fa-sparkles me-1 text-warning"></i>Community Story</span>
-                            <span class="text-secondary small fw-medium" id="postDatePlaceholder">
-                                <i class="fa-regular fa-calendar-lines-pen me-1"></i>Loading...
-                            </span>
-                        </div>
-                        
-                        <h1 class="card-title fw-extrabold display-6 mb-4" id="postTitle" style="color: var(--primary-dark)"></h1>
-                        
-                        <div class="d-flex align-items-center mb-4 pb-3 border-bottom border-white">
-                            <div class="comment-avatar me-3" id="authorAvatar">👤</div>
-                            <div>
-                                <h6 class="fw-bold mb-0 text-dark" id="authorName">...</h6>
-                                <span class="text-muted small" id="postTimestamp"></span>
-                            </div>
-                        </div>
-
-                        <p class="card-text fs-5 lh-lg mb-4" id="postContent" style="color: #334155; white-space: pre-wrap;"></p>
-
-                        <div class="mt-5 d-flex gap-2 flex-wrap" id="postBadges">
-                            <button class="btn btn-sm btn-glass-outline px-3 py-2 rounded-pill"><i class="fa-regular fa-heart me-2 text-danger"></i>24 Likes</button>
-                            <button class="btn btn-sm btn-glass-outline px-3 py-2 rounded-pill"><i class="fa-regular fa-comments me-2 text-primary"></i><span id="commentCount">0</span> Conversations</button>
-                            <button class="btn btn-sm btn-glass-outline px-3 py-2 rounded-pill"><i class="fa-regular fa-bookmark"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card glass-card mb-5 border-0 rounded-4">
-                    <div class="card-header bg-transparent border-0 pt-4 px-4 px-md-5 pb-0">
-                        <h4 class="mb-0 fw-bold text-dark"><i class="fa-solid fa-comments-text text-primary me-2"></i>Discussion Hub</h4>
-                    </div>
-                    
-                    <div class="card-body p-4 p-md-5">
-                        <form class="mb-5 p-4 rounded-4" id="commentForm" style="background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.4);">
-                            <div class="mb-3">
-                                <label for="commentName" class="form-label fw-bold small text-secondary"><i class="fa-regular fa-user-crown me-1"></i>Your Identity</label>
-                                <input type="text" class="form-control form-control-lg rounded-pill glass-form-control shadow-sm" id="commentName" placeholder="e.g. Kwesi from Yapei">
-                            </div>
-                            <div class="mb-3">
-                                <label for="commentText" class="form-label fw-bold small text-secondary"><i class="fa-regular fa-bubble-message me-1"></i>Your Insight</label>
-                                <textarea class="form-control rounded-4 glass-form-control shadow-sm" id="commentText" rows="4" placeholder="Contribute meaningfully to this community narrative..."></textarea>
-                            </div>
-                            <div id="commentError" class="alert alert-danger d-none rounded-3 animate__animated animate__shakeX" role="alert"></div>
-                            <button type="submit" class="btn btn-glass-primary mt-2"><i class="fa-solid fa-paper-plane-top me-2"></i>Transmit Comment</button>
-                        </form>
-
-                        <div id="commentsContainer">
-                            <div class="mb-4 d-flex align-items-center">
-                                <i class="fa-solid fa-timeline-arrow text-primary me-2"></i>
-                                <span class="fw-bold text-uppercase small tracking-wider text-secondary">Verified Commentary Feed</span>
-                            </div>
-                            <div id="commentsList" class="d-flex flex-column gap-3 mb-4"></div>
-                            <nav id="commentPagination" class="mt-4"></nav>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="blog.html" class="btn btn-glass-outline px-4 mb-5"><i class="fa-solid fa-arrow-left-long me-2"></i>Return to Hub</a>
-            </div>
+    <section class="post-hero">
+        <div class="container">
+            <h1 class="fw-bold"><i class="fa-solid fa-book-open me-2"></i>Community Story</h1>
+            <p class="lead mb-0">Inspiring tales from Yapei residents</p>
         </div>
     </section>
 
-    <div id="eventInviteOverlay" class="cinematic-blur-overlay"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:420px; max-width:92vw;">
-        <div class="card glass-card event-popup-glass border-0 rounded-5 animate__animated animate__zoomIn">
-            <div class="card-body text-center p-4 p-md-5">
-                <span class="bg-primary bg-gradient text-white rounded-circle d-inline-flex p-3 mb-4 shadow-lg"><i class="fa-solid fa-calendar-star fa-2x"></i></span>
-                <h3 class="card-title fw-black text-dark mb-2" id="eventInviteTitle">---</h3>
-                <p class="card-text text-secondary mb-4 px-2" id="eventInviteDesc">---</p>
-                
-                <div class="p-3 rounded-4 mb-4 text-start" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5)">
-                    <p class="mb-2 text-dark fw-medium"><i class="fa-solid fa-map-location-dot text-primary me-2"></i><span id="eventInviteLocation">---</span></p>
-                    <p class="mb-0 text-dark fw-medium"><i class="fa-regular fa-hourglass-clock text-primary me-2"></i><span id="eventInviteDate">---</span></p>
-                </div>
-                
-                <div class="d-flex justify-content-center gap-3">
-                    <button type="button" class="btn btn-glass-outline py-2 flex-grow-1" id="closeEventInvitePopup">Dismiss</button>
-                    <a href="events.html" class="btn btn-glass-primary py-2 flex-grow-1 d-flex align-items-center justify-content-center"><i class="fa-solid fa-ticket me-2"></i>Explore</a>
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title fw-bold mb-4">Read the full story</h2>
+                        <p class="card-text">Discover inspiring stories from our community members.</p>
+                        <a href="blog.html" class="btn btn-primary"><i class="fa-solid fa-arrow-left me-2"></i>Back to Blog</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer class="text-white pt-5 pb-4">
+    <footer class="py-5 mt-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <p class="mb-0 rgba-text"><i class="fa-regular fa-copyright me-2"></i>2026 Yapei Community · Structural Unity & Progress</p>
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-info-circle me-2"></i>About</h5>
+                    <p>Yapei Community Online connects residents for local development and storytelling.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="d-flex justify-content-center justify-content-md-end gap-3">
-                        <a href="#" class="text-white btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" class="text-white btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white btn btn-sm btn-outline-light rounded-circle" style="width:36px; height:36px; padding:6px;"><i class="fab fa-whatsapp"></i></a>
-                    </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-link me-2"></i>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" title="Home"><i class="fa-solid fa-chevron-right me-2 small"></i>Home</a></li>
+                        <li><a href="blog.html" title="Blog"><i class="fa-solid fa-chevron-right me-2 small"></i>Blog</a></li>
+                        <li><a href="about.html" title="About"><i class="fa-solid fa-chevron-right me-2 small"></i>About</a></li>
+                        <li><a href="contact.html" title="Contact"><i class="fa-solid fa-chevron-right me-2 small"></i>Contact</a></li>
+                    </ul>
                 </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-gavel me-2"></i>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="privacy.html" title="Privacy"><i class="fa-solid fa-chevron-right me-2 small"></i>Privacy</a></li>
+                        <li><a href="terms.html" title="Terms"><i class="fa-solid fa-chevron-right me-2 small"></i>Terms</a></li>
+                        <li><a href="cookies.html" title="Cookies"><i class="fa-solid fa-chevron-right me-2 small"></i>Cookies</a></li>
+                        <li><a href="disclaimer.html" title="Disclaimer"><i class="fa-solid fa-chevron-right me-2 small"></i>Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-white-50">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        (function() {
-            // DRF Environment Architecture Integration URL
-            const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-
-            function updateNavbarLinks() {
-                const userLinks = document.getElementById('navbar-user-links');
-                if (!userLinks) return;
-                const isLoggedIn = !!localStorage.getItem('access');
-                userLinks.innerHTML = isLoggedIn
-                    ? `<li class="nav-item"><a class="nav-link btn btn-sm btn-light text-dark px-3 rounded-pill fw-bold" href="profile.html"><i class="fa-solid fa-user-gear me-1"></i>Profile</a></li>
-                       <li class="nav-item"><a class="nav-link text-white-50" href="logout.html"><i class="fa-solid fa-power-off me-1"></i>Logout</a></li>`
-                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</a></li>
-                       <li class="nav-item"><a class="nav-link btn btn-sm btn-primary text-white px-3 rounded-pill" href="register.html">Register</a></li>`;
-            }
-
-            function getMessageId() {
-                return new URLSearchParams(window.location.search).get('message_id');
-            }
-
-            const messageId = getMessageId();
-            if (!messageId) {
-                document.body.innerHTML = `
-                    <div class="d-flex align-items-center justify-content-center min-vh-100">
-                        <div class="card glass-card text-center p-5 max-width-sm mx-3">
-                            <i class="fa-solid fa-triangle-exclamation text-danger fa-3x mb-3"></i>
-                            <h4 class="fw-bold">Routing Specification Fault</h4>
-                            <p class="text-secondary">No explicit context identification parameter (message_id) provided.</p>
-                            <a href="blog.html" class="btn btn-glass-primary mt-2">Return to Catalog</a>
-                        </div>
-                    </div>`;
-                throw new Error('Routing missing message context parameter.');
-            }
-
-            // System Registry Handles
-            const postImg = document.getElementById('postImage');
-            const postTitle = document.getElementById('postTitle');
-            const postContent = document.getElementById('postContent');
-            const authorName = document.getElementById('authorName');
-            const authorAvatar = document.getElementById('authorAvatar');
-            const postTimestamp = document.getElementById('postTimestamp');
-            const postDatePlaceholder = document.getElementById('postDatePlaceholder');
-            const commentsList = document.getElementById('commentsList');
-            const commentForm = document.getElementById('commentForm');
-            const commentError = document.getElementById('commentError');
-            const commentCountSpan = document.getElementById('commentCount');
-            const paginationNav = document.getElementById('commentPagination');
-
-            let allComments = [];
-            let currentPage = 1;
-            const pageSize = 5;
-
-            // Operational Endpoint Processing
-            function loadPost() {
-                fetch(`${BACKEND_URL}/api/messages/${messageId}/`)
-                    .then(res => { if (!res.ok) throw new Error('Requested resource context unavailable.'); return res.json(); })
-                    .then(post => {
-                        if (post.media && post.media !== '') {
-                            postImg.src = post.media.startsWith('http') ? post.media : `${BACKEND_URL}${post.media}`;
-                        } else {
-                            postImg.src = 'assets/blog-default.jpg';
-                        }
-                        
-                        // Extracts explicit models.py title field attributes safely
-                        postTitle.innerHTML = `<i class="fa-solid fa-feather-pointed me-2 opacity-50 text-primary"></i>${post.title || 'Community Publication'}`;
-                        postContent.textContent = post.content || 'No content provided.';
-                        
-                        authorName.textContent = post.user || 'Anonymous Community Representative';
-                        
-                        // Support custom author_avatar images or clean fallback letters
-                        if (post.author_avatar) {
-                            const fullAvatarUrl = post.author_avatar.startsWith('http') ? post.author_avatar : `${BACKEND_URL}${post.author_avatar}`;
-                            authorAvatar.innerHTML = `<img src="${fullAvatarUrl}" alt="Author Avatar">`;
-                        } else {
-                            authorAvatar.textContent = post.user ? post.user.charAt(0).toUpperCase() : '👤';
-                        }
-                        
-                        const processedDate = post.timestamp 
-                            ? new Date(post.timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) 
-                            : 'Recently Issued';
-                        
-                        postTimestamp.innerHTML = `<i class="fa-regular fa-clock me-1"></i>Published: ${processedDate}`;
-                        postDatePlaceholder.innerHTML = `<i class="fa-regular fa-calendar-check me-1"></i>${processedDate}`;
-                    })
-                    .catch(err => {
-                        document.querySelector('.card-body').innerHTML = `<div class="alert alert-warning border-0 rounded-4 shadow-sm"><i class="fa-solid fa-circle-exclamation me-2"></i>${err.message}</div>`;
-                    });
-            }
-
-            function fetchComments() {
-                // Interfacing with sub-route list view context for related discussion modules
-                fetch(`${BACKEND_URL}/api/messages/${messageId}/comments/`)
-                    .then(res => res.json())
-                    .then(data => {
-                        allComments = Array.isArray(data) ? data : [];
-                        if (commentCountSpan) commentCountSpan.textContent = allComments.length;
-                        renderComments();
-                    })
-                    .catch(() => { allComments = []; renderComments(); });
-            }
-
-            function renderComments() {
-                if (!commentsList) return;
-                const total = allComments.length;
-                const totalPages = Math.ceil(total / pageSize) || 1;
-                if (currentPage > totalPages) currentPage = totalPages;
-                
-                const start = (currentPage - 1) * pageSize;
-                const end = Math.min(start + pageSize, total);
-                const pageComments = allComments.slice(start, end);
-
-                commentsList.innerHTML = '';
-                if (pageComments.length === 0) {
-                    commentsList.innerHTML = `
-                        <div class="text-center text-muted py-5 rounded-4 animate__animated animate__fadeIn" style="background: rgba(255,255,255,0.2); border: 1px dashed rgba(0,0,0,0.1)">
-                            <i class="fa-light fa-comments-question fa-2x mb-2 text-secondary"></i>
-                            <p class="mb-0 fst-italic">No insights logged yet. Initiate the conversation framework below.</p>
-                        </div>`;
-                } else {
-                    pageComments.forEach(cmt => {
-                        const commentDiv = document.createElement('div');
-                        commentDiv.className = 'd-flex gap-3 animate__animated animate__fadeInUp';
-                        const letter = cmt.author ? cmt.author.charAt(0).toUpperCase() : 'A';
-                        
-                        const commentDate = cmt.created_at 
-                            ? new Date(cmt.created_at).toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit'}) 
-                            : 'Just now';
-
-                        commentDiv.innerHTML = `
-                            <div class="comment-avatar" style="flex-shrink: 0;"><span>${letter}</span></div>
-                            <div class="comment-bubble-glass">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <span class="fw-bold text-dark">${cmt.author || 'Anonymous Observer'}</span>
-                                    <span class="text-muted small" style="font-size:0.75rem;"><i class="fa-regular fa-clock me-1"></i>${commentDate}</span>
-                                </div>
-                                <p class="mb-0 text-secondary" style="font-size: 0.95rem; line-height:1.5;">${cmt.text || ''}</p>
-                            </div>
-                        `;
-                        commentsList.appendChild(commentDiv);
-                    });
-                }
-
-                // Pagination Rendering
-                paginationNav.innerHTML = '';
-                if (totalPages > 1) {
-                    const ul = document.createElement('ul');
-                    ul.className = 'pagination justify-content-center m-0';
-                    for (let i = 1; i <= totalPages; i++) {
-                        const li = document.createElement('li');
-                        li.className = `page-item ${i === currentPage ? 'active' : ''}`;
-                        const a = document.createElement('a');
-                        a.className = 'page-link shadow-sm';
-                        a.href = '#';
-                        a.textContent = i;
-                        a.onclick = (e) => { e.preventDefault(); currentPage = i; renderComments(); };
-                        li.appendChild(a);
-                        ul.appendChild(li);
-                    }
-                    paginationNav.appendChild(ul);
-                }
-            }
-
-            // Comment Processing Pipeline
-            commentForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const author = document.getElementById('commentName').value.trim();
-                const text = document.getElementById('commentText').value.trim();
-                
-                commentError.classList.add('d-none');
-                if (!author || !text) {
-                    commentError.textContent = 'Operational fault: Author signature and commentary context fields are required.';
-                    commentError.classList.remove('d-none');
-                    return;
-                }
-
-                // Sync payload fields with CommentSerializer declaration parameters
-                fetch(`${BACKEND_URL}/api/messages/${messageId}/comments/`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: parseInt(messageId), author, text })
-                })
-                .then(async res => {
-                    if (res.ok) {
-                        document.getElementById('commentText').value = '';
-                        fetchComments();
-                    } else {
-                        const errData = await res.json();
-                        throw new Error(errData.detail || errData.error || 'Pipeline execution failed during transmission.');
-                    }
-                })
-                .catch(err => {
-                    commentError.textContent = err.message;
-                    commentError.classList.remove('d-none');
-                });
-            });
-
-            // Modern Event Processing Framework
-            function setupEventPopup() {
-                const invitePopup = document.getElementById('eventInvitePopup');
-                const overlay = document.getElementById('eventInviteOverlay');
-                const closeBtn = document.getElementById('closeEventInvitePopup');
-                
-                if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
-                if (['login.html', 'register.html'].some(p => window.location.pathname.endsWith(p))) return;
-                if (Math.random() > 0.60) return;
-
-                // Sync with UpcomingEventView route configurations
-                fetch(`${BACKEND_URL}/api/events/upcoming/`)
-                    .then(res => res.json())
-                    .then(event => {
-                        if (event && event.id) {
-                            document.getElementById('eventInviteTitle').textContent = event.title || 'Community Gathering';
-                            document.getElementById('eventInviteDesc').textContent = event.description || 'Join your fellow residents in our next community session.';
-                            document.getElementById('eventInviteLocation').textContent = event.location || 'Yapei Central Complex';
-                            document.getElementById('eventInviteDate').textContent = event.date ? new Date(event.date).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'To be declared';
-                            
-                            invitePopup.style.display = 'block';
-                            overlay.style.display = 'block';
-                            sessionStorage.setItem('eventInvitePopupShown', 'true');
-                        }
-                    })
-                    .catch(() => {});
-                
-                const closeAction = () => {
-                    overlay.style.display = 'none';
-                    invitePopup.style.display = 'none';
-                };
-                closeBtn.addEventListener('click', closeAction);
-                overlay.addEventListener('click', closeAction);
-            }
-
-            // Event Hooks
-            document.addEventListener('DOMContentLoaded', () => {
-                updateNavbarLinks();
-                loadPost();
-                fetchComments();
-                setupEventPopup();
-            });
-
-            // Sync Interval Processing Loop (30 Seconds Refresh Cycle)
-            setInterval(fetchComments, 30000);
-        })();
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Community Story",
+      "url": "https://www.yapeionline.jo3.org/post.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Yapei Community Online",
+        "logo": "https://www.yapeionline.jo3.org/assets/community1.jpg"
+      }
+    }
     </script>
-
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "eb7ffd6f11764c8c8ee7bc42c9fe644f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

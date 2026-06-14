@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yapei Community Online - Connect with Yapei residents, share stories, discover events, and participate in community development. Join our digital platform today.">
-    <meta name="keywords" content="Yapei community, online community, local events, Ghana community, connect locally, community platform">
+    <meta name="description" content="Contact Yapei Community Online to volunteer, share ideas, partner with us, or provide feedback. We'd love to hear from you.">
+    <meta name="keywords" content="contact Yapei, volunteer opportunities, community involvement, reach out, contact form">
     <meta name="author" content="Yapei Community Online">
-    <meta property="og:title" content="Yapei Community · Home of Togetherness">
-    <meta property="og:description" content="Connect, share, and grow with Yapei Community Online. Discover stories, events, and opportunities.">
+    <meta property="og:title" content="Contact | Get Involved with Yapei Community">
+    <meta property="og:description" content="Contact Yapei Community Online to volunteer, share ideas, partner with us, or provide feedback.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.yapeionline.jo3.org/contact.html">
     <meta property="og:image" content="https://www.yapeionline.jo3.org/assets/community1.jpg">
-    <title>Contact Us · Yapei Community Online</title>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Yapei Community">
+    <meta name="twitter:description" content="Get in touch with Yapei Community Online">
+    <title>Contact Us · Yapei Community Online | Get Involved</title>
     <link rel="canonical" href="https://www.yapeionline.jo3.org/contact.html">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico"> 
     
@@ -24,469 +27,82 @@
     
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-bg-hover: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            --text-light: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.7);
-            --accent-gold: #fbbf24;
-            --accent-blue: #38bdf8;
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --card-round: 28px;
+            --primary-deep: #0b4b7a;
+            --primary-accent: #3b82f6;
+            --accent-gold: #f9b84a;
         }
-
         body {
             font-family: 'Inter', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: var(--text-light);
+            background: linear-gradient(135deg, #f0f4f8 0%, #f8fafc 100%);
+            color: #1f2f40;
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
         }
-
-        /* Liquid Background Animation */
-        .liquid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: linear-gradient(45deg, #0b4b7a, #1e1b4b, #0f766e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(90px);
-            opacity: 0.5;
-            animation: float 20s infinite alternate;
-        }
-
-        .blob-1 {
-            top: -10%; left: -10%; width: 50vw; height: 50vw;
-            background: #3b82f6; animation-delay: 0s;
-        }
-        .blob-2 {
-            bottom: -20%; right: -10%; width: 60vw; height: 60vw;
-            background: #8b5cf6; animation-delay: -5s;
-        }
-        .blob-3 {
-            top: 40%; left: 40%; width: 40vw; height: 40vw;
-            background: #14b8a6; animation-delay: -10s; animation-duration: 25s;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-
-        /* Glassmorphism Classes */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            border-radius: var(--card-round);
-            transition: var(--transition);
-        }
-
-        .glass-panel:hover {
-            box-shadow: 0 15px 45px rgba(0,0,0,0.4);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .glass-panel-inner {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-        }
-
-        /* Navbar */
         .navbar {
-            background: rgba(15, 23, 42, 0.7) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-accent) 100%) !important;
+            box-shadow: 0 4px 15px rgba(11, 75, 122, 0.2);
         }
-
-        .navbar-brand {
-            color: var(--text-light) !important;
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
-        .navbar-brand i { color: var(--accent-gold); }
-
-        .navbar-nav .nav-link {
-            color: var(--text-dim) !important;
-            border-radius: 40px;
-            margin: 0 6px;
-            padding: 0.5rem 1.2rem !important;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-            color: var(--text-light) !important;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Buttons */
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-light);
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-glass-primary {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(59, 130, 246, 0.4));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #fff;
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-glass-primary:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(59, 130, 246, 0.6));
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-            color: #fff;
-        }
-
-        /* Form Customization */
-        .form-control, .form-select {
-            background-color: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--text-light);
-            border-radius: 14px;
-            padding: 0.85rem 1.25rem;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus, .form-select:focus {
-            background-color: rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
-            color: white;
-        }
-        
-        .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .form-select option {
-            background-color: #0f172a;
-            color: white;
-        }
-
-        .form-label {
-            font-weight: 500;
-            color: var(--text-dim);
-            margin-bottom: 0.5rem;
-            padding-left: 0.2rem;
-        }
-
-        /* Contact Info Enhancements */
-        .contact-info-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .contact-info-list li {
-            display: flex;
-            align-items: center;
-            padding: 1.2rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-info-list li:last-child {
-            border-bottom: none;
-        }
-
-        .contact-info-list i.icon-circle {
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--accent-blue);
-            border-radius: 50%;
-            margin-right: 1.2rem;
-            font-size: 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
-        }
-
-        .contact-info-list a, .contact-info-list span {
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .contact-info-list a:hover {
-            color: var(--accent-gold);
-        }
-
-        .social-icon-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--text-dim);
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .social-icon-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: var(--accent-gold);
-            transform: translateY(-3px);
-        }
-
-        /* Modals & Popups */
-        .modal-content {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 2rem;
-            color: var(--text-light);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .btn-close {
-            filter: invert(1) opacity(0.7);
-        }
-
-        .popup-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, rgba(56, 189, 248, 0.2), rgba(59, 130, 246, 0.2));
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: var(--accent-blue);
-        }
-
-        /* Footer */
-        .modern-footer {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 0 1.5rem;
-            margin-top: 5rem;
-        }
-        
-        .modern-footer a {
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .modern-footer a:hover {
-            color: var(--accent-gold);
-        }
-
-        /* Loading Spinner */
-        .btn-loading {
-            position: relative;
-            pointer-events: none;
-            opacity: 0.8;
-        }
-        .btn-loading .btn-text { visibility: hidden; }
-        .btn-loading::after {
-            content: "";
-            position: absolute;
-            width: 1.2rem;
-            height: 1.2rem;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 2px solid white;
-            border-radius: 50%;
-            border-top-color: transparent;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+        .navbar-brand { color: white !important; font-weight: 600; font-size: 1.5rem; }
+        .navbar-brand i { color: var(--accent-gold); margin-right: 8px; }
+        .navbar-nav .nav-link { color: rgba(255,255,255,0.9) !important; border-radius: 40px; margin: 0 6px; padding: 0.5rem 1.2rem !important; }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover { background: rgba(255,255,255,0.15); }
+        .contact-header { background: linear-gradient(135deg, var(--primary-deep), var(--primary-accent)); color: white; padding: 4rem 0; }
+        .contact-header h1 { font-size: clamp(2rem, 8vw, 3rem); font-weight: 800; }
+        footer { background: #0b4b7a; color: white; }
+        footer a { color: #cbd5e1; text-decoration: none; }
+        footer a:hover { color: var(--accent-gold); }
     </style>
 </head>
 <body>
-
-    <!-- Liquid Background -->
-    <div class="liquid-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container px-4">
-            <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-people-group me-2"></i>Yapei Community
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold" href="index.html" title="Yapei Community Online">
+                <i class="fa-solid fa-water-waves"></i> Yapei Community
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" style="border-color: rgba(255,255,255,0.1);">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-info me-1"></i>About Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-1 ms-lg-2"></span>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html" title="Home"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html" title="Blog"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" title="About"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html" title="Contact"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html" title="Events"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="py-5 mt-4 text-center animate__animated animate__fadeInDown">
-        <div class="container">
-            <span class="badge rounded-pill mb-3" style="background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.3); color: var(--accent-gold); padding: 0.5rem 1.5rem;">
-                <i class="fa-regular fa-paper-plane me-2"></i>Let's connect
-            </span>
-            <h1 class="display-4 fw-bold mb-3">Get in Touch</h1>
-            <p class="lead text-dim mx-auto" style="max-width: 600px;">We'd love to hear from you. Reach out with any questions, feedback, or community ideas.</p>
+    <div class="contact-header">
+        <div class="container text-center">
+            <h1><i class="fa-solid fa-envelope me-2"></i>Get in Touch</h1>
+            <p class="lead mb-0">We'd love to hear from you. Reach out to us today.</p>
         </div>
-    </section>
+    </div>
 
-    <!-- Main Content -->
-    <main class="py-4 mb-5">
+    <main class="py-5">
         <div class="container">
-            <div class="row g-5 justify-content-center">
-                <!-- Contact Form -->
+            <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <div class="glass-panel p-4 p-md-5 h-100 animate__animated animate__fadeInLeft">
-                        <h3 class="fw-bold mb-4 d-flex align-items-center">
-                            <i class="fa-solid fa-pen-to-square me-3" style="color: var(--accent-blue);"></i> Send a Message
-                        </h3>
-                        <form id="contactForm" class="needs-validation" novalidate>
-                            <div class="mb-4">
-                                <label for="name" class="form-label">Full Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="E.g. Kofi Mensah" required>
-                                <div class="invalid-feedback" style="color: #fca5a5;">Please enter your name.</div>
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-                                <div class="invalid-feedback" style="color: #fca5a5;">Please enter a valid email.</div>
-                            </div>
-                            <div class="mb-4">
-                                <label for="subject" class="form-label">Subject</label>
-                                <select class="form-select" id="subject" required>
-                                    <option value="" selected disabled>Select a subject...</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="support">Technical Support</option>
-                                    <option value="feedback">Community Feedback</option>
-                                    <option value="partnership">Partnership</option>
-                                </select>
-                                <div class="invalid-feedback" style="color: #fca5a5;">Please select a subject.</div>
-                            </div>
-                            <div class="mb-5">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="How can we help you?" required></textarea>
-                                <div class="invalid-feedback" style="color: #fca5a5;">Please enter your message.</div>
-                            </div>
-                            <button type="submit" class="btn-glass-primary w-100 py-3" id="submitBtn">
-                                <span class="btn-text">
-                                    <i class="fa-solid fa-paper-plane me-2"></i>Send Message
-                                </span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Contact Information -->
-                <div class="col-lg-5">
-                    <div class="glass-panel p-4 p-md-5 h-100 animate__animated animate__fadeInRight" style="animation-delay: 0.2s;">
-                        <h3 class="fw-bold mb-4 d-flex align-items-center">
-                            <i class="fa-solid fa-circle-info me-3" style="color: var(--accent-gold);"></i> Info & Location
-                        </h3>
-                        
-                        <ul class="contact-info-list mb-5">
-                            <li>
-                                <i class="fa-solid fa-location-dot icon-circle"></i>
-                                <span>Yapei, Northern Region, Ghana</span>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-phone icon-circle"></i>
-                                <a href="tel:+233542687780">+233 54 268 7780</a>
-                            </li>
-                            <li>
-                                <i class="fab fa-whatsapp icon-circle" style="color: #34d399;"></i>
-                                <a href="https://wa.me/233591907870" target="_blank" rel="noopener noreferrer">+233 59 190 7870</a>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-envelope icon-circle"></i>
-                                <a href="mailto:info@yapeicommunityonline.com">info@yapeicommunityonline.com</a>
-                            </li>
-                        </ul>
-
-                        <!-- Social Links -->
-                        <div class="mb-5">
-                            <p class="form-label mb-3">Connect With Us</p>
-                            <div class="d-flex gap-3">
-                                <a href="#" class="social-icon-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                                <a href="#" class="social-icon-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- Map Preview -->
-                        <div class="glass-panel-inner text-center p-4">
-                            <i class="fa-solid fa-map-location-dot fa-2x mb-3" style="color: var(--accent-blue);"></i>
-                            <p class="mb-3 text-dim">Find us in the heart of the Yapei community.</p>
-                            <button class="btn btn-glass btn-sm" data-bs-toggle="modal" data-bs-target="#mapModal">
-                                View Interactive Map <i class="fa-solid fa-arrow-right ms-2"></i>
-                            </button>
+                    <div class="card shadow-sm border-0 rounded-4">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4"><i class="fa-solid fa-comment-dots me-2"></i>Contact Form</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Your name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Your email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="5" placeholder="Your message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100"><i class="fa-solid fa-paper-plane me-2"></i>Send Message</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -494,209 +110,52 @@
         </div>
     </main>
 
-    <!-- Success Modal -->
-    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 text-center p-4">
-                <div class="modal-body p-4">
-                    <div class="popup-icon-wrapper" style="background: linear-gradient(145deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2)); border-color: rgba(16, 185, 129, 0.4); color: #34d399;">
-                        <i class="fa-solid fa-check fa-2x"></i>
-                    </div>
-                    <h4 class="fw-bold mb-3">Thank You!</h4>
-                    <p class="text-dim mb-4">Your message has been sent successfully. We'll get back to you shortly.</p>
-                    <button type="button" class="btn btn-glass-primary px-5" data-bs-dismiss="modal">Got it</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Map Modal -->
-    <div class="modal fade" id="mapModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content overflow-hidden">
-                <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-map text-info me-2"></i>Our Location</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="glass-panel-inner p-2 rounded-4 overflow-hidden">
-                        <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58672620865!2d-1.0975490934266178!3d8.533333333333333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzInMDAuMCJOIDHCsDA4JzUyLjAiVw!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh"
-                                width="100%" height="100%" style="border:0;" 
-                                allowfullscreen="" loading="lazy" 
-                                title="Google Maps showing Yapei location">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Event Invitation Modal -->
-    <div class="modal fade" id="eventInviteModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 text-center p-2">
-                <div class="modal-body p-4 p-md-5">
-                    <button type="button" class="btn-close position-absolute top-0 end-0 m-4" data-bs-dismiss="modal" aria-label="Close"></button>
-                    
-                    <div class="popup-icon-wrapper" style="background: linear-gradient(145deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.2)); border-color: rgba(251, 191, 36, 0.4); color: var(--accent-gold);">
-                        <i class="fa-solid fa-calendar-star fa-2x"></i>
-                    </div>
-                    
-                    <h4 class="fw-bold mb-2" id="eventInviteTitle"></h4>
-                    <p class="text-dim mb-4" id="eventInviteDesc"></p>
-                    
-                    <div class="glass-panel-inner text-start mb-4">
-                        <p class="mb-2"><i class="fa-solid fa-location-dot text-info me-3"></i><span id="eventInviteLocation"></span></p>
-                        <p class="mb-0"><i class="fa-regular fa-clock text-info me-3"></i><span id="eventInviteDate"></span></p>
-                    </div>
-                    
-                    <div class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-glass" data-bs-dismiss="modal">Maybe Later</button>
-                        <a href="events.html" class="btn btn-glass-primary"><i class="fa-solid fa-users me-2"></i>Join Event</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="modern-footer">
+    <footer class="py-5 mt-5">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <h5 class="text-light mb-3"><i class="fa-regular fa-compass me-2 text-info"></i>Yapei Community</h5>
-                    <p class="text-dim small">Connecting residents, sharing stories, building together. Reach out anytime.</p>
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-info-circle me-2"></i>About</h5>
+                    <p>Yapei Community Online connects residents for local development.</p>
                 </div>
-                <div class="col-md-4">
-                    <h5 class="text-light mb-3"><i class="fa-solid fa-link text-info me-2"></i>Quick Links</h5>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-link me-2"></i>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="index.html"><i class="fa-solid fa-home me-2"></i>Home</a></li>
-                        <li class="mb-2"><a href="about.html"><i class="fa-solid fa-circle-info me-2"></i>About</a></li>
-                        <li class="mb-2"><a href="blog.html"><i class="fa-solid fa-newspaper me-2"></i>Blog</a></li>
+                        <li><a href="index.html" title="Home"><i class="fa-solid fa-chevron-right me-2 small"></i>Home</a></li>
+                        <li><a href="about.html" title="About"><i class="fa-solid fa-chevron-right me-2 small"></i>About</a></li>
+                        <li><a href="events.html" title="Events"><i class="fa-solid fa-chevron-right me-2 small"></i>Events</a></li>
+                        <li><a href="blog.html" title="Blog"><i class="fa-solid fa-chevron-right me-2 small"></i>Blog</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5 class="text-light mb-3"><i class="fa-regular fa-paper-plane text-info me-2"></i>Newsletter</h5>
-                    <p class="text-dim small">Stay updated with community news.</p>
-                    <form id="newsletterForm" class="mt-3">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your email address" aria-label="Newsletter email">
-                            <button class="btn btn-glass-primary" type="submit" style="border-radius: 0 14px 14px 0;">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </form>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-gavel me-2"></i>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="privacy.html" title="Privacy"><i class="fa-solid fa-chevron-right me-2 small"></i>Privacy</a></li>
+                        <li><a href="terms.html" title="Terms"><i class="fa-solid fa-chevron-right me-2 small"></i>Terms</a></li>
+                        <li><a href="cookies.html" title="Cookies"><i class="fa-solid fa-chevron-right me-2 small"></i>Cookies</a></li>
+                        <li><a href="faq.html" title="FAQ"><i class="fa-solid fa-chevron-right me-2 small"></i>FAQ</a></li>
+                    </ul>
                 </div>
             </div>
-            <hr class="mt-4 mb-3" style="border-color: var(--glass-border);">
-            <p class="text-center small mb-0 text-dim"><i class="fa-regular fa-copyright me-1"></i>2026 Yapei Community Online. All voices matter.</p>
+            <hr class="bg-white-50">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contactForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-
-            // Bootstrap form validation
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                if (!contactForm.checkValidity()) {
-                    e.stopPropagation();
-                    contactForm.classList.add('was-validated');
-                    return;
-                }
-
-                submitBtn.classList.add('btn-loading');
-                submitBtn.disabled = true;
-
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    subject: document.getElementById('subject').value,
-                    message: document.getElementById('message').value
-                };
-
-                try {
-                    const response = await fetch(`${BACKEND_URL}/api/contact/`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                    });
-
-                    if (response.ok) {
-                        contactForm.reset();
-                        contactForm.classList.remove('was-validated');
-                        successModal.show();
-                        
-                        setTimeout(() => {
-                            const modal = bootstrap.Modal.getInstance(document.getElementById('successModal'));
-                            if (modal) modal.hide();
-                        }, 5000);
-                    } else {
-                        throw new Error('Failed to send message');
-                    }
-                } catch (error) {
-                    alert('Failed to send message. Please try again or contact us directly.');
-                    console.error('Contact form error:', error);
-                } finally {
-                    submitBtn.classList.remove('btn-loading');
-                    submitBtn.disabled = false;
-                }
-            });
-
-            // Navbar dynamic links
-            function updateNavbarLinks() {
-                const userLinks = document.getElementById('navbar-user-links');
-                if (!userLinks) return;
-                const isLoggedIn = !!localStorage.getItem('access');
-                userLinks.innerHTML = isLoggedIn 
-                    ? `<li class="nav-item"><a class="nav-link btn-glass px-3 py-1 mt-1 ms-2" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
-                       <li class="nav-item"><a class="nav-link px-3 py-1 mt-1 ms-2" style="color: #fca5a5 !important;" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
-                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
-                       <li class="nav-item"><a class="nav-link btn-glass-primary px-3 py-1 mt-1 ms-2" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-            }
-
-            // Event invitation popup
-            async function checkEventInvitation() {
-                const inviteShown = sessionStorage.getItem('eventInvitePopupShown');
-                const excludedPages = ['login.html', 'register.html'];
-                
-                if (excludedPages.some(p => window.location.pathname.endsWith(p))) return;
-                
-                if (!inviteShown && Math.random() < 0.5) {
-                    try {
-                        const response = await fetch(`${BACKEND_URL}/api/events/upcoming/`);
-                        const event = await response.json();
-                        
-                        if (event && event.deadline && new Date(event.deadline) > new Date()) {
-                            document.getElementById('eventInviteTitle').textContent = event.title;
-                            document.getElementById('eventInviteDesc').textContent = event.description;
-                            document.getElementById('eventInviteLocation').textContent = event.location;
-                            document.getElementById('eventInviteDate').textContent = new Date(event.date).toLocaleString();
-                            
-                            const eventModal = new bootstrap.Modal(document.getElementById('eventInviteModal'));
-                            eventModal.show();
-                            sessionStorage.setItem('eventInvitePopupShown', 'true');
-                        }
-                    } catch (error) {
-                        console.log('No upcoming events available');
-                    }
-                }
-            }
-
-            updateNavbarLinks();
-            setTimeout(checkEventInvitation, 3000);
-        });
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "url": "https://www.yapeionline.jo3.org/contact.html",
+      "name": "Yapei Community Contact",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+233-542687780",
+        "contactType": "Customer Support"
+      }
+    }
     </script>
 </body>
 </html>

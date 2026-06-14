@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yapei Community Online - Connect with Yapei residents, share stories, discover events, and participate in community development. Join our digital platform today.">
-    <meta name="keywords" content="Yapei community, online community, local events, Ghana community, connect locally, community platform">
+    <meta name="description" content="Discover inspiring community stories, local news, and articles from Yapei Community members. Read authentic voices sharing experiences and insights.">
+    <meta name="keywords" content="Yapei blog, community stories, local news Ghana, Yapei newsletter, community articles">
     <meta name="author" content="Yapei Community Online">
-    <meta property="og:title" content="Yapei Community · Home of Togetherness">
-    <meta property="og:description" content="Connect, share, and grow with Yapei Community Online. Discover stories, events, and opportunities.">
+    <meta property="og:title" content="Blog | Yapei Community Stories & News">
+    <meta property="og:description" content="Read inspiring stories, local news, and articles from Yapei community members. Share your voice and connect with neighbors.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.yapeionline.jo3.org/blog.html">
-    <meta property="og:image" content="https://www.yapeionline.jo3.org/assets/community1.jpg">
-    <title>Yapei Stories · Community Blog</title>
+    <meta property="og:image" content="https://www.yapeionline.jo3.org/assets/blogpage.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Yapei Community Stories">
+    <meta name="twitter:description" content="Read community stories and local news from Yapei">
+    <title>Yapei Stories · Community Blog | Local News & Articles</title>
     <link rel="canonical" href="https://www.yapeionline.jo3.org/blog.html">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
@@ -58,6 +61,7 @@
             padding: 0.5rem 1.2rem !important;
             font-weight: 500;
             transition: all 0.3s ease;
+            color: rgba(255, 255, 255, 0.85) !important;
         }
         .nav-link.active, .nav-link:hover {
             background: rgba(255, 255, 255, 0.15) !important;
@@ -83,541 +87,62 @@
             opacity: 0.06;
             pointer-events: none;
         }
-
-        /* Liquid Search Matrix */
-        .search-wrapper {
-            position: relative;
-            max-width: 550px;
-            margin: 0 auto 2.5rem auto;
-        }
-        .search-wrapper i {
-            position: absolute;
-            left: 22px;
-            top: 18px;
-            color: var(--primary-deep);
-            font-size: 1.1rem;
-            z-index: 10;
-        }
-        .search-input-glass {
-            border: 1px solid var(--glass-border);
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 50px;
-            padding: 0.9rem 1rem 0.9rem 3.5rem;
-            box-shadow: var(--glass-shadow);
-            width: 100%;
-            font-size: 1.05rem;
-            color: #0f172a;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .search-input-glass:focus {
-            background: rgba(255, 255, 255, 0.85);
-            outline: none;
-            border-color: var(--primary-accent);
-            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
-        }
-
-        /* Ultra-Premium Glass Cards */
-        .blog-card-glass {
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            overflow: hidden;
-            background: var(--glass-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--glass-shadow);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-card-glass:hover {
-            transform: translateY(-8px);
-            background: var(--glass-card-hover);
-            border-color: var(--glass-border-hover);
-            box-shadow: var(--glass-shadow-hover);
-        }
-        .blog-card-img-container {
-            overflow: hidden;
-            height: 230px;
-            position: relative;
-            background: #cbd5e1;
-        }
-        .blog-card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .blog-card-glass:hover .blog-card-img {
-            transform: scale(1.05);
-        }
-        .blog-card-glass .card-body {
-            padding: 1.75rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        .blog-card-glass .card-title {
-            color: var(--primary-deep);
-            font-weight: 700;
-            font-size: 1.4rem;
-            line-height: 1.4;
-            margin-bottom: 0.75rem;
-        }
-        .blog-card-glass .card-text {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Avatar Elements */
-        .author-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.25rem;
-            margin-top: auto;
-        }
-        .author-avatar {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #3b82f6 0%, #06325c 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-right: 12px;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
-            border: 2px solid #ffffff;
-            overflow: hidden;
-        }
-        .author-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Glass Control Invocations */
-        .btn-glass-action {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(6, 50, 92, 0.25);
-            border-radius: 50px;
-            padding: 0.5rem 1.75rem;
-            font-weight: 600;
-            color: var(--primary-deep);
-            transition: all 0.3s ease;
-            width: fit-content;
-        }
-        .btn-glass-action:hover {
-            background: var(--primary-deep);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(6, 50, 92, 0.2);
-        }
-
-        .card-footer-glass {
-            background: rgba(255, 255, 255, 0.25);
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 0.9rem 1.75rem;
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 500;
-        }
-
-        /* Custom Translucent Pagination Framework */
-        .pagination-custom {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 3.5rem;
-        }
-        .page-link-custom {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: var(--primary-deep);
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-            box-shadow: var(--glass-shadow);
-        }
-        .page-link-custom.active {
-            background: var(--primary-deep);
-            color: white;
-            border-color: var(--primary-deep);
-            box-shadow: 0 6px 15px rgba(6, 50, 92, 0.3);
-        }
-        .page-link-custom:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.8);
-            transform: scale(1.05);
-        }
-
-        /* Cinematic Blur Popups */
-        .cinematic-blur-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(15, 23, 42, 0.25);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 1060;
-        }
-        .popup-card-glass {
-            border-radius: 32px !important;
-            background: rgba(255, 255, 255, 0.75) !important;
-            backdrop-filter: blur(25px) !important;
-            -webkit-backdrop-filter: blur(25px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.5) !important;
-            box-shadow: 0 30px 60px -15px rgba(6, 50, 92, 0.25) !important;
-        }
-        .popup-icon-glass {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-            width: 74px;
-            height: 74px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-        }
-
-        /* Footer Aesthetics */
-        .modern-footer {
-            background: rgba(6, 50, 92, 0.9) !important;
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: 5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .footer-social-link {
-            width: 38px;
-            height: 38px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white !important;
-            transition: all 0.3s ease;
-        }
-        .footer-social-link:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
-        }
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass fixed-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-glass sticky-top">
         <div class="container-fluid px-md-4">
-            <a class="navbar-brand fw-bold fs-3" href="index.html">
-                <i class="fa-solid fa-feather-pointed me-2"></i>Yapei Portal
+            <a class="navbar-brand fw-bold fs-3" href="index.html" title="Yapei Community Online">
+                <i class="fa-solid fa-feather-pointed"></i> Yapei Blog
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center gap-1">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="blog.html"><i class="fa-solid fa-newspaper me-1"></i>Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-2 ms-2"></span>
+                    <li class="nav-item"><a class="nav-link" href="index.html" title="Home"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html" title="Blog"><i class="fa-solid fa-feather-pointed me-1"></i>Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events.html" title="Events"><i class="fa-solid fa-calendar-days me-1"></i>Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" title="About"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" title="Contact"><i class="fa-solid fa-envelope-open-text me-1"></i>Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html" title="FAQ"><i class="fa-solid fa-question me-1"></i>FAQ</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <header class="blog-header-glass py-5 text-center">
-        <div class="container py-4">
-            <span class="badge bg-primary bg-opacity-10 text-primary px-4 py-2 rounded-pill mb-3 fw-bold border border-primary border-opacity-25">
-                <i class="fa-solid fa-sparkles me-2"></i>Voices of Yapei
-            </span>
-            <h1 class="display-4 fw-extrabold mb-3" style="color: var(--primary-deep);">The Community Feed</h1>
-            <p class="lead fs-5 mx-auto text-secondary" style="max-width: 680px;">Discover authentic local updates, stories, and expressions directly from members of the Yapei community.</p>
+    <section class="blog-header-glass py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-dark"><i class="fa-solid fa-newspaper me-2"></i>Community Stories</h1>
+            <p class="lead text-muted">Latest stories, news, and updates from Yapei Community members.</p>
         </div>
-    </header>
-
-    <div class="container mt-4">
-        <div class="search-wrapper">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" class="search-input-glass" id="blogSearch" placeholder="Filter by narrative elements, titles, authors..." autocomplete="off">
-        </div>
-    </div>
-
-    <section class="container py-2">
-        <div class="row g-4 justify-content-center" id="blogGrid"></div>
-        <div id="blogPagination" class="pagination-custom"></div>
     </section>
 
-    <div id="eventInviteOverlay" class="cinematic-blur-overlay"></div>
-    <div id="eventInvitePopup" class="position-fixed top-50 start-50 translate-middle" style="z-index:1061; display:none; width:400px; max-width:92vw;">
-        <div class="card popup-card-glass shadow-2xl border-0 animate__animated animate__zoomIn">
-            <div class="card-body text-center p-4 p-md-5">
-                <div class="popup-icon-glass">
-                    <i class="fa-solid fa-calendar-star fa-2x text-white"></i>
-                </div>
-                <h3 class="fw-bold text-dark mb-2" id="eventInviteTitle">---</h3>
-                <p class="text-secondary mb-4 small" id="eventInviteDesc">---</p>
-                
-                <div class="p-3 rounded-4 mb-4 text-start" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5)">
-                    <p class="mb-2 text-dark small fw-medium"><i class="fa-solid fa-map-location-dot text-success me-2"></i><span id="eventInviteLocation">---</span></p>
-                    <p class="mb-0 text-dark small fw-medium"><i class="fa-regular fa-clock text-success me-2"></i><span id="eventInviteDate">---</span></p>
-                </div>
-                
-                <div class="d-flex justify-content-center gap-3">
-                    <button type="button" class="btn btn-glass-action border-secondary text-secondary py-2 flex-grow-1" id="closeEventInvitePopup">Later</button>
-                    <a href="events.html" class="btn btn-glass-action btn-primary text-white bg-primary py-2 flex-grow-1 d-flex align-items-center justify-content-center"><i class="fa-solid fa-ticket-airline me-2"></i>Explore</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="container py-5">
+        <div class="row g-4"></div>
+    </section>
 
-    <footer class="modern-footer">
+    <footer class="bg-dark text-white text-center py-4 mt-5">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <p class="mb-0 text-white-50"><i class="fa-regular fa-copyright me-2"></i>2026 Yapei Community Online · Structural Transparency</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
-                        <a href="#" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="footer-social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="light my-4">
-            <p class="small text-center mb-0 opacity-50">Designed with precision for structural integration & progress</p>
+            <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        (function() {
-            // Environment Endpoint Mapping Matrix Configuration Target
-            const BACKEND_URL = 'https://yapeionline.pythonanywhere.com';
-
-            function updateNavbarLinks() {
-                const userLinks = document.getElementById('navbar-user-links');
-                if (!userLinks) return;
-                const isLoggedIn = !!localStorage.getItem('access');
-                userLinks.innerHTML = isLoggedIn
-                    ? `<li class="nav-item"><a class="nav-link btn btn-sm btn-light text-dark px-3" href="profile.html"><i class="fa-solid fa-user-circle me-1"></i>Profile</a></li>
-                       <li class="nav-item"><a class="nav-link text-white-50" href="logout.html"><i class="fa-solid fa-power-off"></i></a></li>`
-                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-right-to-bracket me-1"></i>Login</a></li>
-                       <li class="nav-item"><a class="nav-link btn btn-sm btn-primary text-white px-3" href="register.html">Join Us</a></li>`;
-            }
-
-            // Interface Registry Handles
-            const blogGrid = document.getElementById('blogGrid');
-            const searchInput = document.getElementById('blogSearch');
-            const paginationDiv = document.getElementById('blogPagination');
-
-            let allPosts = [];
-            let currentPage = 1;
-            const pageSize = 6;
-
-            function fetchPosts() {
-                // Pointing dynamically toward your defined MessageListCreateView target
-                fetch(`${BACKEND_URL}/api/messages/`)
-                    .then(res => res.json())
-                    .then(data => {
-                        allPosts = Array.isArray(data) ? data : [];
-                        renderPosts();
-                    })
-                    .catch(() => {
-                        if(blogGrid) {
-                            blogGrid.innerHTML = `
-                                <div class="col-12 text-center py-5">
-                                    <div class="alert bg-white border border-danger border-opacity-25 rounded-4 shadow-sm p-4 d-inline-block">
-                                        <i class="fa-solid fa-wifi-slash text-danger fa-2x mb-2"></i>
-                                        <h5 class="fw-bold">Pipeline Sync Fault</h5>
-                                        <p class="text-secondary small mb-0">Unable to establish a link with database endpoints. Please re-verify network stream.</p>
-                                    </div>
-                                </div>`;
-                        }
-                    });
-            }
-
-            function renderPosts() {
-                if (!blogGrid) return;
-                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
-                
-                // Adjusted fallback checking based directly on models.py definitions
-                let filtered = allPosts.filter(post => 
-                    (post.title && post.title.toLowerCase().includes(searchTerm)) ||
-                    (post.content && post.content.toLowerCase().includes(searchTerm)) || 
-                    (post.user && post.user.toLowerCase().includes(searchTerm))
-                );
-
-                if (filtered.length === 0 && allPosts.length > 0 && searchTerm === '') filtered = allPosts; 
-
-                const totalPages = Math.ceil(filtered.length / pageSize);
-                if (currentPage > totalPages) currentPage = totalPages || 1;
-                const start = (currentPage - 1) * pageSize;
-                const end = Math.min(start + pageSize, filtered.length);
-                const pagePosts = filtered.slice(start, end);
-
-                blogGrid.innerHTML = '';
-                if (pagePosts.length === 0) {
-                    blogGrid.innerHTML = `
-                        <div class="col-12 text-center py-5 animate__animated animate__fadeIn">
-                            <i class="fa-regular fa-folder-magnifying-glass text-muted fa-3x mb-3"></i>
-                            <h4 class="fw-bold text-secondary">Zero Query Matches</h4>
-                            <p class="text-muted small">No narrative records match the specified semantic parameters.</p>
-                        </div>`;
-                } else {
-                    pagePosts.forEach(post => {
-                        const col = document.createElement('div');
-                        col.className = 'col-md-6 col-lg-4 d-flex';
-                        
-                        // Sync UI text boundaries cleanly with MessageSerializer definitions
-                        const displayTitle = post.title ? (post.title.length > 45 ? post.title.substring(0, 45) + '...' : post.title) : 'Uncategorized Update';
-                        const contentSnippet = post.content ? (post.content.length > 110 ? post.content.substring(0, 110) + '...' : post.content) : 'Select record module to interface with detailed content profiles.';
-                        
-                        const processedDate = post.timestamp 
-                            ? new Date(post.timestamp).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) 
-                            : 'Stored Update';
-                            
-                        // If media file exists, prepend backend domain if relative pathing returns from DRF
-                        let srcMedia = 'assets/blog-default.jpg';
-                        if (post.media && post.media !== '') {
-                            srcMedia = post.media.startsWith('http') ? post.media : `${BACKEND_URL}${post.media}`;
-                        }
-
-                        // Checks for author_avatar returned from custom serializer fields configuration
-                        let avatarElement = '';
-                        if (post.author_avatar) {
-                            const fullAvatarUrl = post.author_avatar.startsWith('http') ? post.author_avatar : `${BACKEND_URL}${post.author_avatar}`;
-                            avatarElement = `<img src="${fullAvatarUrl}" alt="Profile avatar">`;
-                        } else {
-                            const authorInitial = post.user ? post.user.charAt(0).toUpperCase() : 'Y';
-                            avatarElement = `<span>${authorInitial}</span>`;
-                        }
-
-                        col.innerHTML = `
-                            <div class="blog-card-glass animate__animated animate__fadeInUp flex-grow-1">
-                                <div class="blog-card-img-container">
-                                    <img src="${srcMedia}" class="blog-card-img" alt="Narrative graphics cover" onerror="this.src='https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80'">
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">${displayTitle}</h5>
-                                    <div class="author-row">
-                                        <div class="author-avatar">${avatarElement}</div>
-                                        <span class="fw-bold small text-dark">${post.user || 'Community Organ'}</span>
-                                    </div>
-                                    <p class="card-text">${contentSnippet}</p>
-                                    <a href="post.html?message_id=${post.id}" class="btn btn-glass-action mt-auto"><i class="fa-regular fa-envelope-open me-2"></i>Access Record</a>
-                                </div>
-                                <div class="card-footer-glass">
-                                    <i class="fa-regular fa-calendar-days me-1"></i> Timeline Stamp: ${processedDate}
-                                </div>
-                            </div>
-                        `;
-                        blogGrid.appendChild(col);
-                    });
-                }
-
-                // Dynamic Control Elements Processing Execution Loop
-                paginationDiv.innerHTML = '';
-                if (totalPages > 1) {
-                    for (let i = 1; i <= totalPages; i++) {
-                        const btn = document.createElement('a');
-                        btn.href = '#';
-                        btn.className = `page-link-custom ${i === currentPage ? 'active' : ''}`;
-                        btn.textContent = i;
-                        btn.onclick = (e) => {
-                            e.preventDefault();
-                            if (i !== currentPage) {
-                                currentPage = i;
-                                renderPosts();
-                                window.scrollTo({ top: blogGrid.offsetTop - 120, behavior: 'smooth' });
-                            }
-                        };
-                        paginationDiv.appendChild(btn);
-                    }
-                }
-            }
-
-            if (searchInput) {
-                searchInput.addEventListener('input', function() {
-                    currentPage = 1;
-                    renderPosts();
-                });
-            }
-
-            // Sync with defined UpcomingEventView interface configurations
-            function setupEventPopup() {
-                const invitePopup = document.getElementById('eventInvitePopup');
-                const overlay = document.getElementById('eventInviteOverlay');
-                const closeBtn = document.getElementById('closeEventInvitePopup');
-                
-                if (sessionStorage.getItem('eventInvitePopupShown') === 'true') return;
-                if (['login.html', 'register.html'].some(p => window.location.pathname.endsWith(p))) return;
-                if (Math.random() > 0.45) return;
-
-                fetch(`${BACKEND_URL}/api/events/upcoming/`)
-                    .then(res => res.json())
-                    .then(event => {
-                        // Matching event field requirements specified by model query targets
-                        if (event && event.id) {
-                            document.getElementById('eventInviteTitle').innerText = event.title || 'Community Engagement Framework';
-                            document.getElementById('eventInviteDesc').innerText = event.description || 'Participation in community interfaces is requested.';
-                            document.getElementById('eventInviteLocation').innerText = event.location || 'Yapei Hub Assembly';
-                            document.getElementById('eventInviteDate').innerText = event.date ? new Date(event.date).toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Scheduled';
-                            
-                            invitePopup.style.display = 'block';
-                            overlay.style.display = 'block';
-                            sessionStorage.setItem('eventInvitePopupShown', 'true');
-                        }
-                    })
-                    .catch(() => {});
-
-                const killModalAction = () => {
-                    overlay.style.display = 'none';
-                    invitePopup.style.display = 'none';
-                };
-                closeBtn.addEventListener('click', killModalAction);
-                overlay.addEventListener('click', killModalAction);
-            }
-
-            // Core Execution Lifecycles Initialization hooks
-            document.addEventListener('DOMContentLoaded', () => {
-                updateNavbarLinks();
-                fetchPosts();
-                setupEventPopup();
-            });
-
-            // Standard Data Synchronization Cycles Intercept Vector (Every 60 seconds)
-            setInterval(fetchPosts, 60000);
-        })();
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Yapei Community Blog",
+      "url": "https://www.yapeionline.jo3.org/blog.html",
+      "description": "Community stories and local news from Yapei",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Yapei Community Online",
+        "logo": "https://www.yapeionline.jo3.org/assets/community1.jpg"
+      }
+    }
     </script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "eb7ffd6f11764c8c8ee7bc42c9fe644f"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

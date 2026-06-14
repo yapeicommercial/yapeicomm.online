@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Yapei Community Online - Connect with Yapei residents, share stories, discover events, and participate in community development. Join our digital platform today.">
-    <meta name="keywords" content="Yapei community, online community, local events, Ghana community, connect locally, community platform">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Disclaimer for Yapei Community Online. Important legal information about the use of our website and services.">
+    <meta name="keywords" content="disclaimer, legal notice, website terms, liability">
     <meta name="author" content="Yapei Community Online">
-    <meta property="og:title" content="Yapei Community · Home of Togetherness">
-    <meta property="og:description" content="Connect, share, and grow with Yapei Community Online. Discover stories, events, and opportunities.">
+    <meta property="og:title" content="Disclaimer - Yapei Community Online">
+    <meta property="og:description" content="Legal disclaimer for Yapei Community Online website.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.yapeionline.jo3.org/disclaimer.html">
     <meta property="og:image" content="https://www.yapeionline.jo3.org/assets/community1.jpg">
-    <title>Disclaimer - Yapei Community Online</title>
+    <title>Disclaimer - Yapei Community Online | Legal Notice</title>
     <link rel="canonical" href="https://www.yapeionline.jo3.org/disclaimer.html">
       
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -27,971 +27,116 @@
     
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-bg-hover: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            --text-light: #ffffff;
-            --text-dim: rgba(255, 255, 255, 0.7);
-            --accent-gold: #fbbf24;
-            --accent-blue: #38bdf8;
-            --accent-emerald: #34d399;
-            --accent-rose: #fb7185;
-            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --card-round: 24px;
-            --header-height: 70px;
+            --primary-deep: #0b4b7a;
+            --primary-accent: #3b82f6;
+            --accent-gold: #f9b84a;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            scroll-padding-top: calc(var(--header-height) + 2rem);
-        }
-
         body {
             font-family: 'Inter', system-ui, sans-serif;
-            background-color: #0f172a;
-            color: var(--text-light);
+            background: linear-gradient(135deg, #f0f4f8 0%, #f8fafc 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
         }
-
-        /* Liquid Background Animation */
-        .liquid-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: linear-gradient(45deg, #0b4b7a, #1e1b4b, #0f766e);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(90px);
-            opacity: 0.5;
-            animation: float 20s infinite alternate;
-        }
-
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #3b82f6; animation-delay: 0s; }
-        .blob-2 { bottom: -20%; right: -10%; width: 60vw; height: 60vw; background: #8b5cf6; animation-delay: -5s; }
-        .blob-3 { top: 40%; left: 40%; width: 40vw; height: 40vw; background: #14b8a6; animation-delay: -10s; animation-duration: 25s; }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0, 0) scale(1); }
-        }
-
-        /* Glassmorphism Classes */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            border-radius: var(--card-round);
-            transition: var(--transition);
-        }
-
-        .glass-panel-inner {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-        }
-
-        /* Navbar */
         .navbar {
-            background: rgba(15, 23, 42, 0.7) !important;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 0;
-            height: auto;
+            background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary-accent) 100%) !important;
         }
-
-        .navbar-brand {
-            color: var(--text-light) !important;
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
+        .navbar-brand { color: white !important; font-weight: 600; }
         .navbar-brand i { color: var(--accent-gold); }
-
-        .navbar-nav .nav-link {
-            color: var(--text-dim) !important;
-            border-radius: 40px;
-            margin: 0 6px;
-            padding: 0.5rem 1.2rem !important;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
-            color: var(--text-light) !important;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Buttons */
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-light);
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-        }
-
-        .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .btn-glass-primary {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(59, 130, 246, 0.4));
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            color: #fff;
-            border-radius: 60px;
-            padding: 0.6rem 2rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-glass-primary:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(59, 130, 246, 0.6));
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
-            color: #fff;
-        }
-
-        /* Page Header */
-        .page-header {
-            padding: 4rem 1rem 2rem;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .badge-glass {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-dim);
-            padding: 0.5rem 1.5rem;
-            border-radius: 60px;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-            display: inline-block;
-        }
-
-        /* Device Info Bar */
-        .device-info-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            border-left: 4px solid var(--accent-blue);
-            margin-bottom: 2rem;
-        }
-
-        .device-info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 0.9rem;
-        }
-
-        .device-info-item i {
-            font-size: 1.2rem;
-            color: var(--accent-blue);
-            width: 24px;
-            text-align: center;
-        }
-
-        .device-info-label { color: var(--text-dim); }
-        .device-info-value { font-weight: 600; color: var(--text-light); }
-
-        /* Consent Banner */
-        .consent-banner {
-            background: rgba(56, 189, 248, 0.15);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            border-left: 4px solid var(--accent-blue);
-            padding: 1rem 1.5rem;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Main Content Layout */
-        .main-content {
-            flex: 1;
-            padding: 1.5rem 0 4rem;
-        }
-
-        .policy-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        @media (min-width: 992px) {
-            .policy-container {
-                display: grid;
-                grid-template-columns: 300px 1fr;
-            }
-        }
-
-        /* Table of Contents */
-        .toc-wrapper {
-            padding: 1.5rem;
-            position: sticky;
-            top: calc(var(--header-height) + 2rem);
-            height: fit-content;
-            max-height: calc(100vh - var(--header-height) - 4rem);
-            overflow-y: auto;
-        }
-
-        .toc-wrapper::-webkit-scrollbar {
-            width: 6px;
-        }
-        .toc-wrapper::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.2);
-            border-radius: 3px;
-        }
-
-        .toc-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .toc-grid {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .toc-item a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border-radius: 0.75rem;
-            transition: var(--transition);
-        }
-
-        .toc-item a i {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.3);
-            transition: var(--transition);
-        }
-
-        .toc-item a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-light);
-        }
-
-        .toc-item a:hover i {
-            color: var(--accent-blue);
-            transform: translateX(3px);
-        }
-
-        /* Policy Card */
-        .policy-card {
-            padding: 2.5rem;
-        }
-
-        .policy-section {
-            scroll-margin-top: calc(var(--header-height) + 2rem);
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .policy-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-blue);
-            font-size: 1.4rem;
-            box-shadow: inset 0 0 15px rgba(255,255,255,0.05);
-        }
-
-        .section-icon.warning { color: var(--accent-gold); }
-        .section-icon.danger { color: var(--accent-rose); }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-            color: var(--text-light);
-        }
-
-        .section-subtitle {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .section-content p, .section-content li {
-            line-height: 1.8;
-            color: var(--text-dim);
-            margin-bottom: 1.25rem;
-            font-size: 1rem;
-        }
-
-        .section-content h3, .section-content h4, .section-content h5 {
-            color: var(--text-light);
-            font-weight: 600;
-            margin: 2rem 0 1rem;
-        }
-
-        .section-content ul { padding-left: 1.5rem; }
-
-        /* Glass Info Boxes */
-        .info-box {
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .info-box.warning {
-            background: rgba(251, 191, 36, 0.1);
-            border-left: 4px solid var(--accent-gold);
-        }
-
-        .info-box.success {
-            background: rgba(52, 211, 153, 0.1);
-            border-left: 4px solid var(--accent-emerald);
-        }
-
-        .info-box.danger {
-            background: rgba(251, 113, 133, 0.1);
-            border-left: 4px solid var(--accent-rose);
-        }
-
-        .info-box.info {
-            background: rgba(56, 189, 248, 0.1);
-            border-left: 4px solid var(--accent-blue);
-        }
-
-        .info-box h5 {
-            font-size: 1.1rem;
-            margin-top: 0;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .info-box.warning h5 { color: var(--accent-gold); }
-        .info-box.success h5 { color: var(--accent-emerald); }
-        .info-box.danger h5 { color: var(--accent-rose); }
-        .info-box.info h5 { color: var(--accent-blue); }
-        .info-box p { margin-bottom: 0; color: rgba(255,255,255,0.85); }
-
-        /* Disclaimer Cards & Grids */
-        .disclaimer-grid, .examples-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        @media (min-width: 768px) {
-            .disclaimer-grid, .examples-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .disclaimer-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .disclaimer-card:hover {
-            background: rgba(0, 0, 0, 0.4);
-            transform: translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .disclaimer-card i {
-            font-size: 2rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        .example-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 1rem;
-            padding: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .example-item i {
-            font-size: 1.4rem;
-            color: var(--accent-gold);
-            width: 30px;
-            text-align: center;
-        }
-
-        /* Print Button */
-        .print-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            transition: var(--transition);
-            z-index: 999;
-            font-size: 1.2rem;
-        }
-
-        .print-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        /* Footer */
-        .modern-footer {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
-            padding: 3rem 0 1.5rem;
-            margin-top: auto;
-        }
-        
-        .modern-footer a {
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: var(--transition);
-            margin: 0 0.5rem;
-        }
-
-        .modern-footer a:hover { color: var(--accent-gold); }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            margin-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        /* Print Styles */
-        @media print {
-            .navbar, .modern-footer, .toc-wrapper, .print-btn, .device-info-bar, .consent-banner, .liquid-bg {
-                display: none !important;
-            }
-            body { background: white; color: black; }
-            .glass-panel { box-shadow: none; border: 1px solid #ddd; backdrop-filter: none; background: white; }
-            .section-content p, .section-content li, .section-title, .section-subtitle, .info-box p { color: black !important; }
-            .info-box { background: #f8f9fa; border: 1px solid #ddd; }
-            a { text-decoration: none; color: black; }
-            .page-header { padding: 1rem 0; color: black; }
-        }
+        .navbar-nav .nav-link { color: rgba(255,255,255,0.9) !important; border-radius: 40px; margin: 0 6px; padding: 0.5rem 1.2rem !important; }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover { background: rgba(255,255,255,0.15); }
+        .page-header { background: linear-gradient(135deg, var(--primary-deep), var(--primary-accent)); color: white; padding: 4rem 0; }
+        .page-header h1 { font-weight: 800; }
+        .content-card { background: white; border-radius: 16px; padding: 2rem; margin-bottom: 2rem; border-left: 4px solid var(--primary-accent); }
+        .content-card:hover { box-shadow: 0 8px 20px rgba(59, 130, 246, 0.1); transform: translateY(-2px); }
+        footer { background: var(--primary-deep); color: white; }
+        footer a { color: #cbd5e1; text-decoration: none; }
+        footer a:hover { color: var(--accent-gold); }
     </style>
 </head>
 <body>
-
-    <div class="liquid-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container px-4">
-            <a class="navbar-brand" href="index.html">
-                <i class="fa-solid fa-people-group me-2"></i>Yapei Community
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid px-md-4">
+            <a class="navbar-brand fw-bold" href="index.html" title="Yapei Community Online">
+                <i class="fa-solid fa-water-waves"></i> Yapei Community
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" style="border-color: rgba(255,255,255,0.1);">
-                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="privacy.html"><i class="fa-solid fa-shield-halved me-1"></i>Privacy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="terms.html"><i class="fa-solid fa-file-contract me-1"></i>Terms</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="disclaimer.html"><i class="fa-solid fa-triangle-exclamation me-1"></i>Disclaimer</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
-                    <span id="navbar-user-links" class="d-flex gap-1 ms-lg-2"></span>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html" title="Home"><i class="fa-solid fa-house-chimney me-1"></i>Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html" title="About"><i class="fa-solid fa-circle-nodes me-1"></i>About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="privacy.html" title="Privacy"><i class="fa-solid fa-shield me-1"></i>Privacy</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="disclaimer.html" title="Disclaimer"><i class="fa-solid fa-exclamation-triangle me-1"></i>Disclaimer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" title="Contact"><i class="fa-solid fa-envelope me-1"></i>Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="page-header animate__animated animate__fadeInDown">
+    <!-- Page Header -->
+    <div class="page-header">
         <div class="container">
-            <h1 class="display-5 fw-bold mb-3">
-                <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-gold);"></i>
-                Legal Disclaimer
-            </h1>
-            <p class="text-dim mb-4 mx-auto" style="max-width: 600px;">Important information about your use of our platform, community content, and legal limitations.</p>
-            <div class="badge-glass">
-                <i class="fa-regular fa-calendar me-2"></i>Last Updated: February 20, 2026
-            </div>
+            <h1><i class="fa-solid fa-exclamation me-2"></i>Disclaimer</h1>
+            <p class="lead mb-0">Important legal information about our website and services</p>
         </div>
-    </section>
+    </div>
 
-    <main class="main-content">
-        <div class="container">
-            
-            <div class="consent-banner animate__animated animate__fadeIn" id="consentBanner">
-                <p class="mb-0 text-light"><i class="fa-solid fa-shield-halved me-2" style="color: var(--accent-blue);"></i> By continuing to use this site, you acknowledge that we've detected your device information and location for security purposes.</p>
-                <button class="btn btn-glass btn-sm" onclick="document.getElementById('consentBanner').style.display='none'">I Understand</button>
-            </div>
+    <main class="container py-5">
+        <div class="content-card">
+            <h3><i class="fa-solid fa-info-circle me-2"></i>General Disclaimer</h3>
+            <p>The content on Yapei Community Online is provided for informational purposes only. While we strive to ensure accuracy, we make no warranties or representations of any kind.</p>
+        </div>
 
-            <div class="glass-panel-inner device-info-bar animate__animated animate__fadeInUp" id="deviceInfoBar">
-                <div class="device-info-item">
-                    <i class="fa-solid fa-display"></i>
-                    <div>
-                        <div class="device-info-label small">Device</div>
-                        <div class="device-info-value" id="deviceType">Detecting...</div>
-                    </div>
-                </div>
-                <div class="device-info-item">
-                    <i class="fa-solid fa-wifi"></i>
-                    <div>
-                        <div class="device-info-label small">IP Address</div>
-                        <div class="device-info-value" id="ipAddress">Detecting...</div>
-                    </div>
-                </div>
-                <div class="device-info-item">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div>
-                        <div class="device-info-label small">Location</div>
-                        <div class="device-info-value" id="location">Detecting...</div>
-                    </div>
-                </div>
-                <div class="device-info-item">
-                    <i class="fa-brands fa-chrome"></i>
-                    <div>
-                        <div class="device-info-label small">Browser</div>
-                        <div class="device-info-value" id="browser">Detecting...</div>
-                    </div>
-                </div>
-                <div class="device-info-item">
-                    <i class="fa-regular fa-clock"></i>
-                    <div>
-                        <div class="device-info-label small">Local Time</div>
-                        <div class="device-info-value" id="localTime">Detecting...</div>
-                    </div>
-                </div>
-            </div>
+        <div class="content-card">
+            <h3><i class="fa-solid fa-shield me-2"></i>Limitation of Liability</h3>
+            <p>Yapei Community Online shall not be liable for any direct, indirect, incidental, special, or consequential damages resulting from the use or inability to use our website.</p>
+        </div>
 
-            <div class="policy-container">
-                <aside class="glass-panel toc-wrapper animate__animated animate__fadeInLeft">
-                    <div class="toc-title">
-                        <i class="fa-solid fa-list-ul" style="color: var(--accent-blue);"></i>
-                        Quick Navigation
-                    </div>
-                    <ul class="toc-grid">
-                        <li class="toc-item"><a href="#introduction"><i class="fa-solid fa-arrow-right-long"></i>1. Introduction</a></li>
-                        <li class="toc-item"><a href="#general-information"><i class="fa-solid fa-arrow-right-long"></i>2. General Information</a></li>
-                        <li class="toc-item"><a href="#no-professional-advice"><i class="fa-solid fa-arrow-right-long"></i>3. No Professional Advice</a></li>
-                        <li class="toc-item"><a href="#user-content"><i class="fa-solid fa-arrow-right-long"></i>4. User Content</a></li>
-                        <li class="toc-item"><a href="#external-links"><i class="fa-solid fa-arrow-right-long"></i>5. External Links</a></li>
-                        <li class="toc-item"><a href="#accuracy"><i class="fa-solid fa-arrow-right-long"></i>6. Accuracy</a></li>
-                        <li class="toc-item"><a href="#availability"><i class="fa-solid fa-arrow-right-long"></i>7. Availability</a></li>
-                        <li class="toc-item"><a href="#liability"><i class="fa-solid fa-arrow-right-long"></i>8. Liability</a></li>
-                        <li class="toc-item"><a href="#indemnification"><i class="fa-solid fa-arrow-right-long"></i>9. Indemnification</a></li>
-                        <li class="toc-item"><a href="#testimonials"><i class="fa-solid fa-arrow-right-long"></i>10. Testimonials</a></li>
-                        <li class="toc-item"><a href="#affiliate"><i class="fa-solid fa-arrow-right-long"></i>11. Affiliates</a></li>
-                        <li class="toc-item"><a href="#events"><i class="fa-solid fa-arrow-right-long"></i>12. Events</a></li>
-                        <li class="toc-item"><a href="#jurisdiction"><i class="fa-solid fa-arrow-right-long"></i>13. Jurisdiction</a></li>
-                        <li class="toc-item"><a href="#contact"><i class="fa-solid fa-arrow-right-long"></i>14. Contact</a></li>
-                    </ul>
-                </aside>
+        <div class="content-card">
+            <h3><i class="fa-solid fa-link me-2"></i>External Links</h3>
+            <p>We are not responsible for the content of external websites linked from our platform. Users access external links at their own risk.</p>
+        </div>
 
-                <div class="glass-panel policy-card animate__animated animate__fadeInRight">
-                    
-                    <section id="introduction" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon warning">
-                                <i class="fa-solid fa-circle-info"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">1. Introduction</h2>
-                                <div class="section-subtitle">Understanding this disclaimer</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>Welcome to Yapei Community Online. This disclaimer ("Disclaimer") governs your use of our website, platform, and services. By accessing or using our website, you acknowledge and agree to be bound by this Disclaimer. If you do not agree with any part of this Disclaimer, please do not use our website.</p>
-                            
-                            <p>This Disclaimer applies to all visitors, users, and members of Yapei Community Online. It is intended to limit our legal liability and inform you of the nature of the information and services provided through our platform.</p>
-                            
-                            <div class="info-box warning">
-                                <h5><i class="fa-solid fa-gavel"></i> Legal Notice</h5>
-                                <p>This Disclaimer is a legally binding agreement. Please read it carefully before using our services. If you have any questions, contact us before proceeding.</p>
-                            </div>
-
-                            <div class="info-box info">
-                                <h5><i class="fa-regular fa-lightbulb"></i> Quick Summary</h5>
-                                <p>This page explains that information on our platform is for general purposes only, we are not responsible for user-generated content, and we disclaim liability for damages arising from your use of the site.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="general-information" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-info-circle"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">2. General Information Only</h2>
-                                <div class="section-subtitle">Purpose of our content</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>The information provided on Yapei Community Online is for general informational purposes only. While we strive to keep the information accurate and up-to-date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website.</p>
-                            
-                            <p>Any reliance you place on such information is strictly at your own risk. We disclaim all liability and responsibility arising from any reliance placed on such materials by you or any other visitor to our site, or by anyone who may be informed of any of its contents.</p>
-
-                            <div class="disclaimer-grid">
-                                <div class="disclaimer-card">
-                                    <i class="fa-regular fa-circle-check" style="color: var(--accent-emerald);"></i>
-                                    <h4 class="text-light">What We Do</h4>
-                                    <p>Provide a platform for community connection, information sharing, and social interaction among Yapei residents.</p>
-                                </div>
-                                <div class="disclaimer-card">
-                                    <i class="fa-regular fa-circle-xmark" style="color: var(--accent-rose);"></i>
-                                    <h4 class="text-light">What We Don't Do</h4>
-                                    <p>Provide professional advice, verify all user content, or guarantee accuracy of community-shared information.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="no-professional-advice" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon warning">
-                                <i class="fa-solid fa-briefcase"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">3. No Professional Advice</h2>
-                                <div class="section-subtitle">Important limitations</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>The content on our website does not constitute professional advice of any kind, including but not limited to legal, financial, medical, or technical advice. You should consult with qualified professionals for advice specific to your situation.</p>
-
-                            <div class="examples-grid">
-                                <div class="example-item">
-                                    <i class="fa-solid fa-scale-balanced"></i>
-                                    <span class="text-light"><strong>Legal:</strong> Not legal advice. Consult an attorney.</span>
-                                </div>
-                                <div class="example-item">
-                                    <i class="fa-solid fa-stethoscope" style="color: var(--accent-emerald);"></i>
-                                    <span class="text-light"><strong>Medical:</strong> Not medical advice. See a doctor.</span>
-                                </div>
-                                <div class="example-item">
-                                    <i class="fa-solid fa-coins" style="color: var(--accent-gold);"></i>
-                                    <span class="text-light"><strong>Financial:</strong> Not financial advice. Talk to an advisor.</span>
-                                </div>
-                                <div class="example-item">
-                                    <i class="fa-solid fa-gear" style="color: var(--text-dim);"></i>
-                                    <span class="text-light"><strong>Technical:</strong> Not technical advice. Consult an expert.</span>
-                                </div>
-                            </div>
-
-                            <div class="info-box danger">
-                                <h5><i class="fa-solid fa-triangle-exclamation"></i> Emergency Situations</h5>
-                                <p>If you are experiencing a medical emergency, do not rely on our platform. Call emergency services immediately (in Ghana: 112 or 193).</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="user-content" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">4. User-Generated Content</h2>
-                                <div class="section-subtitle">Community contributions</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>Our platform allows users to post content, including comments, blog posts, event listings, and other materials. We do not endorse, support, represent, or guarantee the truthfulness, accuracy, or reliability of any user-generated content.</p>
-
-                            <h4>Third-Party Content</h4>
-                            <p>User-generated content represents the views and opinions of the individual users and does not necessarily reflect our views. We are not responsible for any user-generated content, including:</p>
-                            <ul>
-                                <li><span class="text-light">Comments and discussions</span> in community forums</li>
-                                <li><span class="text-light">Event listings</span> created by community members</li>
-                                <li><span class="text-light">Blog posts</span> and articles submitted by users</li>
-                                <li><span class="text-light">Messages</span> exchanged between users</li>
-                            </ul>
-
-                            <div class="info-box warning">
-                                <h5><i class="fa-regular fa-eye"></i> Your Responsibility</h5>
-                                <p>You are responsible for your own interactions with other users and for evaluating the accuracy of any information you obtain from our platform.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="liability" class="policy-section">
-                        <div class="section-header">
-                            <div class="section-icon danger">
-                                <i class="fa-solid fa-scale-balanced"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">8. Limitation of Liability</h2>
-                                <div class="section-subtitle">Our responsibility</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>To the fullest extent permitted by applicable law, we, along with our officers, directors, employees, and agents, disclaim all liability for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
-
-                            <div class="info-box danger">
-                                <h5><i class="fa-solid fa-exclamation-triangle"></i> No Liability For:</h5>
-                                <ul class="mb-0 text-light">
-                                    <li>Loss of profits, sales, business, or revenue</li>
-                                    <li>Business interruption or data loss</li>
-                                    <li>Loss of anticipated savings</li>
-                                    <li>Any indirect or consequential loss or damage</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="contact" class="policy-section border-0 mb-0 pb-0">
-                        <div class="section-header">
-                            <div class="section-icon">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h2 class="section-title">14. Contact Us</h2>
-                                <div class="section-subtitle">Get in touch regarding legal inquiries</div>
-                            </div>
-                        </div>
-                        <div class="section-content">
-                            <p>If you have any questions about this Disclaimer, please contact us:</p>
-
-                            <div class="examples-grid mt-4">
-                                <div class="example-item">
-                                    <i class="fa-solid fa-envelope" style="color: var(--accent-blue);"></i>
-                                    <span class="text-light"><strong>Email:</strong><br>legal@yapeicommunity.org</span>
-                                </div>
-                                <div class="example-item">
-                                    <i class="fa-solid fa-phone" style="color: var(--accent-emerald);"></i>
-                                    <span class="text-light"><strong>Phone:</strong><br>+233 59 190 7870</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div class="text-center mt-5 pt-4 border-top" style="border-color: var(--glass-border) !important;">
-                        <button class="btn-glass-primary btn-lg px-5 py-3" onclick="this.innerHTML='<i class=\'fa-solid fa-check-circle me-2\'></i>Acknowledged'; this.style.opacity='0.7'; this.style.pointerEvents='none';">
-                            <i class="fa-solid fa-check-circle me-2"></i>I Acknowledge and Accept
-                        </button>
-                        <p class="text-dim mt-3 small">By clicking this button, you acknowledge that you have read and understood this disclaimer.</p>
-                    </div>
-
-                </div>
-            </div>
+        <div class="content-card">
+            <h3><i class="fa-solid fa-exclamation-triangle me-2"></i>Content Accuracy</h3>
+            <p>While we aim to provide accurate information, Yapei Community Online makes no guarantee of the accuracy, completeness, or timeliness of information posted.</p>
         </div>
     </main>
 
-    <footer class="modern-footer">
+    <footer class="py-5 mt-5">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 text-center text-md-start">
-                    <h5 class="text-light mb-3"><i class="fa-regular fa-compass me-2 text-info"></i>Yapei Community</h5>
-                    <p class="text-dim small mx-auto mx-md-0" style="max-width: 300px;">Connecting residents, sharing stories, building together.</p>
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-info-circle me-2"></i>About</h5>
+                    <p>Yapei Community Online connects residents for local development.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <h5 class="text-light mb-3">Legal Links</h5>
-                    <div>
-                        <a href="privacy.html" class="d-inline-block mb-2">Privacy Policy</a>
-                        <a href="terms.html" class="d-inline-block mb-2">Terms of Service</a>
-                        <a href="disclaimer.html" class="d-inline-block mb-2">Disclaimer</a>
-                        <a href="contact.html" class="d-inline-block mb-2">Contact Us</a>
-                    </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-link me-2"></i>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" title="Home"><i class="fa-solid fa-chevron-right me-2 small"></i>Home</a></li>
+                        <li><a href="privacy.html" title="Privacy"><i class="fa-solid fa-chevron-right me-2 small"></i>Privacy</a></li>
+                        <li><a href="terms.html" title="Terms"><i class="fa-solid fa-chevron-right me-2 small"></i>Terms</a></li>
+                        <li><a href="contact.html" title="Contact"><i class="fa-solid fa-chevron-right me-2 small"></i>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-gavel me-2"></i>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="privacy.html" title="Privacy"><i class="fa-solid fa-chevron-right me-2 small"></i>Privacy Policy</a></li>
+                        <li><a href="terms.html" title="Terms"><i class="fa-solid fa-chevron-right me-2 small"></i>Terms</a></li>
+                        <li><a href="cookies.html" title="Cookies"><i class="fa-solid fa-chevron-right me-2 small"></i>Cookies</a></li>
+                        <li><a href="faq.html" title="FAQ"><i class="fa-solid fa-chevron-right me-2 small"></i>FAQ</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <hr class="bg-white-50">
+            <div class="text-center">
                 <p class="mb-0">&copy; 2026 Yapei Community Online. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button class="print-btn" onclick="window.print()" aria-label="Print this page">
-        <i class="fa-solid fa-print"></i>
-    </button>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Navbar dynamic links
-            function updateNavbarLinks() {
-                const userLinks = document.getElementById('navbar-user-links');
-                if (!userLinks) return;
-                const isLoggedIn = !!localStorage.getItem('access');
-                userLinks.innerHTML = isLoggedIn 
-                    ? `<li class="nav-item"><a class="nav-link btn-glass px-3 py-1 mt-1 ms-2" href="profile.html"><i class="fa-solid fa-circle-user me-1"></i>Profile</a></li>
-                       <li class="nav-item"><a class="nav-link px-3 py-1 mt-1 ms-2" style="color: #fca5a5 !important;" href="logout.html"><i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a></li>`
-                    : `<li class="nav-item"><a class="nav-link" href="login.html"><i class="fa-solid fa-arrow-right-to-bracket me-1"></i>Login</a></li>
-                       <li class="nav-item"><a class="nav-link btn-glass-primary px-3 py-1 mt-1 ms-2" href="register.html"><i class="fa-solid fa-user-plus me-1"></i>Register</a></li>`;
-            }
-            updateNavbarLinks();
-
-            // Device Type Detection
-            function getDeviceType() {
-                const ua = navigator.userAgent;
-                if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return 'Tablet';
-                if (/Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) return 'Mobile';
-                return 'Desktop';
-            }
-
-            // Browser Detection
-            function getBrowser() {
-                const ua = navigator.userAgent;
-                if (ua.indexOf("Firefox") > -1) return "Firefox";
-                if (ua.indexOf("SamsungBrowser") > -1) return "Samsung Browser";
-                if (ua.indexOf("Opera") > -1 || ua.indexOf("OPR") > -1) return "Opera";
-                if (ua.indexOf("Trident") > -1) return "Internet Explorer";
-                if (ua.indexOf("Edge") > -1) return "Edge";
-                if (ua.indexOf("Chrome") > -1) return "Chrome";
-                if (ua.indexOf("Safari") > -1) return "Safari";
-                return "Unknown";
-            }
-
-            // Local Time
-            function updateLocalTime() {
-                const now = new Date();
-                document.getElementById('localTime').textContent = now.toLocaleTimeString() + ', ' + now.toLocaleDateString();
-            }
-
-            document.getElementById('deviceType').textContent = getDeviceType();
-            document.getElementById('browser').textContent = getBrowser();
-            updateLocalTime();
-            setInterval(updateLocalTime, 1000);
-
-            // Get IP and Location
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('ipAddress').textContent = data.ip;
-                    const locationElement = document.getElementById('location');
-                    const flag = getFlagEmoji(data.country_code);
-                    locationElement.innerHTML = `${flag} ${data.city}, ${data.country_name}`;
-                })
-                .catch(error => {
-                    document.getElementById('ipAddress').textContent = 'Unable to detect';
-                    document.getElementById('location').textContent = 'Unknown location';
-                });
-
-            function getFlagEmoji(countryCode) {
-                if(!countryCode) return '🌍';
-                const codePoints = countryCode.toUpperCase().split('').map(char => 127397 + char.charCodeAt());
-                return String.fromCodePoint(...codePoints);
-            }
-
-            // Smooth scroll for TOC links
-            document.querySelectorAll('.toc-item a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        const headerOffset = 90;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                        
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                    }
-                });
-            });
-
-            // Consent banner auto-hide
-            setTimeout(() => {
-                const banner = document.getElementById('consentBanner');
-                if (banner && banner.style.display !== 'none') {
-                    banner.classList.add('animate__fadeOut');
-                    setTimeout(() => banner.style.display = 'none', 1000);
-                }
-            }, 10000);
-        });
-    </script>
 </body>
 </html>
